@@ -16,6 +16,7 @@
 #include "task.h"
 #include "trig.h"
 #include "gpu_regs.h"
+#include "field_camera.h"
 
 #define DROUGHT_COLOR_INDEX(color) ((((color) >> 1) & 0xF) | (((color) >> 2) & 0xF0) | (((color) >> 3) & 0xF00))
 
