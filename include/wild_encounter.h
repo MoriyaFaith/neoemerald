@@ -1,6 +1,8 @@
 #ifndef GUARD_WILD_ENCOUNTER_H
 #define GUARD_WILD_ENCOUNTER_H
 
+#include "constants/day_night.h"
+
 #include "constants/wild_encounter.h"
 
 struct WildPokemon

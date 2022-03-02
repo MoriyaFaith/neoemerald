@@ -2,6 +2,7 @@
 #include "wild_encounter.h"
 #include "pokemon.h"
 #include "metatile_behavior.h"
+#include "day_night.h"
 #include "fieldmap.h"
 #include "random.h"
 #include "field_player_avatar.h"
@@ -11,6 +12,7 @@
 #include "pokeblock.h"
 #include "battle_setup.h"
 #include "roamer.h"
+#include "rtc.h"
 #include "tv.h"
 #include "link.h"
 #include "script.h"
@@ -177,32 +179,96 @@ static void FeebasSeedRng(u16 seed)
 // LAND_WILD_COUNT
 static u8 ChooseWildMonIndex_Land(void)
 {
-    u8 rand = Random() % ENCOUNTER_CHANCE_LAND_MONS_TOTAL;
+    u8 rand = Random() % max(max(ENCOUNTER_CHANCE_LAND_MONS_MORNING_TOTAL, ENCOUNTER_CHANCE_LAND_MONS_DAY_TOTAL),
+                             ENCOUNTER_CHANCE_LAND_MONS_NIGHT_TOTAL);
+    u8 wildMonIndex = 0;
+    u8 timeOfDay;
 
-    if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_0)
-        return 0;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_0 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_1)
-        return 1;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_1 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_2)
-        return 2;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_2 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_3)
-        return 3;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_3 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_4)
-        return 4;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_4 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_5)
-        return 5;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_5 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_6)
-        return 6;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_6 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_7)
-        return 7;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_7 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_8)
-        return 8;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_8 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_9)
-        return 9;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_9 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_10)
-        return 10;
-    else
-        return 11;
+    RtcCalcLocalTime();
+    timeOfDay = GetCurrentTimeOfDay();
+
+    switch (timeOfDay)
+    {
+    case TIME_MORNING:
+        if (rand < ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_0)
+        wildMonIndex = 0;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_0 && rand < ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_1)
+            wildMonIndex = 1;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_1 && rand < ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_2)
+            wildMonIndex = 2;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_2 && rand < ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_3)
+            wildMonIndex = 3;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_3 && rand < ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_4)
+            wildMonIndex = 4;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_4 && rand < ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_5)
+            wildMonIndex = 5;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_5 && rand < ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_6)
+            wildMonIndex = 6;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_6 && rand < ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_7)
+            wildMonIndex = 7;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_7 && rand < ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_8)
+            wildMonIndex = 8;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_8 && rand < ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_9)
+            wildMonIndex = 9;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_9 && rand < ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_10)
+            wildMonIndex = 10;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_10 && rand < ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_11)
+            wildMonIndex = 11;
+        break;    
+    case TIME_DAY:
+        if (rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_12)
+        wildMonIndex = 12;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_12 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_13)
+            wildMonIndex = 13;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_13 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_14)
+            wildMonIndex = 14;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_14 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_15)
+            wildMonIndex = 15;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_15 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_16)
+            wildMonIndex = 16;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_16 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_17)
+            wildMonIndex = 17;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_17 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_18)
+            wildMonIndex = 18;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_18 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_19)
+            wildMonIndex = 19;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_19 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_20)
+            wildMonIndex = 20;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_20 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_21)
+            wildMonIndex = 21;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_21 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_22)
+            wildMonIndex = 22;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_22 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_23)
+            wildMonIndex = 23;
+        break;    
+    case TIME_NIGHT:
+        if (rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_24)
+        wildMonIndex = 24;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_24 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_25)
+            wildMonIndex = 25;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_25 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_26)
+            wildMonIndex = 26;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_26 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_27)
+            wildMonIndex = 27;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_27 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_28)
+            wildMonIndex = 28;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_28 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_29)
+            wildMonIndex = 29;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_29 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_30)
+            wildMonIndex = 30;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_30 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_31)
+            wildMonIndex = 31;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_31 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_32)
+            wildMonIndex = 32;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_32 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_33)
+            wildMonIndex = 33;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_33 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_34)
+            wildMonIndex = 34;
+        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_34 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_35)
+            wildMonIndex = 35;
+        break;    
+    }
+    return wildMonIndex;
 }
 
 // ROCK_WILD_COUNT / WATER_WILD_COUNT
