@@ -2553,6 +2553,13 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     gSpecialStatuses[battler].intimidatedMon = 1;
                 }
                 break;
+            case ABILITY_PETRIFY:
+                if (!(gSpecialStatuses[battler].intimidatedMon))
+                {
+                    gStatuses3[battler] |= STATUS3_INTIMIDATE_POKES;
+                    gSpecialStatuses[battler].intimidatedMon = 1;
+                }
+                break;
             case ABILITY_FORECAST:
                 effect = CastformDataTypeChange(battler);
                 if (effect)
@@ -3001,6 +3008,15 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     effect++;
                     break;
                 }
+                if (gBattleMons[i].ability == ABILITY_PETRIFY && gStatuses3[i] & STATUS3_INTIMIDATE_POKES)
+                {
+                    gLastUsedAbility = ABILITY_PETRIFY;
+                    gStatuses3[i] &= ~STATUS3_INTIMIDATE_POKES;
+                    BattleScriptPushCursorAndCallback(BattleScript_PetrifyActivatesEnd3);
+                    gBattleStruct->intimidateBattler = i;
+                    effect++;
+                    break;
+                }
             }
             break;
         case ABILITYEFFECT_TRACE: // 11
@@ -3069,6 +3085,16 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     gStatuses3[i] &= ~STATUS3_INTIMIDATE_POKES;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_IntimidateActivates;
+                    gBattleStruct->intimidateBattler = i;
+                    effect++;
+                    break;
+                }
+                if (gBattleMons[i].ability == ABILITY_PETRIFY && (gStatuses3[i] & STATUS3_INTIMIDATE_POKES))
+                {
+                    gLastUsedAbility = ABILITY_PETRIFY;
+                    gStatuses3[i] &= ~STATUS3_INTIMIDATE_POKES;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_PetrifyActivates;
                     gBattleStruct->intimidateBattler = i;
                     effect++;
                     break;

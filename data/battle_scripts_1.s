@@ -4044,6 +4044,37 @@ BattleScript_IntimidatePrevented:
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_IntimidateActivatesLoopIncrement
 	
+BattleScript_PetrifyActivatesEnd3::
+	call BattleScript_PausePetrifyActivates
+	end3
+
+BattleScript_PausePetrifyActivates:
+	pause B_WAIT_TIME_SHORT
+BattleScript_PetrifyActivates::
+	setbyte gBattlerTarget, 0
+	setstatchanger STAT_SPATK, 1, TRUE
+BattleScript_PetrifyActivatesLoop:
+	trygetintimidatetarget BattleScript_PetrifyActivatesReturn
+	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_PetrifyActivatesLoopIncrement
+	jumpifability BS_TARGET, ABILITY_CLEAR_BODY, BattleScript_PetrifyPrevented
+	jumpifability BS_TARGET, ABILITY_WHITE_SMOKE, BattleScript_PetrifyPrevented
+	statbuffchange STAT_BUFF_NOT_PROTECT_AFFECTED | STAT_BUFF_ALLOW_PTR, BattleScript_PetrifyActivatesLoopIncrement
+	jumpifbyte CMP_GREATER_THAN, cMULTISTRING_CHOOSER, 1, BattleScript_PetrifyActivatesLoopIncrement
+	setgraphicalstatchangevalues
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_PKMNCUTSSPATKWITH
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_PetrifyActivatesLoopIncrement:
+	addbyte gBattlerTarget, 1
+	goto BattleScript_PetrifyActivatesLoop
+BattleScript_PetrifyActivatesReturn:
+	return
+BattleScript_PetrifyPrevented:
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_PREVENTEDFROMWORKING
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_PetrifyActivatesLoopIncrement
+	
 BattleScript_DroughtActivates::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_PKMNSXINTENSIFIEDSUN

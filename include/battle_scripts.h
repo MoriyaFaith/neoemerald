@@ -145,6 +145,8 @@ extern const u8 BattleScript_WeatherFormChangesLoop[];
 extern const u8 BattleScript_CastformChange[];
 extern const u8 BattleScript_IntimidateActivatesEnd3[];
 extern const u8 BattleScript_IntimidateActivates[];
+extern const u8 BattleScript_PetrifyActivatesEnd3[];
+extern const u8 BattleScript_PetrifyActivates[];
 extern const u8 BattleScript_DroughtActivates[];
 extern const u8 BattleScript_TookAttack[];
 extern const u8 BattleScript_SturdyPreventsOHKO[];
