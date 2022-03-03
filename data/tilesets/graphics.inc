@@ -1741,7 +1741,9 @@ gTilesetPalOverride_General05::
 .align 2
 gTilesetPalOverride_Petalburg06::
 	.incbin "data/tilesets/secondary/petalburg/palettes/06_over.gbapal"
-
 .align 2
 gTilesetPalOverride_Petalburg08::
 	.incbin "data/tilesets/secondary/petalburg/palettes/08_over.gbapal"
+.align 2
+gTilesetPalOverride_Petalburg09::
+	.incbin "data/tilesets/secondary/petalburg/palettes/09_over.gbapal"

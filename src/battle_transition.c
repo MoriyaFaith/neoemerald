@@ -4,6 +4,7 @@
 #include "battle_transition_frontier.h"
 #include "bg.h"
 #include "decompress.h"
+#include "day_night.h"
 #include "event_object_movement.h"
 #include "field_camera.h"
 #include "field_effect.h"
