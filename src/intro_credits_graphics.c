@@ -630,7 +630,7 @@ const struct CompressedSpriteSheet gSpriteSheet_IntroFlygon[] =
 const struct SpritePalette gSpritePalettes_IntroPlayerFlygon[] =
 {
     { .data = gIntroPlayer_Pal, .tag = TAG_BRENDAN },
-    { .data = gIntroPlayer_Pal, .tag = TAG_MAY },
+    { .data = gIntroMay_Pal, .tag = TAG_MAY },
     { .data = gIntroFlygon_Pal, .tag = TAG_FLYGON_LATIOS },
     { .data = gIntroFlygon_Pal, .tag = TAG_FLYGON_LATIAS },
     {}
