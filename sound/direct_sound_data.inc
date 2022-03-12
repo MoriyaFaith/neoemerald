@@ -1399,6 +1399,10 @@ Cry_Roselia::
 	.incbin "sound/direct_sound_samples/cries/roselia.bin"
 
 	.align 2
+Cry_Roserade::
+	.incbin "sound/direct_sound_samples/cries/roserade.bin"
+
+	.align 2
 Cry_Torkoal::
 	.incbin "sound/direct_sound_samples/cries/torkoal.bin"
 
