@@ -5735,6 +5735,50 @@ u16 SpeciesToCryId(u16 species)
         personality >>= 8;                                                      \
     }                                                                           \
 }
+#define DRAW_SPINDA_SPOTSB                                                      \
+{                                                                               \
+    int i;                                                                      \
+    for (i = 0; i < 4; i++)                                                     \
+    {                                                                           \
+        int j;                                                                  \
+        u8 x = gSpindaSpotGraphics[i].x + ((personality & 0x0F) - 12);          \
+        u8 y = gSpindaSpotGraphics[i].y + (((personality & 0xF0) >> 4) + 56);   \
+                                                                                \
+        for (j = 0; j < 16; j++)                                                \
+        {                                                                       \
+            int k;                                                              \
+            s32 row = gSpindaSpotGraphics[i].image[j];                          \
+                                                                                \
+            for (k = x; k < x + 16; k++)                                        \
+            {                                                                   \
+                u8 *val = dest + ((k / 8) * 32) +                               \
+                                 ((k % 8) / 2) +                                \
+                                 ((y >> 3) << 8) +                              \
+                                 ((y & 7) << 2);                                \
+                                                                                \
+                if (row & 1)                                                    \
+                {                                                               \
+                    if (k & 1)                                                  \
+                    {                                                           \
+                        if ((u8)((*val & 0xF0) - 0x10) <= 0x20)                 \
+                            *val += 0x40;                                       \
+                    }                                                           \
+                    else                                                        \
+                    {                                                           \
+                        if ((u8)((*val & 0xF) - 0x01) <= 0x02)                  \
+                            *val += 0x04;                                       \
+                    }                                                           \
+                }                                                               \
+                                                                                \
+                row >>= 1;                                                      \
+            }                                                                   \
+                                                                                \
+            y++;                                                                \
+        }                                                                       \
+                                                                                \
+        personality >>= 8;                                                      \
+    }                                                                           \
+}
 
 // Same as DrawSpindaSpots but attempts to discern for itself whether or
 // not it's the front pic.
@@ -5750,6 +5794,7 @@ void DrawSpindaSpots(u16 species, u32 personality, u8 *dest, bool8 isFrontPic)
 {
     if (species == SPECIES_SPINDA && isFrontPic)
         DRAW_SPINDA_SPOTS(personality, dest);
+        DRAW_SPINDA_SPOTSB(personality, dest);
 }
 
 void EvolutionRenameMon(struct Pokemon *mon, u16 oldSpecies, u16 newSpecies)
@@ -6893,7 +6938,6 @@ bool8 HasTwoFramesAnimation(u16 species)
 {
     return (species != SPECIES_CASTFORM
          && species != SPECIES_DEOXYS
-         && species != SPECIES_SPINDA
          && species != SPECIES_UNOWN);
 }
 
