@@ -1,7 +1,7 @@
 #ifndef GUARD_CONSTANTS_BATTLE_STRING_IDS_H
 #define GUARD_CONSTANTS_BATTLE_STRING_IDS_H
 
-#define BATTLESTRINGS_COUNT     371
+#define BATTLESTRINGS_COUNT     372
 
 #define BATTLESTRINGS_ID_ADDER  12 // all battlestrings have its ID + 12, because first 5 are reserved
 
@@ -384,6 +384,7 @@
 #define STRINGID_TRAINER2WINTEXT            380
 #define STRINGID_ITISHAILING                381
 #define STRINGID_PKMNCUTSSPATKWITH          382
+#define STRINGID_PKMNMAKESWATERMISS         383
 
 
 // The below IDs are all indexes into battle message tables,
@@ -411,6 +412,7 @@
 #define B_MSG_AVOIDED_ATK  2
 #define B_MSG_AVOIDED_DMG  3
 #define B_MSG_GROUND_MISS  4
+#define B_MSG_WATER_MISS   5
 
 // gAbsorbDrainStringIds
 #define B_MSG_ABSORB      0
