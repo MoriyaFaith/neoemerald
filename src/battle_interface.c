@@ -2533,7 +2533,7 @@ static u8* AddTextPrinterAndCreateWindowOnHealthbox(const u8 *str, u32 x, u32 y,
 
     color[0] = bgColor;
     color[1] = 1;
-    color[2] = 3;
+    color[2] = 6;
 
     AddTextPrinterParameterized4(winId, FONT_SMALL, x, y, 0, 0, color, TEXT_SKIP_DRAW, str);
 
