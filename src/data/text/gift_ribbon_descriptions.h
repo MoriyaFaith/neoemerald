@@ -21,8 +21,9 @@ const u8 gGiftRibbonDescriptionPart1_PokemonFestival[] = _("POKéMON Festival");
 const u8 gGiftRibbonDescriptionPart1_DifficultyClearing[] = _("Difficulty-clearing");
 const u8 gGiftRibbonDescriptionPart2_Commemorative[] = _("Commemorative RIBBON");
 const u8 gGiftRibbonDescriptionPart1_ClearingAllChallenges[] = _("RIBBON awarded for");
-const u8 gGiftRibbonDescriptionPart2_ClearingAllChallenges[] = _("clearing all challenges.");
-const u8 gGiftRibbonDescriptionPart1_100StraightWin[] = _("100-straight Win");
+const u8 gGiftRibbonDescriptionPart2_ClearingAllChallenges[] = _("Opening this {PKMN}'s heart.");
+const u8 gGiftRibbonDescriptionPart1_100StraightWin[] = _("RIBBON for those who");
+const u8 gGiftRibbonDescriptionPart2_100StraightWin[] = _("triumph over MT BATTLE.");
 const u8 gGiftRibbonDescriptionPart1_DarknessTower[] = _("DARKNESS TOWER Clear");
 const u8 gGiftRibbonDescriptionPart1_RedTower[] = _("RED TOWER Clear");
 const u8 gGiftRibbonDescriptionPart1_BlackironTower[] = _("BLACKIRON TOWER Clear");
@@ -92,7 +93,7 @@ const u8 *const gGiftRibbonDescriptionPointers[MAX_GIFT_RIBBON][2] =
     {gGiftRibbonDescriptionPart1_PokemonFestival,       gGiftRibbonDescriptionPart2_Participation2},
     {gGiftRibbonDescriptionPart1_DifficultyClearing,    gGiftRibbonDescriptionPart2_Commemorative},
     {gGiftRibbonDescriptionPart1_ClearingAllChallenges, gGiftRibbonDescriptionPart2_ClearingAllChallenges},
-    {gGiftRibbonDescriptionPart1_100StraightWin,        gGiftRibbonDescriptionPart2_Commemorative},
+    {gGiftRibbonDescriptionPart1_100StraightWin,        gGiftRibbonDescriptionPart2_100StraightWin},
     {gGiftRibbonDescriptionPart1_DarknessTower,         gGiftRibbonDescriptionPart2_Commemorative},
     {gGiftRibbonDescriptionPart1_RedTower,              gGiftRibbonDescriptionPart2_Commemorative},
     {gGiftRibbonDescriptionPart1_BlackironTower,        gGiftRibbonDescriptionPart2_Commemorative},

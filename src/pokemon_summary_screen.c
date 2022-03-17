@@ -40,12 +40,14 @@
 #include "text.h"
 #include "tv.h"
 #include "window.h"
+#include "orre_met_location_strings.h"
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/party_menu.h"
 #include "constants/region_map_sections.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+
 
 enum {
     PSS_PAGE_INFO,
@@ -262,6 +264,7 @@ static void BufferNatureString(void);
 static void GetMetLevelString(u8 *a);
 static bool8 DoesMonOTMatchOwner(void);
 static bool8 DidMonComeFromGBAGames(void);
+static bool8 DidMonComeFromColoXD(void);
 static bool8 IsInGamePartnerMon(void);
 static void PrintEggOTName(void);
 static void PrintEggOTID(void);
@@ -312,6 +315,8 @@ static void SetMainMoveSelectorColor(u8 whichColor);
 static void KeepMoveSelectorVisible(u8 firstSpriteId);
 static void BufferStat(u8 *dst, s8 natureMod, u32 stat, u32 strId, u32 n);
 static void SummaryScreen_DestroyAnimDelayTask(void);
+extern u8* DetermineOrreMetLocation(struct Pokemon *);
+extern u8 *WriteOrreMapName(u8 *dst0, u8 *string, u16 fill);
 
 // const rom data
 #include "data/text/move_descriptions.h"
@@ -3184,12 +3189,25 @@ static void BufferMonTrainerMemo(void)
     {
         u8 *metLevelString = Alloc(32);
         u8 *metLocationString = Alloc(32);
+        u8 *orreMetLocationString = Alloc(32);
+        u8 *OTString = Alloc(32);
+        u8 language;
+	    language = GetMonData(sum, MON_DATA_LANGUAGE);
         GetMetLevelString(metLevelString);
+        
+        OTString = sum->OTName;
+        DynamicPlaceholderTextUtil_SetPlaceholderPtr(6, OTString); //sets up the OT for Colosseum Starters and Duking's Plusle.
 
         if (sum->metLocation < MAPSEC_NONE)
         {
-            GetMapNameHandleAquaHideout(metLocationString, sum->metLocation);
-            DynamicPlaceholderTextUtil_SetPlaceholderPtr(4, metLocationString);
+            if (DidMonComeFromColoXD()){
+                orreMetLocationString = DetermineOrreMetLocation(&sMonSummaryScreen->currentMon);
+                DynamicPlaceholderTextUtil_SetPlaceholderPtr(4, orreMetLocationString);
+            }
+            else {
+                GetMapNameHandleAquaHideout(metLocationString, sum->metLocation);
+                DynamicPlaceholderTextUtil_SetPlaceholderPtr(4, metLocationString);
+            }
         }
 
         if (DoesMonOTMatchOwner() == TRUE)
@@ -3203,6 +3221,38 @@ static void BufferMonTrainerMemo(void)
         {
             text = gText_XNatureFatefulEncounter;
         }
+        else if (DidMonComeFromColoXD())
+        {
+            if(((sum->species >= SPECIES_EEVEE && sum->species <= SPECIES_FLAREON) || sum->species == SPECIES_ESPEON || sum->species == SPECIES_UMBREON) && sum->metLevel == 10) 
+            //XD Starters. Level 10 is needed to make sure Umbreon and Espeon don't conflict.
+			{
+				if(language == LANGUAGE_JAPANESE)
+					text = gXD_Eevee_Met_Location_JP;
+				else
+					text = gXD_Eevee_Met_Location;
+			}
+            else if(sum->species == SPECIES_ESPEON || sum->species == SPECIES_UMBREON) // Colo Starters
+			{
+				if(language == LANGUAGE_JAPANESE)
+					text = gColosseum_Starter_Met_Location_JP;
+				else
+					text = gColosseum_Starter_Met_Location;
+			}
+			else if (sum->species == SPECIES_PLUSLE) // Duking's Plusle
+			{
+				if(language == LANGUAGE_JAPANESE)
+					text = gDukings_Plusle_JP;
+				else
+					text = gDukings_Plusle;
+			}
+            else if (sum->metLocation == 90 || sum->metLocation == 91 || sum->metLocation == 92 || sum->metLocation == 116)
+            {
+                text = gText_XNatureProbablyMetAt;
+            }
+            else 
+            text = gText_XNatureSnaggedAt;
+        }
+
         else if (sum->metLocation != METLOC_IN_GAME_TRADE && DidMonComeFromGBAGames())
         {
             text = (sum->metLocation >= MAPSEC_NONE) ? gText_XNatureObtainedInTrade : gText_XNatureProbablyMetAt;
@@ -3269,6 +3319,14 @@ static bool8 DidMonComeFromGBAGames(void)
 {
     struct PokeSummary *sum = &sMonSummaryScreen->summary;
     if (sum->metGame > 0 && sum->metGame <= VERSION_LEAF_GREEN)
+        return TRUE;
+    return FALSE;
+}
+
+bool8 DidMonComeFromColoXD(void)
+{
+    struct PokeSummary *sum = &sMonSummaryScreen->summary;
+    if (sum->metGame == VERSION_GAMECUBE)
         return TRUE;
     return FALSE;
 }

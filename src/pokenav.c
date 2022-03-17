@@ -587,5 +587,6 @@ u32 GetSelectedConditionSearch(void)
 
 bool32 CanViewRibbonsMenu(void)
 {
-    return gPokenavResources->hasAnyRibbons;
+    return TRUE;
+    //return gPokenavResources->hasAnyRibbons;
 }

@@ -336,6 +336,8 @@ SECTIONS {
         src/contest_link_util.o(.text);
         src/gym_leader_rematch.o(.text);
         src/battle_transition_frontier.o(.text);
+        src/orre_met_location_strings.o(.text);
+        src/orre_met_location_handler.o(.text);
         src/international_string_util.o(.text);
     } =0
 
@@ -693,6 +695,8 @@ SECTIONS {
         src/walda_phrase.o(.rodata);
         src/gym_leader_rematch.o(.rodata);
         src/battle_transition_frontier.o(.rodata);
+        src/orre_met_location_strings.o(.rodata);
+        src/orre_met_location_handler.o(.rodata);
         src/text_input_strings.o(.rodata);
         src/fonts.o(.rodata);
         src/mystery_event_msg.o(.rodata);

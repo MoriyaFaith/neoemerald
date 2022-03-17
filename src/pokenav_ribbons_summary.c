@@ -135,8 +135,8 @@ struct
     {1, 1, LAND_RIBBON,          TRUE},
     {1, 1, SKY_RIBBON,           TRUE},
     {1, 1, COUNTRY_RIBBON,       TRUE},
-    {1, 1, NATIONAL_RIBBON,      TRUE},
-    {1, 1, EARTH_RIBBON,         TRUE},
+    {1, 1, NATIONAL_RIBBON,      FALSE},
+    {1, 1, EARTH_RIBBON,         FALSE},
     {1, 1, WORLD_RIBBON,         TRUE}
 };
 
