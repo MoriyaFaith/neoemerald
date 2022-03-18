@@ -14,6 +14,9 @@
 #include "window.h"
 #include "strings.h"
 #include "scanline_effect.h"
+#include "tv.h"
+#include "string_util.h"
+#include "rtc.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
 
@@ -82,6 +85,7 @@ static void SpriteCB_BlinkingBlueLight(struct Sprite *);
 static void DestroyRematchBlueLightSprite(void);
 static void AddOptionDescriptionWindow(void);
 static void PrintCurrentOptionDescription(void);
+static void PrintCurrentPokeNavTime(void);
 static void PrintNoRibbonWinners(void);
 static bool32 IsDma3ManagerBusyWithBgCopy_(void);
 static void CreateMovingBgDotsTask(void);
@@ -1220,7 +1224,8 @@ static void AddOptionDescriptionWindow(void)
     CopyWindowToVram(gfx->optionDescWindowId, COPYWIN_FULL);
 }
 
-static void PrintCurrentOptionDescription(void)
+//Old version of this method in case the time display changes
+/*static void PrintCurrentOptionDescription(void)
 {
     struct Pokenav_MenuGfx * gfx = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_GFX);
     int menuItem = GetCurrentMenuItemId();
@@ -1228,6 +1233,23 @@ static void PrintCurrentOptionDescription(void)
     u32 width = GetStringWidth(FONT_NORMAL, desc, -1);
     FillWindowPixelBuffer(gfx->optionDescWindowId, PIXEL_FILL(6));
     AddTextPrinterParameterized3(gfx->optionDescWindowId, FONT_NORMAL, (192 - width) / 2, 1, sOptionDescTextColors, 0, desc);
+}*/
+
+static void PrintCurrentOptionDescription(void)
+{
+    struct Pokenav_MenuGfx * gfx = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_GFX);
+    int menuItem = GetCurrentMenuItemId();
+    const u8 * desc = sPageDescriptions[(gLocalTime.hours >= 12)];
+    const u8 * widthVar = sPageDescriptions[2];
+    u32 width;
+    width = GetStringWidth(FONT_NORMAL, widthVar, -1);
+    FillWindowPixelBuffer(gfx->optionDescWindowId, PIXEL_FILL(6));
+    ConvertIntToDecimalStringN(gStringVar1, gLocalTime.hours % 12, STR_CONV_MODE_LEADING_ZEROS, 2);
+    AddTextPrinterParameterized3(gfx->optionDescWindowId, FONT_NORMAL, (192 - width) / 2, 1, sOptionDescTextColors, 0, gStringVar1);
+    AddTextPrinterParameterized3(gfx->optionDescWindowId, FONT_NORMAL, (192 - width) / 2 + 12, 1, sOptionDescTextColors, 0, gText_Colon2);
+    ConvertIntToDecimalStringN(gStringVar1, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    AddTextPrinterParameterized3(gfx->optionDescWindowId, FONT_NORMAL, (192 - width) / 2 + 18, 1, sOptionDescTextColors, 0, gStringVar1);
+    AddTextPrinterParameterized3(gfx->optionDescWindowId, FONT_NORMAL, (192 - width) / 2 + 30, 1, sOptionDescTextColors, 0, desc);
 }
 
 // Printed when Ribbons is selected if no PC/party mons have ribbons
