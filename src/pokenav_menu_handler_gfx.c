@@ -85,7 +85,6 @@ static void SpriteCB_BlinkingBlueLight(struct Sprite *);
 static void DestroyRematchBlueLightSprite(void);
 static void AddOptionDescriptionWindow(void);
 static void PrintCurrentOptionDescription(void);
-static void PrintCurrentPokeNavTime(void);
 static void PrintNoRibbonWinners(void);
 static bool32 IsDma3ManagerBusyWithBgCopy_(void);
 static void CreateMovingBgDotsTask(void);
@@ -554,7 +553,7 @@ static u32 LoopedTask_OpenMenu(s32 state)
         if (AreLeftHeaderSpritesMoving())
             return LT_PAUSE;
         break;
-    }
+    }    
     return LT_FINISH;
 }
 
@@ -1237,17 +1236,23 @@ static void AddOptionDescriptionWindow(void)
 
 static void PrintCurrentOptionDescription(void)
 {
+    u16 hours;
+    u16 minutes;
     struct Pokenav_MenuGfx * gfx = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_GFX);
     int menuItem = GetCurrentMenuItemId();
     const u8 * desc = sPageDescriptions[(gLocalTime.hours >= 12)];
     const u8 * widthVar = sPageDescriptions[2];
     u32 width;
+
+    RtcCalcLocalTime();
     width = GetStringWidth(FONT_NORMAL, widthVar, -1);
+    hours = gLocalTime.hours;
+    minutes = gLocalTime.minutes;
     FillWindowPixelBuffer(gfx->optionDescWindowId, PIXEL_FILL(6));
-    ConvertIntToDecimalStringN(gStringVar1, gLocalTime.hours % 12, STR_CONV_MODE_RIGHT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gStringVar1, (gLocalTime.hours == 12 || gLocalTime.hours == 0) ? 12 : hours % 12, STR_CONV_MODE_RIGHT_ALIGN, 2);
     AddTextPrinterParameterized3(gfx->optionDescWindowId, FONT_NORMAL, (192 - width) / 2, 1, sOptionDescTextColors, 0, gStringVar1);
     AddTextPrinterParameterized3(gfx->optionDescWindowId, FONT_NORMAL, (192 - width) / 2 + 12, 1, sOptionDescTextColors, 0, gText_Colon2);
-    ConvertIntToDecimalStringN(gStringVar1, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    ConvertIntToDecimalStringN(gStringVar1, minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
     AddTextPrinterParameterized3(gfx->optionDescWindowId, FONT_NORMAL, (192 - width) / 2 + 18, 1, sOptionDescTextColors, 0, gStringVar1);
     AddTextPrinterParameterized3(gfx->optionDescWindowId, FONT_NORMAL, (192 - width) / 2 + 30, 1, sOptionDescTextColors, 0, desc);
 }
@@ -1282,6 +1287,7 @@ static void DestroyMovingDotsBgTask(void)
 
 static void Task_MoveBgDots(u8 taskId)
 {
+    PrintCurrentOptionDescription(); //updates the time. This is one of few things that routinely runs, so it's set here.
     ChangeBgX(3, 0x80, BG_COORD_ADD);
 }
 

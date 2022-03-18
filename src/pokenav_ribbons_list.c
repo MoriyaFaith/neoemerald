@@ -200,7 +200,7 @@ static u32 HandleRibbonsMonListInput(struct Pokenav_RibbonsMonList *list)
 
 static u32 RibbonsMonMenu_ReturnToMainMenu(struct Pokenav_RibbonsMonList *list)
 {
-    return POKENAV_MAIN_MENU_CURSOR_ON_RIBBONS;
+    return POKENAV_MAIN_MENU_CURSOR_ON_MATCH_CALL;
 }
 
 static u32 RibbonsMonMenu_ToSummaryScreen(struct Pokenav_RibbonsMonList *list)

@@ -127,7 +127,7 @@ static u32 CB2_HandleMatchCallInput(struct Pokenav_MatchCallMenu *state)
 
 static u32 GetExitMatchCallMenuId(struct Pokenav_MatchCallMenu *state)
 {
-    return POKENAV_MAIN_MENU_CURSOR_ON_MATCH_CALL;
+    return POKENAV_MAIN_MENU_CURSOR_ON_RIBBONS;
 }
 
 static u32 CB2_HandleMatchCallOptionsInput(struct Pokenav_MatchCallMenu *state)

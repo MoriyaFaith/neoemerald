@@ -689,8 +689,8 @@ void CB2_StartWallClock(void)
     LZ77UnCompVram(gWallClockStart_Tilemap, (u16 *)BG_SCREEN_ADDR(7));
 
     taskId = CreateTask(Task_SetClock_WaitFadeIn, 0);
-    gTasks[taskId].tHours = 10;
-    gTasks[taskId].tMinutes = 0;
+    gTasks[taskId].tHours = gLocalTime.hours;
+    gTasks[taskId].tMinutes = gLocalTime.minutes;
     gTasks[taskId].tMoveDir = 0;
     gTasks[taskId].tPeriod = 0;
     gTasks[taskId].tMoveSpeed = 0;
