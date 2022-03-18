@@ -2145,7 +2145,7 @@ static void LoadPokedexBgPalette(bool8 isSearchResults)
 {
     if (isSearchResults == TRUE)
         LoadPalette(gPokedexSearchResults_Pal + 1, 1, 0xBE);
-    else if (!IsNationalPokedexEnabled())
+    else if (sPokedexView->dexMode == DEX_MODE_HOENN)
         LoadPalette(gPokedexBgHoenn_Pal + 1, 1, 0xBE);
     else
         LoadPalette(gPokedexBgNational_Pal + 1, 1, 0xBE);
