@@ -2678,12 +2678,12 @@
               {
                 "min_level": 8,
                 "max_level": 8,
-                "species": "SPECIES_POOCHYENA"
+                "species": "SPECIES_PSYDUCK"
               },
               {
                 "min_level": 7,
                 "max_level": 7,
-                "species": "SPECIES_PSYDUCK"
+                "species": "SPECIES_POOCHYENA"
               },
               {
                 "min_level": 8,
