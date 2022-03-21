@@ -8746,41 +8746,21 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Ashley[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_WallyMauville[] = {
     {
     .iv = 30,
-    .lvl = 16,
-    .species = SPECIES_RALTS,
+    .lvl = 17,
+    .species = SPECIES_SKITTY,
+    },
+    {
+    .iv = 30,
+    .lvl = 20,
+    .species = SPECIES_KIRLIA,
     }
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_WallyVR2[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_WallyPetalburg[] = {
     {
-    .iv = 150,
-    .lvl = 47,
-    .species = SPECIES_ALTARIA,
-    .moves = {MOVE_AERIAL_ACE, MOVE_SAFEGUARD, MOVE_DRAGON_BREATH, MOVE_DRAGON_DANCE}
-    },
-    {
-    .iv = 150,
-    .lvl = 46,
-    .species = SPECIES_DELCATTY,
-    .moves = {MOVE_SING, MOVE_ASSIST, MOVE_CHARM, MOVE_FAINT_ATTACK}
-    },
-    {
-    .iv = 150,
-    .lvl = 47,
-    .species = SPECIES_ROSELIA,
-    .moves = {MOVE_MAGICAL_LEAF, MOVE_LEECH_SEED, MOVE_GIGA_DRAIN, MOVE_TOXIC}
-    },
-    {
-    .iv = 150,
-    .lvl = 44,
-    .species = SPECIES_MAGNETON,
-    .moves = {MOVE_SUPERSONIC, MOVE_THUNDERBOLT, MOVE_TRI_ATTACK, MOVE_SCREECH}
-    },
-    {
-    .iv = 250,
-    .lvl = 48,
-    .species = SPECIES_GARDEVOIR,
-    .moves = {MOVE_DOUBLE_TEAM, MOVE_CALM_MIND, MOVE_PSYCHIC, MOVE_FUTURE_SIGHT}
+    .iv = 30,
+    .lvl = 6,
+    .species = SPECIES_RALTS,
     }
 };
 

@@ -20,6 +20,7 @@
 sound/**/*.bin
 sound/songs/midi/*.s
 tools/agbcc
+tools/poryscript
 *.map
 *.ld
 *.bat
@@ -39,3 +40,4 @@ porymap.project.cfg
 *.sym
 *.js
 *.gif
+neoemerald-*.png
