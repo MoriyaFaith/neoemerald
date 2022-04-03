@@ -379,16 +379,16 @@ SlateportCity_OceanicMuseum_2F_Text_WantToRideSubmarine:
 	.string "I want to go for a ride!$"
 
 SlateportCity_OceanicMuseum_2F_Text_WaterQualitySample1:
-	.string "“WATER QUALITY SAMPLE 1,” the\n"
-	.string "label says.\p"
-	.string "The sea is all connected, but the\n"
-	.string "water seems to differ by region.$"
+	.string "KANTO WATER SAMPLE, taken from\n"
+	.string "KANTO ROUTE 21.\p"
+	.string "KANTO's seawater isn't suitable for\n"
+	.string "many POKéMON due to TENTACOOL's toxin.$"
 
 SlateportCity_OceanicMuseum_2F_Text_WaterQualitySample2:
-	.string "“WATER QUALITY SAMPLE 2,” the\n"
-	.string "label says.\p"
-	.string "Does the saltiness of seawater differ\n"
-	.string "by region, too?$"
+	.string "JOHTO WATER SAMPLE, taken from\n"
+	.string "JOHTO ROUTE 42.\p"
+	.string "Theseawater is charged with electricity\n"
+	.string "due to native CHINCHOU.$"
 
 SlateportCity_OceanicMuseum_2F_Text_PressureExperiment:
 	.string "A rubber ball is expanding and\n"

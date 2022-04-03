@@ -28,6 +28,7 @@ Route103_EventScript_Rival::
 
 Route103_EventScript_RivalMay::
 	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
+    setvar VAR_MUGSHOT_ID, MUGSHOT_MAY
 	closemessage
 	playbgm MUS_ENCOUNTER_MAY, TRUE
 	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
@@ -45,6 +46,7 @@ Route103_EventScript_RivalMay::
 
 Route103_EventScript_RivalBrendan::
 	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
+    setvar VAR_MUGSHOT_ID, MUGSHOT_BRENDAN
 	closemessage
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer

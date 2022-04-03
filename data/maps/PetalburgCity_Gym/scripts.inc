@@ -1223,8 +1223,8 @@ PetalburgCity_Gym_Text_WallyThankYou:
 	.string "care of it.$"
 
 PetalburgCity_Gym_Text_WallyBeforeBattle:
-	.string "{PLAYER}, since your're here,\n"
-	.string "why don't the two of us have a\p"
+	.string "{PLAYER}, since you're here,\n"
+	.string "why don't the two of us have a\l"
 	.string "POKéMON battle?\p"
 	.string "I want to know what it's like to\n"
 	.string "be a POKéMON TRAINER!$"
@@ -1291,7 +1291,7 @@ PetalburgCity_Gym_Text_NormanIntro:
 	.string "best shot, too!$"
 
 PetalburgCity_Gym_Text_WallyDefeat:
-	.string "…\p"
+	.string "………………\p"
 	.string "So this is a POKéMON battle…$"
 
 PetalburgCity_Gym_Text_NormanDefeat:
