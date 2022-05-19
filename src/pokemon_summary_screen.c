@@ -1142,7 +1142,7 @@ static const u16 sMarkings_Pal[] = INCBIN_U16("graphics/summary_screen/markings.
 
 // code
 static u8 ShowSplitIcon(u16 move)
-{
+{ /* Unused in FAITHFUL
     if (sMonSummaryScreen->splitIconSpriteId == 0xFF)
         sMonSummaryScreen->splitIconSpriteId = CreateSprite(&sSpriteTemplate_SplitIcons, 48, 129, 0);
 
@@ -1153,6 +1153,7 @@ static u8 ShowSplitIcon(u16 move)
     else if (IS_MOVE_STATUS(move)) StartSpriteAnim(&gSprites[sMonSummaryScreen->splitIconSpriteId], 2);
 
     return sMonSummaryScreen->splitIconSpriteId;
+    */
 }
 
 static void DestroySplitIcon(void)
