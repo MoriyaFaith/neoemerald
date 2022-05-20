@@ -798,6 +798,14 @@ static const struct BattleBackground sBattleTerrainTable[] =
         .entryTilemap = gBattleTerrainAnimTilemap_Building,
         .palette = {gBattleTerrainPalette_Frontier, gBattleTerrainPalette_Frontier, gBattleTerrainPalette_Frontier},
     },
+    [BATTLE_TERRAIN_DEOXYS] =
+    {
+        .tileset = gBattleTerrainTiles_Rayquaza,
+        .tilemap = gBattleTerrainTilemap_Rayquaza,
+        .entryTileset = gBattleTerrainAnimTiles_Rayquaza,
+        .entryTilemap = gBattleTerrainAnimTilemap_Rayquaza,
+        .palette = {gBattleTerrainPalette_Deoxys, gBattleTerrainPalette_Deoxys, gBattleTerrainPalette_Deoxys},
+    },
 };
 
 static const struct {
@@ -811,7 +819,8 @@ static const struct {
     {MAP_BATTLE_SCENE_PHOEBE,   BATTLE_TERRAIN_PHOEBE},
     {MAP_BATTLE_SCENE_GLACIA,   BATTLE_TERRAIN_GLACIA},
     {MAP_BATTLE_SCENE_DRAKE,    BATTLE_TERRAIN_DRAKE},
-    {MAP_BATTLE_SCENE_FRONTIER, BATTLE_TERRAIN_LINK}
+    {MAP_BATTLE_SCENE_FRONTIER, BATTLE_TERRAIN_LINK},
+    {MAP_BATTLE_SCENE_DEOXYS,   BATTLE_TERRAIN_DEOXYS}
 };
 
 
