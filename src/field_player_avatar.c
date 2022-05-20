@@ -262,6 +262,12 @@ static const u8 sFRLGAvatarGfxIds[GENDER_COUNT] =
     [FEMALE] = OBJ_EVENT_GFX_LEAF
 };
 
+static const u8 sCDAvatarGfxIds[GENDER_COUNT] =
+{
+    [MALE]   = OBJ_EVENT_GFX_GOLD,
+    [FEMALE] = OBJ_EVENT_GFX_KRIS
+};
+
 static const u8 sRSAvatarGfxIds[GENDER_COUNT] =
 {
     [MALE]   = OBJ_EVENT_GFX_LINK_RS_BRENDAN,
@@ -1243,6 +1249,11 @@ u8 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 u8 GetFRLGAvatarGraphicsIdByGender(u8 gender)
 {
     return sFRLGAvatarGfxIds[gender];
+}
+
+u8 GetCDAvatarGraphicsIdByGender(u8 gender)
+{
+    return sCDAvatarGfxIds[gender];
 }
 
 u8 GetRSAvatarGraphicsIdByGender(u8 gender)

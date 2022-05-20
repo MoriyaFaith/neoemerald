@@ -1385,6 +1385,13 @@ const u32 gHoennTrainerCardFront_Tilemap[] = INCBIN_U32("graphics/trainer_card/f
 const u32 gHoennTrainerCardBack_Tilemap[] = INCBIN_U32("graphics/trainer_card/back.bin.lz");
 const u32 gHoennTrainerCardFrontLink_Tilemap[] = INCBIN_U32("graphics/trainer_card/front_link.bin.lz");
 
+const u16 gJohtoTrainerCard0Star_Pal[] = INCBIN_U16("graphics/trainer_card/0star_cd.gbapal");
+const u32 gJohtoTrainerCard_Gfx[] = INCBIN_U32("graphics/trainer_card/card_cd.4bpp.lz");
+const u32 gJohtoTrainerCardBg_Tilemap[] = INCBIN_U32("graphics/trainer_card/bg_cd.bin.lz");
+const u32 gJohtoTrainerCardFront_Tilemap[] = INCBIN_U32("graphics/trainer_card/front_cd.bin.lz");
+const u32 gJohtoTrainerCardBack_Tilemap[] = INCBIN_U32("graphics/trainer_card/back_cd.bin.lz");
+const u32 gJohtoTrainerCardFrontLink_Tilemap[] = INCBIN_U32("graphics/trainer_card/front_link_cd.bin.lz");
+
 const u16 gKantoTrainerCard0Star_Pal[] = INCBIN_U16("graphics/trainer_card/0star_fr.gbapal");
 const u32 gKantoTrainerCard_Gfx[] = INCBIN_U32("graphics/trainer_card/card_fr.4bpp.lz");
 const u32 gKantoTrainerCardBg_Tilemap[] = INCBIN_U32("graphics/trainer_card/bg_fr.bin.lz");

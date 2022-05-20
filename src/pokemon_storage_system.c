@@ -3994,16 +3994,16 @@ static void PrintDisplayMonInfo(void)
     if (sStorage->boxOption != OPTION_MOVE_ITEMS)
     {
         AddTextPrinterParameterized(WIN_DISPLAY_INFO, FONT_NORMAL, sStorage->displayMonNameText, 6, 0, TEXT_SKIP_DRAW, NULL);
-        AddTextPrinterParameterized(WIN_DISPLAY_INFO, FONT_SHORT, sStorage->displayMonSpeciesName, 6, 15, TEXT_SKIP_DRAW, NULL);
-        AddTextPrinterParameterized(WIN_DISPLAY_INFO, FONT_SHORT, sStorage->displayMonGenderLvlText, 10, 29, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(WIN_DISPLAY_INFO, FONT_FRLG, sStorage->displayMonSpeciesName, 6, 15, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(WIN_DISPLAY_INFO, FONT_FRLG, sStorage->displayMonGenderLvlText, 10, 29, TEXT_SKIP_DRAW, NULL);
         AddTextPrinterParameterized(WIN_DISPLAY_INFO, FONT_SMALL, sStorage->displayMonItemName, 6, 43, TEXT_SKIP_DRAW, NULL);
     }
     else
     {
         AddTextPrinterParameterized(WIN_DISPLAY_INFO, FONT_SMALL, sStorage->displayMonItemName, 6, 0, TEXT_SKIP_DRAW, NULL);
         AddTextPrinterParameterized(WIN_DISPLAY_INFO, FONT_NORMAL, sStorage->displayMonNameText, 6, 13, TEXT_SKIP_DRAW, NULL);
-        AddTextPrinterParameterized(WIN_DISPLAY_INFO, FONT_SHORT, sStorage->displayMonSpeciesName, 6, 28, TEXT_SKIP_DRAW, NULL);
-        AddTextPrinterParameterized(WIN_DISPLAY_INFO, FONT_SHORT, sStorage->displayMonGenderLvlText, 10, 42, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(WIN_DISPLAY_INFO, FONT_FRLG, sStorage->displayMonSpeciesName, 6, 28, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(WIN_DISPLAY_INFO, FONT_FRLG, sStorage->displayMonGenderLvlText, 10, 42, TEXT_SKIP_DRAW, NULL);
     }
 
     CopyWindowToVram(WIN_DISPLAY_INFO, COPYWIN_GFX);

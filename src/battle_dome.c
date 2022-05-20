@@ -4311,7 +4311,7 @@ static void DisplayTrainerInfoOnCard(u8 flags, u8 trainerTourneyId)
     }
 
     // Initialize the text printer
-    textPrinter.fontId = FONT_SHORT;
+    textPrinter.fontId = FONT_FRLG;
     textPrinter.x = 0;
     textPrinter.y = 0;
     textPrinter.currentX = textPrinter.x;
@@ -4873,7 +4873,7 @@ static void DisplayMatchInfoOnCard(u8 flags, u8 matchNo)
     else
         CopyDomeTrainerName(gStringVar1, trainerIds[0]);
 
-    textPrinter.fontId = FONT_SHORT;
+    textPrinter.fontId = FONT_FRLG;
     textPrinter.letterSpacing = 2;
     textPrinter.currentChar = gStringVar1;
     textPrinter.windowId = windowId + 6;
@@ -5338,7 +5338,7 @@ static void Task_ShowTourneyTree(u8 taskId)
         gTasks[taskId].tState++;
         break;
     case 4:
-        textPrinter.fontId = FONT_SHORT;
+        textPrinter.fontId = FONT_FRLG;
         textPrinter.currentChar = gText_BattleTourney;
         textPrinter.windowId = 2;
         textPrinter.x = 0;
@@ -5523,7 +5523,7 @@ static void Task_HandleStaticTourneyTreeInput(u8 taskId)
         {
             gTasks[taskId].tState = STATE_DELAY;
             gTasks[taskId].data[3] = 64;
-            textPrinter.fontId = FONT_SHORT;
+            textPrinter.fontId = FONT_FRLG;
             textPrinter.x = 0;
             textPrinter.y = 0;
             textPrinter.letterSpacing = 2;

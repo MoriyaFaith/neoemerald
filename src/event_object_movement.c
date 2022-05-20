@@ -440,6 +440,8 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1122
 #define OBJ_EVENT_PAL_TAG_RS_MAY                  0x1123
 #define OBJ_EVENT_PAL_TAG_WALLY                   0x1124
+#define OBJ_EVENT_PAL_TAG_GOLD                    0x1125
+#define OBJ_EVENT_PAL_TAG_KRIS                    0x1126
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
@@ -487,6 +489,8 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_RubySapphireBrendan,   OBJ_EVENT_PAL_TAG_RS_BRENDAN},
     {gObjectEventPal_RubySapphireMay,       OBJ_EVENT_PAL_TAG_RS_MAY},
     {gObjectEventPal_Wally,                 OBJ_EVENT_PAL_TAG_WALLY},
+    {gObjectEventPal_Gold,                  OBJ_EVENT_PAL_TAG_GOLD},
+    {gObjectEventPal_Kris,                  OBJ_EVENT_PAL_TAG_KRIS},
     {},
 };
 
@@ -602,6 +606,20 @@ static const u16 sReflectionPaletteTags_Wally[] = {
     OBJ_EVENT_PAL_TAG_WALLY,
 };
 
+static const u16 sReflectionPaletteTags_Gold[] = {
+    OBJ_EVENT_PAL_TAG_GOLD,
+    OBJ_EVENT_PAL_TAG_GOLD,
+    OBJ_EVENT_PAL_TAG_GOLD,
+    OBJ_EVENT_PAL_TAG_GOLD,
+};
+
+static const u16 sReflectionPaletteTags_Kris[] = {
+    OBJ_EVENT_PAL_TAG_KRIS,
+    OBJ_EVENT_PAL_TAG_KRIS,
+    OBJ_EVENT_PAL_TAG_KRIS,
+    OBJ_EVENT_PAL_TAG_KRIS,
+};
+
 static const struct PairedPalettes sSpecialObjectReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_BRENDAN,          sReflectionPaletteTags_Brendan},
     {OBJ_EVENT_PAL_TAG_MAY,              sReflectionPaletteTags_May},
@@ -617,6 +635,8 @@ static const struct PairedPalettes sSpecialObjectReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW, sReflectionPaletteTags_SubmarineShadow},
     {OBJ_EVENT_PAL_TAG_RED_LEAF,         sReflectionPaletteTags_RedLeaf},
     {OBJ_EVENT_PAL_TAG_WALLY,            sReflectionPaletteTags_Wally},
+    {OBJ_EVENT_PAL_TAG_GOLD,             sReflectionPaletteTags_Gold},
+    {OBJ_EVENT_PAL_TAG_KRIS,             sReflectionPaletteTags_Kris},
     {OBJ_EVENT_PAL_TAG_NONE,             NULL},
 };
 

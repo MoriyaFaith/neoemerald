@@ -109,6 +109,8 @@
 #define TRAINER_PIC_LEAF                  90
 #define TRAINER_PIC_RS_BRENDAN            91
 #define TRAINER_PIC_RS_MAY                92
+#define TRAINER_PIC_GOLD	              93
+#define TRAINER_PIC_KRIS                  94
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0
@@ -119,6 +121,8 @@
 #define TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY      5
 #define TRAINER_BACK_PIC_WALLY                  6
 #define TRAINER_BACK_PIC_STEVEN                 7
+#define TRAINER_BACK_PIC_GOLD				    8
+#define TRAINER_BACK_PIC_KRIS                   9
 
 #define FACILITY_CLASS_HIKER                 0x0
 #define FACILITY_CLASS_AQUA_GRUNT_M          0x1
@@ -202,8 +206,10 @@
 #define FACILITY_CLASS_LEAF                  0x4f
 #define FACILITY_CLASS_RS_BRENDAN            0x50
 #define FACILITY_CLASS_RS_MAY                0x51
+#define FACILITY_CLASS_GOLD		             0x52
+#define FACILITY_CLASS_KRIS                  0x53
 
-#define FACILITY_CLASSES_COUNT               0x52
+#define FACILITY_CLASSES_COUNT               0x54
 
 #define RS_FACILITY_CLASS_AQUA_LEADER_ARCHIE    0x0
 #define RS_FACILITY_CLASS_AQUA_GRUNT_M          0x1
