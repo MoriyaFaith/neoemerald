@@ -5,16 +5,21 @@
 // In Gen 4 only, migrated Pokemon with Diamond, Pearl, or Platinum's ID show as "----------".
 // Gen 5 and up read Diamond, Pearl, or Platinum's ID as "Sinnoh".
 // In Gen 4 and up, migrated Pokemon with HeartGold or SoulSilver's ID show the otherwise unused "Johto" string.
+
+// Gen 3 games
 #define VERSION_SAPPHIRE 1
 #define VERSION_RUBY 2
 #define VERSION_EMERALD 3
 #define VERSION_FIRE_RED 4
 #define VERSION_LEAF_GREEN 5
+#define VERSION_CRYSTAL_DUST 7
+// Gen 4 Games
 #define VERSION_HEART_GOLD 7
 #define VERSION_SOUL_SILVER 8
 #define VERSION_DIAMOND 10
 #define VERSION_PEARL 11
 #define VERSION_PLATINUM 12
+// Colo/XD
 #define VERSION_GAMECUBE 15
 
 #define LANGUAGE_JAPANESE 1

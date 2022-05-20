@@ -320,7 +320,8 @@ static void InitLocalLinkPlayer(void)
     gLocalLinkPlayer.gender = gSaveBlock2Ptr->playerGender;
     gLocalLinkPlayer.linkType = gLinkType;
     gLocalLinkPlayer.language = gGameLanguage;
-    gLocalLinkPlayer.version = gGameVersion + 0x4000;
+    // always send Base EM for vanilla games, and transfer the real version, even if that's just Emerald, for hacks that know what it is
+    gLocalLinkPlayer.version = VERSION_EMERALD | (gGameVersion << 8) | 0x4000;
     gLocalLinkPlayer.lp_field_2 = 0x8000;
     gLocalLinkPlayer.progressFlags = IsNationalPokedexEnabled();
     //if (FlagGet(FLAG_IS_CHAMPION))
@@ -1643,8 +1644,8 @@ static void ErrorMsg_MoveCloserToPartner(void)
     LoadPalette(sWirelessLinkDisplayPal, 0, 0x20);
     FillWindowPixelBuffer(0, PIXEL_FILL(0));
     FillWindowPixelBuffer(2, PIXEL_FILL(0));
-    AddTextPrinterParameterized3(0, FONT_SHORT_COPY_1, 2, 6, sTextColors, 0, gText_CommErrorEllipsis);
-    AddTextPrinterParameterized3(2, FONT_SHORT_COPY_1, 2, 1, sTextColors, 0, gText_MoveCloserToLinkPartner);
+    AddTextPrinterParameterized3(0, FONT_NORMAL, 2, 6, sTextColors, 0, gText_CommErrorEllipsis);
+    AddTextPrinterParameterized3(2, FONT_NORMAL, 2, 1, sTextColors, 0, gText_MoveCloserToLinkPartner);
     PutWindowTilemap(0);
     PutWindowTilemap(2);
     CopyWindowToVram(0, COPYWIN_NONE); // Does nothing
@@ -1656,7 +1657,7 @@ static void ErrorMsg_CheckConnections(void)
     LoadBgTiles(0, sCommErrorBg_Gfx, 0x20, 0);
     FillWindowPixelBuffer(1, PIXEL_FILL(0));
     FillWindowPixelBuffer(2, PIXEL_FILL(0));
-    AddTextPrinterParameterized3(1, FONT_SHORT_COPY_1, 2, 0, sTextColors, 0, gText_CommErrorCheckConnections);
+    AddTextPrinterParameterized3(1, FONT_NORMAL, 2, 0, sTextColors, 0, gText_CommErrorCheckConnections);
     PutWindowTilemap(1);
     PutWindowTilemap(2);
     CopyWindowToVram(1, COPYWIN_NONE); // Does nothing
@@ -1691,9 +1692,9 @@ static void CB2_PrintErrorMessage(void)
             break;
         case 130:
             if (gWirelessCommType == 2)
-                AddTextPrinterParameterized3(0, FONT_SHORT_COPY_1, 2, 20, sTextColors, 0, gText_ABtnTitleScreen);
+                AddTextPrinterParameterized3(0, FONT_NORMAL, 2, 20, sTextColors, 0, gText_ABtnTitleScreen);
             else if (gWirelessCommType == 1)
-                AddTextPrinterParameterized3(0, FONT_SHORT_COPY_1, 2, 20, sTextColors, 0, gText_ABtnRegistrationCounter);
+                AddTextPrinterParameterized3(0, FONT_NORMAL, 2, 20, sTextColors, 0, gText_ABtnRegistrationCounter);
             break;
     }
     if (gMain.state == 160)
@@ -1847,7 +1848,17 @@ u8 GetWirelessCommType(void)
 
 void ConvertLinkPlayerName(struct LinkPlayer *player)
 {
-    player->progressFlagsCopy = player->progressFlags; // ? Perhaps relocating for a longer name field
+    if ((player->version & 0x3F00) > 0)
+    {
+        // if CrystalDust is detected, restore it
+        player->version = (player->version & 0xC000) | ((player->version & 0x3F00) >> 8);
+        if ((player->version & 0xFF) == VERSION_CRYSTAL_DUST)
+        {
+            // restore real National Dex progress
+            player->progressFlags >>= 1;
+        }
+    }
+    player->progressFlagsCopy = player->progressFlags;
     ConvertInternationalString(player->name, player->language);
 }
 
