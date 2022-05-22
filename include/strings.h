@@ -3029,4 +3029,9 @@ extern const u8 gText_PkmnForSwap[];
 extern const u8 gText_SamePkmnInPartyAlready[];
 extern const u8 gText_Cancel3[];
 
+extern const u8 gText_CurrentTimeAM[];
+extern const u8 gText_CurrentTimeAMOff[];
+extern const u8 gText_CurrentTimePM[];
+extern const u8 gText_CurrentTimePMOff[];
+
 #endif // GUARD_STRINGS_H

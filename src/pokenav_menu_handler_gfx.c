@@ -14,9 +14,6 @@
 #include "window.h"
 #include "strings.h"
 #include "scanline_effect.h"
-#include "tv.h"
-#include "string_util.h"
-#include "rtc.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
 
@@ -553,7 +550,7 @@ static u32 LoopedTask_OpenMenu(s32 state)
         if (AreLeftHeaderSpritesMoving())
             return LT_PAUSE;
         break;
-    }    
+    }
     return LT_FINISH;
 }
 
@@ -1223,8 +1220,7 @@ static void AddOptionDescriptionWindow(void)
     CopyWindowToVram(gfx->optionDescWindowId, COPYWIN_FULL);
 }
 
-//Old version of this method in case the time display changes
-/*static void PrintCurrentOptionDescription(void)
+static void PrintCurrentOptionDescription(void)
 {
     struct Pokenav_MenuGfx * gfx = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_GFX);
     int menuItem = GetCurrentMenuItemId();
@@ -1232,29 +1228,6 @@ static void AddOptionDescriptionWindow(void)
     u32 width = GetStringWidth(FONT_NORMAL, desc, -1);
     FillWindowPixelBuffer(gfx->optionDescWindowId, PIXEL_FILL(6));
     AddTextPrinterParameterized3(gfx->optionDescWindowId, FONT_NORMAL, (192 - width) / 2, 1, sOptionDescTextColors, 0, desc);
-}*/
-
-static void PrintCurrentOptionDescription(void)
-{
-    u16 hours;
-    u16 minutes;
-    struct Pokenav_MenuGfx * gfx = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_GFX);
-    int menuItem = GetCurrentMenuItemId();
-    const u8 * desc = sPageDescriptions[(gLocalTime.hours >= 12)];
-    const u8 * widthVar = sPageDescriptions[2];
-    u32 width;
-
-    RtcCalcLocalTime();
-    width = GetStringWidth(FONT_NORMAL, widthVar, -1);
-    hours = gLocalTime.hours;
-    minutes = gLocalTime.minutes;
-    FillWindowPixelBuffer(gfx->optionDescWindowId, PIXEL_FILL(6));
-    ConvertIntToDecimalStringN(gStringVar1, (gLocalTime.hours == 12 || gLocalTime.hours == 0) ? 12 : hours % 12, STR_CONV_MODE_RIGHT_ALIGN, 2);
-    AddTextPrinterParameterized3(gfx->optionDescWindowId, FONT_NORMAL, (192 - width) / 2, 1, sOptionDescTextColors, 0, gStringVar1);
-    AddTextPrinterParameterized3(gfx->optionDescWindowId, FONT_NORMAL, (192 - width) / 2 + 12, 1, sOptionDescTextColors, 0, gText_Colon2);
-    ConvertIntToDecimalStringN(gStringVar1, minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
-    AddTextPrinterParameterized3(gfx->optionDescWindowId, FONT_NORMAL, (192 - width) / 2 + 18, 1, sOptionDescTextColors, 0, gStringVar1);
-    AddTextPrinterParameterized3(gfx->optionDescWindowId, FONT_NORMAL, (192 - width) / 2 + 30, 1, sOptionDescTextColors, 0, desc);
 }
 
 // Printed when Ribbons is selected if no PC/party mons have ribbons
@@ -1287,7 +1260,6 @@ static void DestroyMovingDotsBgTask(void)
 
 static void Task_MoveBgDots(u8 taskId)
 {
-    PrintCurrentOptionDescription(); //updates the time. This is one of few things that routinely runs, so it's set here.
     ChangeBgX(3, 0x80, BG_COORD_ADD);
 }
 
