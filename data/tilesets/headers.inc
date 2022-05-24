@@ -32,7 +32,7 @@ gTileset_Rustboro::
 	.4byte gMetatiles_Rustboro
 	.4byte gMetatileAttributes_Rustboro
 	.4byte InitTilesetAnim_Rustboro	
-	.4byte NULL @ palette overrides
+	.4byte gTilesetPalOverrides_Rustboro
 
 	.align 2
 gTileset_Dewford::
@@ -56,7 +56,7 @@ gTileset_Slateport::
 	.4byte gMetatiles_Slateport
 	.4byte gMetatileAttributes_Slateport
 	.4byte InitTilesetAnim_Slateport	
-	.4byte NULL @ palette overrides
+	.4byte gTilesetPalOverrides_Slateport
 
 	.align 2
 gTileset_Mauville::
@@ -68,7 +68,7 @@ gTileset_Mauville::
 	.4byte gMetatiles_Mauville
 	.4byte gMetatileAttributes_Mauville
 	.4byte InitTilesetAnim_Mauville	
-	.4byte NULL @ palette overrides
+	.4byte gTilesetPalOverrides_Mauville
 
 	.align 2
 gTileset_Lavaridge::
@@ -80,7 +80,7 @@ gTileset_Lavaridge::
 	.4byte gMetatiles_Lavaridge
 	.4byte gMetatileAttributes_Lavaridge
 	.4byte InitTilesetAnim_Lavaridge	
-	.4byte NULL @ palette overrides
+	.4byte gTilesetPalOverrides_Lavaridge
 
 	.align 2
 gTileset_Fallarbor::
@@ -104,7 +104,7 @@ gTileset_Fortree::
 	.4byte gMetatiles_Fortree
 	.4byte gMetatileAttributes_Fortree
 	.4byte InitTilesetAnim_Fortree	
-	.4byte NULL @ palette overrides
+	.4byte gTilesetPalOverrides_Fortree
 
 	.align 2
 gTileset_Lilycove::
@@ -116,7 +116,7 @@ gTileset_Lilycove::
 	.4byte gMetatiles_Lilycove
 	.4byte gMetatileAttributes_Lilycove
 	.4byte InitTilesetAnim_Lilycove	
-	.4byte NULL @ palette overrides
+	.4byte gTilesetPalOverrides_Lilycove
 
 	.align 2
 gTileset_Mossdeep::
@@ -128,7 +128,7 @@ gTileset_Mossdeep::
 	.4byte gMetatiles_Mossdeep
 	.4byte gMetatileAttributes_Mossdeep
 	.4byte InitTilesetAnim_Mossdeep	
-	.4byte NULL @ palette overrides
+	.4byte gTilesetPalOverrides_Mossdeep
 
 	.align 2
 gTileset_EverGrande::
@@ -140,7 +140,7 @@ gTileset_EverGrande::
 	.4byte gMetatiles_EverGrande
 	.4byte gMetatileAttributes_EverGrande
 	.4byte InitTilesetAnim_EverGrande	
-	.4byte NULL @ palette overrides
+	.4byte gTilesetPalOverrides_EverGrande
 
 	.align 2
 gTileset_Pacifidlog::
@@ -176,7 +176,7 @@ gTileset_BattleFrontierOutsideWest::
 	.4byte gMetatiles_BattleFrontierOutsideWest
 	.4byte gMetatileAttributes_BattleFrontierOutsideWest
 	.4byte InitTilesetAnim_BattleFrontierOutsideWest	
-	.4byte NULL @ palette overrides
+	.4byte gTilesetPalOverrides_BattleFrontierOutsideWest
 
 	.align 2
 gTileset_BattleFrontierOutsideEast::
@@ -187,8 +187,8 @@ gTileset_BattleFrontierOutsideEast::
 	.4byte gTilesetPalettes_BattleFrontierOutsideEast
 	.4byte gMetatiles_BattleFrontierOutsideEast
 	.4byte gMetatileAttributes_BattleFrontierOutsideEast
-	.4byte InitTilesetAnim_BattleFrontierOutsideEast	
-	.4byte NULL @ palette overrides
+	.4byte InitTilesetAnim_BattleFrontierOutsideEast
+	.4byte gTilesetPalOverrides_BattleFrontierOutsideEast
 
 	.align 2
 gTileset_Building::

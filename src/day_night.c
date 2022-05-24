@@ -13,7 +13,7 @@
 
 #define TINT_MORNING Q_8_8(0.7), Q_8_8(0.7), Q_8_8(0.9)
 #define TINT_DAY Q_8_8(1.0), Q_8_8(1.0), Q_8_8(1.0)
-#define TINT_NIGHT Q_8_8(0.6), Q_8_8(0.6), Q_8_8(0.92)
+#define TINT_NIGHT Q_8_8(0.5), Q_8_8(0.5), Q_8_8(0.92)
 
 EWRAM_DATA u16 gPlttBufferPreDN[PLTT_BUFFER_SIZE] = {0};
 EWRAM_DATA struct PaletteOverride *gPaletteOverrides[4] = {NULL};

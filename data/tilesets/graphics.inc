@@ -1730,13 +1730,18 @@ gTilesetPalettes_UnionRoom::
 gTilesetTiles_UnionRoom::
 	.incbin "data/tilesets/secondary/union_room/tiles.4bpp.lz"
 
+
+
 	.align 2
 gTilesetPalOverride_General01::
 	.incbin "data/tilesets/primary/general/palettes/01_over.gbapal"
-
+.align 2
+gTilesetPalOverride_General04::
+	.incbin "data/tilesets/primary/general/palettes/04_over.gbapal"
 .align 2
 gTilesetPalOverride_General05::
 	.incbin "data/tilesets/primary/general/palettes/05_over.gbapal"
+
 
 .align 2
 gTilesetPalOverride_Petalburg06::
@@ -1747,3 +1752,54 @@ gTilesetPalOverride_Petalburg08::
 .align 2
 gTilesetPalOverride_Petalburg09::
 	.incbin "data/tilesets/secondary/petalburg/palettes/09_over.gbapal"
+
+
+.align 2
+gTilesetPalOverride_Rustboro06::
+	.incbin "data/tilesets/secondary/rustboro/palettes/06_over.gbapal"
+.align 2
+gTilesetPalOverride_Rustboro10::
+	.incbin "data/tilesets/secondary/rustboro/palettes/10_over.gbapal"
+
+.align 2
+gTilesetPalOverride_Mauville07::
+	.incbin "data/tilesets/secondary/mauville/palettes/07_over.gbapal"
+.align 2
+gTilesetPalOverride_Mauville10::
+	.incbin "data/tilesets/secondary/mauville/palettes/10_over.gbapal"
+
+.align 2
+gTilesetPalOverride_Slateport06::
+	.incbin "data/tilesets/secondary/slateport/palettes/06_over.gbapal"
+
+.align 2
+gTilesetPalOverride_Lavaridge06::
+	.incbin "data/tilesets/secondary/lavaridge/palettes/06_over.gbapal"
+	
+.align 2
+gTilesetPalOverride_Fortree08::
+	.incbin "data/tilesets/secondary/fortree/palettes/08_over.gbapal"
+
+.align 2
+gTilesetPalOverride_Lilycove06::
+	.incbin "data/tilesets/secondary/lilycove/palettes/06_over.gbapal"
+.align 2
+gTilesetPalOverride_Lilycove09::
+	.incbin "data/tilesets/secondary/lilycove/palettes/09_over.gbapal"
+
+.align 2
+gTilesetPalOverride_EverGrande07::
+	.incbin "data/tilesets/secondary/ever_grande/palettes/07_over.gbapal"
+
+.align 2
+gTilesetPalOverride_BattleFrontierOutsideWest12::
+	.incbin "data/tilesets/secondary/battle_frontier_outside_west/palettes/12_over.gbapal"
+.align 2
+gTilesetPalOverride_BattleFrontierOutsideWest11::
+	.incbin "data/tilesets/secondary/battle_frontier_outside_west/palettes/11_over.gbapal"
+.align 2
+gTilesetPalOverride_BattleFrontierOutsideWest09::
+	.incbin "data/tilesets/secondary/battle_frontier_outside_west/palettes/09_over.gbapal"
+.align 2
+gTilesetPalOverride_BattleFrontierOutside06::
+	.incbin "data/tilesets/secondary/battle_frontier_outside_west/palettes/06_over.gbapal"

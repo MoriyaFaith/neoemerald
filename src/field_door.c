@@ -169,9 +169,9 @@ static const struct DoorAnimFrame sBigDoorCloseAnimFrames[] =
 };
 
 static const u8 sDoorAnimPalettes_General[] = {1, 1, 1, 1, 1, 1, 1, 1};
-static const u8 sDoorAnimPalettes_PokeCenter[] = {1, 1, 0, 0, 0, 0, 0, 0};
-static const u8 sDoorAnimPalettes_Gym[] = {5, 5, 0, 0, 0, 0, 0, 0};
-static const u8 sDoorAnimPalettes_PokeMart[] = {0, 0, 0, 0, 0, 0, 0, 0};
+static const u8 sDoorAnimPalettes_PokeCenter[] = {1, 1, 1, 1, 1, 1, 1, 1};
+static const u8 sDoorAnimPalettes_Gym[] = {5, 5, 1, 1, 1, 1, 1, 1};
+static const u8 sDoorAnimPalettes_PokeMart[] = {0, 0, 1, 1, 1, 1, 1, 1};
 static const u8 sDoorAnimPalettes_Littleroot[] = {10, 10, 6, 6, 6, 6, 6, 6};
 static const u8 sDoorAnimPalettes_BirchsLab[] = {8, 8, 8, 8, 8, 8, 8, 8};
 static const u8 sDoorAnimPalettes_RustboroTan[] = {11, 11, 11, 11, 11, 11, 11, 11};
@@ -192,7 +192,7 @@ static const u8 sDoorAnimPalettes_LilycoveWooden[] = {5, 5, 5, 5, 5, 5, 5, 5};
 static const u8 sDoorAnimPalettes_Contest[] = {1, 1, 1, 1, 1, 1, 1, 1};
 static const u8 sDoorAnimPalettes_BattleTowerCorridor[] = {6, 6, 6, 6, 6, 6, 6, 6};
 static const u8 sDoorAnimPalettes_CyclingRoad[] = {7, 7, 7, 7, 7, 7, 7, 7};
-static const u8 sDoorAnimPalettes_LilycoveDeptStore[] = {5, 5, 5, 5, 5, 5, 5, 5};
+static const u8 sDoorAnimPalettes_LilycoveDeptStore[] = {9, 9, 9, 9, 9, 9, 9, 9};
 static const u8 sDoorAnimPalettes_SafariZone[] = {9, 9, 9, 9, 9, 9, 9, 9};
 static const u8 sDoorAnimPalettes_MossdeepSpaceCenter[] = {8, 8, 8, 8, 8, 8, 8, 8};
 static const u8 sDoorAnimPalettes_CableClub[] = {6, 6, 6, 6, 6, 6, 6, 6};
@@ -203,9 +203,9 @@ static const u8 sDoorAnimPalettes_LilycoveDeptStoreElevator[] = {6, 6, 7, 7, 7, 
 static const u8 sDoorAnimPalettes_BattleTowerOld[] = {9, 9, 9, 9, 9, 9, 9, 9};
 static const u8 sDoorAnimPalettes_BattleTowerElevator[] = {7, 7, 7, 7, 7, 7, 7, 7};
 static const u8 sDoorAnimPalettes_34[] = {9, 9, 9, 9, 9, 9, 9, 9};
-static const u8 sDoorAnimPalettes_BattleDome[] = {1, 1, 1, 1, 1, 1, 1, 1};
+static const u8 sDoorAnimPalettes_BattleDome[] = {1, 1, 6, 6, 6, 6, 6, 6};
 static const u8 sDoorAnimPalettes_BattleFactory[] = {9, 9, 9, 9, 9, 9, 9, 9};
-static const u8 sDoorAnimPalettes_BattleTower[] = {0, 0, 0, 0, 0, 0, 0, 0};
+static const u8 sDoorAnimPalettes_BattleTower[] = {6, 6, 6, 6, 6, 6, 6, 6};
 static const u8 sDoorAnimPalettes_BattleArena[] = {5, 5, 5, 5, 5, 5, 5, 5};
 static const u8 sDoorAnimPalettes_BattleArenaLobby[] = {7, 7, 7, 7, 7, 7, 7, 7};
 static const u8 sDoorAnimPalettes_BattleDomeLobby[] = {7, 7, 7, 7, 7, 7, 7, 7};
@@ -286,20 +286,20 @@ static void CopyDoorTilesToVram(const struct DoorGraphics *gfx, const struct Doo
         CpuFastSet(gfx->tiles + frame->offset, (void *)(VRAM + 0x7F00), 0x40);
 }
 
-static void door_build_blockdef(u16 *a, u16 b, const u8 *c)
+static void BuildDoorTiles(u16 *a, u16 tileNum, const u8 *c, u32 x, u32 y)
 {
     int i;
-    u16 unk;
+    u16 tile;
 
     for (i = 0; i < 4; i++)
     {
-        unk = *(c++) << 12;
-        a[i] = unk | (b + i);
+        tile = *(c++) << 12;
+        a[i] = tile | (tileNum + i);
     }
     for (; i < 8; i++)
     {
-        unk = *(c++) << 12;
-        a[i] = unk;
+        tile = *(c++) << 12;
+        a[i] = tile;
     }
 }
 
@@ -309,20 +309,20 @@ static void DrawCurrentDoorAnimFrame(const struct DoorGraphics *gfx, u32 x, u32 
 
     if (gfx->size == 2)
     {
-        door_build_blockdef(&arr[8], 0x3F0, pal);
+        BuildDoorTiles(&arr[8], 0x3F0, pal, x, y - 1);
         DrawDoorMetatileAt(x, y - 1, &arr[8]);
-        door_build_blockdef(&arr[8], 0x3F4, pal + 4);
+        BuildDoorTiles(&arr[8], 0x3F4, pal + 4, x, y);
         DrawDoorMetatileAt(x, y, &arr[8]);
-        door_build_blockdef(&arr[8], 0x3F8, pal);
+        BuildDoorTiles(&arr[8], 0x3F8, pal, x + 1, y - 1);
         DrawDoorMetatileAt(x + 1, y - 1, &arr[8]);
-        door_build_blockdef(&arr[8], 0x3FC, pal + 4);
+        BuildDoorTiles(&arr[8], 0x3FC, pal + 4, x + 1, y);
         DrawDoorMetatileAt(x + 1, y, &arr[8]);
     }
     else
     {
-        door_build_blockdef(&arr[0], 0x3F8, pal);
+        BuildDoorTiles(&arr[0], 0x3F8, pal, x, y - 1);
         DrawDoorMetatileAt(x, y - 1, &arr[0]);
-        door_build_blockdef(&arr[0], 0x3FC, pal + 4);
+        BuildDoorTiles(&arr[0], 0x3FC, pal + 4, x, y);
         DrawDoorMetatileAt(x, y, &arr[0]);
     }
 }
