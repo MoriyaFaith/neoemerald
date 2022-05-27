@@ -106,8 +106,8 @@ gFieldEffectScript_Ash::
 	field_eff_end
 
 gFieldEffectScript_SurfBlob::
-	field_eff_callnative FldEff_SurfBlob
-	field_eff_end
+    field_eff_loadfadedpal_callnative gSpritePalette_SurfBlob, FldEff_SurfBlob
+    field_eff_end
 
 gFieldEffectScript_UseSurf::
 	field_eff_callnative FldEff_UseSurf

@@ -171,32 +171,39 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_Ash = {
 };
 
 static const struct SpriteFrameImage sPicTable_SurfBlob[] = {
-    overworld_frame(gFieldEffectObjectPic_SurfBlob, 4, 4, 0),
-    overworld_frame(gFieldEffectObjectPic_SurfBlob, 4, 4, 1),
-    overworld_frame(gFieldEffectObjectPic_SurfBlob, 4, 4, 2),
+    overworld_frame(gFieldEffectObjectPic_SurfBlob, 2, 8, 0),
+    overworld_frame(gFieldEffectObjectPic_SurfBlob, 2, 8, 1),
+    overworld_frame(gFieldEffectObjectPic_SurfBlob, 2, 8, 2),
+    overworld_frame(gFieldEffectObjectPic_SurfBlob, 2, 8, 3),
+    overworld_frame(gFieldEffectObjectPic_SurfBlob, 2, 8, 4),
+    overworld_frame(gFieldEffectObjectPic_SurfBlob, 2, 8, 5),
 };
 
 static const union AnimCmd sSurfBlobAnim_FaceSouth[] =
 {
-    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_FRAME(0, 48),
+    ANIMCMD_FRAME(1, 48),
     ANIMCMD_JUMP(0),
 };
 
 static const union AnimCmd sSurfBlobAnim_FaceNorth[] =
 {
-    ANIMCMD_FRAME(1, 1),
+    ANIMCMD_FRAME(2, 48),
+    ANIMCMD_FRAME(3, 48),
     ANIMCMD_JUMP(0),
 };
 
 static const union AnimCmd sSurfBlobAnim_FaceWest[] =
 {
-    ANIMCMD_FRAME(2, 1),
+    ANIMCMD_FRAME(4, 48),
+    ANIMCMD_FRAME(5, 48),
     ANIMCMD_JUMP(0),
 };
 
 static const union AnimCmd sSurfBlobAnim_FaceEast[] =
 {
-    ANIMCMD_FRAME(2, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(4, 48, .hFlip = TRUE),
+    ANIMCMD_FRAME(5, 48, .hFlip = TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -210,13 +217,15 @@ static const union AnimCmd *const sAnimTable_SurfBlob[] =
 
 const struct SpriteTemplate gFieldEffectObjectTemplate_SurfBlob = {
     .tileTag = TAG_NONE,
-    .paletteTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_RED_LEAF,
     .oam = &gObjectEventBaseOam_32x32,
     .anims = sAnimTable_SurfBlob,
     .images = sPicTable_SurfBlob,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = UpdateSurfBlobFieldEffect,
 };
+
+const struct SpritePalette gSpritePalette_SurfBlob = {gObjectEventPal_RedLeaf, OBJ_EVENT_PAL_TAG_RED_LEAF};
 
 static const struct SpriteFrameImage sPicTable_Arrow[] = {
     overworld_frame(gFieldEffectObjectPic_Arrow, 2, 2, 0),
@@ -1064,7 +1073,7 @@ static const union AnimCmd *const sAnimTable_Bird[] =
 
 const struct SpriteTemplate gFieldEffectObjectTemplate_Bird = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN,
+    .paletteTag = OBJ_EVENT_PAL_TAG_RED_LEAF,
     .oam = &gObjectEventBaseOam_32x32,
     .anims = sAnimTable_Bird,
     .images = sPicTable_Bird,
