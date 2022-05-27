@@ -90,7 +90,7 @@ static const struct GlyphWidthFunc sGlyphWidthFuncs[] =
     { FONT_FRLG_COPY_2,  GetGlyphWidth_Short },
     { FONT_FRLG_COPY_3,  GetGlyphWidth_Short },
     { FONT_BRAILLE,      GetGlyphWidth_Braille },
-    { FONT_NARROW,       GetGlyphWidth_Small },
+    { FONT_NARROW,       GetGlyphWidth_Narrow },
     { FONT_SMALL_NARROW, GetGlyphWidth_SmallNarrow }
 };
 
@@ -191,7 +191,7 @@ static const struct FontInfo sFontInfos[] =
         .shadowColor = 3,
     },
     [FONT_NARROW] = {
-        .fontFunction = FontFunc_Small,
+        .fontFunction = FontFunc_Narrow,
         .maxLetterWidth = 5,
         .maxLetterHeight = 16,
         .letterSpacing = 0,
@@ -1127,6 +1127,8 @@ static u16 RenderText(struct TextPrinter *textPrinter)
         switch (subStruct->fontId)
         {
         case FONT_NARROW:
+            DecompressGlyph_Narrow(currChar, textPrinter->japanese);
+            break;
         case FONT_SMALL:
             DecompressGlyph_Small(currChar, textPrinter->japanese);
             break;
