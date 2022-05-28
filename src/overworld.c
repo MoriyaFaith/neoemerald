@@ -130,7 +130,7 @@ static void UpdateHeldKeyCode(u16);
 static void UpdateAllLinkPlayers(u16*, s32);
 static u8 FlipVerticalAndClearForced(u8, u8);
 static u8 LinkPlayerDetectCollision(u8, u8, s16, s16);
-static void CreateLinkPlayerSprite(u8, u8);
+static void CreateLinkPlayerSprite(u8, u8, u8);
 static void GetLinkPlayerCoords(u8, u16 *, u16 *);
 static u8 GetLinkPlayerFacingDirection(u8);
 static u8 GetLinkPlayerElevation(u8);
@@ -2210,7 +2210,7 @@ static void SpawnLinkPlayers(void)
     for (i = 0; i < gFieldLinkPlayerCount; i++)
     {
         SpawnLinkPlayerObjectEvent(i, i + x, y, gLinkPlayers[i].gender);
-        CreateLinkPlayerSprite(i, gLinkPlayers[i].version);
+        CreateLinkPlayerSprite(i, gLinkPlayers[i].version, gLinkPlayers[i].versionModifier);
     }
 
     ClearAllPlayerKeys();
@@ -2220,7 +2220,7 @@ static void CreateLinkPlayerSprites(void)
 {
     u16 i;
     for (i = 0; i < gFieldLinkPlayerCount; i++)
-        CreateLinkPlayerSprite(i, gLinkPlayers[i].version);
+        CreateLinkPlayerSprite(i, gLinkPlayers[i].version, gLinkPlayers[i].versionModifier);
 }
 
 
@@ -3162,7 +3162,7 @@ static bool8 LinkPlayerDetectCollision(u8 selfObjEventId, u8 direction, s16 x, s
     return MapGridIsImpassableAt(x, y);
 }
 
-static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion)
+static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion, u8 versionModifier)
 {
     struct LinkPlayerObjectEvent *linkPlayerObjEvent = &gLinkPlayerObjectEvents[linkPlayerId];
     u8 objEventId = linkPlayerObjEvent->objEventId;
@@ -3177,15 +3177,16 @@ static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion)
         case VERSION_LEAF_GREEN:
             objEvent->spriteId = CreateObjectGraphicsSprite(GetFRLGAvatarGraphicsIdByGender(linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
             break;
-        case VERSION_RUBY:
-        case VERSION_SAPPHIRE:
-            objEvent->spriteId = CreateObjectGraphicsSprite(GetRSAvatarGraphicsIdByGender(linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
-            break;
         case VERSION_EMERALD:
             objEvent->spriteId = CreateObjectGraphicsSprite(GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
             break;
         case VERSION_CRYSTAL_DUST:
             objEvent->spriteId = CreateObjectGraphicsSprite(GetCDAvatarGraphicsIdByGender(linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
+            break;
+        case VERSION_RUBY:
+        case VERSION_SAPPHIRE:
+        default:
+            objEvent->spriteId = CreateObjectGraphicsSprite(GetRSAvatarGraphicsIdByGender(linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
             break;
         }
 

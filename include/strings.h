@@ -2558,6 +2558,11 @@ extern const u8 gText_BattleTower[];
 extern const u8 gText_BattlePtsWon[];
 extern const u8 gText_RSBattleTower[];
 extern const u8 gText_RSCardTowerStats[];
+extern const u8 gText_5StarWinsStraight[];
+extern const u8 gText_ShinyCount[];
+extern const u8 gText_PowerPoints[];
+extern const u8 gText_NumPowerPoints[];
+extern const u8 gText_HCardTrainerName[];
 // Frontier Pass
 extern const u8 gText_SymbolsEarned[];
 extern const u8 gText_BattleRecord[];

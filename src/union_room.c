@@ -1532,7 +1532,7 @@ static void Task_ExchangeCards(u8 taskId)
             for (i = 0; i < GetLinkPlayerCount(); i++)
             {
                 recvBuff = gBlockRecvBuffer[i];
-                CopyTrainerCardData(&gTrainerCards[i], (struct TrainerCard *)recvBuff, gLinkPlayers[i].version);
+                CopyTrainerCardData(&gTrainerCards[i], recvBuff, gLinkPlayers[i].version, gLinkPlayers[i].versionModifier);
             }
 
             if (GetLinkPlayerCount() == 2)
@@ -1542,7 +1542,7 @@ static void Task_ExchangeCards(u8 taskId)
                 // If the player has a saved Wonder Card and it is the same Wonder Card
                 // as their partner then mystery gift stats are enabled.
                 recvBuff = gBlockRecvBuffer[GetMultiplayerId() ^ 1];
-                MysteryGift_TryEnableStatsByFlagId(((struct TrainerCard *)recvBuff)->hasAllFrontierSymbols);
+                MysteryGift_TryEnableStatsByFlagId(((struct TrainerCard *)recvBuff)->hasAllSymbols);
             }
             else
             {
@@ -1631,13 +1631,13 @@ static void CB2_TransitionToCableClub(void)
 static void CreateTrainerCardInBuffer(void *dest, bool32 setWonderCard)
 {
     struct TrainerCard * card = (struct TrainerCard *)dest;
-    TrainerCard_GenerateCardForLinkPlayer(card);
+    TrainerCard_GenerateCardForPlayer(card);
 
     // Below field is re-used, to be read by Task_ExchangeCards
     if (setWonderCard)
-        card->hasAllFrontierSymbols = GetWonderCardFlagID();
+        card->hasAllSymbols = GetWonderCardFlagID();
     else
-        card->hasAllFrontierSymbols = 0;
+        card->hasAllSymbols = 0;
 }
 
 static void Task_StartActivity(u8 taskId)
