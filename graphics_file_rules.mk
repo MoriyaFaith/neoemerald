@@ -304,6 +304,9 @@ $(FONTGFXDIR)/short.latfont: $(FONTGFXDIR)/latin_short.png
 $(FONTGFXDIR)/rs.latfont: $(FONTGFXDIR)/latin_rs.png
 	$(GFX) $< $@
 
+$(FONTGFXDIR)/emerald.latfont: $(FONTGFXDIR)/latin_emerald.png
+	$(GFX) $< $@
+
 $(FONTGFXDIR)/narrow.latfont: $(FONTGFXDIR)/latin_narrow.png
 	$(GFX) $< $@
 

@@ -8,6 +8,10 @@ const struct MonCoords gTrainerBackPicCoords[] =
     [TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY] = {.size = 8, .y_offset = 4},
     [TRAINER_BACK_PIC_WALLY] = {.size = 8, .y_offset = 4},
     [TRAINER_BACK_PIC_STEVEN] = {.size = 8, .y_offset = 4},
+    [TRAINER_BACK_PIC_EM_BRENDAN] = {.size = 8, .y_offset = 4},
+    [TRAINER_BACK_PIC_EM_MAY] = {.size = 8, .y_offset = 4},
+    [TRAINER_BACK_PIC_H_BRENDAN] = {.size = 8, .y_offset = 4},
+    [TRAINER_BACK_PIC_H_MAY] = {.size = 8, .y_offset = 4},
     [TRAINER_BACK_PIC_GOLD] = {.size = 8, .y_offset = 5},
     [TRAINER_BACK_PIC_KRIS] = {.size = 8, .y_offset = 5},
 };
@@ -27,8 +31,12 @@ const struct CompressedSpriteSheet gTrainerBackPicTable[] =
     TRAINER_BACK_SPRITE(RUBY_SAPPHIRE_MAY, gTrainerBackPic_RubySapphireMay, 0x2000),
     TRAINER_BACK_SPRITE(WALLY, gTrainerBackPic_Wally, 0x2000),
     TRAINER_BACK_SPRITE(STEVEN, gTrainerBackPic_Steven, 0x2000),
-    TRAINER_BACK_SPRITE(RED, gTrainerBackPic_Gold, 0x2000),
-    TRAINER_BACK_SPRITE(LEAF, gTrainerBackPic_Kris, 0x2000),
+    TRAINER_BACK_SPRITE(EM_BRENDAN, gTrainerBackPic_EmeraldBrendan, 0x2000),
+    TRAINER_BACK_SPRITE(EM_MAY, gTrainerBackPic_EmeraldMay, 0x2000),
+    TRAINER_BACK_SPRITE(H_BRENDAN, gTrainerBackPic_HeliodorBrendan, 0x2000),
+    TRAINER_BACK_SPRITE(H_MAY, gTrainerBackPic_HeliodorMay, 0x2000),
+    TRAINER_BACK_SPRITE(GOLD, gTrainerBackPic_Gold, 0x2800),
+    TRAINER_BACK_SPRITE(KRIS, gTrainerBackPic_Kris, 0x2800),
 };
 
 #define TRAINER_BACK_PAL(trainerPic, pal) [TRAINER_BACK_PIC_##trainerPic] = {pal, TRAINER_BACK_PIC_##trainerPic}
@@ -43,6 +51,10 @@ const struct CompressedSpritePalette gTrainerBackPicPaletteTable[] =
     TRAINER_BACK_PAL(RUBY_SAPPHIRE_MAY, gTrainerPalette_RubySapphireMay),
     TRAINER_BACK_PAL(WALLY, gTrainerPalette_Wally),
     TRAINER_BACK_PAL(STEVEN, gTrainerPalette_Steven),
+    TRAINER_BACK_PAL(EM_BRENDAN, gTrainerPalette_EmeraldBrendan),
+    TRAINER_BACK_PAL(EM_MAY, gTrainerPalette_EmeraldMay),
+    TRAINER_BACK_PAL(H_BRENDAN, gTrainerPalette_HeliodorBrendan),
+    TRAINER_BACK_PAL(H_MAY, gTrainerPalette_HeliodorMay),
     TRAINER_BACK_PAL(GOLD, gTrainerBackPicPalette_Gold),
     TRAINER_BACK_PAL(KRIS, gTrainerBackPicPalette_Kris),
 };

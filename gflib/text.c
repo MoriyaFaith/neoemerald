@@ -17,23 +17,25 @@ static u16 RenderText(struct TextPrinter *);
 static u32 RenderFont(struct TextPrinter *);
 static u16 FontFunc_Small(struct TextPrinter *);
 static u16 FontFunc_Normal(struct TextPrinter *);
-static u16 FontFunc_Short(struct TextPrinter *);
+static u16 FontFunc_FRLG(struct TextPrinter *);
 static u16 FontFunc_RS(struct TextPrinter *);
-static u16 FontFunc_ShortCopy2(struct TextPrinter *);
-static u16 FontFunc_ShortCopy3(struct TextPrinter *);
+static u16 FontFunc_Emerald(struct TextPrinter *);
+static u16 FontFunc_FRLGCopy3(struct TextPrinter *);
 static u16 FontFunc_Narrow(struct TextPrinter *);
 static u16 FontFunc_SmallNarrow(struct TextPrinter *);
 static void DecompressGlyph_Small(u16, bool32);
 static void DecompressGlyph_Normal(u16, bool32);
 static void DecompressGlyph_RS(u16, bool32);
-static void DecompressGlyph_Short(u16, bool32);
+static void DecompressGlyph_Emerald(u16, bool32);
+static void DecompressGlyph_FRLG(u16, bool32);
 static void DecompressGlyph_Narrow(u16, bool32);
 static void DecompressGlyph_SmallNarrow(u16, bool32);
 static void DecompressGlyph_Bold(u16);
 static u32 GetGlyphWidth_Small(u16, bool32);
 static u32 GetGlyphWidth_Normal(u16, bool32);
 static u32 GetGlyphWidth_RS(u16, bool32);
-static u32 GetGlyphWidth_Short(u16, bool32);
+static u32 GetGlyphWidth_Emerald(u16, bool32);
+static u32 GetGlyphWidth_FRLG(u16, bool32);
 static u32 GetGlyphWidth_Narrow(u16, bool32);
 static u32 GetGlyphWidth_SmallNarrow(u16, bool32);
 
@@ -83,14 +85,14 @@ static const u8 sWindowVerticalScrollSpeeds[] = {
 
 static const struct GlyphWidthFunc sGlyphWidthFuncs[] =
 {
-    { FONT_SMALL,        GetGlyphWidth_Small },
-    { FONT_NORMAL,       GetGlyphWidth_Normal},
-    { FONT_FRLG,         GetGlyphWidth_Short },
-    { FONT_RS,           GetGlyphWidth_RS    },
-    { FONT_FRLG_COPY_2,  GetGlyphWidth_Short },
-    { FONT_FRLG_COPY_3,  GetGlyphWidth_Short },
+    { FONT_SMALL,        GetGlyphWidth_Small   },
+    { FONT_NORMAL,       GetGlyphWidth_Normal  },
+    { FONT_FRLG,         GetGlyphWidth_FRLG   },
+    { FONT_RS,           GetGlyphWidth_RS      },
+    { FONT_EMERALD,      GetGlyphWidth_Emerald },
+    { FONT_FRLG_COPY_3,  GetGlyphWidth_FRLG   },
     { FONT_BRAILLE,      GetGlyphWidth_Braille },
-    { FONT_NARROW,       GetGlyphWidth_Narrow },
+    { FONT_NARROW,       GetGlyphWidth_Narrow  },
     { FONT_SMALL_NARROW, GetGlyphWidth_SmallNarrow }
 };
 
@@ -123,7 +125,7 @@ static const struct FontInfo sFontInfos[] =
     [FONT_SMALL] = {
         .fontFunction = FontFunc_Small,
         .maxLetterWidth = 5,
-        .maxLetterHeight = 12,
+        .maxLetterHeight = 10,
         .letterSpacing = 0,
         .lineSpacing = 0,
         .fgColor = 2,
@@ -141,7 +143,7 @@ static const struct FontInfo sFontInfos[] =
         .shadowColor = 3,
     },
     [FONT_FRLG] = {
-        .fontFunction = FontFunc_Short,
+        .fontFunction = FontFunc_FRLG,
         .maxLetterWidth = 6,
         .maxLetterHeight = 14,
         .letterSpacing = 0,
@@ -160,8 +162,8 @@ static const struct FontInfo sFontInfos[] =
         .bgColor = 1,
         .shadowColor = 3,
     },
-    [FONT_FRLG_COPY_2] = {
-        .fontFunction = FontFunc_ShortCopy2,
+    [FONT_EMERALD] = {
+        .fontFunction = FontFunc_Emerald,
         .maxLetterWidth = 6,
         .maxLetterHeight =  14,
         .letterSpacing = 0,
@@ -171,7 +173,7 @@ static const struct FontInfo sFontInfos[] =
         .shadowColor = 3,
     },
     [FONT_FRLG_COPY_3] = {
-        .fontFunction = FontFunc_ShortCopy3,
+        .fontFunction = FontFunc_FRLGCopy3,
         .maxLetterWidth = 6,
         .maxLetterHeight =  14,
         .letterSpacing = 0,
@@ -226,10 +228,10 @@ static const u8 sMenuCursorDimensions[][2] =
 {
     [FONT_SMALL]        = { 8,  12 },
     [FONT_NORMAL]       = { 8,  14 },
-    [FONT_FRLG]        = { 8,  14 },
-    [FONT_RS] = { 8,  14 },
-    [FONT_FRLG_COPY_2] = { 8,  14 },
-    [FONT_FRLG_COPY_3] = { 8,  14 },
+    [FONT_FRLG]         = { 8,  14 },
+    [FONT_RS]           = { 8,  14 },
+    [FONT_EMERALD]      = { 8,  14 },
+    [FONT_FRLG_COPY_3]  = { 8,  14 },
     [FONT_BRAILLE]      = { 8,  16 },
     [FONT_NARROW]       = { 8,  12 },
     [FONT_SMALL_NARROW] = { 8,   8 },
@@ -700,7 +702,7 @@ static u16 FontFunc_Normal(struct TextPrinter *textPrinter)
     return RenderText(textPrinter);
 }
 
-static u16 FontFunc_Short(struct TextPrinter *textPrinter)
+static u16 FontFunc_FRLG(struct TextPrinter *textPrinter)
 {
     struct TextPrinterSubStruct *subStruct = (struct TextPrinterSubStruct *)(&textPrinter->subStructFields);
 
@@ -724,19 +726,19 @@ static u16 FontFunc_RS(struct TextPrinter *textPrinter)
     return RenderText(textPrinter);
 }
 
-static u16 FontFunc_ShortCopy2(struct TextPrinter *textPrinter)
+static u16 FontFunc_Emerald(struct TextPrinter *textPrinter)
 {
     struct TextPrinterSubStruct *subStruct = (struct TextPrinterSubStruct *)(&textPrinter->subStructFields);
 
     if (subStruct->hasFontIdBeenSet == FALSE)
     {
-        subStruct->fontId = FONT_FRLG_COPY_2;
+        subStruct->fontId = FONT_EMERALD;
         subStruct->hasFontIdBeenSet = TRUE;
     }
     return RenderText(textPrinter);
 }
 
-static u16 FontFunc_ShortCopy3(struct TextPrinter *textPrinter)
+static u16 FontFunc_FRLGCopy3(struct TextPrinter *textPrinter)
 {
     struct TextPrinterSubStruct *subStruct = (struct TextPrinterSubStruct *)(&textPrinter->subStructFields);
 
@@ -1138,10 +1140,12 @@ static u16 RenderText(struct TextPrinter *textPrinter)
         case FONT_RS:
             DecompressGlyph_RS(currChar, textPrinter->japanese);
             break;
+        case FONT_EMERALD:
+            DecompressGlyph_Emerald(currChar, textPrinter->japanese);
+            break;
         case FONT_FRLG:
-        case FONT_FRLG_COPY_2:
         case FONT_FRLG_COPY_3:
-            DecompressGlyph_Short(currChar, textPrinter->japanese);
+            DecompressGlyph_FRLG(currChar, textPrinter->japanese);
             break;
         case FONT_SMALL_NARROW:
             DecompressGlyph_SmallNarrow(currChar, textPrinter->japanese);
@@ -1605,8 +1609,10 @@ u8 RenderTextHandleBold(u8 *pixels, u8 fontId, u8 *str)
                 DecompressGlyph_Normal(temp, TRUE);
             case FONT_RS:
                 DecompressGlyph_RS(temp, TRUE);
+            case FONT_EMERALD:
+                DecompressGlyph_Emerald(temp, TRUE);
             default:
-                DecompressGlyph_Short(temp, TRUE);
+                DecompressGlyph_FRLG(temp, TRUE);
                 break;
             }
             CpuCopy32(gCurGlyph.gfxBufferTop, pixels, 0x20);
@@ -1821,7 +1827,7 @@ static u32 GetGlyphWidth_SmallNarrow(u16 glyphId, bool32 isJapanese)
         return gFontSmallNarrowLatinGlyphWidths[glyphId];
 }
 
-static void DecompressGlyph_Short(u16 glyphId, bool32 isJapanese)
+static void DecompressGlyph_FRLG(u16 glyphId, bool32 isJapanese)
 {
     const u16* glyphs;
 
@@ -1857,7 +1863,7 @@ static void DecompressGlyph_Short(u16 glyphId, bool32 isJapanese)
     }
 }
 
-static u32 GetGlyphWidth_Short(u16 glyphId, bool32 isJapanese)
+static u32 GetGlyphWidth_FRLG(u16 glyphId, bool32 isJapanese)
 {
     if (isJapanese == TRUE)
         return gFontShortJapaneseGlyphWidths[glyphId];
@@ -1905,6 +1911,48 @@ static u32 GetGlyphWidth_RS(u16 glyphId, bool32 isJapanese)
         return 8;
     else
         return gFontRSLatinGlyphWidths[glyphId];
+}
+
+static void DecompressGlyph_Emerald(u16 glyphId, bool32 isJapanese)
+{
+    const u16* glyphs;
+
+    if (isJapanese == TRUE)
+    {
+        glyphs = gFontNormalJapaneseGlyphs + (0x100 * (glyphId >> 0x4)) + (0x8 * (glyphId % 0x10));
+        DecompressGlyphTile(glyphs, gCurGlyph.gfxBufferTop);
+        DecompressGlyphTile(glyphs + 0x80, gCurGlyph.gfxBufferBottom);
+        gCurGlyph.width = 8;
+        gCurGlyph.height = 15;
+    }
+    else
+    {
+        glyphs = gFontEmeraldLatinGlyphs + (0x20 * glyphId);
+        gCurGlyph.width = gFontEmeraldLatinGlyphWidths[glyphId];
+
+        if (gCurGlyph.width <= 8)
+        {
+            DecompressGlyphTile(glyphs, gCurGlyph.gfxBufferTop);
+            DecompressGlyphTile(glyphs + 0x10, gCurGlyph.gfxBufferBottom);
+        }
+        else
+        {
+            DecompressGlyphTile(glyphs, gCurGlyph.gfxBufferTop);
+            DecompressGlyphTile(glyphs + 0x8, gCurGlyph.gfxBufferTop + 8);
+            DecompressGlyphTile(glyphs + 0x10, gCurGlyph.gfxBufferBottom);
+            DecompressGlyphTile(glyphs + 0x18, gCurGlyph.gfxBufferBottom + 8);
+        }
+
+        gCurGlyph.height = 14;
+    }
+}
+
+static u32 GetGlyphWidth_Emerald(u16 glyphId, bool32 isJapanese)
+{
+    if (isJapanese == TRUE)
+        return 8;
+    else
+        return gFontEmeraldLatinGlyphWidths[glyphId];
 }
 
 static void DecompressGlyph_Normal(u16 glyphId, bool32 isJapanese)

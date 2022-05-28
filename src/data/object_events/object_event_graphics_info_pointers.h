@@ -244,6 +244,10 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Storyteller;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Giddy;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan1;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EmeraldBrendan;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EmeraldMay;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HeliodorBrendan;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HeliodorMay;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Gold;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kris;
 
@@ -488,6 +492,10 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LINK_RS_MAY] =              &gObjectEventGraphicsInfo_RubySapphireMay,
     [OBJ_EVENT_GFX_LUGIA] =                    &gObjectEventGraphicsInfo_Lugia,
     [OBJ_EVENT_GFX_HOOH] =                     &gObjectEventGraphicsInfo_HoOh,
+    [OBJ_EVENT_GFX_LINK_EM_BRENDAN] =          &gObjectEventGraphicsInfo_EmeraldBrendan,
+    [OBJ_EVENT_GFX_LINK_EM_MAY] =              &gObjectEventGraphicsInfo_EmeraldMay,
+    [OBJ_EVENT_GFX_LINK_H_BRENDAN] =           &gObjectEventGraphicsInfo_HeliodorBrendan,
+    [OBJ_EVENT_GFX_LINK_H_MAY] =               &gObjectEventGraphicsInfo_HeliodorMay,
     [OBJ_EVENT_GFX_GOLD] =                     &gObjectEventGraphicsInfo_Gold,
     [OBJ_EVENT_GFX_KRIS] =                     &gObjectEventGraphicsInfo_Kris,
 };

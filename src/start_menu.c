@@ -1451,7 +1451,7 @@ static void ShowCurrentTimeWindow(void)
         ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
         StringExpandPlaceholders(gStringVar4, gText_CurrentTimeAM);
     }
-    AddTextPrinterParameterized(sCurrentTimeWindowId, 1, gStringVar4, 0, 1, 0xFF, NULL);
+    AddTextPrinterParameterized(sCurrentTimeWindowId, FONT_EMERALD, gStringVar4, 0, 1, 0xFF, NULL);
     CopyWindowToVram(sCurrentTimeWindowId, 2);
 }
 
@@ -1484,6 +1484,6 @@ void UpdateClockDisplay(void)
         else
             StringExpandPlaceholders(gStringVar4, gText_CurrentTimeAMOff);
     }
-    AddTextPrinterParameterized(sCurrentTimeWindowId, 1, gStringVar4, 0, 1, 0xFF, NULL);
+    AddTextPrinterParameterized(sCurrentTimeWindowId, FONT_EMERALD, gStringVar4, 0, 1, 0xFF, NULL);
     CopyWindowToVram(sCurrentTimeWindowId, 2);
 }

@@ -13,6 +13,8 @@ extern const u16 gFontShortJapaneseGlyphs[];
 extern const u8 gFontShortJapaneseGlyphWidths[];
 extern const u16 gFontRSLatinGlyphs[];
 extern const u8 gFontRSLatinGlyphWidths[];
+extern const u16 gFontEmeraldLatinGlyphs[];
+extern const u8 gFontEmeraldLatinGlyphWidths[];
 extern const u16 gFontNarrowLatinGlyphs[];
 extern const u8 gFontNarrowLatinGlyphWidths[];
 extern const u16 gFontSmallNarrowLatinGlyphs[];

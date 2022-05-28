@@ -3178,7 +3178,18 @@ static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion, u8 versionMo
             objEvent->spriteId = CreateObjectGraphicsSprite(GetFRLGAvatarGraphicsIdByGender(linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
             break;
         case VERSION_EMERALD:
-            objEvent->spriteId = CreateObjectGraphicsSprite(GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
+            switch (versionModifier)
+            {
+            case MODIFIER_HELIODOR:
+                objEvent->spriteId = CreateObjectGraphicsSprite(GetHeliodorAvatarGraphicsIdByGender(linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
+                break;
+            case MODIFIER_NEO:
+                objEvent->spriteId = CreateObjectGraphicsSprite(GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
+                break;
+            default:
+                objEvent->spriteId = CreateObjectGraphicsSprite(GetEmeraldAvatarGraphicsIdByGender(linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
+                break;
+            }
             break;
         case VERSION_CRYSTAL_DUST:
             objEvent->spriteId = CreateObjectGraphicsSprite(GetCDAvatarGraphicsIdByGender(linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
