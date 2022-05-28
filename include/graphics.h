@@ -4994,6 +4994,8 @@ extern const u32 gKantoTrainerCardFrontLink_Tilemap[];
 extern const u32 gJohtoTrainerCardFrontLink_Tilemap[];
 extern const u32 gHoennTrainerCardBg_Tilemap[];
 
+extern const u32 gHeliodorTrainerCard_Gfx[];
+
 // Frontier Pass
 extern const u32 gFrontierPassBg_Gfx[];
 extern const u32 gFrontierPassBg_Tilemap[];

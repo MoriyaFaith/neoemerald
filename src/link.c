@@ -319,9 +319,9 @@ static void InitLocalLinkPlayer(void)
     StringCopy(gLocalLinkPlayer.name, gSaveBlock2Ptr->playerName);
     gLocalLinkPlayer.gender = gSaveBlock2Ptr->playerGender;
     gLocalLinkPlayer.linkType = gLinkType;
-    gLocalLinkPlayer.language = gGameLanguage;
-    // always send Base EM for vanilla games, and transfer the real version, even if that's just Emerald, for hacks that know what it is
-    gLocalLinkPlayer.version = VERSION_EMERALD | (gGameVersion << 8) | 0x4000;
+    gLocalLinkPlayer.language = gGameLanguage;;
+    gLocalLinkPlayer.version = gGameVersion + 0x4000;
+    gLocalLinkPlayer.versionModifier = VERSION_MODIFIER;
     gLocalLinkPlayer.lp_field_2 = 0x8000;
     gLocalLinkPlayer.progressFlags = IsNationalPokedexEnabled();
     //if (FlagGet(FLAG_IS_CHAMPION))
@@ -598,7 +598,6 @@ static void ProcessRecvCmds(u8 unused)
                         if ((linkPlayer->version & 0xFF) == VERSION_RUBY || (linkPlayer->version & 0xFF) == VERSION_SAPPHIRE)
                         {
                             linkPlayer->progressFlagsCopy = 0;
-                            linkPlayer->neverRead = 0;
                             linkPlayer->progressFlags = 0;
                         }
                         ConvertLinkPlayerName(linkPlayer);
@@ -1848,17 +1847,14 @@ u8 GetWirelessCommType(void)
 
 void ConvertLinkPlayerName(struct LinkPlayer *player)
 {
-    if ((player->version & 0x3F00) > 0)
+    if (((player->version & 0xC000) | ((player->version & 0x3F00) >> 8)) & 0xFF)
     {
-        // if CrystalDust is detected, restore it
+        // if game other than standard games detected, restore it
         player->version = (player->version & 0xC000) | ((player->version & 0x3F00) >> 8);
-        if ((player->version & 0xFF) == VERSION_CRYSTAL_DUST)
-        {
-            // restore real National Dex progress
-            player->progressFlags >>= 1;
-        }
+        // use specific version modifier value
+        player->versionModifier = MODIFIER_CRYSTAL_DUST;
     }
-    player->progressFlagsCopy = player->progressFlags;
+    player->progressFlagsCopy = player->progressFlags; // ? Perhaps relocating for a longer name field
     ConvertInternationalString(player->name, player->language);
 }
 

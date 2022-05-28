@@ -1,5 +1,19 @@
 #ifndef GUARD_CONSTANTS_GLOBAL_H
 #define GUARD_CONSTANTS_GLOBAL_H
+
+ // Version ID modifiers used for identifying unofficial games.
+ // The idea is that each unofficial game will have its own number they can use in conjunction with one of the official origin game IDs
+ // so that they do not have to requisition a new ID for every project
+ #define MODIFIER_NONE             0 // official games
+ #define MODIFIER_HELIODOR         1 // 3-1 is Heliodor
+ #define MODIFIER_DX               2 // 4-2 is FireRed DX and 5-2 is LeafGreen DX
+ #define MODIFIER_CRYSTAL_DUST     3 // Reserved for on-the-fly loading CrystalDust into this system
+ #define MODIFIER_JAIZU            4 // 3-4 is Emerald Cross
+ #define MODIFIER_NEO              5 // 3-5 is Pokemon Emerald NEO
+ #define MODIFIER_TOBA             222 // Reserved by AquaticTyphoon#7935 for their TOBA region.
+
+#define VERSION_MODIFIER (MODIFIER_NEO)
+
 // Invalid Versions show as "----------" in Gen 4 and Gen 5's summary screen.
 // In Gens 6 and 7, invalid versions instead show "a distant land" in the summary screen.
 // In Gen 4 only, migrated Pokemon with Diamond, Pearl, or Platinum's ID show as "----------".
@@ -12,8 +26,8 @@
 #define VERSION_EMERALD 3
 #define VERSION_FIRE_RED 4
 #define VERSION_LEAF_GREEN 5
-#define VERSION_CRYSTAL_DUST 7
 // Gen 4 Games
+#define VERSION_CRYSTAL_DUST 7
 #define VERSION_HEART_GOLD 7
 #define VERSION_SOUL_SILVER 8
 #define VERSION_DIAMOND 10
