@@ -509,7 +509,7 @@ static const u8 sTrainerCardFrontIdXOffsets[CARD_LAYOUT_COUNT][2] =
     [CARD_LAYOUT_EMERALD]  = {96, 120},
     [CARD_LAYOUT_NEO_EMERALD]  = {96, 120},
     [CARD_LAYOUT_HELIODOR] = {80, 130},
-    [CARD_LAYOUT_FRLG_DX]  = {80, 132}
+    [CARD_LAYOUT_FRLG_DX]  = {80, 132} 
 };
 
 static const u8 sTrainerCardFrontIdYOffsets[CARD_LAYOUT_COUNT] =

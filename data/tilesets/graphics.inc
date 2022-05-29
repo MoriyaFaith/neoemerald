@@ -1803,3 +1803,23 @@ gTilesetPalOverride_BattleFrontierOutsideWest09::
 .align 2
 gTilesetPalOverride_BattleFrontierOutside06::
 	.incbin "data/tilesets/secondary/battle_frontier_outside_west/palettes/06_over.gbapal"
+
+	.align 2
+gTilesetPalettes_AlteringCave::
+	.incbin "data/tilesets/secondary/alteringcave/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/alteringcave/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/alteringcave/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/alteringcave/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/alteringcave/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/alteringcave/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/alteringcave/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/alteringcave/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/alteringcave/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/alteringcave/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/alteringcave/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/alteringcave/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/alteringcave/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_AlteringCave::
+	.incbin "data/tilesets/secondary/alteringcave/tiles.4bpp.lz"
