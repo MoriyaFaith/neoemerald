@@ -1040,29 +1040,7 @@ void TrainerCard_GenerateCardForPlayer(struct TrainerCard *trainerCard)
 void CopyTrainerCardData(struct TrainerCard *dst, u16 *src, u8 gameVersion, u8 versionModifier)
 {
     memset(dst, 0, sizeof(struct TrainerCard));
-    dst->version = gameVersion;
-
-    switch (VersionTocardVersion(gameVersion, versionModifier))
-    {
-    case CARD_VERSION_FRLG:
-        memcpy(dst, src, 0x60);
-        break;
-    case CARD_VERSION_RS:
-        memcpy(dst, src, 0x38);
-        break;
-    case CARD_VERSION_EMERALD:
-    case CARD_VERSION_CRYSTALDUST:
-        memcpy(dst, src, 0x60);
-        if (dst->realVersion != 0)
-        {
-            dst->version = dst->realVersion;
-            dst->realVersion = 0;
-        }
-        dst->berryCrushPoints = 0;
-        dst->hasAllSymbols = src[29];
-        dst->frontierBP = src[30];
-        break;
-    }
+    memcpy(dst, src, sizeof(struct TrainerCard));
 }
 
 static void SetDataFromTrainerCard(void)
