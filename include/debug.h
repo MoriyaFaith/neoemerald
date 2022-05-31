@@ -1,8 +1,11 @@
 #ifndef GUARD_DEBUG_H
 #define GUARD_DEBUG_H
-#if DEBUGGING
+
+#define TX_DEBUGGING
+#define TX_DEBUG_MENU_OPTION FALSE
+
 
 void Debug_ShowMainMenu(void);
 
-#endif
+
 #endif // GUARD_DEBUG_H
