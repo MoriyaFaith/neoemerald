@@ -1141,6 +1141,8 @@ static const struct SpriteTemplate sSpriteTemplate_StatusCondition =
 static const u16 sMarkings_Pal[] = INCBIN_U16("graphics/summary_screen/markings.gbapal");
 
 // code
+#if FAITHFUL == 0
+
 static u8 ShowSplitIcon(u16 move)
 {
     if (sMonSummaryScreen->splitIconSpriteId == 0xFF)
@@ -1161,6 +1163,8 @@ static void DestroySplitIcon(void)
         DestroySprite(&gSprites[sMonSummaryScreen->splitIconSpriteId]);
     sMonSummaryScreen->splitIconSpriteId = 0xFF;
 }
+
+#endif
 
 void ShowPokemonSummaryScreen(u8 mode, void *mons, u8 monIndex, u8 maxMonIndex, void (*callback)(void))
 {
@@ -2073,7 +2077,9 @@ static void ChangeSelectedMove(s16 *taskData, s8 direction, u8 *moveIndexPtr)
     {
         ClearWindowTilemap(PSS_LABEL_WINDOW_MOVES_POWER_ACC);
         ClearWindowTilemap(PSS_LABEL_WINDOW_MOVES_APPEAL_JAM);
+        #if FAITHFUL == 0
         DestroySplitIcon();
+        #endif
         ScheduleBgCopyTilemapToVram(0);
         HandlePowerAccTilemap(0, 3);
         HandleAppealJamTilemap(0, 3, 0);
@@ -2100,7 +2106,9 @@ static void CloseMoveSelectMode(u8 taskId)
     {
         ClearWindowTilemap(PSS_LABEL_WINDOW_MOVES_POWER_ACC);
         ClearWindowTilemap(PSS_LABEL_WINDOW_MOVES_APPEAL_JAM);
+        #if FAITHFUL == 0 
         DestroySplitIcon();
+        #endif
         HandlePowerAccTilemap(0, 3);
         HandleAppealJamTilemap(0, 3, 0);
     }
@@ -3771,7 +3779,9 @@ static void PrintMoveDetails(u16 move)
     {
         if (sMonSummaryScreen->currPageIndex == PSS_PAGE_BATTLE_MOVES)
         {
+            #if FAITHFUL == 0
             ShowSplitIcon(move);
+            #endif
             PrintMovePowerAndAccuracy(move);
             PrintTextOnWindow(windowId, gMoveDescriptionPointers[move - 1], 6, 1, 0, 0);
         }

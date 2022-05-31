@@ -318,6 +318,11 @@ override ASFLAGS += --defsym NDEBUG=1
 override CPPFLAGS += -D NDEBUG=1
 endif
 
+ifeq ($(FAITHFUL),1)
+override ASFLAGS += --defsym FAITHFUL=1
+override CPPFLAGS += -D FAITHFUL=1
+endif
+
 # The dep rules have to be explicit or else missing files won't be reported.
 # As a side effect, they're evaluated immediately instead of when the rule is invoked.
 # It doesn't look like $(shell) can be deferred so there might not be a better way.
