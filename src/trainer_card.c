@@ -365,42 +365,42 @@ static const u8 sTrainerPicOffset[][GENDER_COUNT][2] =
 
 };
 
-static const u8 sTrainerPicFacilityClass[][GENDER_COUNT] = 
+static const u8 sTrainerCardTrainerPics[][GENDER_COUNT] = 
 {
     [CARD_VERSION_FRLG] = 
     {
-        [MALE]   = FACILITY_CLASS_RED, 
-        [FEMALE] = FACILITY_CLASS_LEAF
+        [MALE]   = TRAINER_PIC_RED, 
+        [FEMALE] = TRAINER_PIC_LEAF
     }, 
     [CARD_VERSION_FRLG_DX] = 
     {
-        [MALE]   = FACILITY_CLASS_RED, 
-        [FEMALE] = FACILITY_CLASS_LEAF
+        [MALE]   = TRAINER_PIC_RED, 
+        [FEMALE] = TRAINER_PIC_LEAF
     }, 
     [CARD_VERSION_RS] = 
     {
-        [MALE]   = FACILITY_CLASS_RS_BRENDAN, 
-        [FEMALE] = FACILITY_CLASS_RS_MAY
+        [MALE]   = TRAINER_PIC_RS_BRENDAN, 
+        [FEMALE] = TRAINER_PIC_RS_MAY
     }, 
     [CARD_VERSION_HELIODOR] = 
     {
-        [MALE]   = FACILITY_CLASS_H_BRENDAN, 
-        [FEMALE] = FACILITY_CLASS_H_MAY
+        [MALE]   = TRAINER_PIC_H_BRENDAN, 
+        [FEMALE] = TRAINER_PIC_H_MAY
     }, 
     [CARD_VERSION_EMERALD] = 
     {
-        [MALE]   = FACILITY_CLASS_EM_BRENDAN, 
-        [FEMALE] = FACILITY_CLASS_EM_MAY
+        [MALE]   = TRAINER_PIC_EM_BRENDAN, 
+        [FEMALE] = TRAINER_PIC_EM_MAY
     },
     [CARD_VERSION_CRYSTALDUST] = 
     {
-        [MALE]   = FACILITY_CLASS_GOLD, 
-        [FEMALE] = FACILITY_CLASS_KRIS
+        [MALE]   = TRAINER_PIC_GOLD, 
+        [FEMALE] = TRAINER_PIC_KRIS
     },
     [CARD_VERSION_NEO_EMERALD] = 
     {
-        [MALE]   = FACILITY_CLASS_BRENDAN, 
-        [FEMALE] = FACILITY_CLASS_MAY
+        [MALE]   = TRAINER_PIC_BRENDAN, 
+        [FEMALE] = TRAINER_PIC_MAY
     }
 };
 
@@ -2544,18 +2544,27 @@ static u8 GetSetCardStats(void)
 
 static void CreateTrainerCardTrainerPic(void)
 {
-    if (InUnionRoom() == TRUE && gReceivedRemoteLinkPlayers == 1)
+    if (InUnionRoom() && gReceivedRemoteLinkPlayers == 1)
     {
-        CreateTrainerCardTrainerPicSprite(FacilityClassToPicIndex(sData->trainerCard.facilityClass),
+        CreateTrainerCardTrainerPicSprite(gFacilityClassToPicIndex[sData->trainerCard.facilityClass],
                     TRUE,
                     sTrainerPicOffset[sData->cardLayout][sData->trainerCard.gender][0],
                     sTrainerPicOffset[sData->cardLayout][sData->trainerCard.gender][1],
                     8,
                     2);
     }
+    /*else if (sData->cardVersion == CARD_VERSION_FRLG_DX)
+    {
+        CreateTrainerCardTrainerPicSprite(gPlayerFrontPics[sData->trainerCard.outfit][sData->trainerCard.gender],
+                    TRUE,
+                    sTrainerPicOffset[sData->cardLayout][sData->trainerCard.gender][0],
+                    sTrainerPicOffset[sData->cardLayout][sData->trainerCard.gender][1],
+                    8,
+                    2);
+    }*/
     else
     {
-        CreateTrainerCardTrainerPicSprite(FacilityClassToPicIndex(sTrainerPicFacilityClass[sData->cardVersion][sData->trainerCard.gender]),
+        CreateTrainerCardTrainerPicSprite(sTrainerCardTrainerPics[sData->cardVersion][sData->trainerCard.gender],
                     TRUE,
                     sTrainerPicOffset[sData->cardLayout][sData->trainerCard.gender][0],
                     sTrainerPicOffset[sData->cardLayout][sData->trainerCard.gender][1],
