@@ -1047,6 +1047,7 @@ static void MainCB2_Intro(void)
 
 static void MainCB2_EndIntro(void)
 {
+    u8 titleLegendary = Random() % 3;
     if (!UpdatePaletteFade())
         SetMainCallback2(CB2_InitTitleScreen);
 }

@@ -1545,10 +1545,18 @@ const u16 gMonIconPalettes[][16] =
     INCBIN_U16("graphics/pokemon/icon_palettes/icon_palette_2.gbapal"),
 };
 
-const u16 gTitleScreenBgPalettes[]         = INCBIN_U16("graphics/title_screen/pokemon_logo.gbapal",
-                                                        "graphics/title_screen/rayquaza_and_clouds.gbapal");
+const u16 gTitleScreenBgPalettes[]         = INCBIN_U16("graphics/title_screen/pokemon_logo.gbapal");
+
+const u16 gTitleScreenRayquazaBgPal[]      = INCBIN_U16("graphics/title_screen/rayquaza_and_clouds.gbapal");
+const u16 gTitleScreenGroudonBgPal[]       = INCBIN_U16("graphics/title_screen/groudon_dark.gbapal",
+														"graphics/title_screen/groudon_glow.gbapal");
+const u16 gTitleScreenKyogreBgPal[]        = INCBIN_U16("graphics/title_screen/kyogre_dark.gbapal",
+														"graphics/title_screen/kyogre_glow.gbapal");
+
 const u16 gTitleScreenEmeraldVersionPal[]  = INCBIN_U16("graphics/title_screen/emerald_version.gbapal");
 const u32 gTitleScreenCloudsTilemap[]      = INCBIN_U32("graphics/title_screen/clouds.bin.lz");
+const u32 gTitleScreenLavaTilemap[]      = INCBIN_U32("graphics/title_screen/lava_map.bin.lz");
+const u32 gTitleScreenWaterTilemap[]      = INCBIN_U32("graphics/title_screen/water_map.bin.lz");
 const u32 gTitleScreenPokemonLogoGfx[]     = INCBIN_U32("graphics/title_screen/pokemon_logo.8bpp.lz");
 const u32 gTitleScreenEmeraldVersionGfx[]  = INCBIN_U32("graphics/title_screen/emerald_version.8bpp.lz");
 const u16 gTitleScreenPressStartPal[]      = INCBIN_U16("graphics/title_screen/press_start.gbapal");

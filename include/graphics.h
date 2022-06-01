@@ -4153,7 +4153,12 @@ extern const u32 gTitleScreenPressStartGfx[];
 extern const u32 gTitleScreenPokemonLogoGfx[];
 extern const u32 gTitleScreenPokemonLogoTilemap[];
 extern const u32 gTitleScreenCloudsTilemap[];
+extern const u32 gTitleScreenLavaTilemap[];
+extern const u32 gTitleScreenWaterTilemap[];
 extern const u16 gTitleScreenBgPalettes[];
+extern const u16 gTitleScreenRayquazaBgPal[];
+extern const u16 gTitleScreenGroudonBgPal[];
+extern const u16 gTitleScreenKyogreBgPal[];
 extern const u16 gTitleScreenPressStartPal[];
 extern const u16 gTitleScreenEmeraldVersionPal[];
 
