@@ -34,8 +34,8 @@ LittlerootTown_MaysHouse_1F_OnTransition:
 	end
 
 LittlerootTown_MaysHouse_1F_EventScript_MoveMomToStairs::
-	setobjectxyperm LOCALID_MOM, 2, 4
-	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_MOM, 3, 2
+	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_LEFT
 	return
 
 LittlerootTown_MaysHouse_1F_EventScript_MoveMomToTV::
@@ -64,13 +64,13 @@ LittlerootTown_MaysHouse_1F_EventScript_GoUpstairsToSetClock::
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_1F_Movement_PushTowardStairs
 	applymovement LOCALID_MOM, LittlerootTown_MaysHouse_1F_Movement_PushTowardStairs
 	waitmovement 0
-	warp MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F, 1, 1
+	warp MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F, 0, 2
 	waitstate
 	releaseall
 	end
 
 LittlerootTown_MaysHouse_1F_Movement_PushTowardStairs:
-	walk_up
+	walk_left
 	step_end
 
 LittlerootTown_MaysHouse_1F_EventScript_EnterHouseMovingIn::
@@ -228,9 +228,6 @@ LittlerootTown_MaysHouse_1F_EventScript_MayApproachPlayer2::
 	return
 
 LittlerootTown_MaysHouse_1F_Movement_MayApproachPlayer0:
-	walk_in_place_faster_left
-	walk_left
-	walk_in_place_faster_up
 	walk_up
 	walk_up
 	walk_up
@@ -244,13 +241,13 @@ LittlerootTown_MaysHouse_1F_Movement_MayApproachPlayer1:
 	step_end
 
 LittlerootTown_MaysHouse_1F_Movement_MayApproachPlayer2:
-	walk_in_place_faster_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	walk_right
 	walk_in_place_faster_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
 	step_end
 
 LittlerootTown_MaysHouse_1F_EventScript_MayGoUpstairs0::
@@ -298,6 +295,8 @@ LittlerootTown_MaysHouse_1F_Movement_MayGoUpstairs0:
 	walk_in_place_faster_up
 	walk_up
 	walk_up
+	walk_left
+	delay_8
 	step_end
 
 LittlerootTown_MaysHouse_1F_Movement_MayGoUpstairs1:
@@ -317,7 +316,8 @@ LittlerootTown_MaysHouse_1F_Movement_MayGoUpstairs2:
 	walk_left
 	walk_in_place_faster_up
 	walk_up
-	walk_up
+	walk_in_place_faster_left
+	delay_8
 	step_end
 
 RivalsHouse_1F_Text_OhYoureTheNewNeighbor:

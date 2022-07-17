@@ -1999,10 +1999,11 @@ static bool8 SetCardBgsAndPals(void)
     switch (sData->bgPalLoadState)
     {
     case 0:
-        LoadBgTiles(3, sData->badgeTiles, ARRAY_COUNT(sData->badgeTiles), 0);
+        LoadBgTiles(0, sData->cardTiles, 0x3200, 0);
         break;
     case 1:
-        LoadBgTiles(0, sData->cardTiles, 0x1B00, 0);
+        LoadBgTiles(3, sData->badgeTiles, ARRAY_COUNT(sData->badgeTiles), 0x3200);
+        break;
     case 2:
         if (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD
             || sData->cardLayout == CARD_LAYOUT_NEO_EMERALD)

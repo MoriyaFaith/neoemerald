@@ -57,6 +57,8 @@ LittlerootTown_MaysHouse_2F_EventScript_RivalsPokeBall::
 LittlerootTown_MaysHouse_2F_EventScript_MeetMay::
 	delay 10
 	addobject LOCALID_RIVAL
+	playse SE_EXIT
+	delay 10
 	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayEnters
 	waitmovement 0
 	playse SE_PIN
@@ -136,7 +138,7 @@ LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerNorth:
 	walk_right
 	walk_right
 	walk_down
-	walk_down
+	walk_right
 	walk_right
 	step_end
 
@@ -145,6 +147,8 @@ LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCNorth:
 	walk_up
 	walk_up
 	walk_in_place_faster_right
+	walk_right
+	walk_right
 	walk_right
 	walk_right
 	walk_right
@@ -166,11 +170,15 @@ LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerSouth:
 	walk_right
 	walk_right
 	walk_right
+	walk_up
+	walk_right
 	step_end
 
 LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCSouth:
 	walk_up
 	walk_in_place_faster_right
+	walk_right
+	walk_right
 	walk_right
 	walk_right
 	walk_right
@@ -191,12 +199,16 @@ LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerWest:
 	walk_right
 	walk_right
 	walk_right
+	walk_up
+	walk_right
 	walk_right
 	walk_in_place_faster_down
 	step_end
 
 LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCWest:
 	walk_up
+	walk_right
+	walk_right
 	walk_right
 	walk_right
 	walk_in_place_faster_up
@@ -212,13 +224,14 @@ LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayWest:
 LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerEast:
 	walk_right
 	walk_right
-	walk_down
-	walk_in_place_faster_right
+	walk_right
 	step_end
 
 LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCEast:
 	walk_up
 	walk_up
+	walk_right
+	walk_right
 	walk_right
 	walk_right
 	walk_right
@@ -320,18 +333,18 @@ RivalsHouse_2F_Text_MayWhoAreYou:
 	.string "Um… I'm MAY.\n"
 	.string "Glad to meet you!\p"
 	.string "I…\n"
-	.string "I have this dream of becoming friends\l"
-	.string "with POKéMON all over the world.\p"
-	.string "I… I heard about you, {PLAYER}{KUN}, from\n"
+	.string "I have this dream of travelling all\l"
+	.string "over the world with POKéMON one day.\p"
+	.string "I heard about you, {PLAYER}{KUN}, from\n"
 	.string "my dad, PROF. BIRCH.\p"
-	.string "I was hoping that you would be nice,\n"
-	.string "{PLAYER}{KUN}, and that we could be friends.\p"
-	.string "Oh, this is silly, isn't it?\n"
-	.string "I… I've just met you, {PLAYER}{KUN}.\p"
-	.string "Eheheh…\p"
+	.string "You're a GYM LEADER's kid, aren't you,\n"
+	.string "{PLAYER}{KUN}?\p"
+	.string "But you don't have a POKéMON. I thought\n"
+	.string "You would have been a TRAINER.\p"
+	.string "So much for a battle…\p"
 	.string "Oh, no! I forgot!\p"
-	.string "I was supposed to go help Dad catch\n"
-	.string "some wild POKéMON!\p"
+	.string "I was supposed to go help DAD with\n"
+	.string "research!\p"
 	.string "{PLAYER}{KUN}, I'll catch you later!$"
 
 RivalsHouse_2F_Text_MayGettingReady:

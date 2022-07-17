@@ -58,6 +58,8 @@ LittlerootTown_BrendansHouse_2F_EventScript_RivalsPokeBall::
 LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendan::
 	delay 10
 	addobject LOCALID_RIVAL
+	playse SE_EXIT
+	delay 10
 	applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanEnters
 	waitmovement 0
 	playse SE_PIN
@@ -137,7 +139,9 @@ LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerNorth:
 	walk_left
 	walk_left
 	walk_down
-	walk_down
+	walk_left
+	walk_left
+	walk_left
 	walk_left
 	step_end
 
@@ -166,6 +170,10 @@ LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerSouth:
 	walk_left
 	walk_left
 	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
 LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCSouth:
@@ -188,8 +196,9 @@ LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanSouth:
 LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerWest:
 	walk_left
 	walk_left
-	walk_down
-	walk_in_place_faster_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
 LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCWest:
@@ -215,6 +224,10 @@ LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanWest:
 LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerEast:
 	walk_left
 	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
 	walk_left
 	walk_left
 	walk_left
@@ -299,6 +312,6 @@ Common_Text_LookCloserAtMap:
 	.string "HOENN region map.$"
 
 PlayersHouse_2F_Text_ItsAGameCube:
-	.string "It's a Nintendo GameCube.\p"
-	.string "A Game Boy Advance is connected to\n"
+	.string "It's a NINTENDO GAMECUBE.\p"
+	.string "A GAME BOY ADVANCE is connected to\n"
 	.string "serve as the Controller.$"
