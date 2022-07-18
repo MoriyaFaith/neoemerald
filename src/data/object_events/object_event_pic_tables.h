@@ -1771,6 +1771,44 @@ static const struct SpriteFrameImage sPicTable_Regi[] = {
     obj_frame_tiles(gObjectEventPic_Regi),
     obj_frame_tiles(gObjectEventPic_Regi),
     obj_frame_tiles(gObjectEventPic_Regi),
+
+};
+
+static const struct SpriteFrameImage sPicTable_Regirock[] = {
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+
+};
+
+static const struct SpriteFrameImage sPicTable_Regice[] = {
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+};
+
+static const struct SpriteFrameImage sPicTable_Registeel[] = {
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
 };
 
 static const struct SpriteFrameImage sPicTable_Skitty[] = {
