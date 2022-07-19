@@ -187,9 +187,6 @@ static u8 ChooseWildMonIndex_Land(void)
     RtcCalcLocalTime();
     timeOfDay = GetCurrentTimeOfDay();
 
-    switch (timeOfDay)
-    {
-    case TIME_MORNING:
         if (rand < ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_0)
         wildMonIndex = 0;
         if (rand >= ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_0 && rand < ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_1)
@@ -214,60 +211,9 @@ static u8 ChooseWildMonIndex_Land(void)
             wildMonIndex = 10;
         if (rand >= ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_10 && rand < ENCOUNTER_CHANCE_LAND_MONS_MORNING_SLOT_11)
             wildMonIndex = 11;
-        break;    
-    case TIME_DAY:
-        if (rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_12)
-        wildMonIndex = 12;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_12 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_13)
-            wildMonIndex = 13;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_13 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_14)
-            wildMonIndex = 14;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_14 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_15)
-            wildMonIndex = 15;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_15 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_16)
-            wildMonIndex = 16;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_16 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_17)
-            wildMonIndex = 17;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_17 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_18)
-            wildMonIndex = 18;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_18 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_19)
-            wildMonIndex = 19;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_19 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_20)
-            wildMonIndex = 20;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_20 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_21)
-            wildMonIndex = 21;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_21 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_22)
-            wildMonIndex = 22;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_22 && rand < ENCOUNTER_CHANCE_LAND_MONS_DAY_SLOT_23)
-            wildMonIndex = 23;
-        break;    
-    case TIME_NIGHT:
-        if (rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_24)
-        wildMonIndex = 24;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_24 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_25)
-            wildMonIndex = 25;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_25 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_26)
-            wildMonIndex = 26;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_26 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_27)
-            wildMonIndex = 27;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_27 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_28)
-            wildMonIndex = 28;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_28 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_29)
-            wildMonIndex = 29;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_29 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_30)
-            wildMonIndex = 30;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_30 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_31)
-            wildMonIndex = 31;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_31 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_32)
-            wildMonIndex = 32;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_32 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_33)
-            wildMonIndex = 33;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_33 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_34)
-            wildMonIndex = 34;
-        if (rand >= ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_34 && rand < ENCOUNTER_CHANCE_LAND_MONS_NIGHT_SLOT_35)
-            wildMonIndex = 35;
-        break;    
-    }
+
+    wildMonIndex += (timeOfDay * 12); // redone code to fix time-based encounters    
+
     return wildMonIndex;
 }
 
