@@ -647,6 +647,7 @@ PlayersHouse_1F_Movement_PlayerEnterRoomMale:
 	walk_down
 	walk_down
 	walk_down
+	walk_down
 	walk_in_place_faster_left
 	step_end
 
@@ -659,6 +660,7 @@ PlayersHouse_1F_Movement_MomAndPlayerWatchDadExit:
 
 PlayersHouse_1F_Movement_PlayerEnterRoomFemale:
 	delay_16
+	walk_down
 	walk_down
 	walk_down
 	walk_down
