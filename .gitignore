@@ -32,6 +32,7 @@ build/
 *.ddump
 .idea/
 porymap.project.cfg
+porymap.user.cfg
 .vscode/
 *.a
 .fuse_hidden*
@@ -43,3 +44,6 @@ porymap.project.cfg
 neoemerald-*.png
 neo_modern-*.png
 gTileset_*.png
+/.project
+/.cproject
+/.settings/

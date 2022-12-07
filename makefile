@@ -74,6 +74,11 @@ MODERN_ELF_NAME := $(MODERN_ROM_NAME:.gba=.elf)
 MODERN_MAP_NAME := $(MODERN_ROM_NAME:.gba=.map)
 MODERN_OBJ_DIR_NAME := build/modern
 
+FAITHFUL_ROM_NAME := neo_faithful.gba
+FAITHFUL_ELF_NAME := $(FAITHFUL_ROM_NAME:.gba=.elf)
+FAITHFUL_MAP_NAME := $(FAITHFUL_ROM_NAME:.gba=.map)
+FAITHFUL_OBJ_DIR_NAME := build/faithful
+
 SHELL := /bin/bash -o pipefail
 
 ELF = $(ROM:.gba=.elf)
@@ -104,6 +109,10 @@ CC1             := tools/agbcc/bin/agbcc$(EXE)
 override CFLAGS += -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm -g
 ROM := $(ROM_NAME)
 OBJ_DIR := $(OBJ_DIR_NAME)
+ifeq ($(FAITHFUL), 1)
+ROM := $(FAITHFUL_ROM_NAME)
+OBJ_DIR := $(FAITHFUL_OBJ_DIR_NAME)
+endif
 LIBPATH := -L ../../tools/agbcc/lib
 LIB := $(LIBPATH) -lgcc -lc -L../../libagbsyscall -lagbsyscall
 else
