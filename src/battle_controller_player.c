@@ -2274,7 +2274,15 @@ static void PlayerHandleDrawTrainerPic(void)
 
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
     {
-        if ((gLinkPlayers[GetMultiplayerId()].version & 0xFF) == VERSION_FIRE_RED
+        if ((gLinkPlayers[GetMultiplayerId()].versionModifier & 0xFF) == MODIFIER_HELIODOR)
+        {
+            trainerPicId = gLinkPlayers[GetMultiplayerId()].gender + TRAINER_BACK_PIC_H_BRENDAN;
+        }
+        else if ((gLinkPlayers[GetMultiplayerId()].versionModifier & 0xFF) == MODIFIER_NEO)
+        {
+            trainerPicId = gLinkPlayers[GetMultiplayerId()].gender;
+        }
+        else if ((gLinkPlayers[GetMultiplayerId()].version & 0xFF) == VERSION_FIRE_RED
             || (gLinkPlayers[GetMultiplayerId()].version & 0xFF) == VERSION_LEAF_GREEN)
         {
             trainerPicId = gLinkPlayers[GetMultiplayerId()].gender + TRAINER_BACK_PIC_RED;
@@ -2286,12 +2294,12 @@ static void PlayerHandleDrawTrainerPic(void)
         }
         else
         {
-            trainerPicId = gLinkPlayers[GetMultiplayerId()].gender + TRAINER_BACK_PIC_BRENDAN;
+            trainerPicId = gLinkPlayers[GetMultiplayerId()].gender + TRAINER_BACK_PIC_EM_BRENDAN;
         }
     }
     else
     {
-        trainerPicId = gSaveBlock2Ptr->playerGender;
+        trainerPicId = gSaveBlock2Ptr->playerGender + TRAINER_BACK_PIC_BRENDAN;
     }
 
     if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
@@ -2356,7 +2364,15 @@ static void PlayerHandleTrainerSlide(void)
 
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
     {
-        if ((gLinkPlayers[GetMultiplayerId()].version & 0xFF) == VERSION_FIRE_RED
+        if ((gLinkPlayers[GetMultiplayerId()].versionModifier & 0xFF) == MODIFIER_HELIODOR)
+        {
+            trainerPicId = gLinkPlayers[GetMultiplayerId()].gender + TRAINER_BACK_PIC_H_BRENDAN;
+        }
+        else if ((gLinkPlayers[GetMultiplayerId()].versionModifier & 0xFF) == MODIFIER_NEO)
+        {
+            trainerPicId = gLinkPlayers[GetMultiplayerId()].gender;
+        }
+        else if ((gLinkPlayers[GetMultiplayerId()].version & 0xFF) == VERSION_FIRE_RED
             || (gLinkPlayers[GetMultiplayerId()].version & 0xFF) == VERSION_LEAF_GREEN)
         {
             trainerPicId = gLinkPlayers[GetMultiplayerId()].gender + TRAINER_BACK_PIC_RED;
@@ -2368,7 +2384,7 @@ static void PlayerHandleTrainerSlide(void)
         }
         else
         {
-            trainerPicId = gLinkPlayers[GetMultiplayerId()].gender + TRAINER_BACK_PIC_BRENDAN;
+            trainerPicId = gLinkPlayers[GetMultiplayerId()].gender + TRAINER_BACK_PIC_EM_BRENDAN;
         }
     }
     else
@@ -2551,7 +2567,7 @@ static void PlayerHandlePrintString(void)
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MSG);
     gBattlerControllerFuncs[gActiveBattler] = CompleteOnInactiveTextPrinter2;
     BattleTv_SetDataBasedOnString(*stringId);
-    BattleArena_DeductMindPoints(gActiveBattler, *stringId);
+    BattleArena_DeductSkillPoints(gActiveBattler, *stringId);
 }
 
 static void PlayerHandlePrintSelectionString(void)

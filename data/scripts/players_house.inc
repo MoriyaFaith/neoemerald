@@ -117,6 +117,7 @@ PlayersHouse_2F_EventScript_SetWallClock::
 PlayersHouse_2F_Movement_MomEntersMale:
 	delay_8
 	walk_down
+	walk_down
 	walk_in_place_faster_left
 	delay_16
 	delay_8
@@ -126,11 +127,14 @@ PlayersHouse_2F_Movement_MomEntersMale:
 PlayersHouse_2F_Movement_MomExitsMale:
 	walk_right
 	walk_up
+	walk_up
+	walk_in_place_faster_left
 	delay_8
 	step_end
 
 PlayersHouse_2F_Movement_MomEntersFemale:
 	delay_8
+	walk_down
 	walk_down
 	walk_in_place_faster_right
 	delay_16
@@ -141,6 +145,8 @@ PlayersHouse_2F_Movement_MomEntersFemale:
 PlayersHouse_2F_Movement_MomExitsFemale:
 	walk_left
 	walk_up
+	walk_up
+	walk_in_place_faster_right
 	delay_8
 	step_end
 
@@ -395,6 +401,7 @@ PlayersHouse_1F_EventScript_Vigoroth2::
 PlayersHouse_1F_Movement_PlayerApproachTVForGymMale:
 	walk_down
 	walk_down
+	walk_down
 	walk_left
 	walk_left
 	walk_left
@@ -405,6 +412,7 @@ PlayersHouse_1F_Movement_PlayerMoveToTVMale:
 	step_end
 
 PlayersHouse_1F_Movement_PlayerApproachTVForGymFemale:
+	walk_down
 	walk_down
 	walk_down
 	walk_right
@@ -639,6 +647,7 @@ PlayersHouse_1F_Movement_PlayerEnterRoomMale:
 	walk_down
 	walk_down
 	walk_down
+	walk_down
 	walk_in_place_faster_left
 	step_end
 
@@ -651,6 +660,7 @@ PlayersHouse_1F_Movement_MomAndPlayerWatchDadExit:
 
 PlayersHouse_1F_Movement_PlayerEnterRoomFemale:
 	delay_16
+	walk_down
 	walk_down
 	walk_down
 	walk_down

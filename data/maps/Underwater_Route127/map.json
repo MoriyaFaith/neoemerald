@@ -29,24 +29,28 @@
       "map": "MAP_UNDERWATER_ROUTE128"
     }
   ],
-  "object_events": [],
+  "object_events": [
+
+  ],
   "warp_events": [
     {
       "x": 57,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_UNDERWATER_MARINE_CAVE",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 67,
       "y": 38,
       "elevation": 0,
       "dest_map": "MAP_UNDERWATER_MARINE_CAVE",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "hidden_item",

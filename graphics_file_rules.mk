@@ -66,7 +66,7 @@ $(TILESETGFXDIR)/secondary/petalburg/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 159
 
 $(TILESETGFXDIR)/secondary/rustboro/tiles.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -num_tiles 498
+	$(GFX) $< $@
 
 $(TILESETGFXDIR)/secondary/dewford/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 503
@@ -139,7 +139,7 @@ $(TILESETGFXDIR)/secondary/pokemon_center/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 478
 
 $(TILESETGFXDIR)/secondary/cave/tiles.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -num_tiles 425
+	$(GFX) $< $@ 
 
 $(TILESETGFXDIR)/secondary/pokemon_school/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 278
@@ -302,6 +302,9 @@ $(FONTGFXDIR)/short.latfont: $(FONTGFXDIR)/latin_short.png
 	$(GFX) $< $@
 
 $(FONTGFXDIR)/rs.latfont: $(FONTGFXDIR)/latin_rs.png
+	$(GFX) $< $@
+
+$(FONTGFXDIR)/emerald.latfont: $(FONTGFXDIR)/latin_emerald.png
 	$(GFX) $< $@
 
 $(FONTGFXDIR)/narrow.latfont: $(FONTGFXDIR)/latin_narrow.png

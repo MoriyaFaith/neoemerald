@@ -370,6 +370,22 @@ static const union AnimCmd *const sAnims_RubySapphireMay[] ={
     sAnim_GeneralFrame0,
 };
 
+static const union AnimCmd *const sAnims_EmeraldBrendan[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_EmeraldMay[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_HeliodorBrendan[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_HeliodorMay[] ={
+    sAnim_GeneralFrame0,
+};
+
 static const union AnimCmd *const sAnims_Gold[] ={
     sAnim_GeneralFrame0,
 };
@@ -473,6 +489,10 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_LEAF] = sAnims_Leaf,
     [TRAINER_PIC_RS_BRENDAN] = sAnims_RubySapphireBrendan,
     [TRAINER_PIC_RS_MAY] = sAnims_RubySapphireMay,
+    [TRAINER_PIC_EM_BRENDAN] = sAnims_EmeraldBrendan,
+    [TRAINER_PIC_EM_MAY] = sAnims_EmeraldMay,
+    [TRAINER_PIC_H_BRENDAN] = sAnims_HeliodorBrendan,
+    [TRAINER_PIC_H_MAY] = sAnims_HeliodorMay,
     [TRAINER_PIC_GOLD] = sAnims_Gold,
     [TRAINER_PIC_KRIS] = sAnims_Kris,
 };

@@ -811,7 +811,10 @@ static const struct BattleBackground sBattleTerrainTable[] =
 static const struct {
     u8 mapScene;
     u8 battleTerrain;
-} sMapBattleSceneMapping[] = {
+}
+
+sMapBattleSceneMapping[] = 
+{
     {MAP_BATTLE_SCENE_GYM,      BATTLE_TERRAIN_GYM},
     {MAP_BATTLE_SCENE_MAGMA,    BATTLE_TERRAIN_MAGMA},
     {MAP_BATTLE_SCENE_AQUA,     BATTLE_TERRAIN_AQUA},
@@ -1559,7 +1562,7 @@ bool8 LoadChosenBattleElement(u8 caseId)
             {
             default:
             case MAP_BATTLE_SCENE_NORMAL:
-                LoadCompressedPalette(sBattleTerrainTable[gBattleTerrain].palette, 0x20, 0x60);
+                LoadCompressedPalette(sBattleTerrainTable[gBattleTerrain].palette[GetCurrentTimeOfDay()], 0x20, 0x60);
                 break;
             case MAP_BATTLE_SCENE_GYM:
                 LoadCompressedPalette(gBattleTerrainPalette_BuildingGym, 0x20, 0x60);

@@ -20,10 +20,11 @@
 #include "gpu_regs.h"
 #include "trig.h"
 #include "graphics.h"
+#include "random.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
-#define VERSION_BANNER_RIGHT_TILEOFFSET 64
+#define VERSION_BANNER_RIGHT_TILEOFFSET 128
 #define VERSION_BANNER_LEFT_X 98
 #define VERSION_BANNER_RIGHT_X 162
 #define VERSION_BANNER_Y 2
@@ -56,9 +57,47 @@ static const u16 sUnusedUnknownPal[] = INCBIN_U16("graphics/title_screen/unused.
 
 static const u32 sTitleScreenRayquazaGfx[] = INCBIN_U32("graphics/title_screen/rayquaza.4bpp.lz");
 static const u32 sTitleScreenRayquazaTilemap[] = INCBIN_U32("graphics/title_screen/rayquaza.bin.lz");
+static const u32 sTitleScreenGroudonGfx[] = INCBIN_U32("graphics/title_screen/groudon.4bpp.lz");
+static const u32 sTitleScreenGroudonTilemap[] = INCBIN_U32("graphics/title_screen/groudon_map.bin.lz");
+static const u32 sTitleScreenKyogreGfx[] = INCBIN_U32("graphics/title_screen/kyogre.4bpp.lz");
+static const u32 sTitleScreenKyogreTilemap[] = INCBIN_U32("graphics/title_screen/kyogre_map.bin.lz");
 static const u32 sTitleScreenLogoShineGfx[] = INCBIN_U32("graphics/title_screen/logo_shine.4bpp.lz");
 static const u32 sTitleScreenCloudsGfx[] = INCBIN_U32("graphics/title_screen/clouds.4bpp.lz");
 
+static const u16 *const sTitleScreenPals[] =
+{
+    gTitleScreenGroudonBgPal,
+    gTitleScreenKyogreBgPal,
+    gTitleScreenRayquazaBgPal
+};
+
+static const u32 *const sTitleScreenBgGfx[] =
+{
+    sTitleScreenGroudonGfx,
+    sTitleScreenKyogreGfx,
+    sTitleScreenRayquazaGfx
+};
+
+static const u32 *const sTitleScreenBgMaps[] =
+{
+    sTitleScreenGroudonTilemap,
+    sTitleScreenKyogreTilemap,
+    sTitleScreenRayquazaTilemap
+};
+
+static const u32 *const sTitleScreenTopGfx[] =
+{
+    sTitleScreenGroudonGfx,
+    sTitleScreenKyogreGfx,
+    sTitleScreenCloudsGfx
+};
+
+static const u32 *const sTitleScreenTopMaps[] =
+{
+    gTitleScreenLavaTilemap,
+    gTitleScreenWaterTilemap,
+    gTitleScreenCloudsTilemap
+};
 
 
 // Used to blend "Emerald Version" as it passes over over the Pokémon banner.
@@ -107,10 +146,10 @@ static const struct OamData sVersionBannerLeftOamData =
     .objMode = ST_OAM_OBJ_NORMAL,
     .mosaic = 0,
     .bpp = ST_OAM_8BPP,
-    .shape = SPRITE_SHAPE(64x32),
+    .shape = SPRITE_SHAPE(64x64),
     .x = 0,
     .matrixNum = 0,
-    .size = SPRITE_SIZE(64x32),
+    .size = SPRITE_SIZE(64x64),
     .tileNum = 0,
     .priority = 0,
     .paletteNum = 0,
@@ -124,10 +163,10 @@ static const struct OamData sVersionBannerRightOamData =
     .objMode = ST_OAM_OBJ_NORMAL,
     .mosaic = 0,
     .bpp = ST_OAM_8BPP,
-    .shape = SPRITE_SHAPE(64x32),
+    .shape = SPRITE_SHAPE(64x64),
     .x = 0,
     .matrixNum = 0,
-    .size = SPRITE_SIZE(64x32),
+    .size = SPRITE_SIZE(64x64),
     .tileNum = 0,
     .priority = 0,
     .paletteNum = 0,
@@ -182,7 +221,7 @@ static const struct CompressedSpriteSheet sSpriteSheet_EmeraldVersion[] =
 {
     {
         .data = gTitleScreenEmeraldVersionGfx,
-        .size = 0x1000,
+        .size = 0x2000,
         .tag = 1000
     },
     {},
@@ -517,12 +556,15 @@ static void VBlankCB(void)
 #define tCounter data[0]
 #define tSkipToNext data[1]
 
+EWRAM_DATA static u8 titleLegendary = 0;
+
 void CB2_InitTitleScreen(void)
 {
     switch (gMain.state)
     {
     default:
     case 0:
+        titleLegendary = Random() % 3;
         SetVBlankCallback(NULL);
         SetGpuReg(REG_OFFSET_BLDCNT, 0);
         SetGpuReg(REG_OFFSET_BLDALPHA, 0);
@@ -548,13 +590,15 @@ void CB2_InitTitleScreen(void)
         // bg2
         LZ77UnCompVram(gTitleScreenPokemonLogoGfx, (void *)(BG_CHAR_ADDR(0)));
         LZ77UnCompVram(gTitleScreenPokemonLogoTilemap, (void *)(BG_SCREEN_ADDR(9)));
-        LoadPalette(gTitleScreenBgPalettes, 0, 0x1E0);
+        LoadPalette(gTitleScreenBgPalettes, 0, 0x1C0);
+        LoadPalette(sTitleScreenPals[titleLegendary], 0xE0, 0x40);
         // bg3
-        LZ77UnCompVram(sTitleScreenRayquazaGfx, (void *)(BG_CHAR_ADDR(2)));
-        LZ77UnCompVram(sTitleScreenRayquazaTilemap, (void *)(BG_SCREEN_ADDR(26)));
+        LZ77UnCompVram(sTitleScreenBgGfx[titleLegendary], (void *)(BG_CHAR_ADDR(2)));
+        LZ77UnCompVram(sTitleScreenBgMaps[titleLegendary], (void *)(BG_SCREEN_ADDR(26)));
         // bg1
-        LZ77UnCompVram(sTitleScreenCloudsGfx, (void *)(BG_CHAR_ADDR(3)));
-        LZ77UnCompVram(gTitleScreenCloudsTilemap, (void *)(BG_SCREEN_ADDR(27)));
+        if (titleLegendary == 2)
+            LZ77UnCompVram(sTitleScreenCloudsGfx, (void *)(BG_CHAR_ADDR(3)));
+        LZ77UnCompVram(sTitleScreenTopMaps[titleLegendary], (void *)(BG_SCREEN_ADDR(27)));
         ScanlineEffect_Stop();
         ResetTasks();
         ResetSpriteData();
@@ -599,7 +643,14 @@ void CB2_InitTitleScreen(void)
         SetGpuReg(REG_OFFSET_BLDALPHA, 0);
         SetGpuReg(REG_OFFSET_BLDY, 12);
         SetGpuReg(REG_OFFSET_BG0CNT, BGCNT_PRIORITY(3) | BGCNT_CHARBASE(2) | BGCNT_SCREENBASE(26) | BGCNT_16COLOR | BGCNT_TXT256x256);
-        SetGpuReg(REG_OFFSET_BG1CNT, BGCNT_PRIORITY(2) | BGCNT_CHARBASE(3) | BGCNT_SCREENBASE(27) | BGCNT_16COLOR | BGCNT_TXT256x256);
+        if (titleLegendary == 2)
+        {
+            SetGpuReg(REG_OFFSET_BG1CNT, BGCNT_PRIORITY(2) | BGCNT_CHARBASE(3) | BGCNT_SCREENBASE(27) | BGCNT_16COLOR | BGCNT_TXT256x256);
+        }   
+        else
+        {
+            SetGpuReg(REG_OFFSET_BG1CNT, BGCNT_PRIORITY(2) | BGCNT_CHARBASE(2) | BGCNT_SCREENBASE(27) | BGCNT_16COLOR | BGCNT_TXT256x256);
+        }
         SetGpuReg(REG_OFFSET_BG2CNT, BGCNT_PRIORITY(1) | BGCNT_CHARBASE(0) | BGCNT_SCREENBASE(9) | BGCNT_256COLOR | BGCNT_AFF256x256);
         EnableInterrupts(INTR_FLAG_VBLANK);
         SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_1
@@ -801,6 +852,13 @@ static void CB2_GoToBerryFixScreen(void)
     }
 }
 
+//Red Kyogre markings
+#define KYOGRE_MARKING_COLOR(c) RGB((c), 0, 0)
+//Blue Groundon markings
+#define GROUDON_MARKING_COLOR(c) RGB(0, 0, (c))
+//Yellow Rayquaza markings
+#define RAYQUAZA_MARKING_COLOR(c) RGB((c), (c), 0)
+
 static void UpdateLegendaryMarkingColor(u8 frameNum)
 {
     if ((frameNum % 4) == 0) // Change color every 4th frame
@@ -811,6 +869,31 @@ static void UpdateLegendaryMarkingColor(u8 frameNum)
         s32 b = 12;
 
         u16 color = RGB(r, g, b);
+
+        // handling for Groudon and Kyogre
+        u8 colorIntensity = (frameNum >> 2) & 31; //Take bits 2-6 of frameNum the color intensity
+        u8 fadeDarker = (frameNum >> 2) & 32;
+        switch (titleLegendary)
+        {
+            case 0:
+                if (!fadeDarker)
+                    color = GROUDON_MARKING_COLOR(colorIntensity);
+                else
+                    color = GROUDON_MARKING_COLOR(31 - colorIntensity);
+                break;
+            case 1:
+                if (!fadeDarker)
+                    color = KYOGRE_MARKING_COLOR(colorIntensity);
+                else
+                    color = KYOGRE_MARKING_COLOR(31 - colorIntensity);
+                break;
+            case 2:
+                if (!fadeDarker)
+                    color = RAYQUAZA_MARKING_COLOR(colorIntensity);
+                else
+                    color = RAYQUAZA_MARKING_COLOR(31 - colorIntensity);
+                break;
+        }
         LoadPalette(&color, 0xEF, sizeof(color));
    }
 }

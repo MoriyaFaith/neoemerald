@@ -63,7 +63,6 @@ static void Task_PlayMapChosenOrBattleBGM(u8 taskId);
 static bool8 ShouldGetStatBadgeBoost(u16 flagId, u8 battlerId);
 static u16 GiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move);
 static bool8 ShouldSkipFriendshipChange(void);
-static u8 SendMonToPC(struct Pokemon* mon);
 
 EWRAM_DATA static u8 sLearningMoveTableID = 0;
 EWRAM_DATA u8 gPlayerPartyCount = 0;
@@ -73,7 +72,11 @@ EWRAM_DATA struct Pokemon gEnemyParty[PARTY_SIZE] = {0};
 EWRAM_DATA struct SpriteTemplate gMultiuseSpriteTemplate = {0};
 EWRAM_DATA static struct MonSpritesGfxManager *sMonSpritesGfxManager = NULL;
 
+#if FAITHFUL
+#include "data/battle_moves_faithful.h"
+#else
 #include "data/battle_moves.h"
+#endif
 
 // Used in an unreferenced function in RS.
 // Unreferenced here and in FRLG.
@@ -1392,9 +1395,17 @@ const s8 gNatureStatTable[NUM_NATURES][NUM_NATURE_STATS] =
 #include "data/pokemon/trainer_class_lookups.h"
 #include "data/pokemon/cry_ids.h"
 #include "data/pokemon/experience_tables.h"
-#include "data/pokemon/base_stats.h"
-#include "data/pokemon/level_up_learnsets.h"
-#include "data/pokemon/evolution.h"
+
+#if FAITHFUL
+    #include "data/pokemon/base_stats_faithful.h"
+    #include "data/pokemon/level_up_learnsets_faithful.h"
+    #include "data/pokemon/evolution_faithful.h"
+#else
+    #include "data/pokemon/base_stats.h"
+    #include "data/pokemon/level_up_learnsets.h"
+    #include "data/pokemon/evolution.h"
+#endif
+
 #include "data/pokemon/level_up_learnset_pointers.h"
 
 // SPECIES_NONE are ignored in the following two tables, so decrement before accessing these arrays to get the right result
@@ -2045,6 +2056,42 @@ static const struct SpriteTemplate sTrainerBackSpriteTemplates[] =
         .oam = &gOamData_BattleSpritePlayerSide,
         .anims = NULL,
         .images = gTrainerBackPicTable_Steven,
+        .affineAnims = gAffineAnims_BattleSpritePlayerSide,
+        .callback = SpriteCB_BattleSpriteStartSlideLeft,
+    },
+    [TRAINER_BACK_PIC_EM_BRENDAN] = {
+        .tileTag = TAG_NONE,
+        .paletteTag = 0,
+        .oam = &gOamData_BattleSpritePlayerSide,
+        .anims = NULL,
+        .images = gTrainerBackPicTable_EmeraldBrendan,
+        .affineAnims = gAffineAnims_BattleSpritePlayerSide,
+        .callback = SpriteCB_BattleSpriteStartSlideLeft,
+    },
+    [TRAINER_BACK_PIC_EM_MAY] = {
+        .tileTag = TAG_NONE,
+        .paletteTag = 0,
+        .oam = &gOamData_BattleSpritePlayerSide,
+        .anims = NULL,
+        .images = gTrainerBackPicTable_EmeraldMay,
+        .affineAnims = gAffineAnims_BattleSpritePlayerSide,
+        .callback = SpriteCB_BattleSpriteStartSlideLeft,
+    },
+    [TRAINER_BACK_PIC_H_BRENDAN] = {
+        .tileTag = TAG_NONE,
+        .paletteTag = 0,
+        .oam = &gOamData_BattleSpritePlayerSide,
+        .anims = NULL,
+        .images = gTrainerBackPicTable_HeliodorBrendan,
+        .affineAnims = gAffineAnims_BattleSpritePlayerSide,
+        .callback = SpriteCB_BattleSpriteStartSlideLeft,
+    },
+    [TRAINER_BACK_PIC_H_MAY] = {
+        .tileTag = TAG_NONE,
+        .paletteTag = 0,
+        .oam = &gOamData_BattleSpritePlayerSide,
+        .anims = NULL,
+        .images = gTrainerBackPicTable_HeliodorMay,
         .affineAnims = gAffineAnims_BattleSpritePlayerSide,
         .callback = SpriteCB_BattleSpriteStartSlideLeft,
     },
@@ -4408,7 +4455,7 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
     return MON_GIVEN_TO_PARTY;
 }
 
-static u8 SendMonToPC(struct Pokemon* mon)
+u8 SendMonToPC(struct Pokemon* mon)
 {
     s32 boxNo, boxPos;
 

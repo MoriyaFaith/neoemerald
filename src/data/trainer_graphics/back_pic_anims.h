@@ -137,6 +137,30 @@ static const union AnimCmd *const sBackAnims_Steven[] =
     gAnimCmd_May_Steven_1,
 };
 
+static const union AnimCmd *const sBackAnims_EmeraldBrendan[] =
+{
+    sAnim_GeneralFrame3,
+    gAnimCmd_Brendan_1,
+};
+
+static const union AnimCmd *const sBackAnims_EmeraldMay[] =
+{
+    sAnim_GeneralFrame3,
+    gAnimCmd_May_Steven_1,
+};
+
+static const union AnimCmd *const sBackAnims_HeliodorBrendan[] =
+{
+    sAnim_GeneralFrame3,
+    gAnimCmd_Brendan_1,
+};
+
+static const union AnimCmd *const sBackAnims_HeliodorMay[] =
+{
+    sAnim_GeneralFrame3,
+    gAnimCmd_May_Steven_1,
+};
+
 static const union AnimCmd *const sBackAnims_Gold[] =
 {
     sAnim_GeneralFrame0,
@@ -159,6 +183,10 @@ const union AnimCmd *const *const gTrainerBackAnimsPtrTable[] =
     [TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY] = sBackAnims_RubySapphireMay,
     [TRAINER_BACK_PIC_WALLY] = sBackAnims_Wally,
     [TRAINER_BACK_PIC_STEVEN] = sBackAnims_Steven,
+    [TRAINER_BACK_PIC_EM_BRENDAN] = sBackAnims_EmeraldBrendan,
+    [TRAINER_BACK_PIC_EM_MAY] = sBackAnims_EmeraldMay,
+    [TRAINER_BACK_PIC_H_BRENDAN] = sBackAnims_HeliodorBrendan,
+    [TRAINER_BACK_PIC_H_MAY] = sBackAnims_HeliodorMay,
     [TRAINER_BACK_PIC_GOLD] = sBackAnims_Gold,
     [TRAINER_BACK_PIC_KRIS] = sBackAnims_Kris,
 };

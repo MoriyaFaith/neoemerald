@@ -24,17 +24,21 @@
       "map": "MAP_ROUTE128"
     }
   ],
-  "object_events": [],
+  "object_events": [
+
+  ],
   "warp_events": [
     {
       "x": 38,
       "y": 26,
       "elevation": 3,
       "dest_map": "MAP_UNDERWATER_SEAFLOOR_CAVERN",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "hidden_item",

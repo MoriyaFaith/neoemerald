@@ -51,6 +51,7 @@
 	.include "src/battle_anim_mons.o"
 
 	.space 0xC
+	.include "src/title_screen.o"
 	.include "src/field_weather.o"
 	.include "src/field_weather_effect.o"
 	.include "src/battle_setup.o"
@@ -149,3 +150,4 @@
 	.include "src/faraway_island.o"
 	.include "src/trainer_hill.o"
 	.include "src/rayquaza_scene.o"
+	.include "src/debug.o"

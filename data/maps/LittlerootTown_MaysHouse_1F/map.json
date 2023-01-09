@@ -12,7 +12,7 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MOM",
@@ -108,25 +108,18 @@
   ],
   "warp_events": [
     {
-      "x": 1,
-      "y": 8,
-      "elevation": 0,
-      "dest_map": "MAP_LITTLEROOT_TOWN",
-      "dest_warp_id": 0
-    },
-    {
       "x": 2,
       "y": 8,
       "elevation": 0,
       "dest_map": "MAP_LITTLEROOT_TOWN",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 2,
       "y": 2,
       "elevation": 0,
       "dest_map": "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
@@ -141,7 +134,7 @@
     },
     {
       "type": "trigger",
-      "x": 1,
+      "x": 2,
       "y": 3,
       "elevation": 0,
       "var": "VAR_LITTLEROOT_RIVAL_STATE",
@@ -150,8 +143,8 @@
     },
     {
       "type": "trigger",
-      "x": 2,
-      "y": 4,
+      "x": 3,
+      "y": 3,
       "elevation": 0,
       "var": "VAR_LITTLEROOT_RIVAL_STATE",
       "var_value": "2",
@@ -160,12 +153,14 @@
     {
       "type": "trigger",
       "x": 3,
-      "y": 3,
+      "y": 2,
       "elevation": 0,
       "var": "VAR_LITTLEROOT_RIVAL_STATE",
       "var_value": "2",
       "script": "LittlerootTown_MaysHouse_1F_EventScript_MeetRival2"
     }
   ],
-  "bg_events": []
+  "bg_events": [
+
+  ]
 }

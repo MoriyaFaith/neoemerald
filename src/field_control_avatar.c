@@ -130,14 +130,37 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
         input->dpadDirection = DIR_WEST;
     else if (heldKeys & DPAD_RIGHT)
         input->dpadDirection = DIR_EAST;
-    
-    #if DEBUGGING
-    if ((heldKeys & R_BUTTON) && input->pressedStartButton)
-    {
-        input->input_field_1_2 = TRUE;
-        input->pressedStartButton = FALSE;
-    }
-#endif
+
+    //DEBUG
+    #ifdef TX_DEBUGGING
+        if (!TX_DEBUG_MENU_OPTION)
+        {
+            if (heldKeys & R_BUTTON) 
+            {
+                if(input->pressedSelectButton)
+                {
+                    input->input_field_1_0 = TRUE;
+                    input->pressedSelectButton = FALSE;
+                }else if(input->pressedStartButton) 
+                {
+                    input->input_field_1_2 = TRUE;
+                    input->pressedStartButton = FALSE;
+                }
+            }
+            if (heldKeys & L_BUTTON) 
+            {
+                if(input->pressedSelectButton)
+                {
+                    input->input_field_1_1 = TRUE;
+                    input->pressedSelectButton = FALSE;
+                }else if(input->pressedStartButton) 
+                {
+                    input->input_field_1_3 = TRUE;
+                    input->pressedStartButton = FALSE;
+                }
+            }
+        }
+    #endif
 }
 
 int ProcessPlayerFieldInput(struct FieldInput *input)
@@ -197,17 +220,19 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
         return TRUE;
 
+    #ifdef TX_DEBUGGING
+        if (!TX_DEBUG_MENU_OPTION)
+        {
+            if (input->input_field_1_2)
+            {
+                PlaySE(SE_WIN_OPEN);
+                Debug_ShowMainMenu();
+                return TRUE;
+            }
+        }
+    #endif
+
     return FALSE;
-
-    #if DEBUGGING
-    if (input->input_field_1_2)
-    {
-        PlaySE(SE_WIN_OPEN);
-        Debug_ShowMainMenu();
-        return TRUE;
-    }
-#endif
-
 }
 
 static void GetPlayerPosition(struct MapPosition *position)
@@ -687,6 +712,11 @@ void RestartWildEncounterImmunitySteps(void)
 
 static bool8 CheckStandardWildEncounter(u16 metatileBehavior)
 {
+    #ifdef TX_DEBUGGING
+    if (FlagGet(FLAG_SYS_NO_ENCOUNTER)) //DEBUG
+        return FALSE;//
+    #endif
+
     if (sWildEncounterImmunitySteps < 4)
     {
         sWildEncounterImmunitySteps++;
@@ -702,19 +732,37 @@ static bool8 CheckStandardWildEncounter(u16 metatileBehavior)
     }
 
     sPreviousPlayerMetatileBehavior = metatileBehavior;
-    return FALSE;
+    return FALSE;   
 }
 
 static bool8 TryArrowWarp(struct MapPosition *position, u16 metatileBehavior, u8 direction)
 {
     s8 warpEventId = GetWarpEventAtMapPosition(&gMapHeader, position);
+    u16 delay;
 
-    if (IsArrowWarpMetatileBehavior(metatileBehavior, direction) == TRUE && warpEventId != WARP_ID_NONE)
+    if (warpEventId != -1)
     {
-        StoreInitialPlayerAvatarState();
-        SetupWarp(&gMapHeader, warpEventId, position);
-        DoWarp();
-        return TRUE;
+        if (IsArrowWarpMetatileBehavior(metatileBehavior, direction) == TRUE)
+        {
+            StoreInitialPlayerAvatarState();
+            SetupWarp(&gMapHeader, warpEventId, position);
+            DoWarp();
+            return TRUE;
+        }
+        else if (IsDirectionalStairWarpMetatileBehavior(metatileBehavior, direction) == TRUE)
+        {
+            delay = 0;
+            if (gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE))
+            {
+                SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_ON_FOOT);
+                delay = 12;
+            }
+            
+            StoreInitialPlayerAvatarState();
+            SetupWarp(&gMapHeader, warpEventId, position);
+            DoStairWarp(metatileBehavior, delay);
+            return TRUE;
+        }
     }
     return FALSE;
 }
@@ -834,7 +882,7 @@ static void SetupWarp(struct MapHeader *unused, s8 warpEventId, struct MapPositi
         warpEvent = &gMapHeader.events->warps[warpEventId];
     }
 
-    if (warpEvent->mapNum == MAP_NUM(NONE))
+    if (warpEvent->mapNum == MAP_NUM(DYNAMIC))
     {
         SetWarpDestinationToDynamicWarp(warpEvent->warpId);
     }
@@ -845,7 +893,7 @@ static void SetupWarp(struct MapHeader *unused, s8 warpEventId, struct MapPositi
         SetWarpDestinationToMapWarp(warpEvent->mapGroup, warpEvent->mapNum, warpEvent->warpId);
         UpdateEscapeWarp(position->x, position->y);
         mapHeader = Overworld_GetMapHeaderByGroupAndId(warpEvent->mapGroup, warpEvent->mapNum);
-        if (mapHeader->events->warps[warpEvent->warpId].mapNum == MAP_NUM(NONE))
+        if (mapHeader->events->warps[warpEvent->warpId].mapNum == MAP_NUM(DYNAMIC))
             SetDynamicWarp(mapHeader->events->warps[warpEventId].warpId, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, warpEventId);
     }
 }

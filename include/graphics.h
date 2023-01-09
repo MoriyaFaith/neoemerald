@@ -2969,6 +2969,10 @@ extern const u32 gTrainerFrontPic_Red[];
 extern const u32 gTrainerFrontPic_Leaf[];
 extern const u32 gTrainerFrontPic_RubySapphireBrendan[];
 extern const u32 gTrainerFrontPic_RubySapphireMay[];
+extern const u32 gTrainerFrontPic_EmeraldBrendan[];
+extern const u32 gTrainerFrontPic_EmeraldMay[];
+extern const u32 gTrainerFrontPic_HeliodorBrendan[];
+extern const u32 gTrainerFrontPic_HeliodorMay[];
 extern const u32 gTrainerFrontPic_Gold[];
 extern const u32 gTrainerFrontPic_Kris[];
 
@@ -3065,6 +3069,10 @@ extern const u32 gTrainerPalette_Red[];
 extern const u32 gTrainerPalette_Leaf[];
 extern const u32 gTrainerPalette_RubySapphireBrendan[];
 extern const u32 gTrainerPalette_RubySapphireMay[];
+extern const u32 gTrainerPalette_EmeraldBrendan[];
+extern const u32 gTrainerPalette_EmeraldMay[];
+extern const u32 gTrainerPalette_HeliodorBrendan[];
+extern const u32 gTrainerPalette_HeliodorMay[];
 extern const u32 gTrainerPalette_Gold[];
 extern const u32 gTrainerPalette_Kris[];
 
@@ -3076,12 +3084,15 @@ extern const u8 gTrainerBackPic_RubySapphireBrendan[];
 extern const u8 gTrainerBackPic_RubySapphireMay[];
 extern const u8 gTrainerBackPic_Wally[];
 extern const u8 gTrainerBackPic_Steven[];
+extern const u8 gTrainerBackPic_EmeraldBrendan[];
+extern const u8 gTrainerBackPic_EmeraldMay[];
+extern const u8 gTrainerBackPic_HeliodorBrendan[];
+extern const u8 gTrainerBackPic_HeliodorMay[];
 extern const u8 gTrainerBackPic_Gold[];
 extern const u8 gTrainerBackPic_Kris[];
 
 extern const u32 gTrainerBackPicPalette_Red[];
 extern const u32 gTrainerBackPicPalette_Leaf[];
-
 extern const u32 gTrainerBackPicPalette_Gold[];
 extern const u32 gTrainerBackPicPalette_Kris[];
 
@@ -4142,7 +4153,12 @@ extern const u32 gTitleScreenPressStartGfx[];
 extern const u32 gTitleScreenPokemonLogoGfx[];
 extern const u32 gTitleScreenPokemonLogoTilemap[];
 extern const u32 gTitleScreenCloudsTilemap[];
+extern const u32 gTitleScreenLavaTilemap[];
+extern const u32 gTitleScreenWaterTilemap[];
 extern const u16 gTitleScreenBgPalettes[];
+extern const u16 gTitleScreenRayquazaBgPal[];
+extern const u16 gTitleScreenGroudonBgPal[];
+extern const u16 gTitleScreenKyogreBgPal[];
 extern const u16 gTitleScreenPressStartPal[];
 extern const u16 gTitleScreenEmeraldVersionPal[];
 

@@ -14,14 +14,14 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "up",
+      "map": "MAP_SLATEPORT_CITY",
       "offset": 0,
-      "map": "MAP_SLATEPORT_CITY"
+      "direction": "up"
     },
     {
-      "direction": "left",
+      "map": "MAP_ROUTE108",
       "offset": 40,
-      "map": "MAP_ROUTE108"
+      "direction": "left"
     }
   ],
   "object_events": [
@@ -273,7 +273,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ZIGZAGOON_2",
+      "graphics_id": "OBJ_EVENT_GFX_ZIGZAGOON_1",
       "x": 32,
       "y": 6,
       "elevation": 3,
@@ -344,7 +344,7 @@
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_ROUTE109_SEASHORE_HOUSE",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

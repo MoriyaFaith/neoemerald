@@ -277,6 +277,18 @@ const u32 gTrainerPalette_RubySapphireBrendan[] = INCBIN_U32("graphics/trainers/
 const u32 gTrainerFrontPic_RubySapphireMay[] = INCBIN_U32("graphics/trainers/front_pics/ruby_sapphire_may_front_pic.4bpp.lz");
 const u32 gTrainerPalette_RubySapphireMay[] = INCBIN_U32("graphics/trainers/palettes/ruby_sapphire_may.gbapal.lz");
 
+const u32 gTrainerFrontPic_EmeraldBrendan[] = INCBIN_U32("graphics/trainers/front_pics/emerald_brendan_front_pic.4bpp.lz");
+const u32 gTrainerPalette_EmeraldBrendan[] = INCBIN_U32("graphics/trainers/palettes/emerald_brendan.gbapal.lz");
+
+const u32 gTrainerFrontPic_EmeraldMay[] = INCBIN_U32("graphics/trainers/front_pics/emerald_may_front_pic.4bpp.lz");
+const u32 gTrainerPalette_EmeraldMay[] = INCBIN_U32("graphics/trainers/palettes/emerald_may.gbapal.lz");
+
+const u32 gTrainerFrontPic_HeliodorBrendan[] = INCBIN_U32("graphics/trainers/front_pics/heliodor_brendan_front_pic.4bpp.lz");
+const u32 gTrainerPalette_HeliodorBrendan[] = INCBIN_U32("graphics/trainers/palettes/heliodor_brendan.gbapal.lz");
+
+const u32 gTrainerFrontPic_HeliodorMay[] = INCBIN_U32("graphics/trainers/front_pics/heliodor_may_front_pic.4bpp.lz");
+const u32 gTrainerPalette_HeliodorMay[] = INCBIN_U32("graphics/trainers/palettes/heliodor_may.gbapal.lz");
+
 const u32 gTrainerFrontPic_Gold[] = INCBIN_U32("graphics/trainers/front_pics/gold_front_pic.4bpp.lz");
 const u32 gTrainerPalette_Gold[] = INCBIN_U32("graphics/trainers/palettes/gold.gbapal.lz");
 
@@ -291,6 +303,10 @@ const u8 gTrainerBackPic_RubySapphireBrendan[] = INCBIN_U8("graphics/trainers/ba
 const u8 gTrainerBackPic_RubySapphireMay[] = INCBIN_U8("graphics/trainers/back_pics/ruby_sapphire_may_back_pic.4bpp");
 const u8 gTrainerBackPic_Wally[] = INCBIN_U8("graphics/trainers/back_pics/wally_back_pic.4bpp");
 const u8 gTrainerBackPic_Steven[] = INCBIN_U8("graphics/trainers/back_pics/steven_back_pic.4bpp");
+const u8 gTrainerBackPic_EmeraldBrendan[] = INCBIN_U8("graphics/trainers/back_pics/emerald_brendan_back_pic.4bpp");
+const u8 gTrainerBackPic_EmeraldMay[] = INCBIN_U8("graphics/trainers/back_pics/emerald_may_back_pic.4bpp");
+const u8 gTrainerBackPic_HeliodorBrendan[] = INCBIN_U8("graphics/trainers/back_pics/heliodor_brendan_back_pic.4bpp");
+const u8 gTrainerBackPic_HeliodorMay[] = INCBIN_U8("graphics/trainers/back_pics/heliodor_may_back_pic.4bpp");
 const u8 gTrainerBackPic_Gold[] = INCBIN_U8("graphics/trainers/back_pics/gold_back_pic.4bpp");
 const u8 gTrainerBackPic_Kris[] = INCBIN_U8("graphics/trainers/back_pics/kris_back_pic.4bpp");
 

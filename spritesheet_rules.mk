@@ -120,17 +120,16 @@ $(OBJEVENTGFXDIR)/people/may/underwater.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 
-$(OBJEVENTGFXDIR)/people/ruby_sapphire_brendan/walking.4bpp: %.4bpp: %.png
+$(OBJEVENTGFXDIR)/people/link/rs_brendan.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/ruby_sapphire_brendan/running.4bpp: %.4bpp: %.png
+$(OBJEVENTGFXDIR)/people/link/rs_may.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-
-$(OBJEVENTGFXDIR)/people/ruby_sapphire_may/walking.4bpp: %.4bpp: %.png
+$(OBJEVENTGFXDIR)/people/link/vanilla_brendan.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/ruby_sapphire_may/running.4bpp: %.4bpp: %.png
+$(OBJEVENTGFXDIR)/people/link/vanilla_may.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 
@@ -178,7 +177,7 @@ $(OBJEVENTGFXDIR)/people/rich_boy.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/gameboy_kid.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/gold.4bpp: %.4bpp: %.png
+$(OBJEVENTGFXDIR)/people/link/gold.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/bug_catcher.4bpp: %.4bpp: %.png
@@ -229,13 +228,13 @@ $(OBJEVENTGFXDIR)/people/hiker.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/hot_springs_old_woman.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/kris.4bpp: %.4bpp: %.png
+$(OBJEVENTGFXDIR)/people/link/kris.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/lass.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/leaf.4bpp: %.4bpp: %.png
+$(OBJEVENTGFXDIR)/people/link/leaf.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/ninja_boy.4bpp: %.4bpp: %.png
@@ -316,7 +315,7 @@ $(OBJEVENTGFXDIR)/people/psychic_m.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/quinty_plump.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/red.4bpp: %.4bpp: %.png
+$(OBJEVENTGFXDIR)/people/link/red.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/reporter_f.4bpp: %.4bpp: %.png
@@ -642,7 +641,7 @@ $(FLDEFFGFXDIR)/tall_grass.4bpp: %.4bpp: %.png
 $(FLDEFFGFXDIR)/tree_disguise.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(FLDEFFGFXDIR)/unknown_16.4bpp: %.4bpp: %.png
+$(FLDEFFGFXDIR)/jump_long_grass.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 
 $(FLDEFFGFXDIR)/unknown_17.4bpp: %.4bpp: %.png

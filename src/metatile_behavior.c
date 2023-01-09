@@ -1259,8 +1259,7 @@ bool8 MetatileBehavior_IsRunningDisallowed(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_NO_RUNNING
      || metatileBehavior == MB_LONG_GRASS
-     || metatileBehavior == MB_HOT_SPRINGS
-     || MetatileBehavior_IsPacifidlogLog(metatileBehavior) != FALSE)
+     || metatileBehavior == MB_HOT_SPRINGS)
         return TRUE;
     else
         return FALSE;
@@ -1396,6 +1395,46 @@ bool8 MetatileBehavior_IsLongGrassSouthEdge(u8 metatileBehavior)
 bool8 MetatileBehavior_IsTrainerHillTimer(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_TRAINER_HILL_TIMER)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsDirectionalUpRightStairWarp(u8 metatileBehavior)
+{
+    if(metatileBehavior == MB_UP_RIGHT_STAIR_WARP)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsDirectionalUpLeftStairWarp(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_UP_LEFT_STAIR_WARP)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsDirectionalDownRightStairWarp(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_DOWN_RIGHT_STAIR_WARP)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsDirectionalDownLeftStairWarp(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_DOWN_LEFT_STAIR_WARP)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsDirectionalStairWarp(u8 metatileBehavior)
+{
+    if (metatileBehavior >= MB_UP_RIGHT_STAIR_WARP && metatileBehavior <= MB_DOWN_LEFT_STAIR_WARP)
         return TRUE;
     else
         return FALSE;

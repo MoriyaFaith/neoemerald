@@ -6,7 +6,7 @@
 // still has them in the ROM. This is because the developers forgot
 // to define NDEBUG before release, however this has been changed as
 // Ruby's actual debug build does not use the AGBPrint features.
-#define NDEBUG
+//#define NDEBUG
 
 // To enable print debugging, comment out "#define NDEBUG". This allows
 // the various AGBPrint functions to be used. (See include/gba/isagbprint.h).
@@ -24,7 +24,7 @@
 #endif
 
 // Uncomment to fix some identified minor bugs
-//#define BUGFIX
+#define BUGFIX
 
 // Various undefined behavior bugs may or may not prevent compilation with
 // newer compilers. So always fix them when using a modern compiler.

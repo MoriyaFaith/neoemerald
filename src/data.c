@@ -115,6 +115,38 @@ const struct SpriteFrameImage gTrainerBackPicTable_RubySapphireMay[] =
     gTrainerBackPic_RubySapphireMay + 0x1800, 0x0800,
 };
 
+const struct SpriteFrameImage gTrainerBackPicTable_EmeraldBrendan[] =
+{
+    gTrainerBackPic_EmeraldBrendan, 0x0800,
+    gTrainerBackPic_EmeraldBrendan + 0x0800, 0x0800,
+    gTrainerBackPic_EmeraldBrendan + 0x1000, 0x0800,
+    gTrainerBackPic_EmeraldBrendan + 0x1800, 0x0800,
+};
+
+const struct SpriteFrameImage gTrainerBackPicTable_EmeraldMay[] =
+{
+    gTrainerBackPic_EmeraldMay, 0x0800,
+    gTrainerBackPic_EmeraldMay + 0x0800, 0x0800,
+    gTrainerBackPic_EmeraldMay + 0x1000, 0x0800,
+    gTrainerBackPic_EmeraldMay + 0x1800, 0x0800,
+};
+
+const struct SpriteFrameImage gTrainerBackPicTable_HeliodorBrendan[] =
+{
+    gTrainerBackPic_HeliodorBrendan, 0x0800,
+    gTrainerBackPic_HeliodorBrendan + 0x0800, 0x0800,
+    gTrainerBackPic_HeliodorBrendan + 0x1000, 0x0800,
+    gTrainerBackPic_HeliodorBrendan + 0x1800, 0x0800,
+};
+
+const struct SpriteFrameImage gTrainerBackPicTable_HeliodorMay[] =
+{
+    gTrainerBackPic_HeliodorMay, 0x0800,
+    gTrainerBackPic_HeliodorMay + 0x0800, 0x0800,
+    gTrainerBackPic_HeliodorMay + 0x1000, 0x0800,
+    gTrainerBackPic_HeliodorMay + 0x1800, 0x0800,
+};
+
 const struct SpriteFrameImage gTrainerBackPicTable_Wally[] =
 {
     gTrainerBackPic_Wally, 0x0800,

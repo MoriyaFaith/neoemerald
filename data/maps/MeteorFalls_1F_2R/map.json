@@ -12,7 +12,7 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_3",
@@ -60,31 +60,33 @@
       "y": 29,
       "elevation": 3,
       "dest_map": "MAP_METEOR_FALLS_1F_1R",
-      "dest_warp_id": 2
+      "dest_warp_id": "2"
     },
     {
       "x": 4,
       "y": 14,
       "elevation": 3,
       "dest_map": "MAP_METEOR_FALLS_B1F_1R",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 7,
       "y": 20,
       "elevation": 3,
       "dest_map": "MAP_METEOR_FALLS_B1F_1R",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
     },
     {
       "x": 21,
       "y": 23,
       "elevation": 3,
       "dest_map": "MAP_METEOR_FALLS_B1F_1R",
-      "dest_warp_id": 2
+      "dest_warp_id": "2"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "sign",

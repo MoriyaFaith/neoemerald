@@ -322,6 +322,9 @@ static const u8 sTrainerCard5StarStatColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_CO
 static const u8 sTrainerCard5StarNameColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_2, TEXT_DYNAMIC_COLOR_1};
 static const u8 sTimeColonInvisibleTextColors[6] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_TRANSPARENT, TEXT_COLOR_TRANSPARENT};
 
+// White text for NEO EMERALD
+static const u8 sTrainerCardWhiteTextColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
+
 static const u8 sTrainerPicOffset[][GENDER_COUNT][2] =
 {
     [CARD_LAYOUT_FRLG] =
@@ -354,40 +357,50 @@ static const u8 sTrainerPicOffset[][GENDER_COUNT][2] =
         [MALE]   = {13, 4}, 
         [FEMALE] = {13, 4}
     },
+    [CARD_LAYOUT_NEO_EMERALD] =
+    {
+        [MALE]   = {1, 0}, 
+        [FEMALE] = {1, 0}
+    },
 
 };
 
-static const u8 sTrainerPicFacilityClass[][GENDER_COUNT] = 
+static const u8 sTrainerCardTrainerPics[][GENDER_COUNT] = 
 {
     [CARD_VERSION_FRLG] = 
     {
-        [MALE]   = FACILITY_CLASS_RED, 
-        [FEMALE] = FACILITY_CLASS_LEAF
+        [MALE]   = TRAINER_PIC_RED, 
+        [FEMALE] = TRAINER_PIC_LEAF
     }, 
     [CARD_VERSION_FRLG_DX] = 
     {
-        [MALE]   = FACILITY_CLASS_RED, 
-        [FEMALE] = FACILITY_CLASS_LEAF
+        [MALE]   = TRAINER_PIC_RED, 
+        [FEMALE] = TRAINER_PIC_LEAF
     }, 
     [CARD_VERSION_RS] = 
     {
-        [MALE]   = FACILITY_CLASS_RS_BRENDAN, 
-        [FEMALE] = FACILITY_CLASS_RS_MAY
+        [MALE]   = TRAINER_PIC_RS_BRENDAN, 
+        [FEMALE] = TRAINER_PIC_RS_MAY
     }, 
     [CARD_VERSION_HELIODOR] = 
     {
-        [MALE]   = FACILITY_CLASS_RS_BRENDAN, 
-        [FEMALE] = FACILITY_CLASS_RS_MAY
+        [MALE]   = TRAINER_PIC_H_BRENDAN, 
+        [FEMALE] = TRAINER_PIC_H_MAY
     }, 
     [CARD_VERSION_EMERALD] = 
     {
-        [MALE]   = FACILITY_CLASS_BRENDAN, 
-        [FEMALE] = FACILITY_CLASS_MAY
+        [MALE]   = TRAINER_PIC_EM_BRENDAN, 
+        [FEMALE] = TRAINER_PIC_EM_MAY
     },
     [CARD_VERSION_CRYSTALDUST] = 
     {
-        [MALE]   = FACILITY_CLASS_GOLD, 
-        [FEMALE] = FACILITY_CLASS_KRIS
+        [MALE]   = TRAINER_PIC_GOLD, 
+        [FEMALE] = TRAINER_PIC_KRIS
+    },
+    [CARD_VERSION_NEO_EMERALD] = 
+    {
+        [MALE]   = TRAINER_PIC_BRENDAN, 
+        [FEMALE] = TRAINER_PIC_MAY
     }
 };
 
@@ -440,7 +453,8 @@ static const u8 *const sTrainerCardBackNameTextWindowColors[CARD_LAYOUT_COUNT] =
     [CARD_LAYOUT_CRYSTALDUST]     = sTrainerCardTextColors,
     [CARD_LAYOUT_EMERALD]  = sTrainerCardTextColors,
     [CARD_LAYOUT_HELIODOR] = sTrainerCardRSStatColors,
-    [CARD_LAYOUT_FRLG_DX]  = sTrainerCardTextColors
+    [CARD_LAYOUT_FRLG_DX]  = sTrainerCardTextColors,
+    [CARD_LAYOUT_NEO_EMERALD]  = sTrainerCardWhiteTextColors
 };
 
 // First three stats on the trainer card are the same in all versions
@@ -450,8 +464,7 @@ static const u8 sTrainerCardStats[][STAT_COUNT - 3] =
     [CARD_LAYOUT_RS]      = {CARD_STAT_POKEBLOCKS, CARD_STAT_CONTESTS, CARD_STAT_BATTLE_TOWER},
     [CARD_LAYOUT_FRLG]    = {CARD_STAT_UNION_ROOM, CARD_STAT_BERRY_CRUSH, CARD_STAT_NONE},
     [CARD_LAYOUT_EMERALD] = {CARD_STAT_POKEBLOCKS, CARD_STAT_CONTESTS, CARD_STAT_BATTLE_POINTS},
-    [CARD_LAYOUT_CRYSTALDUST] = {CARD_STAT_POKEBLOCKS, CARD_STAT_CONTESTS, CARD_STAT_BATTLE_POINTS},
-    [CARD_LAYOUT_FRLG_DX] = {CARD_STAT_UNION_ROOM, CARD_STAT_BERRY_CRUSH, CARD_STAT_NONE},
+    [CARD_LAYOUT_NEO_EMERALD] = {CARD_STAT_POKEBLOCKS, CARD_STAT_CONTESTS, CARD_STAT_BATTLE_POINTS},
     [CARD_LAYOUT_CRYSTALDUST]      = {CARD_STAT_CONTESTS, CARD_STAT_BATTLE_POINTS, CARD_STAT_NONE}
 };
 
@@ -459,9 +472,10 @@ static const u8 sTrainerCardFonts[] =
 {
     [CARD_LAYOUT_RS]           = FONT_RS,
     [CARD_LAYOUT_FRLG]         = FONT_FRLG,
-    [CARD_LAYOUT_EMERALD]      = FONT_NORMAL,
+    [CARD_LAYOUT_EMERALD]      = FONT_EMERALD,
+    [CARD_LAYOUT_NEO_EMERALD]  = FONT_NORMAL,
     [CARD_LAYOUT_CRYSTALDUST]  = FONT_FRLG,
-    [CARD_LAYOUT_HELIODOR]     = FONT_NORMAL,
+    [CARD_LAYOUT_HELIODOR]     = FONT_EMERALD,
     [CARD_LAYOUT_FRLG_DX]      = FONT_FRLG,
 };
 
@@ -471,6 +485,7 @@ static const u8 sTrainerCardNameMoneyPokedexXOffsets[CARD_LAYOUT_COUNT] =
     [CARD_LAYOUT_FRLG]     = 20,
     [CARD_LAYOUT_CRYSTALDUST]     = 20,
     [CARD_LAYOUT_EMERALD]  = 16,
+    [CARD_LAYOUT_NEO_EMERALD]  = 16,
     [CARD_LAYOUT_HELIODOR] = 20,
     [CARD_LAYOUT_FRLG_DX]  = 20
 };
@@ -481,6 +496,7 @@ static const u8 sTrainerCardFrontNameYOffsets[CARD_LAYOUT_COUNT] =
     [CARD_LAYOUT_FRLG]     = 29,
     [CARD_LAYOUT_CRYSTALDUST]     = 29,
     [CARD_LAYOUT_EMERALD]  = 33,
+    [CARD_LAYOUT_NEO_EMERALD]  = 33,
     [CARD_LAYOUT_HELIODOR] = 28,
     [CARD_LAYOUT_FRLG_DX]  = 29
 };
@@ -491,8 +507,9 @@ static const u8 sTrainerCardFrontIdXOffsets[CARD_LAYOUT_COUNT][2] =
     [CARD_LAYOUT_FRLG]     = {80, 132},
     [CARD_LAYOUT_CRYSTALDUST]     = {80, 132},
     [CARD_LAYOUT_EMERALD]  = {96, 120},
+    [CARD_LAYOUT_NEO_EMERALD]  = {96, 120},
     [CARD_LAYOUT_HELIODOR] = {80, 130},
-    [CARD_LAYOUT_FRLG_DX]  = {80, 132}
+    [CARD_LAYOUT_FRLG_DX]  = {80, 132} 
 };
 
 static const u8 sTrainerCardFrontIdYOffsets[CARD_LAYOUT_COUNT] =
@@ -501,6 +518,7 @@ static const u8 sTrainerCardFrontIdYOffsets[CARD_LAYOUT_COUNT] =
     [CARD_LAYOUT_FRLG]     = 10,
     [CARD_LAYOUT_CRYSTALDUST]     = 10,
     [CARD_LAYOUT_EMERALD]  = 9,
+    [CARD_LAYOUT_NEO_EMERALD]  = 9,
     [CARD_LAYOUT_HELIODOR] = 9,
     [CARD_LAYOUT_FRLG_DX]  = 10
 };
@@ -511,6 +529,7 @@ static const u32 sTrainerCardFrontStatsXOffsets[CARD_LAYOUT_COUNT] =
     [CARD_LAYOUT_FRLG]     = 136,
     [CARD_LAYOUT_CRYSTALDUST]     = 136,
     [CARD_LAYOUT_EMERALD]  = 128,
+    [CARD_LAYOUT_NEO_EMERALD]  = 128,
     [CARD_LAYOUT_HELIODOR] = 136,
     [CARD_LAYOUT_FRLG_DX]  = 136
 };
@@ -521,6 +540,7 @@ static const u8 sTrainerCardProfilePhraseYOffsets[CARD_LAYOUT_COUNT][2] =
     [CARD_LAYOUT_FRLG]     = {115, 130},
     [CARD_LAYOUT_CRYSTALDUST]     = {115, 130},
     [CARD_LAYOUT_EMERALD]  = {104, 120},
+    [CARD_LAYOUT_NEO_EMERALD]  = {104, 120},
     [CARD_LAYOUT_HELIODOR] = {114, 129},
     [CARD_LAYOUT_FRLG_DX]  = {115, 130},
 };
@@ -531,6 +551,7 @@ static const u8 sTrainerCardBackNameYOffsets[CARD_LAYOUT_COUNT] =
     [CARD_LAYOUT_FRLG]     = 11,
     [CARD_LAYOUT_CRYSTALDUST]     = 11,
     [CARD_LAYOUT_EMERALD]  = 9,
+    [CARD_LAYOUT_NEO_EMERALD]  = 9,
     [CARD_LAYOUT_HELIODOR] = 9,
     [CARD_LAYOUT_FRLG_DX]  = 11
 };
@@ -541,6 +562,7 @@ static const u8 sTrainerCardBackStatsYOffsets[CARD_LAYOUT_COUNT] =
     [CARD_LAYOUT_FRLG]     = 35,
     [CARD_LAYOUT_CRYSTALDUST]     = 35,
     [CARD_LAYOUT_EMERALD]  = 33,
+    [CARD_LAYOUT_NEO_EMERALD]  = 33,
     [CARD_LAYOUT_HELIODOR] = 35,
     [CARD_LAYOUT_FRLG_DX]  = 35
 };
@@ -762,7 +784,8 @@ static bool8 LoadCardGfx(void)
     switch (sData->gfxLoadState)
     {
     case 0:
-        if (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD)
+        if (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD
+            || sData->cardLayout == CARD_LAYOUT_NEO_EMERALD)
             LZ77UnCompWram(gHoennTrainerCardBg_Tilemap, sData->bgTilemap);
         else if (sData->cardLayout == CARD_LAYOUT_CRYSTALDUST)
             LZ77UnCompWram(gJohtoTrainerCardBg_Tilemap, sData->bgTilemap);
@@ -770,7 +793,8 @@ static bool8 LoadCardGfx(void)
             LZ77UnCompWram(gKantoTrainerCardBg_Tilemap, sData->bgTilemap);
         break;
     case 1:
-        if (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD)
+        if (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD
+            || sData->cardLayout == CARD_LAYOUT_NEO_EMERALD)
             LZ77UnCompWram(gHoennTrainerCardBack_Tilemap, sData->backTilemap);
         else if (sData->cardLayout == CARD_LAYOUT_CRYSTALDUST)
             LZ77UnCompWram(gJohtoTrainerCardBack_Tilemap, sData->backTilemap);
@@ -787,7 +811,8 @@ static bool8 LoadCardGfx(void)
     case 2:
         if (sData->isLink)
         {
-            if (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD)
+            if (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD
+            || sData->cardLayout == CARD_LAYOUT_NEO_EMERALD)
                 LZ77UnCompWram(gHoennTrainerCardFrontLink_Tilemap, sData->frontTilemap);
             else if (sData->cardLayout == CARD_LAYOUT_CRYSTALDUST)
                 LZ77UnCompWram(gJohtoTrainerCardFrontLink_Tilemap, sData->frontTilemap);
@@ -798,7 +823,8 @@ static bool8 LoadCardGfx(void)
         }
         else
         {
-            if (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD)
+            if (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD
+            || sData->cardLayout == CARD_LAYOUT_NEO_EMERALD)
                 LZ77UnCompWram(gHoennTrainerCardFront_Tilemap, sData->frontTilemap);
             else if (sData->cardLayout == CARD_LAYOUT_HELIODOR)
                 LZ77UnCompWram(sHeliodorTrainerCardFront_Tilemap, sData->frontTilemap);
@@ -809,11 +835,12 @@ static bool8 LoadCardGfx(void)
         }
         break;
     case 3:
-        if (sData->cardVersion == CARD_LAYOUT_EMERALD && !sData->isLink)
+        if (sData->cardVersion == CARD_LAYOUT_NEO_EMERALD && !sData->isLink)
             LZ77UnCompWram(sHoennTrainerCardBadges_Gfx, sData->badgeTiles);
         break;
     case 4:
-        if (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD)
+        if (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD
+            || sData->cardLayout == CARD_LAYOUT_NEO_EMERALD)
             LZ77UnCompWram(gHoennTrainerCard_Gfx, sData->cardTiles);
         else if (sData->cardLayout == CARD_LAYOUT_CRYSTALDUST)
             LZ77UnCompWram(gJohtoTrainerCard_Gfx, sData->cardTiles);
@@ -1013,29 +1040,7 @@ void TrainerCard_GenerateCardForPlayer(struct TrainerCard *trainerCard)
 void CopyTrainerCardData(struct TrainerCard *dst, u16 *src, u8 gameVersion, u8 versionModifier)
 {
     memset(dst, 0, sizeof(struct TrainerCard));
-    dst->version = gameVersion;
-
-    switch (VersionTocardVersion(gameVersion, versionModifier))
-    {
-    case CARD_VERSION_FRLG:
-        memcpy(dst, src, 0x60);
-        break;
-    case CARD_VERSION_RS:
-        memcpy(dst, src, 0x38);
-        break;
-    case CARD_VERSION_EMERALD:
-    case CARD_VERSION_CRYSTALDUST:
-        memcpy(dst, src, 0x60);
-        if (dst->realVersion != 0)
-        {
-            dst->version = dst->realVersion;
-            dst->realVersion = 0;
-        }
-        dst->berryCrushPoints = 0;
-        dst->hasAllSymbols = src[29];
-        dst->frontierBP = src[30];
-        break;
-    }
+    memcpy(dst, src, sizeof(struct TrainerCard));
 }
 
 static void SetDataFromTrainerCard(void)
@@ -1144,7 +1149,7 @@ static bool8 PrintAllOnCardFront(void)
     switch (sData->printState)
     {
     case 0:
-        if (sData->isRS)
+        if (sData->cardLayout == CARD_LAYOUT_RS)
         {
             palette = RGB(0, 0, 0);
             LoadPalette(&palette, 250, 2);
@@ -1159,7 +1164,7 @@ static bool8 PrintAllOnCardFront(void)
             palette = RGB(31, 0, 31);
             LoadPalette(&palette, 255, 2);
         }
-        else
+        else if (sData->cardLayout == CARD_LAYOUT_HELIODOR)
         {
             palette = RGB(15, 28, 27);
             LoadPalette(&palette, 250, 2);
@@ -1314,13 +1319,16 @@ static void PrintIdOnCard(void)
     ConvertIntToDecimalStringN(txtPtr, sData->trainerCard.trainerId, STR_CONV_MODE_LEADING_ZEROS, 5);
 
     x = GetStringCenterAlignXOffset(sTrainerCardFonts[sData->cardLayout], buffer, sTrainerCardFrontIdXOffsets[sData->cardLayout][0]) + sTrainerCardFrontIdXOffsets[sData->cardLayout][1];
-    AddTextPrinterParameterized3(1, sTrainerCardFonts[sData->cardLayout], x, sTrainerCardFrontIdYOffsets[sData->cardLayout], ((sData->trainerCard.stars + sData->trainerCard.extraStars) > 4) ? sTrainerCardRSContentColors : sTrainerCardTextColors, TEXT_SKIP_DRAW, buffer);
+    if (sData->cardLayout == CARD_LAYOUT_NEO_EMERALD)
+        AddTextPrinterParameterized3(1, sTrainerCardFonts[sData->cardLayout], x, sTrainerCardFrontIdYOffsets[sData->cardLayout], sTrainerCardWhiteTextColors, TEXT_SKIP_DRAW, buffer);
+    else
+        AddTextPrinterParameterized3(1, sTrainerCardFonts[sData->cardLayout], x, sTrainerCardFrontIdYOffsets[sData->cardLayout], ((sData->trainerCard.stars + sData->trainerCard.extraStars) > 4) ? sTrainerCardRSContentColors : sTrainerCardTextColors, TEXT_SKIP_DRAW, buffer);
 }
 
 static void PrintMoneyOnCard(void)
 {
     u8 x;
-    u8 y = (sData->cardLayout == CARD_LAYOUT_EMERALD) ? 57 : 56;
+    u8 y = (sData->cardLayout == CARD_LAYOUT_EMERALD || sData->cardLayout == CARD_LAYOUT_NEO_EMERALD) ? 57 : 56;
 
     AddTextPrinterParameterized3(1, sTrainerCardFonts[sData->cardLayout], sTrainerCardNameMoneyPokedexXOffsets[sData->cardLayout], y, sTrainerCardTextWindowColors[sData->isRS][0], TEXT_SKIP_DRAW, gText_TrainerCardMoney);
     ConvertIntToDecimalStringN(gStringVar1, sData->trainerCard.money, STR_CONV_MODE_LEFT_ALIGN, 6);
@@ -1343,7 +1351,7 @@ static void PrintPokedexOnCard(void)
     if (FlagGet(FLAG_SYS_POKEDEX_GET))
     {
         u8 x;
-        u8 y = (sData->cardLayout == CARD_LAYOUT_EMERALD) ? 73 : 72;
+        u8 y = (sData->cardLayout == CARD_LAYOUT_EMERALD || sData->cardLayout == CARD_LAYOUT_NEO_EMERALD) ? 73 : 72;
 
         AddTextPrinterParameterized3(1, sTrainerCardFonts[sData->cardLayout], sTrainerCardNameMoneyPokedexXOffsets[sData->cardLayout], y, sTrainerCardTextWindowColors[sData->isRS][0], TEXT_SKIP_DRAW, gText_MenuOptionPokedex);
         StringCopy(ConvertIntToDecimalStringN(gStringVar4, sData->trainerCard.caughtMonsCount, STR_CONV_MODE_LEFT_ALIGN, 3), gText_ExpandedPlaceholder_Empty);
@@ -1363,7 +1371,7 @@ static void PrintTimeOnCard(void)
 {
     u16 hours, minutes;
     u32 x;
-    u32 y = (sData->cardLayout == CARD_LAYOUT_EMERALD) ? 89 : 88;
+    u32 y = (sData->cardLayout == CARD_LAYOUT_EMERALD || sData->cardLayout == CARD_LAYOUT_NEO_EMERALD) ? 89 : 88;
     s32 width;
     u32 totalWidth;
 
@@ -1405,7 +1413,8 @@ static void PrintProfilePhraseOnCard(void)
 {
     if (sData->isLink)
     {
-        u8 x = (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD) ? 8 : 10;
+        u8 x = (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD
+            || sData->cardLayout == CARD_LAYOUT_NEO_EMERALD) ? 8 : 10;
         u8 space = (sData->isRS || sData->cardLayout == CARD_LAYOUT_FRLG_DX) ? 3 : 6;
         const u8* txtColor;
 
@@ -1416,6 +1425,8 @@ static void PrintProfilePhraseOnCard(void)
             else
                 txtColor = sTrainerCardRSContentColors;
         }
+        else if (sData->cardLayout == CARD_LAYOUT_NEO_EMERALD)
+            txtColor = sTrainerCardWhiteTextColors;
         else
             txtColor = sTrainerCardTextWindowColors[sData->isRS][1];
 
@@ -1491,9 +1502,9 @@ static void PrintBarcodeOnCard(void)
     StringAppend(barcode, sText_BarcodeEnd);
 
     if ((sData->trainerCard.stars + sData->trainerCard.extraStars) > 4)
-        AddTextPrinterParameterized4(1, 4, 1, 2, 0, -4, sTrainerCard5StarNameColors, TEXT_SKIP_DRAW, buffer);
+        AddTextPrinterParameterized4(1, FONT_SMALL, 1, 2, 0, -4, sTrainerCard5StarNameColors, TEXT_SKIP_DRAW, buffer);
     else
-        AddTextPrinterParameterized4(1, 4, 1, 2, 0, -4, sTrainerCardTextColors, TEXT_SKIP_DRAW, buffer);
+        AddTextPrinterParameterized4(1, FONT_SMALL, 1, 2, 0, -4, sTrainerCardTextColors, TEXT_SKIP_DRAW, buffer);
 }
 
 static const u8 *ConvertDigitToBarcodeSymbol(u8 digit)
@@ -1614,7 +1625,8 @@ static void BufferNameForCardBack(void)
 {
     StringCopy(sData->textPlayersCard, sData->trainerCard.playerName);
     ConvertInternationalString(sData->textPlayersCard, sData->language);
-    if (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD)
+    if (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD
+        || sData->cardLayout == CARD_LAYOUT_NEO_EMERALD)
     {
         StringCopy(gStringVar1, sData->textPlayersCard);
         StringExpandPlaceholders(sData->textPlayersCard, gText_Var1sTrainerCard);
@@ -1669,7 +1681,8 @@ static void BufferHofDebutTime(void)
 
 static void PrintStatOnBackOfCard(u8 top, const u8* statName, u8* stat, const u8* color)
 {
-    u8 x = (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD) ? 16 : 10;
+    u8 x = (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD
+        || sData->cardLayout == CARD_LAYOUT_NEO_EMERALD) ? 16 : 10;
 
     if ((sData->trainerCard.stars + sData->trainerCard.extraStars) > 4)
         color = sTrainerCard5StarStatColors;
@@ -1687,7 +1700,7 @@ static void BufferLinkBattleResults(void)
 {
     if (sData->hasLinkResults)
     {
-        u8 align = (sData->cardLayout != CARD_LAYOUT_EMERALD) ? STR_CONV_MODE_RIGHT_ALIGN : STR_CONV_MODE_LEFT_ALIGN; 
+        u8 align = (sData->cardLayout != CARD_LAYOUT_EMERALD && sData->cardLayout != CARD_LAYOUT_NEO_EMERALD) ? STR_CONV_MODE_RIGHT_ALIGN : STR_CONV_MODE_LEFT_ALIGN; 
 
         StringCopy(sData->textLinkBattleType, sTrainerCardLinkBattleTexts[sData->isRS]);
         ConvertIntToDecimalStringN(sData->textLinkBattleWins, sData->trainerCard.linkBattleWins, align, 4);
@@ -1992,7 +2005,8 @@ static bool8 SetCardBgsAndPals(void)
         LoadBgTiles(3, sData->badgeTiles, ARRAY_COUNT(sData->badgeTiles), 0x3200);
         break;
     case 2:
-        if (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD)
+        if (sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD
+            || sData->cardLayout == CARD_LAYOUT_NEO_EMERALD)
             LoadPalette(sHoennTrainerCardStarPals[sData->trainerCard.stars], 0, 96);
         else if (sData->cardLayout == CARD_LAYOUT_CRYSTALDUST)
             LoadPalette(sJohtoTrainerCardStarPals[sData->trainerCard.stars], 0, 96);
@@ -2016,7 +2030,8 @@ static bool8 SetCardBgsAndPals(void)
             LoadPalette(sKantoTrainerCardBadges_Pal, 48, 32);
         break;
     case 4:
-        if ((sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD) && sData->trainerCard.gender)
+        if ((sData->isRS || sData->cardLayout == CARD_LAYOUT_EMERALD
+            || sData->cardLayout == CARD_LAYOUT_NEO_EMERALD) && sData->trainerCard.gender)
             LoadPalette(sHoennTrainerCardFemaleBg_Pal, 16, 32);
         else if (sData->trainerCard.gender)
             LoadPalette(sKantoTrainerCardFemaleBg_Pal, 16, 32);
@@ -2102,7 +2117,8 @@ static void DrawStarsAndBadgesOnCard(void)
         {
             if (sData->badgeCount[i])
             {
-                if (sData->cardLayout == CARD_LAYOUT_RS || sData->cardLayout == CARD_LAYOUT_EMERALD)
+                if (sData->cardLayout == CARD_LAYOUT_RS || sData->cardLayout == CARD_LAYOUT_EMERALD
+                    || sData->cardLayout == CARD_LAYOUT_NEO_EMERALD)
                 {
                     FillBgTilemapBufferRect(3, tileNum, x, 15, 1, 1, 3);
                     FillBgTilemapBufferRect(3, tileNum + 1, x + 1, 15, 1, 1, 3);
@@ -2442,6 +2458,9 @@ static u8 GetSetcardVersion(void)
         case MODIFIER_DX:
             sData->cardLayout = CARD_LAYOUT_FRLG_DX;
             return CARD_VERSION_FRLG;
+        case MODIFIER_NEO:
+            sData->cardLayout = CARD_LAYOUT_NEO_EMERALD;
+            return CARD_VERSION_NEO_EMERALD;
         default:
             if (sData->trainerCard.version == VERSION_CRYSTAL_DUST)
             {
@@ -2526,18 +2545,27 @@ static u8 GetSetCardStats(void)
 
 static void CreateTrainerCardTrainerPic(void)
 {
-    if (InUnionRoom() == TRUE && gReceivedRemoteLinkPlayers == 1)
+    if (InUnionRoom() && gReceivedRemoteLinkPlayers == 1)
     {
-        CreateTrainerCardTrainerPicSprite(FacilityClassToPicIndex(sData->trainerCard.facilityClass),
+        CreateTrainerCardTrainerPicSprite(gFacilityClassToPicIndex[sData->trainerCard.facilityClass],
                     TRUE,
                     sTrainerPicOffset[sData->cardLayout][sData->trainerCard.gender][0],
                     sTrainerPicOffset[sData->cardLayout][sData->trainerCard.gender][1],
                     8,
                     2);
     }
+    /*else if (sData->cardVersion == CARD_VERSION_FRLG_DX)
+    {
+        CreateTrainerCardTrainerPicSprite(gPlayerFrontPics[sData->trainerCard.outfit][sData->trainerCard.gender],
+                    TRUE,
+                    sTrainerPicOffset[sData->cardLayout][sData->trainerCard.gender][0],
+                    sTrainerPicOffset[sData->cardLayout][sData->trainerCard.gender][1],
+                    8,
+                    2);
+    }*/
     else
     {
-        CreateTrainerCardTrainerPicSprite(FacilityClassToPicIndex(sTrainerPicFacilityClass[sData->cardVersion][sData->trainerCard.gender]),
+        CreateTrainerCardTrainerPicSprite(sTrainerCardTrainerPics[sData->cardVersion][sData->trainerCard.gender],
                     TRUE,
                     sTrainerPicOffset[sData->cardLayout][sData->trainerCard.gender][0],
                     sTrainerPicOffset[sData->cardLayout][sData->trainerCard.gender][1],

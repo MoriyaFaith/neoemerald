@@ -261,7 +261,7 @@ static const struct ListMenuTemplate sItemListMenu =
     .itemVerticalPadding = 0,
     .scrollMultiple = 0,
     .fontId = FONT_NARROW,
-    .cursorKind = 0
+    .cursorKind = 0 
 };
 
 static const struct MenuAction sItemMenuActions[] = {
@@ -973,16 +973,16 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
             // Print berry quantity
             ConvertIntToDecimalStringN(gStringVar1, itemQuantity, STR_CONV_MODE_RIGHT_ALIGN, BERRY_CAPACITY_DIGITS);
             StringExpandPlaceholders(gStringVar4, gText_xVar1);
-            offset = GetStringRightAlignXOffset(FONT_NARROW, gStringVar4, 119);
-            BagMenu_Print(windowId, FONT_NARROW, gStringVar4, offset, y, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+            offset = GetStringRightAlignXOffset(FONT_NORMAL, gStringVar4, 119);
+            BagMenu_Print(windowId, FONT_NORMAL, gStringVar4, offset, y, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
         }
         else if (gBagPosition.pocket != KEYITEMS_POCKET && ItemId_GetImportance(itemId) == FALSE)
         {
             // Print item quantity
             ConvertIntToDecimalStringN(gStringVar1, itemQuantity, STR_CONV_MODE_RIGHT_ALIGN, BAG_ITEM_CAPACITY_DIGITS);
             StringExpandPlaceholders(gStringVar4, gText_xVar1);
-            offset = GetStringRightAlignXOffset(FONT_NARROW, gStringVar4, 119);
-            BagMenu_Print(windowId, FONT_NARROW, gStringVar4, offset, y, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+            offset = GetStringRightAlignXOffset(FONT_NORMAL, gStringVar4, 119);
+            BagMenu_Print(windowId, FONT_NORMAL, gStringVar4, offset, y, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
         }
         else
         {

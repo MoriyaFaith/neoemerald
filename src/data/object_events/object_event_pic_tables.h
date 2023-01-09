@@ -1771,6 +1771,44 @@ static const struct SpriteFrameImage sPicTable_Regi[] = {
     obj_frame_tiles(gObjectEventPic_Regi),
     obj_frame_tiles(gObjectEventPic_Regi),
     obj_frame_tiles(gObjectEventPic_Regi),
+
+};
+
+static const struct SpriteFrameImage sPicTable_Regirock[] = {
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+    obj_frame_tiles(gObjectEventPic_Regirock),
+
+};
+
+static const struct SpriteFrameImage sPicTable_Regice[] = {
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+    obj_frame_tiles(gObjectEventPic_Regice),
+};
+
+static const struct SpriteFrameImage sPicTable_Registeel[] = {
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
+    obj_frame_tiles(gObjectEventPic_Registeel),
 };
 
 static const struct SpriteFrameImage sPicTable_Skitty[] = {
@@ -2171,6 +2209,30 @@ static const struct SpriteFrameImage sPicTable_RubySapphireMay[] = {
     overworld_frame(gObjectEventPic_RubySapphireMayNormal, 2, 4, 6),
     overworld_frame(gObjectEventPic_RubySapphireMayNormal, 2, 4, 7),
     overworld_frame(gObjectEventPic_RubySapphireMayNormal, 2, 4, 8),
+};
+
+static const struct SpriteFrameImage sPicTable_EmeraldBrendan[] = {
+    overworld_frame(gObjectEventPic_EmeraldBrendan, 2, 4, 0),
+    overworld_frame(gObjectEventPic_EmeraldBrendan, 2, 4, 1),
+    overworld_frame(gObjectEventPic_EmeraldBrendan, 2, 4, 2),
+    overworld_frame(gObjectEventPic_EmeraldBrendan, 2, 4, 3),
+    overworld_frame(gObjectEventPic_EmeraldBrendan, 2, 4, 4),
+    overworld_frame(gObjectEventPic_EmeraldBrendan, 2, 4, 5),
+    overworld_frame(gObjectEventPic_EmeraldBrendan, 2, 4, 6),
+    overworld_frame(gObjectEventPic_EmeraldBrendan, 2, 4, 7),
+    overworld_frame(gObjectEventPic_EmeraldBrendan, 2, 4, 8),
+};
+
+static const struct SpriteFrameImage sPicTable_EmeraldMay[] = {
+    overworld_frame(gObjectEventPic_EmeraldMay, 2, 4, 0),
+    overworld_frame(gObjectEventPic_EmeraldMay, 2, 4, 1),
+    overworld_frame(gObjectEventPic_EmeraldMay, 2, 4, 2),
+    overworld_frame(gObjectEventPic_EmeraldMay, 2, 4, 3),
+    overworld_frame(gObjectEventPic_EmeraldMay, 2, 4, 4),
+    overworld_frame(gObjectEventPic_EmeraldMay, 2, 4, 5),
+    overworld_frame(gObjectEventPic_EmeraldMay, 2, 4, 6),
+    overworld_frame(gObjectEventPic_EmeraldMay, 2, 4, 7),
+    overworld_frame(gObjectEventPic_EmeraldMay, 2, 4, 8),
 };
 
 static const struct SpriteFrameImage sPicTable_Gold[] = {

@@ -34,8 +34,8 @@ LittlerootTown_BrendansHouse_1F_OnTransition:
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs::
-	setobjectxyperm LOCALID_MOM, 8, 4
-	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_MOM, 7, 2
+	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_RIGHT
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV::
@@ -65,13 +65,13 @@ LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock::
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_1F_Movement_PushTowardStairs
 	applymovement LOCALID_MOM, LittlerootTown_BrendansHouse_1F_Movement_PushTowardStairs
 	waitmovement 0
-	warp MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F, 7, 1
+	warp MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F, 10, 2
 	waitstate
 	releaseall
 	end
 
 LittlerootTown_BrendansHouse_1F_Movement_PushTowardStairs:
-	walk_up
+	walk_right
 	step_end
 
 LittlerootTown_BrendansHouse_1F_EventScript_EnterHouseMovingIn::
@@ -195,13 +195,13 @@ LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer2::
 	return
 
 LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer0:
-	walk_in_place_faster_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	walk_left
 	walk_in_place_faster_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
 	step_end
 
 LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer1:
@@ -211,9 +211,6 @@ LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer1:
 	step_end
 
 LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer2:
-	walk_in_place_faster_right
-	walk_right
-	walk_in_place_faster_up
 	walk_up
 	walk_up
 	walk_up
@@ -264,7 +261,8 @@ LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs0:
 	walk_right
 	walk_in_place_faster_up
 	walk_up
-	walk_up
+	walk_in_place_faster_right
+	delay_8
 	step_end
 
 LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs1:
@@ -285,6 +283,8 @@ LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs2:
 	walk_in_place_faster_up
 	walk_up
 	walk_up
+	walk_right
+	delay_8
 	step_end
 
 PlayersHouse_1F_Text_IsntItNiceInHere:
