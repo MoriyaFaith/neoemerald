@@ -1389,16 +1389,17 @@ const s8 gNatureStatTable[NUM_NATURES][NUM_NATURE_STATS] =
     [NATURE_QUIRKY]  = {    0,  0,  0,     0,     0},
 };
 
-#include "data/pokemon/tmhm_learnsets.h"
 #include "data/pokemon/trainer_class_lookups.h"
 #include "data/pokemon/cry_ids.h"
 #include "data/pokemon/experience_tables.h"
 
 #if FAITHFUL
+	#include "data/pokemon/tmhm_learnsets_faithful.h"
     #include "data/pokemon/base_stats_faithful.h"
     #include "data/pokemon/level_up_learnsets_faithful.h"
     #include "data/pokemon/evolution_faithful.h"
 #else
+	#include "data/pokemon/tmhm_learnsets.h"
     #include "data/pokemon/base_stats.h"
     #include "data/pokemon/level_up_learnsets.h"
     #include "data/pokemon/evolution.h"
