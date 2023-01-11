@@ -41,6 +41,7 @@ porymap.user.cfg
 *.sym
 *.js
 *.gif
+scripts.inc
 neoemerald-*.png
 neo_modern-*.png
 gTileset_*.png

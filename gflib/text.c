@@ -233,7 +233,7 @@ static const u8 sMenuCursorDimensions[][2] =
     [FONT_EMERALD]      = { 8,  14 },
     [FONT_FRLG_COPY_3]  = { 8,  14 },
     [FONT_BRAILLE]      = { 8,  16 },
-    [FONT_NARROW]       = { 8,  12 },
+    [FONT_NARROW]       = { 8,  16 },
     [FONT_SMALL_NARROW] = { 8,   8 },
     [FONT_BOLD]         = {}
 };
