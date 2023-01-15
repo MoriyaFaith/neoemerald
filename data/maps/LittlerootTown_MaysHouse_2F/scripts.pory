@@ -327,8 +327,6 @@ LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC::
 RivalsHouse_2F_Text_MayWhoAreYou:
 	.string "Huh?\n"
 	.string "Who… Who are you?\p"
-	.string "… … … … … … … …\n"
-	.string "… … … … … … … …\p"
 	.string "Oh, you're {PLAYER}{KUN}.\n"
 	.string "So your move was today.\p"
 	.string "Um… I'm MAY.\n"

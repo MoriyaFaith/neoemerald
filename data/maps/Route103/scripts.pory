@@ -317,14 +317,14 @@ text Route103_Text_MayLetsBattle {
 	"Oh, hi, {PLAYER}{KUN}!\p"
 	"…Oh, I see, my dad gave you\n"
 	"a POKéMON as a gift.\p"
-	"Since we're here, let's have a quick\n"
+	"Since we're here, let's have that\n"
 	"battle!\p"
 	"I'll give you a taste of what being\n"
-	"a TRAINER is like."
+	"a TRAINER is like!"
 }
 
 text Route103_Text_MayDefeated {
-	"Wow! That's great!\n"
+	"Not bad!\n"
 	"{PLAYER}{KUN}, you're pretty good!"
 }
 
@@ -347,6 +347,7 @@ text Route103_Text_BrendanRoute103Pokemon {
 text Route103_Text_BrendanLetsBattle {
 	"Hey, it's {PLAYER}!\p"
 	"…Oh, yeah, Dad gave you a POKéMON.\p"
+	"So much for that offer…\p"
 	"Since we're here, how about a little\n"
 	"battle?\p"
 	"I'll teach you what being a TRAINER's\n"

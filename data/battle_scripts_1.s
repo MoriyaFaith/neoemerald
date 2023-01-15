@@ -4044,36 +4044,36 @@ BattleScript_IntimidatePrevented:
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_IntimidateActivatesLoopIncrement
 	
-BattleScript_PetrifyActivatesEnd3::
-	call BattleScript_PausePetrifyActivates
+BattleScript_DauntActivatesEnd3::
+	call BattleScript_PauseDauntActivates
 	end3
 
-BattleScript_PausePetrifyActivates:
+BattleScript_PauseDauntActivates:
 	pause B_WAIT_TIME_SHORT
-BattleScript_PetrifyActivates::
+BattleScript_DauntActivates::
 	setbyte gBattlerTarget, 0
 	setstatchanger STAT_SPATK, 1, TRUE
-BattleScript_PetrifyActivatesLoop:
-	trygetintimidatetarget BattleScript_PetrifyActivatesReturn
-	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_PetrifyActivatesLoopIncrement
-	jumpifability BS_TARGET, ABILITY_CLEAR_BODY, BattleScript_PetrifyPrevented
-	jumpifability BS_TARGET, ABILITY_WHITE_SMOKE, BattleScript_PetrifyPrevented
-	statbuffchange STAT_BUFF_NOT_PROTECT_AFFECTED | STAT_BUFF_ALLOW_PTR, BattleScript_PetrifyActivatesLoopIncrement
-	jumpifbyte CMP_GREATER_THAN, cMULTISTRING_CHOOSER, 1, BattleScript_PetrifyActivatesLoopIncrement
+BattleScript_DauntActivatesLoop:
+	trygetintimidatetarget BattleScript_DauntActivatesReturn
+	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_DauntActivatesLoopIncrement
+	jumpifability BS_TARGET, ABILITY_CLEAR_BODY, BattleScript_DauntPrevented
+	jumpifability BS_TARGET, ABILITY_WHITE_SMOKE, BattleScript_DauntPrevented
+	statbuffchange STAT_BUFF_NOT_PROTECT_AFFECTED | STAT_BUFF_ALLOW_PTR, BattleScript_DauntActivatesLoopIncrement
+	jumpifbyte CMP_GREATER_THAN, cMULTISTRING_CHOOSER, 1, BattleScript_DauntActivatesLoopIncrement
 	setgraphicalstatchangevalues
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 	printstring STRINGID_PKMNCUTSSPATKWITH
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_PetrifyActivatesLoopIncrement:
+BattleScript_DauntActivatesLoopIncrement:
 	addbyte gBattlerTarget, 1
-	goto BattleScript_PetrifyActivatesLoop
-BattleScript_PetrifyActivatesReturn:
+	goto BattleScript_DauntActivatesLoop
+BattleScript_DauntActivatesReturn:
 	return
-BattleScript_PetrifyPrevented:
+BattleScript_DauntPrevented:
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_PREVENTEDFROMWORKING
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_PetrifyActivatesLoopIncrement
+	goto BattleScript_DauntActivatesLoopIncrement
 	
 BattleScript_DroughtActivates::
 	pause B_WAIT_TIME_SHORT

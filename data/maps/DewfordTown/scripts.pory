@@ -19,20 +19,6 @@ DewfordTown_OnTransition:
 	setflag FLAG_VISITED_DEWFORD_TOWN
 	end
 
-DewfordTown_EventScript_Briney::
-	lock
-	faceplayer
-	goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, DewfordTown_EventScript_ReturnToPetalburgPrompt
-	message DewfordTown_Text_WhereAreWeBound
-	waitmessage
-	multichoicedefault 21, 6, MULTI_BRINEY_ON_DEWFORD, 2, FALSE
-	switch VAR_RESULT
-	case 0, DewfordTown_EventScript_ChoosePetalburg
-	case 1, DewfordTown_EventScript_ChooseSlateport
-	case 2, DewfordTown_EventScript_CancelSailSelect
-	case MULTI_B_PRESSED, DewfordTown_EventScript_CancelSailSelect
-	end
-
 DewfordTown_EventScript_ChoosePetalburg::
 	msgbox DewfordTown_Text_PetalburgWereSettingSail, MSGBOX_DEFAULT
 	closemessage
@@ -802,3 +788,48 @@ DewfordTown_Text_YeahDefinitionOfInRightNow:
 	.string "“{STR_VAR_1}” is the\n"
 	.string "definition of “in” right now.$"
 `
+
+script DewfordTown_EventScript_Briney{
+	lock
+	faceplayer
+	if (flag(FLAG_DELIVERED_STEVEN_LETTER) != TRUE)
+	{
+		goto(DewfordTown_EventScript_ReturnToPetalburgPrompt)
+	}
+	message (DewfordTown_Text_WhereAreWeBound)
+	waitmessage
+	multichoicedefault (21, 6, MULTI_BRINEY_ON_DEWFORD, 2, FALSE)
+	switch (var(VAR_RESULT)){
+		case 0: goto(DewfordTown_EventScript_ChoosePetalburg)
+		case 1: goto(DewfordTown_EventScript_ChooseSlateport)
+		case 2: goto(DewfordTown_EventScript_CancelSailSelect)
+		case MULTI_B_PRESSED: goto(DewfordTown_EventScript_CancelSailSelect)
+	}
+	end
+}
+
+script DewfordTown_EventScript_BrineyDemo{
+	lock
+	faceplayer
+	if (flag(FLAG_DELIVERED_STEVEN_LETTER) != TRUE)
+	{
+		goto(DewfordTown_EventScript_ReturnToPetalburgPrompt)
+	}
+	message (DewfordTown_Text_WhereAreWeBoundDemo)
+	waitmessage
+	multichoicedefault (21, 6, MULTI_BRINEY_DEMO_DEWFORD, 2, FALSE)
+	switch (var(VAR_RESULT)){
+		case 0: goto(DewfordTown_EventScript_ChoosePetalburg)
+		case 1: goto(DewfordTown_EventScript_CancelSailSelect)
+		case MULTI_B_PRESSED: goto(DewfordTown_EventScript_CancelSailSelect)
+	}
+	end
+}
+
+text DewfordTown_Text_WhereAreWeBoundDemo{
+	"MR. BRINEY: Ahoy!\n"
+	"For you, I'll go out to sea anytime!\p"
+	"It's the end of the demo, so you\n"
+	"go further than this, though!\p"
+	"Now, my friend, where are we bound?"
+}

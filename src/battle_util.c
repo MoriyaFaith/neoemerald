@@ -2553,7 +2553,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     gSpecialStatuses[battler].intimidatedMon = 1;
                 }
                 break;
-            case ABILITY_PETRIFY:
+            case ABILITY_DAUNT:
                 if (!(gSpecialStatuses[battler].intimidatedMon))
                 {
                     gStatuses3[battler] |= STATUS3_INTIMIDATE_POKES;
@@ -3008,11 +3008,11 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     effect++;
                     break;
                 }
-                if (gBattleMons[i].ability == ABILITY_PETRIFY && gStatuses3[i] & STATUS3_INTIMIDATE_POKES)
+                if (gBattleMons[i].ability == ABILITY_DAUNT && gStatuses3[i] & STATUS3_INTIMIDATE_POKES)
                 {
-                    gLastUsedAbility = ABILITY_PETRIFY;
+                    gLastUsedAbility = ABILITY_DAUNT;
                     gStatuses3[i] &= ~STATUS3_INTIMIDATE_POKES;
-                    BattleScriptPushCursorAndCallback(BattleScript_PetrifyActivatesEnd3);
+                    BattleScriptPushCursorAndCallback(BattleScript_DauntActivatesEnd3);
                     gBattleStruct->intimidateBattler = i;
                     effect++;
                     break;
@@ -3089,12 +3089,12 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     effect++;
                     break;
                 }
-                if (gBattleMons[i].ability == ABILITY_PETRIFY && (gStatuses3[i] & STATUS3_INTIMIDATE_POKES))
+                if (gBattleMons[i].ability == ABILITY_DAUNT && (gStatuses3[i] & STATUS3_INTIMIDATE_POKES))
                 {
-                    gLastUsedAbility = ABILITY_PETRIFY;
+                    gLastUsedAbility = ABILITY_DAUNT;
                     gStatuses3[i] &= ~STATUS3_INTIMIDATE_POKES;
                     BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_PetrifyActivates;
+                    gBattlescriptCurrInstr = BattleScript_DauntActivates;
                     gBattleStruct->intimidateBattler = i;
                     effect++;
                     break;
