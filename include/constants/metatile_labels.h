@@ -287,16 +287,26 @@
 #define METATILE_LilycoveMuseum_Painting4_Right  0x263
 
 // gTileset_Lilycove
-#define METATILE_Lilycove_Door             0x246
-#define METATILE_Lilycove_Door_DeptStore   0x30C
-#define METATILE_Lilycove_Door_SafariZone  0x32D
-#define METATILE_Lilycove_Door_Wooden      0x28E
-#define METATILE_Lilycove_Wailmer0         0x290
-#define METATILE_Lilycove_Wailmer0_Alt     0x298
-#define METATILE_Lilycove_Wailmer1         0x291
-#define METATILE_Lilycove_Wailmer1_Alt     0x299
-#define METATILE_Lilycove_Wailmer2         0x2A0
-#define METATILE_Lilycove_Wailmer3         0x2A1
+#define METATILE_Lilycove_Door                                     0x246
+#define METATILE_Lilycove_Door_DeptStore                           0x30C
+#define METATILE_Lilycove_Door_SafariZone                          0x32D
+#define METATILE_Lilycove_Door_Wooden                              0x28E
+#define METATILE_Lilycove_METATILE_LilycoveMuseum_Painting0_Left   0x25A
+#define METATILE_Lilycove_METATILE_LilycoveMuseum_Painting0_Right  0x25B
+#define METATILE_Lilycove_METATILE_LilycoveMuseum_Painting1_Left   0x25C
+#define METATILE_Lilycove_METATILE_LilycoveMuseum_Painting1_Right  0x25D
+#define METATILE_Lilycove_METATILE_LilycoveMuseum_Painting2_Left   0x25E
+#define METATILE_Lilycove_METATILE_LilycoveMuseum_Painting2_Right  0x25F
+#define METATILE_Lilycove_METATILE_LilycoveMuseum_Painting3_Left   0x260
+#define METATILE_Lilycove_METATILE_LilycoveMuseum_Painting3_Right  0x261
+#define METATILE_Lilycove_METATILE_LilycoveMuseum_Painting4_Left   0x262
+#define METATILE_Lilycove_METATILE_LilycoveMuseum_Painting4_Right  0x263
+#define METATILE_Lilycove_Wailmer0                                 0x290
+#define METATILE_Lilycove_Wailmer0_Alt                             0x298
+#define METATILE_Lilycove_Wailmer1                                 0x291
+#define METATILE_Lilycove_Wailmer1_Alt                             0x299
+#define METATILE_Lilycove_Wailmer2                                 0x2A0
+#define METATILE_Lilycove_Wailmer3                                 0x2A1
 
 // gTileset_MauvilleGym
 #define METATILE_MauvilleGym_FloorTile        0x21A

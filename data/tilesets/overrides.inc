@@ -4,7 +4,7 @@ gTilesetPalOverrides_General::
 	.byte HOUR_NIGHT    @ start hour (inclusive)
 	.byte HOUR_MORNING  @ end hour (exclusive)
 	.byte 0             @ padding
-	.4byte gTilesetPalOverride_General05
+	.4byte gTilesetPalOverride_General01
 
 	.byte 0xFF
 	.byte 0
