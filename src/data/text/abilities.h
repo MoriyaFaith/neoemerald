@@ -77,7 +77,8 @@ static const u8 sShellArmorDescription[] = _("Blocks critical hits.");
 static const u8 sCacophonyDescription[] = _("Avoids sound-based moves.");
 static const u8 sAirLockDescription[] = _("Negates weather effects.");
 static const u8 sDauntDescription[] = _("Lowers the foe's SP. ATK.");
-static const u8 sMoltenCoreDescription[] = _("WATER attacks evaporate.");
+static const u8 sMoltenCoreDescription[] = _("Makes WATER evaporate.");
+static const u8 sTechnicianDescription[] = _("Boosts weak moves.");
 
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
 {
@@ -161,6 +162,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_AIR_LOCK] = _("AIR LOCK"),
     [ABILITY_DAUNT] = _("DAUNT"),
     [ABILITY_MOLTEN_CORE] = _("MOLTEN CORE"),
+    [ABILITY_TECHNICIAN] = _("TECHNICIAN"),
 };
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
@@ -245,4 +247,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_AIR_LOCK] = sAirLockDescription,
     [ABILITY_DAUNT] = sDauntDescription,
     [ABILITY_MOLTEN_CORE] = sMoltenCoreDescription,
+    [ABILITY_TECHNICIAN] = sTechnicianDescription,
 };

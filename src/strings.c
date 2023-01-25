@@ -1837,3 +1837,7 @@ const u8 gText_CurrentTimeAM[] = _(" {STR_VAR_1}:{STR_VAR_2} A.M.");
 const u8 gText_CurrentTimeAMOff[] = _(" {STR_VAR_1} {STR_VAR_2} A.M.");
 const u8 gText_CurrentTimePM[] = _(" {STR_VAR_1}:{STR_VAR_2} P.M.");
 const u8 gText_CurrentTimePMOff[] = _(" {STR_VAR_1} {STR_VAR_2} P.M.");
+
+const u8 gText_DpadMove[] = _("{DPAD_NONE}MOVE");
+const u8 gText_AOK[] = _("{A_BUTTON}OK");
+const u8 gText_ACancel[] = _("{A_BUTTON}CANCEL");

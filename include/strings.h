@@ -3039,4 +3039,8 @@ extern const u8 gText_CurrentTimeAMOff[];
 extern const u8 gText_CurrentTimePM[];
 extern const u8 gText_CurrentTimePMOff[];
 
+extern const u8 gText_DpadMove[];
+extern const u8 gText_AOK[];
+extern const u8 gText_ACancel[];
+
 #endif // GUARD_STRINGS_H
