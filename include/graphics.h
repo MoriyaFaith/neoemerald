@@ -4068,21 +4068,28 @@ extern const u16 gPokenavRibbonsSummaryBg_Pal[];
 extern const u32 gPokenavRibbonsSummaryBg_Gfx[];
 extern const u32 gPokenavRibbonsSummaryBg_Tilemap[];
 
-extern const u32 gSummaryScreen_Gfx[];
-extern const u32 gSummaryScreen_Pal[];
-extern const u32 gSummaryPage_Info_Tilemap[];
-extern const u32 gSummaryPage_InfoEgg_Tilemap[];
-extern const u32 gSummaryPage_Skills_Tilemap[];
-extern const u32 gSummaryPage_BattleMoves_Tilemap[];
-extern const u32 gSummaryPage_ContestMoves_Tilemap[];
-extern const u16 gPPTextPalette[];
-extern const u32 gMoveTypes_Pal[];
+extern const u32 gSummaryScreenTiles[];
+extern const u32 gSummaryScreenBackgroundTilemap[];
+extern const u32 gSummaryScreenPalette[];
+extern const u32 gSummaryScreenPageInfoTilemap[];
+extern const u32 gSummaryScreenPageInfoEggTilemap[];
+extern const u32 gSummaryScreenPageSkillsTilemap[];
+extern const u32 gSummaryScreenPageMovesTilemap[];
+extern const u32 gSummaryScreenPageMoveDetailsTilemap[];
+extern const u32 gSummaryScreenPageContestMovesTilemap[];
+extern const u32 gSummaryScreenPageContestMoveDetailsTilemap[];
 
-extern const u16 gSummaryScreen_MoveEffect_Battle_Tilemap[];
-extern const u16 gSummaryScreen_MoveEffect_Contest_Tilemap[];
-extern const u16 gSummaryScreen_MoveEffect_Cancel_Tilemap[];
+extern const u32 gSummaryExpBar_Tiles[];
+extern const u32 gSummaryHealthBar_Tiles[];
+extern const u16 gExpBarHighHealthBar_Pal[];
+extern const u16 gExpBarMediumHealthBar_Pal[];
+extern const u16 gExpBarLowHealthBar_Pal[];
+
+extern const u32 gShinyIcon_Gfx[];
+extern const u16 gShinyIcon_Pal[];
 
 extern const u32 gMoveTypes_Gfx[];
+extern const u32 gMoveTypes_Pal[];
 extern const u32 gSummaryMoveSelect_Gfx[];
 extern const u32 gSummaryMoveSelect_Pal[];
 extern const u32 gStatusGfx_Icons[];
@@ -4177,6 +4184,7 @@ extern const u32 gBattleArenaJudgementSymbolsGfx[];
 extern const u32 gBattleArenaJudgementSymbolsPalette[];
 
 extern const u32 gBattleWindowTextPalette[];
+extern const u16 gPPTextPalette[];
 
 extern const u32 gContest2Pal[];
 
