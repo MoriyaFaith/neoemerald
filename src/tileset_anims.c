@@ -315,11 +315,17 @@ const u16 *const gTilesetAnims_Rustboro_WindyWater[] = {
 
 const u16 gTilesetAnims_Rustboro_Fountain_Frame0[] = INCBIN_U16("data/tilesets/secondary/rustboro/anim/fountain/0.4bpp");
 const u16 gTilesetAnims_Rustboro_Fountain_Frame1[] = INCBIN_U16("data/tilesets/secondary/rustboro/anim/fountain/1.4bpp");
+const u16 gTilesetAnims_Rustboro_Fountain_Frame2[] = INCBIN_U16("data/tilesets/secondary/rustboro/anim/fountain/2.4bpp");
+const u16 gTilesetAnims_Rustboro_Fountain_Frame3[] = INCBIN_U16("data/tilesets/secondary/rustboro/anim/fountain/3.4bpp");
+const u16 gTilesetAnims_Rustboro_Fountain_Frame4[] = INCBIN_U16("data/tilesets/secondary/rustboro/anim/fountain/4.4bpp");
 const u16 tileset_anims_space_2[16] = {};
 
 const u16 *const gTilesetAnims_Rustboro_Fountain[] = {
-    gTilesetAnims_Rustboro_Fountain_Frame0,
-    gTilesetAnims_Rustboro_Fountain_Frame1
+	    gTilesetAnims_Rustboro_Fountain_Frame0,
+	    gTilesetAnims_Rustboro_Fountain_Frame1,
+	    gTilesetAnims_Rustboro_Fountain_Frame2,
+	    gTilesetAnims_Rustboro_Fountain_Frame3,
+	    gTilesetAnims_Rustboro_Fountain_Frame4,
 };
 
 const u16 gTilesetAnims_Lavaridge_Cave_Lava_Frame0[] = INCBIN_U16("data/tilesets/secondary/cave/anim/lava/0.4bpp");
@@ -1016,7 +1022,7 @@ static void QueueAnimTiles_Rustboro_WindyWater(u16 timer_div, u8 timer_mod)
 static void QueueAnimTiles_Rustboro_Fountain(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gTilesetAnims_Rustboro_Fountain);
-    AppendTilesetAnimToBuffer(gTilesetAnims_Rustboro_Fountain[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY + 448)), 4 * TILE_SIZE_4BPP);
+    AppendTilesetAnimToBuffer(gTilesetAnims_Rustboro_Fountain[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY + 448)), 6 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_Lavaridge_Lava(u16 timer)

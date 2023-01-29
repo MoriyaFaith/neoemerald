@@ -22,6 +22,11 @@
       "map": "MAP_DEWFORD_TOWN",
       "offset": 60,
       "direction": "down"
+    },
+    {
+      "map": "MAP_DEWFORD_BEACH",
+      "offset": 0,
+      "direction": "down"
     }
   ],
   "object_events": [

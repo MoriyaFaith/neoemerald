@@ -253,6 +253,8 @@ static const u32 sPokeballGlow_Gfx[] = INCBIN_U32("graphics/field_effects/pics/p
 static const u16 sPokeballGlow_Pal[16] = INCBIN_U16("graphics/field_effects/palettes/pokeball_glow.gbapal");
 static const u32 sPokecenterMonitor0_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokecenter_monitor/0.4bpp");
 static const u32 sPokecenterMonitor1_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokecenter_monitor/1.4bpp");
+static const u32 sPokecenterMonitor2_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokecenter_monitor/2.4bpp");
+static const u32 sPokecenterMonitor3_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokecenter_monitor/3.4bpp");
 static const u32 sHofMonitorBig_Gfx[] = INCBIN_U32("graphics/field_effects/pics/hof_monitor_big.4bpp");
 static const u8 sHofMonitorSmall_Gfx[] = INCBIN_U8("graphics/field_effects/pics/hof_monitor_small.4bpp");
 static const u16 sHofMonitor_Pal[16] = INCBIN_U16("graphics/field_effects/palettes/hof_monitor.gbapal");
@@ -398,7 +400,9 @@ static const struct SpriteFrameImage sPicTable_PokeballGlow[] =
 static const struct SpriteFrameImage sPicTable_PokecenterMonitor[] =
 {
     obj_frame_tiles(sPokecenterMonitor0_Gfx),
-    obj_frame_tiles(sPokecenterMonitor1_Gfx)
+    obj_frame_tiles(sPokecenterMonitor1_Gfx),
+    obj_frame_tiles(sPokecenterMonitor2_Gfx),
+    obj_frame_tiles(sPokecenterMonitor3_Gfx)
 };
 
 static const struct SpriteFrameImage sPicTable_HofMonitorBig[] =

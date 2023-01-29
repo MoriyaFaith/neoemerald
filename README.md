@@ -15,6 +15,6 @@ For a full list of changes, [see here.](https://docs.google.com/spreadsheets/d/1
 
 * [pret](https://github.com/pret) for making the decompilation of Pokémon Emerald
 * Farore#1998 - Most Trees
-* Jaizu#0001 and [Alistair](https://www.deviantart.com/thedeadheroalistair) - Several Houses, other tiles from Heliodor
-* Sierraffinity & Pokemon CD Team - CD Protag sprites, DNS
+* Jaizu#0001 and [Alistair](https://www.deviantart.com/thedeadheroalistair) - Large amount of Outdoor tiles
+* Sierraffinity & Pokemon CD Team - CD Protag sprites, Day/Night System
 
