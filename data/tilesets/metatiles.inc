@@ -565,3 +565,11 @@ gMetatiles_AlteringCave::
 	.align 1
 gMetatileAttributes_AlteringCave::
 	.incbin "data/tilesets/secondary/alteringcave/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_Route108::
+	.incbin "data/tilesets/secondary/route_108/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Route108::
+	.incbin "data/tilesets/secondary/route_108/metatile_attributes.bin"

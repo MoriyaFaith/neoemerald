@@ -906,6 +906,7 @@ gTileset_UnionRoom::
 	.4byte gMetatiles_UnionRoom
 	.4byte gMetatileAttributes_UnionRoom
 	.4byte NULL @ animation callback
+	.4byte NULL @ animation callback
 
 	.align 2
 gTileset_AlteringCave::
@@ -917,3 +918,16 @@ gTileset_AlteringCave::
 	.4byte gMetatiles_AlteringCave
 	.4byte gMetatileAttributes_AlteringCave
 	.4byte NULL
+	.4byte NULL @ animation callback
+
+	.align 2
+gTileset_Route108::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0 @ padding
+	.4byte gTilesetTiles_Route108
+	.4byte gTilesetPalettes_Route108
+	.4byte gMetatiles_Route108
+	.4byte gMetatileAttributes_Route108
+	.4byte NULL @ animation callback
+	.4byte NULL @ animation callback

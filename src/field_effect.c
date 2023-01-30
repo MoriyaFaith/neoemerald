@@ -46,7 +46,7 @@ static void PokecenterHealEffect_Init(struct Task *);
 static void PokecenterHealEffect_WaitForBallPlacement(struct Task *);
 static void PokecenterHealEffect_WaitForBallFlashing(struct Task *);
 static void PokecenterHealEffect_WaitForSoundAndEnd(struct Task *);
-static u8 CreatePokecenterMonitorSprite(s16, s16);
+static u8 CreatePokecenterMonitorSprite(s32, s32);
 static void SpriteCB_PokecenterMonitor(struct Sprite *);
 
 static void Task_HallOfFameRecord(u8 taskId);
@@ -251,10 +251,7 @@ static const u16 sNewGameBirch_Pal[16] = INCBIN_U16("graphics/birch_speech/birch
 
 static const u32 sPokeballGlow_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokeball_glow.4bpp");
 static const u16 sPokeballGlow_Pal[16] = INCBIN_U16("graphics/field_effects/palettes/pokeball_glow.gbapal");
-static const u32 sPokecenterMonitor0_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokecenter_monitor/0.4bpp");
-static const u32 sPokecenterMonitor1_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokecenter_monitor/1.4bpp");
-static const u32 sPokecenterMonitor2_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokecenter_monitor/2.4bpp");
-static const u32 sPokecenterMonitor3_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokecenter_monitor/3.4bpp");
+static const u16 sPokecenterMonitor_Gfx[] = INCBIN_U16("graphics/field_effects/pics/pokemoncenter_monitor.4bpp");
 static const u32 sHofMonitorBig_Gfx[] = INCBIN_U32("graphics/field_effects/pics/hof_monitor_big.4bpp");
 static const u8 sHofMonitorSmall_Gfx[] = INCBIN_U8("graphics/field_effects/pics/hof_monitor_small.4bpp");
 static const u16 sHofMonitor_Pal[16] = INCBIN_U16("graphics/field_effects/palettes/hof_monitor.gbapal");
@@ -333,6 +330,20 @@ static const struct OamData sOam_16x16 =
     .paletteNum = 0,
 };
 
+static const struct OamData sOam_16x16FRLG =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(16x16),
+    .x = 0,
+    .size = SPRITE_SIZE(16x16),
+    .tileNum = 0,
+    .priority = 0,
+    .paletteNum = 0,
+};
+
 static const struct SpriteFrameImage sPicTable_NewGameBirch[] =
 {
     obj_frame_tiles(sNewGameBirch_Gfx)
@@ -397,12 +408,11 @@ static const struct SpriteFrameImage sPicTable_PokeballGlow[] =
     obj_frame_tiles(sPokeballGlow_Gfx)
 };
 
-static const struct SpriteFrameImage sPicTable_PokecenterMonitor[] =
-{
-    obj_frame_tiles(sPokecenterMonitor0_Gfx),
-    obj_frame_tiles(sPokecenterMonitor1_Gfx),
-    obj_frame_tiles(sPokecenterMonitor2_Gfx),
-    obj_frame_tiles(sPokecenterMonitor3_Gfx)
+static const struct SpriteFrameImage sPicTable_PokecenterMonitor[] = {
+	{sPokecenterMonitor_Gfx + 0x000, 0x100},
+	{sPokecenterMonitor_Gfx + 0x080, 0x100},
+	{sPokecenterMonitor_Gfx + 0x100, 0x100},
+	{sPokecenterMonitor_Gfx + 0x180, 0x100}
 };
 
 static const struct SpriteFrameImage sPicTable_HofMonitorBig[] =
@@ -424,24 +434,21 @@ static const struct Subsprite sSubsprites_PokecenterMonitor[] =
         .size = SPRITE_SIZE(16x8),
         .tileOffset = 0,
         .priority = 2
-    },
-    {
+    }, {
         .x =  4,
         .y = -8,
         .shape = SPRITE_SHAPE(8x8),
         .size = SPRITE_SIZE(8x8),
         .tileOffset = 2,
         .priority = 2
-    },
-    {
+    }, {
         .x = -12,
         .y =   0,
         .shape = SPRITE_SHAPE(16x8),
         .size = SPRITE_SIZE(16x8),
         .tileOffset = 3,
         .priority = 2
-    },
-    {
+    }, {
         .x = 4,
         .y = 0,
         .shape = SPRITE_SHAPE(8x8),
@@ -499,14 +506,13 @@ const union AnimCmd sAnim_Static[] =
 
 const union AnimCmd sAnim_Flicker[] =
 {
-    ANIMCMD_FRAME(.imageValue = 0, .duration = 16),
-    ANIMCMD_FRAME(.imageValue = 1, .duration = 16),
-    ANIMCMD_FRAME(.imageValue = 0, .duration = 16),
-    ANIMCMD_FRAME(.imageValue = 1, .duration = 16),
-    ANIMCMD_FRAME(.imageValue = 0, .duration = 16),
-    ANIMCMD_FRAME(.imageValue = 1, .duration = 16),
-    ANIMCMD_FRAME(.imageValue = 0, .duration = 16),
-    ANIMCMD_FRAME(.imageValue = 1, .duration = 16),
+    ANIMCMD_FRAME(.imageValue = 1, .duration = 5),
+    ANIMCMD_FRAME(.imageValue = 2, .duration = 5),
+    ANIMCMD_FRAME(.imageValue = 3, .duration = 7),
+    ANIMCMD_FRAME(.imageValue = 2, .duration = 5),
+    ANIMCMD_FRAME(.imageValue = 1, .duration = 5),
+    ANIMCMD_FRAME(.imageValue = 0, .duration = 5),
+    ANIMCMD_LOOP(3),
     ANIMCMD_END
 };
 
@@ -536,8 +542,8 @@ static const struct SpriteTemplate sSpriteTemplate_PokeballGlow =
 static const struct SpriteTemplate sSpriteTemplate_PokecenterMonitor =
 {
     .tileTag = TAG_NONE,
-    .paletteTag = FLDEFF_PAL_TAG_GENERAL_0,
-    .oam = &sOam_16x16,
+    .paletteTag = FLDEFF_PAL_TAG_POKEBALL_GLOW,
+    .oam = &sOam_32x16,
     .anims = sAnims_Flicker,
     .images = sPicTable_PokecenterMonitor,
     .affineAnims = gDummySpriteAffineAnimTable,
@@ -1055,15 +1061,14 @@ bool8 FldEff_PokecenterHeal(void)
     task->tNumMons = nPokemon;
     task->tFirstBallX = 93;
     task->tFirstBallY = 36;
-    task->tMonitorX = 124;
+    task->tMonitorX = 128;
     task->tMonitorY = 24;
     return FALSE;
 }
 
 static void Task_PokecenterHeal(u8 taskId)
 {
-    struct Task *task;
-    task = &gTasks[taskId];
+    struct Task *task = &gTasks[taskId];
     sPokecenterHealEffectFuncs[task->tState](task);
 }
 
@@ -1300,7 +1305,7 @@ static void SpriteCB_PokeballGlow(struct Sprite *sprite)
     }
 }
 
-static u8 CreatePokecenterMonitorSprite(s16 x, s16 y)
+static u8 CreatePokecenterMonitorSprite(s32 x, s32 y)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -1308,7 +1313,6 @@ static u8 CreatePokecenterMonitorSprite(s16 x, s16 y)
     sprite = &gSprites[spriteId];
     sprite->oam.priority = 2;
     sprite->invisible = TRUE;
-    SetSubspriteTables(sprite, &sSubspriteTable_PokecenterMonitor);
     return spriteId;
 }
 
