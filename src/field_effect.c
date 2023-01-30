@@ -506,14 +506,14 @@ const union AnimCmd sAnim_Static[] =
 
 const union AnimCmd sAnim_Flicker[] =
 {
-    ANIMCMD_FRAME(.imageValue = 1, .duration = 5),
-    ANIMCMD_FRAME(.imageValue = 2, .duration = 5),
-    ANIMCMD_FRAME(.imageValue = 3, .duration = 7),
-    ANIMCMD_FRAME(.imageValue = 2, .duration = 5),
-    ANIMCMD_FRAME(.imageValue = 1, .duration = 5),
-    ANIMCMD_FRAME(.imageValue = 0, .duration = 5),
-    ANIMCMD_LOOP(3),
-    ANIMCMD_END
+	ANIMCMD_FRAME(1, 5),
+	ANIMCMD_FRAME(2, 5),
+	ANIMCMD_FRAME(3, 7),
+	ANIMCMD_FRAME(2, 5),
+	ANIMCMD_FRAME(1, 5),
+	ANIMCMD_FRAME(0, 5),
+	ANIMCMD_LOOP(3),
+	ANIMCMD_END
 };
 
 // Flicker on and off, for the Pokéballs / monitors during the PokéCenter heal effect
