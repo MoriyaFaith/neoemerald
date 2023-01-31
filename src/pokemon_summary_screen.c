@@ -1917,9 +1917,12 @@ static void Task_HandleInput_MoveSelect(u8 taskId)
         if (sMonSummaryScreen->maxPageIndex > PSS_PAGE_BATTLE_MOVES)
         {
             if (sMonSummaryScreen->currPageIndex == PSS_PAGE_BATTLE_MOVES)
+            {
                 sMonSummaryScreen->currPageIndex = PSS_PAGE_CONTEST_MOVES;
-            else
+            }
+            else{
                 sMonSummaryScreen->currPageIndex = PSS_PAGE_BATTLE_MOVES;
+            }
 
             DrawPagination(TRUE);
             LZDecompressWram(sPageTilemaps[sMonSummaryScreen->currPageIndex], sMonSummaryScreen->bgTilemapBufferPage);
@@ -3019,6 +3022,7 @@ static void PrintMoveDetails(u16 move)
         }
         else
         {
+        	DestroySplitIcon();
             FillBgTilemapBufferRect(1, TILE_EMPTY_HEART, 6, 7, 8, 1, 5);
             FillBgTilemapBufferRect(1, TILE_EMPTY_HEART_2, 6, 8, 8, 1, 5);
             FillBgTilemapBufferRect(1, TILE_EMPTY_HEART_3, 6, 9, 8, 1, 5);
