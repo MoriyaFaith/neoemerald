@@ -212,10 +212,10 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_CUT] =
     {
-        .effect = EFFECT_HIT,
-        .power = 70,
+        .effect = EFFECT_HIGH_CRITICAL,
+        .power = 60,
         .type = TYPE_BUG,
-        .accuracy = 95,
+        .accuracy = 100,
         .pp = 30,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
@@ -4552,12 +4552,12 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_SHADOW_PUNCH] =
     {
-        .effect = EFFECT_ALWAYS_HIT,
-        .power = 60,
+        .effect = EFFECT_DEFENSE_DOWN_HIT,
+        .power = 80,
         .type = TYPE_GHOST,
         .accuracy = 0,
-        .pp = 20,
-        .secondaryEffectChance = 0,
+        .pp = 15,
+        .secondaryEffectChance = 20,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
@@ -4575,7 +4575,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
-    	.category = MOVE_CATEGORY_SPECIAL,
+    	.category = MOVE_CATEGORY_PHYSICAL,
     },
 
     [MOVE_SKY_UPPERCUT] =

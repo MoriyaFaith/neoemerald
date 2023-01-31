@@ -81,10 +81,10 @@ const u8 gMoveDescription_SwordsDance[] = _(
     "stat.");
 
 const u8 gMoveDescription_Cut[] = _(
-    "A basic attack.\n"
-    "It can be used to\n"
-    "cut down thin trees\n"
-    "and grass.");
+    "Cuts down thin trees\n"
+    "and grass.\n"
+	"It has a high\n"
+	"critical-hit ratio.");
 
 const u8 gMoveDescription_Gust[] = _(
     "Strikes the foe\n"

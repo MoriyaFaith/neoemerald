@@ -3011,16 +3011,16 @@ static void PrintMoveDetails(u16 move)
             else
                 ConvertIntToDecimalStringN(gStringVar1, gBattleMoves[move].power, STR_CONV_MODE_RIGHT_ALIGN, 3);
 
-            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gStringVar1, 57, POWER_AND_ACCURACY_Y, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
+            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gStringVar1, 57, POWER_AND_ACCURACY_Y, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
 
             if (gBattleMoves[move].accuracy == 0)
                 StringCopy(gStringVar1, gText_ThreeDashes);
             else
                 ConvertIntToDecimalStringN(gStringVar1, gBattleMoves[move].accuracy, STR_CONV_MODE_RIGHT_ALIGN, 3);
 
-            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gStringVar1, 57, POWER_AND_ACCURACY_Y_2, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
+            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gStringVar1, 57, POWER_AND_ACCURACY_Y_2, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
 
-            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gMoveDescriptionPointers[move - 1], 7, 50, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
+            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gMoveDescriptionPointers[move - 1], 7, 50, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
         }
         else
         {
@@ -3038,7 +3038,7 @@ static void PrintMoveDetails(u16 move)
             FillBgTilemapBufferRect(1, TILE_FILLED_JAM_HEART, 6, 9, jamCount, 1, 5);
             FillBgTilemapBufferRect(1, TILE_FILLED_JAM_HEART_2, 6, 10, jamCount, 1, 5);
 
-            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gContestEffectDescriptionPointers[gContestMoves[move].effect], 7, 50, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
+            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gContestEffectDescriptionPointers[gContestMoves[move].effect], 7, 50, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
             CopyBgTilemapBufferToVram(1);
         }
 

@@ -165,12 +165,12 @@ static const u8 sRevivalHerbDesc[] = _(
 static const u8 sEtherDesc[] = _(
     "Restores the PP\n"
     "of a selected move\n"
-    "by 5.");
+    "by 10.");
 
 static const u8 sMaxEtherDesc[] = _(
-	"Restores the PP\n"
-	"of a selected move\n"
-	"by 10.");
+    "Fully restores the\n"
+    "PP of a selected\n"
+    "move.");
 
 static const u8 sElixirDesc[] = _(
     "Restores the PP\n"

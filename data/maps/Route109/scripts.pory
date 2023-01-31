@@ -483,7 +483,8 @@ DewfordTown_Text_BrineyLandedInSlateportDeliverGoods:
 	.string "I suppose you're going to visit CAPT.\n"
 	.string "STERN and deliver the DEVON GOODS?\p"
 	.string "Well, I must be heading on back to\n"
-	.string "PETALBURG. You'll be fine on your own,\n"
+	.string "PETALBURG.\p"
+	.string "You'll be fine on your own,\n"
 	.string "with your POKéMON with you.\p"
 	.string "Until we meet again!$"
 

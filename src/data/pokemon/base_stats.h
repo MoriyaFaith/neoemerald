@@ -10650,7 +10650,7 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_MEDITITE] =
     {
-        .baseHP        = 30,
+        .baseHP        = 40,
         .baseAttack    = 40,
         .baseDefense   = 55,
         .baseSpeed     = 60,
@@ -10682,8 +10682,8 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_MEDICHAM] =
     {
-        .baseHP        = 60,
-        .baseAttack    = 60,
+        .baseHP        = 80,
+        .baseAttack    = 70,
         .baseDefense   = 75,
         .baseSpeed     = 80,
         .baseSpAttack  = 60,

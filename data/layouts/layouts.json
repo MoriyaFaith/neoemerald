@@ -965,7 +965,7 @@
       "id": "LAYOUT_RUSTBORO_CITY_HOUSE1",
       "name": "RustboroCity_House1_Layout",
       "width": 13,
-      "height": 8,
+      "height": 9,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/RustboroCity_House1/border.bin",

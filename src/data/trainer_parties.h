@@ -3399,7 +3399,7 @@ static const struct TrainerMonItemCustomMoves sParty_Brawly1[] = {
     .lvl = 17,
     .species = SPECIES_LEDIAN,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_MACH_PUNCH, MOVE_BULK_UP, MOVE_SHADOW_PUNCH, MOVE_BATON_PASS}
+    .moves = {MOVE_MACH_PUNCH, MOVE_BULK_UP, MOVE_SILVER_WIND, MOVE_BATON_PASS}
     },
     {
     .iv = 200,

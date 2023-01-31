@@ -455,10 +455,10 @@ const struct Item gItems[] =
 
     [ITEM_ETHER] =
     {
-        .name = _("ETHER"),
+        .name = _("ELIXIR"),
         .itemId = ITEM_ETHER,
         .price = 500,
-        .holdEffectParam = 10,
+        .holdEffectParam = 5,
         .description = sEtherDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
@@ -469,10 +469,10 @@ const struct Item gItems[] =
 
     [ITEM_MAX_ETHER] =
     {
-        .name = _("MAX ETHER"),
+        .name = _("MEGA ELIXIR"),
         .itemId = ITEM_MAX_ETHER,
         .price = 900,
-        .holdEffectParam = 255,
+        .holdEffectParam = 10,
         .description = sMaxEtherDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
@@ -483,7 +483,7 @@ const struct Item gItems[] =
 
     [ITEM_ELIXIR] =
     {
-        .name = _("ELIXIR"),
+        .name = _("GIGA ELIXIR"),
         .itemId = ITEM_ELIXIR,
         .price = 1300,
         .holdEffectParam = 10,
