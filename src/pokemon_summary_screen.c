@@ -3024,7 +3024,11 @@ static void PrintMoveDetails(u16 move)
         }
         else
         {
-        	DestroySplitIcon();
+
+
+			#if FAITHFUL == 0
+			DestroySplitIcon();
+			#endif
             FillBgTilemapBufferRect(1, TILE_EMPTY_HEART, 6, 7, 8, 1, 5);
             FillBgTilemapBufferRect(1, TILE_EMPTY_HEART_2, 6, 8, 8, 1, 5);
             FillBgTilemapBufferRect(1, TILE_EMPTY_HEART_3, 6, 9, 8, 1, 5);
