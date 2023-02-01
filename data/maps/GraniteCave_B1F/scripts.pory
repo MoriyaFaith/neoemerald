@@ -11,3 +11,25 @@ GraniteCave_B1F_SetHoleWarp:
 	end
 
 `
+
+script GraniteCave_B1F_EventScript_Blart
+{
+	trainerbattle_single (TRAINER_BLART, GraniteCave_B1F_Text_BlartIntro, GraniteCave_B1F_Text_BlartDefeated)
+	msgbox(GraniteCave_B1F_Text_BlartPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text GraniteCave_B1F_Text_BlartIntro
+{
+	"test"
+}
+
+text GraniteCave_B1F_Text_BlartDefeated
+{
+	"test"
+}
+
+text GraniteCave_B1F_Text_BlartPostBattle
+{
+	"test"
+}

@@ -3,3 +3,25 @@ GraniteCave_B2F_MapScripts::
 	.byte 0
 
 `
+
+script GraniteCave_B2F_EventScript_Gerson
+{
+	trainerbattle_single (TRAINER_GERSON, GraniteCave_B2F_Text_GersonIntro, GraniteCave_B2F_Text_GersonDefeated)
+	msgbox(GraniteCave_B2F_Text_GersonPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text GraniteCave_B2F_Text_GersonIntro
+{
+	"test"
+}
+
+text GraniteCave_B2F_Text_GersonDefeated
+{
+	"test"
+}
+
+text GraniteCave_B2F_Text_GersonPostBattle
+{
+	"test"
+}
