@@ -21,15 +21,17 @@ script GraniteCave_B1F_EventScript_Blart
 
 text GraniteCave_B1F_Text_BlartIntro
 {
-	"test"
+	"Hi ho, lad! What brings you here?"
 }
 
 text GraniteCave_B1F_Text_BlartDefeated
 {
-	"test"
+	"You have mighty fine skill for just\n"
+	"A young lad."
 }
 
 text GraniteCave_B1F_Text_BlartPostBattle
 {
-	"test"
+	"You're delivering a letter? Whoever\n"
+	"trusted you to that is in good hands."
 }

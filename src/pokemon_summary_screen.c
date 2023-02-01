@@ -3876,7 +3876,7 @@ static u8 StatColor(s8 natureMod)
     if (natureMod == 0)
     	return PSS_COLOR_BLACK_GRAY_SHADOW;
     else if (natureMod > 0)
-    	return PSS_COLOR_MALE_GENDER_SYMBOL;
-    else
     	return PSS_COLOR_FEMALE_GENDER_SYMBOL;
+    else
+    	return PSS_COLOR_MALE_GENDER_SYMBOL;
 }

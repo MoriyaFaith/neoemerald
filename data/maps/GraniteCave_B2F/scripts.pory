@@ -13,15 +13,18 @@ script GraniteCave_B2F_EventScript_Gerson
 
 text GraniteCave_B2F_Text_GersonIntro
 {
-	"test"
+	"It's so dark in here, I can't see a thing!\n"
+	"Perhaps the light of battle will help!"
 }
 
 text GraniteCave_B2F_Text_GersonDefeated
 {
-	"test"
+	"What a brilliant light!"
 }
 
 text GraniteCave_B2F_Text_GersonPostBattle
 {
-	"test"
+	"While FLASH can light even the\n"
+	"darkest of caves, a smart trainer\p"
+	"can walk in the dark."
 }

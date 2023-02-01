@@ -8389,21 +8389,16 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Clark[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_Blart[] = {
     {
     .iv = 0,
-    .lvl = 12,
-    .species = SPECIES_MACHOP,
-    },
-    {
-    .iv = 0,
-    .lvl = 13,
-    .species = SPECIES_ARON,
+    .lvl = 15,
+    .species = SPECIES_GEODUDE,
     }
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_Gerson[] = {
     {
     .iv = 0,
-    .lvl = 14,
-    .species = SPECIES_GEODUDE,
+    .lvl = 15,
+    .species = SPECIES_SANDSHREW,
     }
 };
 
