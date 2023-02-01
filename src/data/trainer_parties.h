@@ -7839,8 +7839,8 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRustboroTreecko[]
     },
     {
     .iv = 50,
-    .lvl = 15,
-    .species = SPECIES_TORCHIC,
+    .lvl = 16,
+    .species = SPECIES_COMBUSKEN,
     }
 };
 
@@ -7852,8 +7852,8 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRustboroMudkip[] 
     },
     {
     .iv = 50,
-    .lvl = 15,
-    .species = SPECIES_TREECKO,
+    .lvl = 16,
+    .species = SPECIES_GROVYLE,
     }
 };
 
@@ -7935,8 +7935,8 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRustboroTorchic[]
     },
     {
     .iv = 50,
-    .lvl = 15,
-    .species = SPECIES_MUDKIP,
+    .lvl = 16,
+    .species = SPECIES_MARSHTOMP,
     }
 };
 
@@ -7948,8 +7948,8 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MayRustboroMudkip[] = {
     },
 	{
     .iv = 50,
-    .lvl = 15,
-    .species = SPECIES_TREECKO,
+    .lvl = 16,
+    .species = SPECIES_GROVYLE,
     }
 };
 
@@ -10258,8 +10258,8 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MayRustboroTreecko[] = {
     },
     {
     .iv = 50,
-    .lvl = 15,
-    .species = SPECIES_TORCHIC,
+    .lvl = 16,
+    .species = SPECIES_COMBUSKEN,
     }
 };
 
@@ -10271,8 +10271,8 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MayRustboroTorchic[] = {
     },
     {
     .iv = 50,
-    .lvl = 15,
-    .species = SPECIES_MUDKIP,
+    .lvl = 16,
+    .species = SPECIES_MARSHTOMP,
     }
 };
 
