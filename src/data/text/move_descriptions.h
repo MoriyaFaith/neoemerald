@@ -2506,6 +2506,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_FLARE_BLITZ  	- 1] = gMoveDescription_FlareBlitz,
     [MOVE_X_SCISSOR  	- 1] = gMoveDescription_XScissor,
     [MOVE_EARTH_POWER  	- 1] = gMoveDescription_EarthPower,
+    [MOVE_GIGA_IMPACT  	- 1] = gMoveDescription_HyperBeam,
     [MOVE_PSYCHO_CUT  	- 1] = gMoveDescription_PsychoCut,
     [MOVE_IRON_HEAD  	- 1] = gMoveDescription_IronHead,
 };

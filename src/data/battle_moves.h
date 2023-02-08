@@ -896,6 +896,20 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     	.category = MOVE_CATEGORY_SPECIAL,
     },
 
+    [MOVE_GIGA_IMPACT] =
+    {
+        .effect = EFFECT_RECHARGE,
+        .power = 150,
+        .type = TYPE_NORMAL,
+        .accuracy = 90,
+        .pp = 5,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
+    	.category = MOVE_CATEGORY_PHYSICAL,
+    },
+
     [MOVE_PECK] =
     {
         .effect = EFFECT_HIT,

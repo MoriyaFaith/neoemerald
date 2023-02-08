@@ -505,6 +505,14 @@ const struct ContestMove gContestMoves[MOVES_COUNT] =
         .comboMoves = {0},
     },
 
+    [MOVE_GIGA_IMPACT] =
+    {
+        .effect = CONTEST_EFFECT_JAMS_OTHERS_BUT_MISS_ONE_TURN,
+        .contestCategory = CONTEST_CATEGORY_TOUGH,
+        .comboStarterId = 0,
+        .comboMoves = {0},
+    },
+
     [MOVE_PECK] =
     {
         .effect = CONTEST_EFFECT_HIGHLY_APPEALING,

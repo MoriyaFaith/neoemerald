@@ -371,9 +371,11 @@ gBattleAnims_Moves::
 	.4byte Move_WATER_PULSE
 	.4byte Move_DOOM_DESIRE
 	.4byte Move_PSYCHO_BOOST
+	//New Moves
 	.4byte Move_FLARE_BLITZ
 	.4byte Move_X_SCISSOR
 	.4byte Move_EARTH_POWER
+	.4byte Move_GIGA_IMPACT
 	.4byte Move_PSYCHO_CUT
 	.4byte Move_IRON_HEAD
 	.4byte Move_COUNT @ cannot be reached, because last move is Psycho Boost
@@ -869,6 +871,52 @@ Move_DOUBLE_EDGE:
 	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 1, 0, 7
 	waitforvisualfinish
 	end
+
+Move_GIGA_IMPACT:
+	loadspritegfx ANIM_TAG_IMPACT
+	playsewithpan SE_M_SWIFT, SOUND_PAN_ATTACKER
+	createsprite gComplexPaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 2, 4, 2, RGB_WHITE, 10, RGB_BLACK, 0
+	waitforvisualfinish
+	delay 10
+	playsewithpan SE_M_SWAGGER, SOUND_PAN_ATTACKER
+	waitplaysewithpan SE_M_SWAGGER, SOUND_PAN_ATTACKER, 8
+	createvisualtask AnimTask_TranslateMonEllipticalRespectSide, 2, ANIM_ATTACKER, 18, 6, 2, 4
+	waitforvisualfinish
+	createvisualtask AnimTask_IsTargetPlayerSide, 2
+	jumpretfalse GigaImpactOnOpponent
+	goto GigaImpactOnPlayer
+
+GigaImpactContinue:
+	createsprite gSlideMonToOffsetSpriteTemplate, ANIM_ATTACKER, 2, 0, 20, 0, 0, 4
+	delay 3
+	waitforvisualfinish
+	playsewithpan SE_M_MEGA_KICK2, SOUND_PAN_TARGET
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_TARGET, 4, -10, 0, ANIM_TARGET, 0
+	createsprite gSlideMonToOffsetSpriteTemplate, ANIM_ATTACKER, 2, 1, -32, 0, 0, 3
+	waitforvisualfinish
+	createvisualtask AnimTask_RotateMonSpriteToSide, 2, 8, -256, 0, 0
+	createvisualtask AnimTask_RotateMonSpriteToSide, 2, 8, -256, 1, 0
+	createvisualtask AnimTask_ShakeMonInPlace, 2, ANIM_ATTACKER, 4, 0, 12, 1
+	createvisualtask AnimTask_ShakeMonInPlace, 2, ANIM_TARGET, 4, 0, 12, 1
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 2, 16, 0, RGB_WHITE
+	waitforvisualfinish
+	createvisualtask AnimTask_RotateMonSpriteToSide, 2, 8, -256, 0, 1
+	createvisualtask AnimTask_RotateMonSpriteToSide, 2, 8, -256, 1, 1
+	waitforvisualfinish
+	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 5
+	delay 3
+	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 1, 0, 7
+	restorebg
+	waitbgfadein
+	waitforvisualfinish
+	end
+
+GigaImpactOnOpponent:
+	fadetobg BG_IMPACT_OPPONENT
+	goto GigaImpactContinue
+GigaImpactOnPlayer:
+	fadetobg BG_IMPACT_PLAYER
+	goto GigaImpactContinue
 
 Move_POISON_STING:
 	loadspritegfx ANIM_TAG_NEEDLE
