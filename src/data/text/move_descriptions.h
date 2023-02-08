@@ -971,6 +971,12 @@ const u8 gMoveDescription_Slash[] = _(
     "It has a high\n"
     "critical-hit ratio.");
 
+const u8 gMoveDescription_PsychoCut[] = _(
+    "The foe is slashed\n"
+    "with psychic power.\n"
+    "It has a high\n"
+    "critical-hit ratio.");
+
 const u8 gMoveDescription_Substitute[] = _(
     "The user creates a\n"
     "decoy using one-\n"
@@ -1252,6 +1258,12 @@ const u8 gMoveDescription_FuryCutter[] = _(
     "grows stronger on\n"
     "each successive\n"
     "hit.");
+
+const u8 gMoveDescription_XScissor[] = _(
+    "The foe is slashed\n"
+    "by scythes or claws\n"
+    "as if they were a\n"
+    "pair of scissors.");
 
 const u8 gMoveDescription_SteelWing[] = _(
     "The foe is hit with\n"
@@ -2117,6 +2129,12 @@ const u8 gMoveDescription_PsychoBoost[] = _(
     "reduces the user's\n"
     "SP. ATK stat.");
 
+const u8 gMoveDescription_IronHead[] = _(
+    "Slams the target\n"
+    "with its steel head.\n"
+    "it may make the\n"
+    "foe flinch.");
+
 
 const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_POUND         - 1] = gMoveDescription_Pound,
@@ -2473,4 +2491,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_WATER_PULSE   - 1] = gMoveDescription_WaterPulse,
     [MOVE_DOOM_DESIRE   - 1] = gMoveDescription_DoomDesire,
     [MOVE_PSYCHO_BOOST  - 1] = gMoveDescription_PsychoBoost,
+    [MOVE_X_SCISSOR  	- 1] = gMoveDescription_XScissor,
+    [MOVE_PSYCHO_CUT  	- 1] = gMoveDescription_PsychoCut,
+    [MOVE_IRON_HEAD  	- 1] = gMoveDescription_IronHead,
 };

@@ -94,7 +94,7 @@ gTilesetPalOverrides_Lavaridge::
 
 	.align 2
 gTilesetPalOverrides_Slateport::
-	.byte 8             @ palette index
+	.byte 10             @ palette index
 	.byte HOUR_NIGHT    @ start hour (inclusive)
 	.byte HOUR_MORNING  @ end hour (exclusive)
 	.byte 0             @ padding
