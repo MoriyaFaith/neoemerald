@@ -4536,8 +4536,8 @@ static const u16 sVibravaLevelUpLearnset[] = {
 };
 
 static const u16 sFlygonLevelUpLearnset[] = {
-    LEVEL_UP_MOVE(0, MOVE_SIGNAL_BEAM),
-    LEVEL_UP_MOVE(1, MOVE_SIGNAL_BEAM),
+    LEVEL_UP_MOVE(0, MOVE_X_SCISSOR),
+    LEVEL_UP_MOVE(1, MOVE_X_SCISSOR),
     LEVEL_UP_MOVE(1, MOVE_DRAGON_BREATH),
     LEVEL_UP_MOVE(1, MOVE_BITE),
     LEVEL_UP_MOVE(1, MOVE_SAND_ATTACK),

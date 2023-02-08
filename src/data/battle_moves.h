@@ -4468,16 +4468,16 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_METAL_SOUND] =
     {
-        .effect = EFFECT_SPECIAL_DEFENSE_DOWN,
-        .power = 85,
+        .effect = EFFECT_SPECIAL_DEFENSE_DOWN_2,
+        .power = 0,
         .type = TYPE_STEEL,
-        .accuracy = 95,
+        .accuracy = 85,
         .pp = 40,
-        .secondaryEffectChance = 50,
+        .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .flags = FLAG_PROTECT_AFFECTED | FLAG_MAGIC_COAT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
-    	.category = MOVE_CATEGORY_SPECIAL
+    	.category = MOVE_CATEGORY_STATUS,
     },
 
     [MOVE_GRASS_WHISTLE] =
@@ -4970,6 +4970,20 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     	.category = MOVE_CATEGORY_SPECIAL,
     },
 
+    [MOVE_FLARE_BLITZ] =
+    {
+        .effect = EFFECT_DOUBLE_EDGE,
+        .power = 120,
+        .type = TYPE_FIRE,
+        .accuracy = 100,
+        .pp = 15,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
+    	.category = MOVE_CATEGORY_PHYSICAL,
+    },
+
     [MOVE_X_SCISSOR] =
     {
         .effect = EFFECT_HIT,
@@ -4982,6 +4996,20 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .priority = 0,
         .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
     	.category = MOVE_CATEGORY_PHYSICAL,
+    },
+
+    [MOVE_EARTH_POWER] =
+    {
+		.effect = EFFECT_SPECIAL_DEFENSE_DOWN_HIT,
+		.power = 90,
+		.type = TYPE_GROUND,
+		.accuracy = 100,
+		.pp = 10,
+		.secondaryEffectChance = 10,
+		.target = MOVE_TARGET_SELECTED,
+		.priority = 0,
+		.flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+		.category = MOVE_CATEGORY_SPECIAL,
     },
 
     [MOVE_IRON_HEAD] =

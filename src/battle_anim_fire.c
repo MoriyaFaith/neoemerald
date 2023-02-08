@@ -790,6 +790,26 @@ void AnimTask_EruptionLaunchRocks(u8 taskId)
     task->func = AnimTask_EruptionLaunchRocks_Step;
 }
 
+// The above, but for the target. Used for Earth Power
+void AnimTask_EarthPowerLaunchRocks(u8 taskId)
+{
+    struct Task *task = &gTasks[taskId];
+
+    task->data[15] = GetAnimBattlerSpriteId(ANIM_TARGET);
+
+    task->data[0] = 0;
+    task->data[1] = 0;
+    task->data[2] = 0;
+    task->data[3] = 0;
+    task->data[4] = gSprites[task->data[15]].y;
+    task->data[5] = GetBattlerSide(gBattleAnimTarget);
+    task->data[6] = 0;
+
+    PrepareBattlerSpriteForRotScale(task->data[15], ST_OAM_OBJ_NORMAL);
+
+    task->func = AnimTask_EruptionLaunchRocks_Step;
+}
+
 static void AnimTask_EruptionLaunchRocks_Step(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];

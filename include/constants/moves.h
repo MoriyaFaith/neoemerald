@@ -357,17 +357,17 @@
 #define MOVE_DOOM_DESIRE 353
 #define MOVE_PSYCHO_BOOST 354
 //Gen 4 Backports, having their Gen 4 Values
-//#define MOVE_FLARE_BLITZ    394
-#define MOVE_X_SCISSOR 355 //404
-//#define MOVE_BUG_BUZZ       405
-//#define MOVE_EARTH_POWER    414
-//#define MOVE_THUNDER_FANG   422
-//#define MOVE_ICE_FANG       423
-//#define MOVE_FIRE_FANG      424
-#define MOVE_PSYCHO_CUT 356 //427
-//#define MOVE_FLASH_CANNON   430
-#define MOVE_IRON_HEAD 357 //442
+#define MOVE_FLARE_BLITZ 355   //394
+#define MOVE_X_SCISSOR 356 //404
+//#define MOVE_BUG_BUZZ       //405
+#define MOVE_EARTH_POWER    357
+//#define MOVE_THUNDER_FANG   //422
+//#define MOVE_ICE_FANG       //423
+//#define MOVE_FIRE_FANG      //424
+#define MOVE_PSYCHO_CUT 358 //427
+//#define MOVE_FLASH_CANNON   //430
+#define MOVE_IRON_HEAD 359 //442
 
-#define MOVES_COUNT 358
+#define MOVES_COUNT MOVE_IRON_HEAD + 1
 
 #endif  // GUARD_CONSTANTS_MOVES_H

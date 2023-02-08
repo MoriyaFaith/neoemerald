@@ -2833,6 +2833,14 @@ const struct ContestMove gContestMoves[MOVES_COUNT] =
         .comboMoves = {COMBO_STARTER_CALM_MIND},
     },
 
+    [MOVE_FLARE_BLITZ] =
+    {
+        .effect = CONTEST_EFFECT_USER_MORE_EASILY_STARTLED,
+        .contestCategory = CONTEST_CATEGORY_COOL,
+        .comboStarterId = 0,
+        .comboMoves = {0},
+    },
+
     [MOVE_X_SCISSOR] =
     {
         .effect = CONTEST_EFFECT_BETTER_IF_FIRST,
@@ -2840,6 +2848,15 @@ const struct ContestMove gContestMoves[MOVES_COUNT] =
         .comboStarterId = 0,
         .comboMoves = {0},
     },
+
+    [MOVE_EARTH_POWER] =
+    {
+        .effect = CONTEST_EFFECT_BETTER_IF_LAST,
+        .contestCategory = CONTEST_CATEGORY_SMART,
+        .comboStarterId = 0,
+        .comboMoves = {0},
+    },
+
     [MOVE_IRON_HEAD] =
     {
         .effect = CONTEST_EFFECT_BETTER_IF_LAST,
@@ -2847,6 +2864,7 @@ const struct ContestMove gContestMoves[MOVES_COUNT] =
         .comboStarterId = 0,
         .comboMoves = {0},
     },
+
     [MOVE_PSYCHO_CUT] =
     {
         .effect = CONTEST_EFFECT_BETTER_IF_FIRST,

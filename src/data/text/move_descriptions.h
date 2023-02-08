@@ -221,6 +221,12 @@ const u8 gMoveDescription_DoubleEdge[] = _(
     "also hurts the user\n"
     "a little.");
 
+const u8 gMoveDescription_FlareBlitz[] = _(
+    "A reckless, fire-\n"
+    "cloaked tackle that\n"
+    "also hurts the user\n"
+    "a little.");
+
 const u8 gMoveDescription_TailWhip[] = _(
     "The user wags its\n"
     "tail cutely, making\n"
@@ -1264,6 +1270,12 @@ const u8 gMoveDescription_XScissor[] = _(
     "by scythes or claws\n"
     "as if they were a\n"
     "pair of scissors.");
+
+const u8 gMoveDescription_EarthPower[] = _(
+	"The ground under the\n"
+	"foe erupts. It may\n"
+	"also lower the foe's\n"
+	"SP. DEF stat.");
 
 const u8 gMoveDescription_SteelWing[] = _(
     "The foe is hit with\n"
@@ -2491,7 +2503,9 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_WATER_PULSE   - 1] = gMoveDescription_WaterPulse,
     [MOVE_DOOM_DESIRE   - 1] = gMoveDescription_DoomDesire,
     [MOVE_PSYCHO_BOOST  - 1] = gMoveDescription_PsychoBoost,
+    [MOVE_FLARE_BLITZ  	- 1] = gMoveDescription_FlareBlitz,
     [MOVE_X_SCISSOR  	- 1] = gMoveDescription_XScissor,
+    [MOVE_EARTH_POWER  	- 1] = gMoveDescription_EarthPower,
     [MOVE_PSYCHO_CUT  	- 1] = gMoveDescription_PsychoCut,
     [MOVE_IRON_HEAD  	- 1] = gMoveDescription_IronHead,
 };
