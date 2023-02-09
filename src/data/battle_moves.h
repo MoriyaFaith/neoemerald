@@ -140,6 +140,48 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     	.category = MOVE_CATEGORY_PHYSICAL,
     },
 
+    [MOVE_FIRE_FANG] =
+    {
+        .effect = EFFECT_FLINCH_HIT,
+        .power = 80,
+        .type = TYPE_FIRE,
+        .accuracy = 95,
+        .pp = 15,
+        .secondaryEffectChance = 10,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+    	.category = MOVE_CATEGORY_PHYSICAL,
+    },
+
+    [MOVE_ICE_FANG] =
+    {
+        .effect = EFFECT_FLINCH_HIT,
+        .power = 80,
+        .type = TYPE_ICE,
+        .accuracy = 95,
+        .pp = 15,
+        .secondaryEffectChance = 10,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+    	.category = MOVE_CATEGORY_PHYSICAL,
+    },
+
+    [MOVE_THUNDER_FANG] =
+    {
+        .effect = EFFECT_FLINCH_HIT,
+        .power = 80,
+        .type = TYPE_ELECTRIC,
+        .accuracy = 95,
+        .pp = 15,
+        .secondaryEffectChance = 10,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+    	.category = MOVE_CATEGORY_PHYSICAL,
+    },
+
     [MOVE_SCRATCH] =
     {
         .effect = EFFECT_HIT,
@@ -2425,7 +2467,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_FLAME_WHEEL] =
     {
         .effect = EFFECT_THAW_HIT,
-        .power = 70,
+        .power = 60,
         .type = TYPE_FIRE,
         .accuracy = 100,
         .pp = 25,
@@ -2943,7 +2985,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_SPARK] =
     {
         .effect = EFFECT_PARALYZE_HIT,
-        .power = 75,
+        .power = 65,
         .type = TYPE_ELECTRIC,
         .accuracy = 100,
         .pp = 20,
@@ -4791,7 +4833,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_MUD_SHOT] =
     {
         .effect = EFFECT_SPEED_DOWN_HIT,
-        .power = 70,
+        .power = 55,
         .type = TYPE_GROUND,
         .accuracy = 95,
         .pp = 15,
@@ -5017,6 +5059,32 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 		.effect = EFFECT_SPECIAL_DEFENSE_DOWN_HIT,
 		.power = 90,
 		.type = TYPE_GROUND,
+		.accuracy = 100,
+		.pp = 10,
+		.secondaryEffectChance = 10,
+		.target = MOVE_TARGET_SELECTED,
+		.priority = 0,
+		.flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+		.category = MOVE_CATEGORY_SPECIAL,
+    },
+    [MOVE_BUG_BUZZ] =
+    {
+		.effect = EFFECT_SPECIAL_DEFENSE_DOWN_HIT,
+		.power = 90,
+		.type = TYPE_BUG,
+		.accuracy = 100,
+		.pp = 10,
+		.secondaryEffectChance = 10,
+		.target = MOVE_TARGET_SELECTED,
+		.priority = 0,
+		.flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+		.category = MOVE_CATEGORY_SPECIAL,
+    },
+    [MOVE_FLASH_CANNON] =
+    {
+		.effect = EFFECT_SPECIAL_DEFENSE_DOWN_HIT,
+		.power = 90,
+		.type = TYPE_STEEL,
 		.accuracy = 100,
 		.pp = 10,
 		.secondaryEffectChance = 10,

@@ -1277,6 +1277,12 @@ const u8 gMoveDescription_EarthPower[] = _(
 	"also lower the foe's\n"
 	"SP. DEF stat.");
 
+const u8 gMoveDescription_FlashCannon[] = _(
+	"The foe is struck with\n"
+	"light energy. It may\n"
+	"also lower the foe's\n"
+	"SP. DEF stat.");
+
 const u8 gMoveDescription_SteelWing[] = _(
     "The foe is hit with\n"
     "wings of steel.\n"
@@ -2507,6 +2513,10 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_X_SCISSOR  	- 1] = gMoveDescription_XScissor,
     [MOVE_EARTH_POWER  	- 1] = gMoveDescription_EarthPower,
     [MOVE_GIGA_IMPACT  	- 1] = gMoveDescription_HyperBeam,
+    [MOVE_THUNDER_FANG  - 1] = gMoveDescription_Bite,
+    [MOVE_ICE_FANG  	- 1] = gMoveDescription_Bite,
+    [MOVE_FIRE_FANG  	- 1] = gMoveDescription_Bite,
     [MOVE_PSYCHO_CUT  	- 1] = gMoveDescription_PsychoCut,
+    [MOVE_FLASH_CANNON 	- 1] = gMoveDescription_FlashCannon,
     [MOVE_IRON_HEAD  	- 1] = gMoveDescription_IronHead,
 };

@@ -359,15 +359,15 @@
 //Gen 4 Backports, having their Gen 4 Values
 #define MOVE_FLARE_BLITZ 355   //394
 #define MOVE_X_SCISSOR 356 //404
-//#define MOVE_BUG_BUZZ       //405
-#define MOVE_EARTH_POWER 357 //414
-#define MOVE_GIGA_IMPACT 358 //416
-//#define MOVE_THUNDER_FANG   //422
-//#define MOVE_ICE_FANG       //423
-//#define MOVE_FIRE_FANG      //424
-#define MOVE_PSYCHO_CUT 359 //427
-//#define MOVE_FLASH_CANNON   //430
-#define MOVE_IRON_HEAD 360 //442
+#define MOVE_BUG_BUZZ  357  //405
+#define MOVE_EARTH_POWER 358 //414
+#define MOVE_GIGA_IMPACT 359 //416
+#define MOVE_THUNDER_FANG 360 //422
+#define MOVE_ICE_FANG 361 //423
+#define MOVE_FIRE_FANG 362 //424
+#define MOVE_PSYCHO_CUT 363 //427
+#define MOVE_FLASH_CANNON 364   //430
+#define MOVE_IRON_HEAD 365 //442
 
 #define MOVES_COUNT MOVE_IRON_HEAD + 1
 
