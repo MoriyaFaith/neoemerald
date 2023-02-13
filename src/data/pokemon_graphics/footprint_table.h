@@ -395,6 +395,7 @@ const u8 *const gMonFootprintTable[] =
     [SPECIES_RALTS] = gMonFootprint_Ralts,
     [SPECIES_KIRLIA] = gMonFootprint_Kirlia,
     [SPECIES_GARDEVOIR] = gMonFootprint_Gardevoir,
+    [SPECIES_GALLADE] = gMonFootprint_Gallade,
     [SPECIES_BAGON] = gMonFootprint_Bagon,
     [SPECIES_SHELGON] = gMonFootprint_Shelgon,
     [SPECIES_SALAMENCE] = gMonFootprint_Salamence,

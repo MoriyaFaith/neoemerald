@@ -5498,12 +5498,12 @@ static const u16 sSlotMatchFlags[] = {
 
 static const u16 sSlotPayouts[] = {
     [MATCH_CHERRY]        = 2,
-    [MATCH_TOPBOT_CHERRY] = 4,
+    [MATCH_TOPBOT_CHERRY] = 6,
     [MATCH_REPLAY]        = 0,
-    [MATCH_LOTAD]         = 6,
-    [MATCH_AZURILL]       = 12,
-    [MATCH_POWER]         = 3,
-    [MATCH_MIXED_7]       = 90,
+    [MATCH_LOTAD]         = 8,
+    [MATCH_AZURILL]       = 15,
+    [MATCH_POWER]         = 15,
+    [MATCH_MIXED_7]       = 100,
     [MATCH_RED_7]         = 300,
     [MATCH_BLUE_7]        = 300
 };

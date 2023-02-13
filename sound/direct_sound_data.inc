@@ -1583,6 +1583,10 @@ Cry_Gardevoir::
 	.incbin "sound/direct_sound_samples/cries/gardevoir.bin"
 
 	.align 2
+Cry_Gallade::
+	.incbin "sound/direct_sound_samples/cries/gallade.bin"
+
+	.align 2
 Cry_Slakoth::
 	.incbin "sound/direct_sound_samples/cries/slakoth.bin"
 

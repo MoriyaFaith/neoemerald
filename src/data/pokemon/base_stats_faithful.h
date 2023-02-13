@@ -11896,6 +11896,38 @@ const struct BaseStats gBaseStats[] =
         .noFlip = FALSE,
     },
 
+	[SPECIES_GALLADE] =
+    {
+        .baseHP        = 68,
+        .baseAttack    = 125,
+        .baseDefense   = 65,
+        .baseSpeed     = 80,
+        .baseSpAttack  = 65,
+        .baseSpDefense = 115,
+        .type1 = TYPE_PSYCHIC,
+        .type2 = TYPE_FIGHTING,
+        .catchRate = 45,
+        .expYield = 208,
+        .evYield_HP        = 0,
+        .evYield_Attack    = 0,
+        .evYield_Defense   = 0,
+        .evYield_Speed     = 0,
+        .evYield_SpAttack  = 3,
+        .evYield_SpDefense = 0,
+        .item1 = ITEM_NONE,
+        .item2 = ITEM_NONE,
+        .genderRatio = MON_MALE,
+        .eggCycles = 20,
+        .friendship = 35,
+        .growthRate = GROWTH_SLOW,
+        .eggGroup1 = EGG_GROUP_AMORPHOUS,
+        .eggGroup2 = EGG_GROUP_AMORPHOUS,
+        .abilities = {ABILITY_INNER_FOCUS, ABILITY_INNER_FOCUS},
+        .safariZoneFleeRate = 0,
+        .bodyColor = BODY_COLOR_WHITE,
+        .noFlip = FALSE,
+    },
+
     [SPECIES_BAGON] =
     {
         .baseHP        = 45,

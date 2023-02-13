@@ -659,8 +659,8 @@
 #define TRAINER_ASHLEY                      655
 #define TRAINER_WALLY_MAUVILLE              656
 #define TRAINER_WALLY_PETALBURG             657
-#define TRAINER_WALLY_VR_3                  658
-#define TRAINER_WALLY_VR_4                  659
+#define TRAINER_WALLY_JAGGED_PASS           658
+#define TRAINER_WALLY_ROUTE_120             659
 #define TRAINER_WALLY_VR_5                  660
 #define TRAINER_BRENDAN_LILYCOVE_MUDKIP     661
 #define TRAINER_BRENDAN_LILYCOVE_TREECKO    662

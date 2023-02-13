@@ -1696,6 +1696,12 @@ const u8 gGardevoirPokedexText[] = _(
     "psychic power. It will give its life to\n"
     "protect its TRAINER.");
 
+const u8 gGalladePokedexText[] = _(
+    "When protecting someone, it extends its\n"
+    "elbows as if they were swords and fights\n"
+    "savagely. Its attacks burst out first,\n"
+    "fast, and fierce.");
+
 const u8 gSurskitPokedexText[] = _(
     "They gather on puddles after evening\n"
     "downpours, gliding across the surface\n"

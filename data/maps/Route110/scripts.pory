@@ -405,6 +405,7 @@ Route110_EventScript_PlayBrendanMusic::
 
 Route110_EventScript_MayBattle::
 	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+    setvar VAR_MUGSHOT_ID, MUGSHOT_MAY
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_MayBattleTreecko
 	case 1, Route110_EventScript_MayBattleTorchic
@@ -435,6 +436,7 @@ Route110_EventScript_MayDefeated::
 
 Route110_EventScript_BrendanBattle::
 	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+    setvar VAR_MUGSHOT_ID, MUGSHOT_BRENDAN
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_BrendanBattleTreecko
 	case 1, Route110_EventScript_BrendanBattleTorchic

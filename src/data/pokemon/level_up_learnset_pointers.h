@@ -395,6 +395,7 @@ const u16 *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_RALTS] = sRaltsLevelUpLearnset,
     [SPECIES_KIRLIA] = sKirliaLevelUpLearnset,
     [SPECIES_GARDEVOIR] = sGardevoirLevelUpLearnset,
+    [SPECIES_GALLADE] = sGalladeLevelUpLearnset,
     [SPECIES_BAGON] = sBagonLevelUpLearnset,
     [SPECIES_SHELGON] = sShelgonLevelUpLearnset,
     [SPECIES_SALAMENCE] = sSalamenceLevelUpLearnset,

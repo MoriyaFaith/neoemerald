@@ -4332,6 +4332,13 @@ static const union AnimCmd sAnim_GARDEVOIR_1[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd sAnim_GALLADE_1[] =
+{
+    ANIMCMD_FRAME(1, 40),
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
 static const union AnimCmd sAnim_BAGON_1[] =
 {
     ANIMCMD_FRAME(0, 15),
@@ -6724,6 +6731,11 @@ static const union AnimCmd *const sAnims_GARDEVOIR[] ={
     sAnim_GARDEVOIR_1,
 };
 
+static const union AnimCmd *const sAnims_GALLADE[] ={
+    sAnim_GeneralFrame0,
+    sAnim_GALLADE_1,
+};
+
 static const union AnimCmd *const sAnims_BAGON[] ={
     sAnim_GeneralFrame0,
     sAnim_BAGON_1,
@@ -7375,6 +7387,7 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[] =
     ANIM_CMD(JIRACHI),
     ANIM_CMD(DEOXYS),
     ANIM_CMD(CHIMECHO),
+    ANIM_CMD(GALLADE),
     ANIM_CMD(EGG),
     ANIM_CMD(UNOWN_B),
     ANIM_CMD(UNOWN_C),

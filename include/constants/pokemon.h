@@ -329,6 +329,8 @@
 #define EVO_LEVEL_NINJASK    13 // Pokémon reaches the specified level (special value for Ninjask)
 #define EVO_LEVEL_SHEDINJA   14 // Pokémon reaches the specified level (special value for Shedinja)
 #define EVO_BEAUTY           15 // Pokémon levels up with beauty ≥ specified value
+#define EVO_ITEM_MALE        16 // specified item is used on Pokémon (Male only for Gallade)
+#define EVO_ITEM_FEMALE      17 // specified item is used on Pokémon (Female only for Froslass)
 
 #define EVOS_PER_MON 5
 

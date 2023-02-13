@@ -1975,6 +1975,11 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = 0x77,
         .y_offset = 4,
     },
+    [SPECIES_GALLADE] =
+    {
+        .size = 0x77,
+        .y_offset = 6,
+    },
     [SPECIES_BAGON] =
     {
         .size = 0x66,

@@ -1975,6 +1975,11 @@ const struct MonCoords gMonFrontPicCoords[] =
         .size = 0x78,
         .y_offset = 1,
     },
+    [SPECIES_GALLADE] =
+    {
+        .size = 0x78,
+        .y_offset = 1,
+    },
     [SPECIES_BAGON] =
     {
         .size = 0x56,

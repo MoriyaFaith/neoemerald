@@ -147,6 +147,7 @@ Route104_EventScript_MayAskToBattle::
 
 Route104_EventScript_BattleMay::
 	msgbox Route104_Text_MayIntro, MSGBOX_DEFAULT
+    setvar VAR_MUGSHOT_ID, MUGSHOT_MAY
 	switch VAR_STARTER_MON
 	case 0, Route104_EventScript_BattleMayTreecko
 	case 1, Route104_EventScript_BattleMayTorchic
@@ -220,6 +221,7 @@ Route104_EventScript_BrendanAskToBattle::
 
 Route104_EventScript_BattleBrendan::
 	msgbox Route104_Text_BrendanIntro, MSGBOX_DEFAULT
+    setvar VAR_MUGSHOT_ID, MUGSHOT_BRENDAN
 	switch VAR_STARTER_MON
 	case 0, Route104_EventScript_BattleBrendanTreecko
 	case 1, Route104_EventScript_BattleBrendanTorchic

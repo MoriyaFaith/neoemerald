@@ -1,5 +1,6 @@
 raw `
 .set LOCALID_HIDEOUT_GUARD, 5
+.set LOCALID_WALLY, 8
 
 JaggedPass_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, JaggedPass_OnResume
@@ -9,7 +10,7 @@ JaggedPass_MapScripts::
 
 JaggedPass_OnResume:
 	setstepcallback STEP_CB_ASH
-	call_if_eq VAR_JAGGED_PASS_STATE, 0, JaggedPass_EventScript_CheckHasMagmaEmblem
+	call_if_eq VAR_JAGGED_PASS_STATE, 1, JaggedPass_EventScript_CheckHasMagmaEmblem
 	end
 
 JaggedPass_EventScript_CheckHasMagmaEmblem::
@@ -18,7 +19,7 @@ JaggedPass_EventScript_CheckHasMagmaEmblem::
 	return
 
 JaggedPass_EventScript_SetReadyToOpenHideout::
-	setvar VAR_JAGGED_PASS_STATE, 1
+	setvar VAR_JAGGED_PASS_STATE, 2
 	return
 
 JaggedPass_OnTransition:
@@ -31,6 +32,7 @@ JaggedPass_EventScript_SetWeatherAsh::
 	return
 
 JaggedPass_OnLoad:
+	goto_if_le VAR_JAGGED_PASS_STATE, 0, JaggedPass_EventScript_ConcealHideoutEntrance
 	goto_if_le VAR_JAGGED_PASS_STATE, 1, JaggedPass_EventScript_ConcealHideoutEntrance
 	end
 
@@ -60,7 +62,7 @@ JaggedPass_EventScript_OpenMagmaHideout::
 	setmetatile 16, 18, METATILE_Lavaridge_CaveEntrance_Bottom, FALSE
 	special DrawWholeMapView
 	delay 30
-	setvar VAR_JAGGED_PASS_STATE, 2
+	setvar VAR_JAGGED_PASS_STATE, 3
 	waitse
 	releaseall
 	end
@@ -268,3 +270,73 @@ JaggedPass_Text_AutumnPostBattle:
 	.string "a little up the hill from here?$"
 
 `
+
+script JaggedPass_EventScript_WallyTrigger1{
+	lockall
+	setobjectxyperm(LOCALID_WALLY, 14, 44)
+	applymovement(LOCALID_WALLY, JaggedPass_Movement_WallyApproachPlayer1)
+	waitmovement(0)
+	setvar(VAR_0x8009, 1)
+	goto(JaggedPass_EventScript_WallyBattle)
+	end
+}
+script JaggedPass_EventScript_WallyTrigger2{
+	lockall
+	setobjectxyperm(LOCALID_WALLY, 14, 44)
+	applymovement(LOCALID_WALLY, JaggedPass_Movement_WallyApproachPlayer2)
+	waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+	waitmovement(0)
+	setvar(VAR_0x8009, 1)
+	goto(JaggedPass_EventScript_WallyBattle)
+	end
+}
+script JaggedPass_EventScript_WallyBattle{
+	msgbox(JaggedPass_Text_WallyIntro, MSGBOX_DEFAULT)
+    setvar(VAR_MUGSHOT_ID, MUGSHOT_WALLY)
+	trainerbattle_no_intro(TRAINER_WALLY_JAGGED_PASS, JaggedPass_Text_WallyDefeat)
+	msgbox(JaggedPass_Text_WallyPostBattle, MSGBOX_DEFAULT)
+	applymovement(LOCALID_WALLY, JaggedPass_Movement_WallyLeave)
+	removeobject(LOCALID_WALLY)
+	setflag(FLAG_DEFEATED_WALLY_JAGGED_PASS)
+	setvar(VAR_JAGGED_PASS_STATE, 1)
+	return
+}
+text JaggedPass_Text_WallyIntro{
+	"WALLY: Hi! {PLAYER}!\p"
+	"I bet you're surprised to see me here!\p"
+
+	"I decided to go out on my own since we\n"
+	"last met. The ash barely bothers me now!\p"
+
+	"I've started collecting GYM BADGES just\n"
+	"like you, too. I already have two!\p"
+
+	"Let's battle! I want to see how much\n"
+	"stronger I've become!"
+}
+text JaggedPass_Text_WallyDefeat{
+	"WALLY: Wow! I still have a lot to learn!"
+}
+text JaggedPass_Text_WallyPostBattle{
+	"WALLY: …{PLAYER}, You're really good at\n"
+	"battling.\p"
+
+	"NORMAN's your DAD, right? No wonder\n"
+	"you're so strong!\p"
+
+	"I have to head off to RUSTBORO now\n"
+	"to get more BADGES.\p"
+
+	"See you around, {PLAYER}!"
+}
+movement JaggedPass_Movement_WallyApproachPlayer1{
+	walk_up * 3
+}
+movement JaggedPass_Movement_WallyApproachPlayer2{
+	walk_up * 4
+	face_right
+}
+movement JaggedPass_Movement_WallyLeave{
+	walk_down * 4
+}
