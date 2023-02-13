@@ -5302,12 +5302,12 @@ static const s16 sInitialReelPositions[NUM_REELS][2] = {
 };
 
 static const u8 sSpecialDrawOdds[NUM_SLOT_MACHINE_IDS][MAX_BET] = {
-    [SLOT_MACHINE_UNLUCKIEST] = {1, 1, 12},
-    [SLOT_MACHINE_UNLUCKIER]  = {1, 1, 14},
-    [SLOT_MACHINE_UNLUCKY]    = {2, 2, 14},
-    [SLOT_MACHINE_LUCKY]      = {2, 2, 14},
-    [SLOT_MACHINE_LUCKIER]    = {2, 3, 16},
-    [SLOT_MACHINE_LUCKIEST]   = {3, 3, 16}
+    [SLOT_MACHINE_UNLUCKIEST] = {2, 2, 24},
+    [SLOT_MACHINE_UNLUCKIER]  = {2, 2, 28},
+    [SLOT_MACHINE_UNLUCKY]    = {4, 4, 28},
+    [SLOT_MACHINE_LUCKY]      = {4, 4, 28},
+    [SLOT_MACHINE_LUCKIER]    = {4, 6, 32},
+    [SLOT_MACHINE_LUCKIEST]   = {6, 6, 32}
 };
 
 static const u8 sBiasProbabilities_Special[][NUM_SLOT_MACHINE_IDS] = {
@@ -5499,7 +5499,7 @@ static const u16 sSlotMatchFlags[] = {
 static const u16 sSlotPayouts[] = {
     [MATCH_CHERRY]        = 2,
     [MATCH_TOPBOT_CHERRY] = 6,
-    [MATCH_REPLAY]        = 0,
+    [MATCH_REPLAY]        = 15,
     [MATCH_LOTAD]         = 8,
     [MATCH_AZURILL]       = 15,
     [MATCH_POWER]         = 15,
