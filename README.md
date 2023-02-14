@@ -2,6 +2,14 @@
 
 This is a ROM hack based on the [decompilation of Pokémon Emerald](https://github.com/pret/pokeemerald).
 
+It changes the following:
+* Updates overworld graphics to FRLG's style
+* Changes the types, stats, and abilities of several Pokemon to increase the overall viability of Pokémon
+* Trainer parties have been altered in order to increase difficulty
+* Extra Trainers and areas have been added to the region
+* Moves and Evolutions from Generation 4 have been added
+* Increased Slot Machine Luck
+
 It builds the following ROMs:
 
 * **neoemerald.gba** - Main Game
