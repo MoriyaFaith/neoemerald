@@ -108,6 +108,7 @@ PetalburgCity_Gym_Movement_WallyExitGym:
 	walk_down
 	walk_down
 	walk_left
+	walk_left
 	face_down
 	delay_16
 	step_end

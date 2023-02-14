@@ -273,7 +273,15 @@ JaggedPass_Text_AutumnPostBattle:
 
 script JaggedPass_EventScript_WallyTrigger1{
 	lockall
-	setobjectxyperm(LOCALID_WALLY, 14, 44)
+	addobject(LOCALID_WALLY)
+	playbgm(MUS_ENCOUNTER_MAY, TRUE)
+	playse(SE_EXIT)
+	applymovement(LOCALID_WALLY, Common_Movement_FaceUp) //Just to make sure he faces up
+	waitmovement(0)
+	applymovement(LOCALID_WALLY, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(LOCALID_WALLY, Common_Movement_Delay48)
+	waitmovement(0)
 	applymovement(LOCALID_WALLY, JaggedPass_Movement_WallyApproachPlayer1)
 	waitmovement(0)
 	setvar(VAR_0x8009, 1)
@@ -282,10 +290,16 @@ script JaggedPass_EventScript_WallyTrigger1{
 }
 script JaggedPass_EventScript_WallyTrigger2{
 	lockall
-	setobjectxyperm(LOCALID_WALLY, 14, 44)
-	applymovement(LOCALID_WALLY, JaggedPass_Movement_WallyApproachPlayer2)
+	addobject(LOCALID_WALLY)
+	playbgm(MUS_ENCOUNTER_MAY, TRUE)
+	playse(SE_EXIT)
+	applymovement(LOCALID_WALLY, Common_Movement_FaceUp) //Just to make sure he faces up
 	waitmovement(0)
-	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+	applymovement(LOCALID_WALLY, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(LOCALID_WALLY, Common_Movement_Delay48)
+	waitmovement(0)
+	applymovement(LOCALID_WALLY, JaggedPass_Movement_WallyApproachPlayer2)
 	waitmovement(0)
 	setvar(VAR_0x8009, 1)
 	goto(JaggedPass_EventScript_WallyBattle)
@@ -296,10 +310,15 @@ script JaggedPass_EventScript_WallyBattle{
     setvar(VAR_MUGSHOT_ID, MUGSHOT_WALLY)
 	trainerbattle_no_intro(TRAINER_WALLY_JAGGED_PASS, JaggedPass_Text_WallyDefeat)
 	msgbox(JaggedPass_Text_WallyPostBattle, MSGBOX_DEFAULT)
+	closemessage
 	applymovement(LOCALID_WALLY, JaggedPass_Movement_WallyLeave)
+	waitmovement(0)
+	playse(SE_EXIT)
 	removeobject(LOCALID_WALLY)
+	fadedefaultbgm
 	setflag(FLAG_DEFEATED_WALLY_JAGGED_PASS)
 	setvar(VAR_JAGGED_PASS_STATE, 1)
+	releaseall
 	return
 }
 text JaggedPass_Text_WallyIntro{
@@ -331,12 +350,16 @@ text JaggedPass_Text_WallyPostBattle{
 	"See you around, {PLAYER}!"
 }
 movement JaggedPass_Movement_WallyApproachPlayer1{
+	delay_16
 	walk_up * 3
 }
 movement JaggedPass_Movement_WallyApproachPlayer2{
-	walk_up * 4
-	face_right
+	delay_16
+	walk_up * 3
+	walk_right
+	face_up
 }
 movement JaggedPass_Movement_WallyLeave{
-	walk_down * 4
+	walk_down * 3
+	delay_16
 }

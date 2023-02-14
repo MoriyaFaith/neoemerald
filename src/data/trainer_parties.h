@@ -7909,22 +7909,22 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntWeatherInst5[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_TabithaMtChimney[] = {
     {
     .iv = 50,
-    .lvl = 18,
+    .lvl = 21,
     .species = SPECIES_NUMEL,
     },
     {
     .iv = 50,
-    .lvl = 20,
+    .lvl = 23,
     .species = SPECIES_POOCHYENA,
     },
     {
     .iv = 50,
-    .lvl = 22,
+    .lvl = 24,
     .species = SPECIES_NUMEL,
     },
     {
     .iv = 50,
-    .lvl = 22,
+    .lvl = 24,
     .species = SPECIES_GOLBAT,
     }
 };
@@ -8794,12 +8794,18 @@ static const struct TrainerMonNoItemDefaultMoves sParty_WallyPetalburg[] = {
 };
 
 static const struct TrainerMonNoItemCustomMoves sParty_WallyJaggedPass[] = {
-    {
-    .iv = 100,
-    .lvl = 24,
-    .species = SPECIES_ROSELIA,
-    .moves = {MOVE_MAGICAL_LEAF, MOVE_LEECH_SEED, MOVE_STUN_SPORE, MOVE_SLUDGE}
-    },
+	{
+	.iv = 100,
+	.lvl = 24,
+	.species = SPECIES_ROSELIA,
+	.moves = {MOVE_MAGICAL_LEAF, MOVE_LEECH_SEED, MOVE_STUN_SPORE, MOVE_SLUDGE}
+	},
+	{
+	.iv = 100,
+	.lvl = 24,
+	.species = SPECIES_LARVITAR,
+	.moves = {MOVE_ROCK_SLIDE, MOVE_THRASH, MOVE_SCARY_FACE, MOVE_SCREECH}
+	},
     {
     .iv = 100,
     .lvl = 25,

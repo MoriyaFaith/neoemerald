@@ -2,7 +2,7 @@
   "id": "MAP_JAGGED_PASS",
   "name": "JaggedPass",
   "layout": "LAYOUT_JAGGED_PASS",
-  "music": "MUS_PETALBURG_WOODS",
+  "music": "MUS_ROUTE113",
   "region_map_section": "MAPSEC_JAGGED_PASS",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -107,16 +107,16 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WALLY",
-      "x": 0,
-      "y": 49,
+      "x": 14,
+      "y": 44,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "0x0",
+      "flag": "FLAG_DEFEATED_WALLY_MAUVILLE"
     }
   ],
   "warp_events": [
