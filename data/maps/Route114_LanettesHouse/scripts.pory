@@ -10,9 +10,49 @@ Route114_LanettesHouse_OnTransition:
 Route114_LanettesHouse_EventScript_Lanette::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_DOLL_LANETTE, Route114_LanettesHouse_EventScript_OfferAdvice
+	goto_if_set FLAG_OBTAINED_EEVEE_FROM_LANETTE, Route114_LanettesHouse_EventScript_OfferAdvice
 	setflag FLAG_SYS_PC_LANETTE
 	msgbox Route114_LanettesHouse_Text_EverythingClutteredKeepThis, MSGBOX_DEFAULT
+	setvar VAR_TEMP_1, SPECIES_EEVEE
+	givemon SPECIES_EEVEE, 20, ITEM_NONE
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, Route114_LanettesHouse_EventScript_ReceiveEeveeParty
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, Route114_LanettesHouse_EventScript_ReceiveEeveePC
+	goto Common_EventScript_NoMoreRoomForPokemon
+	end
+
+Route114_LanettesHouse_EventScript_ReceiveEeveeParty::
+	call Route114_LanettesHouse_EventScript_ReceivedEeveeFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	setflag FLAG_OBTAINED_EEVEE_FROM_LANETTE
+	release
+	end
+
+Route114_LanettesHouse_EventScript_ReceiveEeveePC::
+	call Route114_LanettesHouse_EventScript_ReceivedEeveeFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route114_LanettesHouse_EventScript_SendEeveeToPC
+	call Common_EventScript_NameReceivedBoxMon
+	goto Route114_LanettesHouse_EventScript_SendEeveeToPC
+	setflag FLAG_OBTAINED_EEVEE_FROM_LANETTE
+	release
+	end
+
+Route114_LanettesHouse_EventScript_SendEeveeToPC::
+	call Common_EventScript_TransferredToPC
+	end
+
+Route114_LanettesHouse_EventScript_ReceivedEeveeFanfare::
+	playfanfare MUS_OBTAIN_ITEM
+	message Route114_LanettesHouse_Text_PlayerReceivedEevee
+	waitmessage
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_EEVEE
+	return
+
+
+Route114_LanettesHouse_EventScript_LotadDoll::
 	givedecoration DECOR_LOTAD_DOLL
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowNoRoomForDecor
 	setflag FLAG_RECEIVED_DOLL_LANETTE
@@ -45,14 +85,6 @@ Route114_LanettesHouse_EventScript_NotebookPage3::
 Route114_LanettesHouse_EventScript_PC::
 	msgbox Route114_LanettesHouse_Text_EmailFromBill, MSGBOX_SIGN
 	end
-
-Route114_LanettesHouse_Text_EverythingClutteredKeepThis:
-	.string "LANETTE: Oh! {PLAYER}{KUN}!\p"
-	.string "I'm sorry everything is so cluttered…\n"
-	.string "When I get engrossed in research,\l"
-	.string "things end up this way…\p"
-	.string "This is embarrassing… Please keep\n"
-	.string "this a secret in exchange for this.$"
 
 Route114_LanettesHouse_Text_OrganizeYourBoxes:
 	.string "May I offer advice about my POKéMON\n"
@@ -104,3 +136,21 @@ Route114_LanettesHouse_Text_EmailFromBill:
 	.string "… … … … … … … …”$"
 
 `
+
+text Route114_LanettesHouse_Text_PlayerReceivedEevee
+{
+	"{PLAYER} received EEVEE!"
+}
+
+
+text Route114_LanettesHouse_Text_EverythingClutteredKeepThis
+{
+	"LANETTE: Oh! {PLAYER}{KUN}!\p"
+	"I'm sorry everything is so cluttered…\n"
+	"When I get engrossed in research,\l"
+	"things end up this way…\p"
+	"This is embarrassing… Please keep\n"
+	"this a secret in exchange for this.\n"
+	"It's a rare POKéMON not native to\n"
+	"HOENN."
+}
