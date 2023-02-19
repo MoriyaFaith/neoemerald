@@ -469,7 +469,7 @@ const struct Item gItems[] =
 
     [ITEM_MAX_ETHER] =
     {
-        .name = _("MEGA ELIXIR"),
+        .name = _("MEGALIXIR"),
         .itemId = ITEM_MAX_ETHER,
         .price = 900,
         .holdEffectParam = 10,
@@ -483,7 +483,7 @@ const struct Item gItems[] =
 
     [ITEM_ELIXIR] =
     {
-        .name = _("GIGA ELIXIR"),
+        .name = _("GIGALIXIR"),
         .itemId = ITEM_ELIXIR,
         .price = 1300,
         .holdEffectParam = 10,
@@ -497,7 +497,7 @@ const struct Item gItems[] =
 
     [ITEM_MAX_ELIXIR] =
     {
-        .name = _("MAX ELIXIR"),
+        .name = _("MAXALIXIR"),
         .itemId = ITEM_MAX_ELIXIR,
         .price = 2500,
         .holdEffectParam = 255,

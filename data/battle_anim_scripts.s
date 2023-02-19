@@ -3190,7 +3190,6 @@ Move_SLASH:
 	end
 
 Move_PSYCHO_CUT:
-	monbg ANIM_DEF_PARTNER
 	call SetPsychicBackground
 	setalpha 8, 8
 	loadspritegfx ANIM_TAG_CUT
@@ -3203,7 +3202,7 @@ Move_PSYCHO_CUT:
 	waitforvisualfinish
 	clearmonbg ANIM_TARGET
 	blendoff
-	waitforvisualfinish
+	delay 1
 	call UnsetPsychicBackground
 	end
 

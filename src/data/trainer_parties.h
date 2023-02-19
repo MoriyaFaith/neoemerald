@@ -3462,7 +3462,7 @@ static const struct TrainerMonItemCustomMoves sParty_Flannery1[] = {
     .lvl = 26,
     .species = SPECIES_CASTFORM,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_WEATHER_BALL, MOVE_ICY_WIND, MOVE_SHADOW_BALL, MOVE_TOXIC}
+    .moves = {MOVE_WEATHER_BALL, MOVE_ICY_WIND, MOVE_SHOCK_WAVE, MOVE_SWAGGER}
     },
     {
     .iv = 200,
@@ -3476,11 +3476,11 @@ static const struct TrainerMonItemCustomMoves sParty_Flannery1[] = {
     .lvl = 29,
     .species = SPECIES_BELLOSSOM,
     .heldItem = ITEM_SITRUS_BERRY,
-    .moves = {MOVE_SOLAR_BEAM, MOVE_SLUDGE_BOMB, MOVE_SLEEP_POWDER, MOVE_SYNTHESIS}
+    .moves = {MOVE_SOLAR_BEAM, MOVE_LEECH_SEED, MOVE_SLEEP_POWDER, MOVE_SYNTHESIS}
     },
     {
     .iv = 250,
-    .lvl = 32,
+    .lvl = 31,
     .species = SPECIES_TORKOAL,
     .heldItem = ITEM_WHITE_HERB,
     .moves = {MOVE_OVERHEAT, MOVE_CURSE, MOVE_BODY_SLAM, MOVE_ATTRACT}
