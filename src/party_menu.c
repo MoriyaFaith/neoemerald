@@ -4637,6 +4637,19 @@ bool8 MonKnowsMove(struct Pokemon *mon, u16 move)
     return FALSE;
 }
 
+bool8 MonKnowsGen4Move(struct Pokemon *mon)
+{
+    u8 i;
+
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        if (GetMonData(mon, MON_DATA_MOVE1 + i) > MOVE_PSYCHO_BOOST)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+
 static void DisplayLearnMoveMessage(const u8 *str)
 {
     StringExpandPlaceholders(gStringVar4, str);

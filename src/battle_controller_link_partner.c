@@ -1127,7 +1127,8 @@ static void LinkPartnerHandleDrawTrainerPic(void)
     {
         trainerPicId = gLinkPlayers[GetBattlerMultiplayerId(gActiveBattler)].gender + TRAINER_BACK_PIC_H_BRENDAN;
     }
-    else if ((gLinkPlayers[GetBattlerMultiplayerId(gActiveBattler)].versionModifier & 0xFF) == MODIFIER_NEO)
+    else if ((gLinkPlayers[GetBattlerMultiplayerId(gActiveBattler)].versionModifier & 0xFF) == MODIFIER_NEO
+		|| (gLinkPlayers[GetMultiplayerId()].versionModifier & 0xFF) == MODIFIER_NEO_FAITHFUL)
     {
         trainerPicId = gLinkPlayers[GetBattlerMultiplayerId(gActiveBattler)].gender;
     }

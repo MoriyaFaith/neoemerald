@@ -3,6 +3,7 @@
 
 void StartDodrioBerryPicking(u16 partyId, void (*exitCallback)(void));
 void IsDodrioInParty(void);
+void Gen4MonsOrMoves(void);
 void ShowDodrioBerryPickingRecords(void);
 
 #endif // GUARD_DODRIO_BERRY_PICKING_H

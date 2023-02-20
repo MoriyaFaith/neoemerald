@@ -147,6 +147,20 @@ CableClub_Text_NotSetUpForFarAwayRegion:
 	.string "with TRAINERS far away in another\l"
 	.string "region yet…$"
 
+CableClub_Text_NotANeoGame:
+	.string "Sorry, there is a transmission error.\p"
+	.string "You may not battle with against\n"
+	.string "Non-NEO POKéMON games.\p"
+	.string "Also, you can't battle against\n"
+	.string "the FAITHFUL edition of POKéMON\l"
+	.string "NEO EMERALD.$"
+
+CableClub_Text_NeoTradeError:
+	.string "I'm terribly sorry.\p"
+	.string "You may not trade with Non-NEO\n"
+	.string "POKéMON games with POKéMON or moves\l"
+	.string "originating from GENERATION 4.$"
+
 CableClub_Text_OtherTrainerNotReady:
 	.string "The other TRAINER is not ready.$"
 

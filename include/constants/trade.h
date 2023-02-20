@@ -37,6 +37,7 @@
 #define TRADE_BOTH_PLAYERS_READY      0
 #define TRADE_PLAYER_NOT_READY        1
 #define TRADE_PARTNER_NOT_READY       2
+#define TRADE_GEN_4_MOVES             3
 
 // Indexes for sTradeActionTexts
 #define TRADE_TEXT_CANCEL        0

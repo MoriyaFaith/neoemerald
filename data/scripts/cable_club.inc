@@ -282,6 +282,10 @@ CableClub_EventScript_Colosseum::
 	end
 
 CableClub_EventScript_SelectBattleMode::
+	.if FAITHFUL == 1 // prevent faithful players from bringing in new mons and moves
+	special Gen4MonsOrMoves
+	goto_if_eq VAR_RESULT, TRUE, CableClub_EventScript_AbortBattleGen4Mon
+	.endif
 	message CableClub_Text_PlayWhichBattleMode
 	waitmessage
 	multichoice 0, 0, MULTI_BATTLE_MODE, FALSE
@@ -333,6 +337,7 @@ CableClub_EventScript_TryEnterColosseum::
 	goto_if_eq VAR_RESULT, LINKUP_DIFF_SELECTIONS, CableClub_EventScript_AbortLinkDifferentSelections
 	goto_if_eq VAR_RESULT, LINKUP_WRONG_NUM_PLAYERS, CableClub_EventScript_AbortLinkIncorrectNumberOfBattlers
 	goto_if_eq VAR_RESULT, LINKUP_FAILED, CableClub_EventScript_AbortLink
+	goto_if_eq VAR_RESULT, LINKUP_PLAYER_NOT_READY, CableClub_EventScript_AbortLinkNeoIncompatable
 	goto_if_eq VAR_RESULT, LINKUP_CONNECTION_ERROR, CableClub_EventScript_AbortLinkConnectionError
 	end
 
@@ -461,6 +466,8 @@ CableClub_EventScript_EnterTradeCenter::
 	end
 
 CableClub_EventScript_CheckPartyTradeRequirements::
+	special Gen4MonsOrMoves
+	goto_if_eq VAR_RESULT, TRUE, CableClub_EventScript_AbortLinkGen4Mon
 	specialvar VAR_RESULT, CalculatePlayerPartyCount
 	goto_if_lt VAR_RESULT, 2, CableClub_EventScript_NeedTwoMonsToTrade
 	specialvar VAR_RESULT, DoesPartyHaveEnigmaBerry
@@ -477,6 +484,12 @@ CableClub_EventScript_CantTradeEnigmaBerry::
 	msgbox CableClub_Text_CantTradeEnigmaBerry, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 0
 	return
+
+CableClub_EventScript_AbortLinkGen4Mon::
+	msgbox CableClub_Text_NeoTradeError, MSGBOX_DEFAULT
+	setvar VAR_RESULT, 0
+	return
+
 
 CableClub_EventScript_RecordCorner::
 	copyvar VAR_0x8007, VAR_LAST_TALKED
@@ -518,6 +531,8 @@ CableClub_EventScript_EnterRecordCorner::
 	hideobjectat OBJ_EVENT_ID_PLAYER, 0
 	closedoor 9, 1
 	waitdooranim
+	special Gen4MonsOrMoves
+	goto_if_eq VAR_RESULT, TRUE, CableClub_Text_NeoTradeError
 	release
 	special SetCableClubWarp
 	setwarp MAP_RECORD_CORNER, 8, 9
@@ -525,9 +540,21 @@ CableClub_EventScript_EnterRecordCorner::
 	waitstate
 	end
 
+
+CableClub_EventScript_AbortBattleGen4Mon::
+	msgbox CableClub_Text_NeoTradeError, MSGBOX_DEFAULT
+	release
+	end
+
 CableClub_EventScript_AbortLinkPlayerNotReady::
 	special CloseLink
 	msgbox CableClub_Text_NotSetUpForFarAwayRegion, MSGBOX_DEFAULT
+	release
+	end
+
+CableClub_EventScript_AbortLinkNeoIncompatable::
+	special CloseLink
+	msgbox CableClub_Text_NotANeoGame, MSGBOX_DEFAULT
 	release
 	end
 

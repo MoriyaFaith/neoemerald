@@ -24,6 +24,7 @@
 #include "window.h"
 #include "constants/items.h"
 #include "constants/songs.h"
+#include "party_menu.h"
 
 // Note that in this file 'Dodrio Berry Picking' is often
 // shortened to DodrioGame or just Game for convenience
@@ -2911,6 +2912,31 @@ void IsDodrioInParty(void)
             gSpecialVar_Result = TRUE;
             return;
         }
+    }
+
+    gSpecialVar_Result = FALSE;
+}
+
+//copy of the above, here to make sure it fucking works
+
+void Gen4MonsOrMoves(void)
+{
+    int i;
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SANITY_HAS_SPECIES)
+            && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) > SPECIES_DEOXYS
+			&& GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) < SPECIES_EGG)
+        {
+            gSpecialVar_Result = TRUE;
+            return;
+        }
+        if (!GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG)
+			&& MonKnowsGen4Move(&gPlayerParty[i]) == TRUE)
+		{
+            gSpecialVar_Result = TRUE;
+            return;
+		}
     }
 
     gSpecialVar_Result = FALSE;

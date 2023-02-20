@@ -2390,6 +2390,9 @@ s32 GetGameProgressForLinkTrade(void)
     // possible other checks (for other game versions?) were planned/removed
     s32 isGameFrLg;
     u16 version;
+    int i;
+    u32 species[PARTY_SIZE];
+    u32 species2[PARTY_SIZE];
 
     if (gReceivedRemoteLinkPlayers != 0)
     {

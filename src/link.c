@@ -834,6 +834,15 @@ u8 GetLinkPlayerDataExchangeStatusTimed(int minPlayers, int maxPlayers)
             }
             for (i = 0, index = 0; i < GetLinkPlayerCount(); index++, i++)
             {
+				#if FAITHFUL == 0
+            	if (gLinkPlayers[index].versionModifier != MODIFIER_NEO && (gLinkPlayers[0].linkType == LINKTYPE_SINGLE_BATTLE
+            			|| gLinkPlayers[0].linkType == LINKTYPE_DOUBLE_BATTLE
+            			|| gLinkPlayers[0].linkType == LINKTYPE_MULTI_BATTLE)) //Standard NEO cannot communicate with Versions without this Modifier
+            	{
+                    sPlayerDataExchangeStatus = EXCHANGE_PLAYER_NOT_READY;
+                    return sPlayerDataExchangeStatus;
+            	}
+				#endif
                 if (gLinkPlayers[index].linkType == gLinkPlayers[0].linkType)
                 {
                     count++;
