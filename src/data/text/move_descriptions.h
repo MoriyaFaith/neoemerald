@@ -1277,6 +1277,12 @@ const u8 gMoveDescription_EarthPower[] = _(
 	"also lower the foe's\n"
 	"SP. DEF stat.");
 
+const u8 gMoveDescription_BugBuzz[] = _(
+	"Wings vibrate to\n"
+	"damaging the foe.\n"
+	"also lower the foe's\n"
+	"SP. DEF stat.");
+
 const u8 gMoveDescription_FlashCannon[] = _(
 	"The foe is struck with\n"
 	"light energy. It may\n"
@@ -2511,6 +2517,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_PSYCHO_BOOST  - 1] = gMoveDescription_PsychoBoost,
     [MOVE_FLARE_BLITZ  	- 1] = gMoveDescription_FlareBlitz,
     [MOVE_X_SCISSOR  	- 1] = gMoveDescription_XScissor,
+    [MOVE_BUG_BUZZ  	- 1] = gMoveDescription_BugBuzz,
     [MOVE_EARTH_POWER  	- 1] = gMoveDescription_EarthPower,
     [MOVE_GIGA_IMPACT  	- 1] = gMoveDescription_HyperBeam,
     [MOVE_THUNDER_FANG  - 1] = gMoveDescription_Bite,
