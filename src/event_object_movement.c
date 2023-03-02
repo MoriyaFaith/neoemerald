@@ -2,6 +2,7 @@
 #include "malloc.h"
 #include "battle_pyramid.h"
 #include "berry.h"
+#include "characters.h"
 #include "day_night.h"
 #include "debug.h"
 #include "decoration.h"

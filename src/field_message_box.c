@@ -119,13 +119,13 @@ bool8 ShowFieldMessageFromBuffer(void)
 static void ExpandStringAndStartDrawFieldMessage(const u8* str, bool32 allowSkippingDelayWithButtonPress)
 {
     StringExpandPlaceholders(gStringVar4, str);
-    AddTextPrinterForMessage(allowSkippingDelayWithButtonPress);
+    AddTextPrinterForMessageWithTextColor(allowSkippingDelayWithButtonPress);
     CreateTask_DrawFieldMessage();
 }
 
 static void StartDrawFieldMessage(void)
 {
-    AddTextPrinterForMessage(TRUE);
+    AddTextPrinterForMessageWithTextColor(TRUE);
     CreateTask_DrawFieldMessage();
 }
 
