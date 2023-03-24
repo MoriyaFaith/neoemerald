@@ -123,10 +123,12 @@ extern const u8 BattleScript_MoveEffectSleep[];
 extern const u8 BattleScript_YawnMakesAsleep[];
 extern const u8 BattleScript_MoveEffectPoison[];
 extern const u8 BattleScript_MoveEffectBurn[];
+extern const u8 BattleScript_EffectBurn[];
 extern const u8 BattleScript_MoveEffectFreeze[];
 extern const u8 BattleScript_MoveEffectParalysis[];
 extern const u8 BattleScript_MoveEffectUproar[];
 extern const u8 BattleScript_MoveEffectToxic[];
+extern const u8 BattleScript_EffectToxic[];
 extern const u8 BattleScript_MoveEffectPayDay[];
 extern const u8 BattleScript_MoveEffectWrap[];
 extern const u8 BattleScript_MoveEffectConfusion[];
@@ -224,5 +226,7 @@ extern const u8 BattleScript_RunByUsingItem[];
 extern const u8 BattleScript_ActionWatchesCarefully[];
 extern const u8 BattleScript_ActionGetNear[];
 extern const u8 BattleScript_ActionThrowPokeblock[];
+extern const u8 BattleScript_ToxicOrb[];
+extern const u8 BattleScript_FlameOrb[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

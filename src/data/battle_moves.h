@@ -3503,7 +3503,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_ANCIENT_POWER] =
     {
         .effect = EFFECT_ALL_STATS_UP_HIT,
-        .power = 75,
+        .power = 60,
         .type = TYPE_ROCK,
         .accuracy = 100,
         .pp = 5,
@@ -4455,7 +4455,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_AIR_CUTTER] =
     {
         .effect = EFFECT_HIGH_CRITICAL,
-        .power = 70,
+        .power = 55,
         .type = TYPE_FLYING,
         .accuracy = 95,
         .pp = 25,

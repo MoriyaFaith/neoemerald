@@ -1029,7 +1029,7 @@ u8 TrySetCantSelectMoveBattleScript(void)
 
     gPotentialItemEffectBattler = gActiveBattler;
 
-    if (holdEffect == HOLD_EFFECT_CHOICE_BAND && *choicedMove != MOVE_NONE && *choicedMove != 0xFFFF && *choicedMove != move)
+    if ((holdEffect == HOLD_EFFECT_CHOICE_BAND || holdEffect == HOLD_EFFECT_CHOICE_SPECS || holdEffect == HOLD_EFFECT_CHOICE_SCARF) && *choicedMove != MOVE_NONE && *choicedMove != 0xFFFF && *choicedMove != move)
     {
         gCurrentMove = *choicedMove;
         gLastUsedItem = gBattleMons[gActiveBattler].item;
@@ -1098,6 +1098,12 @@ u8 CheckMoveLimitations(u8 battlerId, u8 unusableMoves, u8 check)
             unusableMoves |= gBitTable[i];
         // Choice Band
         if (holdEffect == HOLD_EFFECT_CHOICE_BAND && *choicedMove != MOVE_NONE && *choicedMove != 0xFFFF && *choicedMove != gBattleMons[battlerId].moves[i])
+            unusableMoves |= gBitTable[i];
+        // Choice Band
+        if (holdEffect == HOLD_EFFECT_CHOICE_SPECS && *choicedMove != MOVE_NONE && *choicedMove != 0xFFFF && *choicedMove != gBattleMons[battlerId].moves[i])
+            unusableMoves |= gBitTable[i];
+        // Choice Band
+        if (holdEffect == HOLD_EFFECT_CHOICE_SCARF && *choicedMove != MOVE_NONE && *choicedMove != 0xFFFF && *choicedMove != gBattleMons[battlerId].moves[i])
             unusableMoves |= gBitTable[i];
     }
     return unusableMoves;
@@ -3269,6 +3275,31 @@ enum
         effect = ITEM_STATS_CHANGE;                                                         \
     }
 
+bool8 CanBePoisoned(u8 battlerAttacker, u8 battlerTarget)
+{
+    u16 ability = gBattleMons[battlerTarget].ability;
+
+    if (IS_BATTLER_OF_TYPE(battlerTarget, TYPE_POISON)
+     || IS_BATTLER_OF_TYPE(battlerTarget, TYPE_STEEL)
+     || gSideStatuses[GetBattlerSide(battlerTarget)] & SIDE_STATUS_SAFEGUARD
+     || gBattleMons[battlerTarget].status1 & STATUS1_ANY
+     || ability == ABILITY_IMMUNITY)
+        return FALSE;
+    return TRUE;
+}
+
+bool8 CanBeBurned(u8 battlerId)
+{
+    u16 ability = gBattleMons[battlerId].ability;
+    
+    if (IS_BATTLER_OF_TYPE(battlerId, TYPE_FIRE)
+      || gSideStatuses[GetBattlerSide(battlerId)] & SIDE_STATUS_SAFEGUARD
+      || gBattleMons[battlerId].status1 & STATUS1_ANY
+      || ability == ABILITY_WATER_VEIL)
+        return FALSE;
+    return TRUE;
+}
+
 u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
 {
     int i = 0;
@@ -3749,6 +3780,24 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
                     gBattlescriptCurrInstr = BattleScript_BerryCureChosenStatusRet;
                     effect = ITEM_STATUS_CHANGE;
+                }
+                break;
+            case HOLD_EFFECT_POISON_HOLDER:
+                if (CanBePoisoned(battlerId, battlerId))
+                {
+                    effect = ITEM_STATUS_CHANGE;
+                    gBattleMons[battlerId].status1 = STATUS1_TOXIC_POISON;
+                    BattleScriptExecute(BattleScript_ToxicOrb);
+                    RecordItemEffectBattle(battlerId, battlerHoldEffect);
+                }
+                break;
+            case HOLD_EFFECT_BURN_HOLDER:
+                if (CanBeBurned(battlerId))
+                {
+                    effect = ITEM_STATUS_CHANGE;
+                    gBattleMons[battlerId].status1 = STATUS1_BURN;
+                    BattleScriptExecute(BattleScript_FlameOrb);
+                    RecordItemEffectBattle(battlerId, battlerHoldEffect);
                 }
                 break;
             case HOLD_EFFECT_RESTORE_STATS:

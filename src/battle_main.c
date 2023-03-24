@@ -4656,6 +4656,9 @@ u8 GetWhoStrikesFirst(u8 battler1, u8 battler2, bool8 ignoreChosenMoves)
     if (holdEffect == HOLD_EFFECT_MACHO_BRACE)
         speedBattler1 /= 2;
 
+    if (holdEffect == HOLD_EFFECT_CHOICE_SCARF)
+        speedBattler1 = (150 * speedBattler1) / 100;
+
     if (gBattleMons[battler1].status1 & STATUS1_PARALYSIS)
         speedBattler1 /= 4;
 
