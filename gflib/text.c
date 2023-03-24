@@ -72,11 +72,8 @@ static const u8 sFontHalfRowOffsets[] =
     0x00, 0x01, 0x02, 0x00, 0x03, 0x04, 0x05, 0x03, 0x06, 0x07, 0x08, 0x06, 0x00, 0x01, 0x02, 0x00
 };
 
-static const u8 sDownArrowTiles[] = INCBIN_U8("graphics/fonts/down_arrow.4bpp");
-static const u8 sDarkDownArrowTiles[] = INCBIN_U8("graphics/fonts/down_arrow_alt.4bpp");
-static const u8 sUnusedFRLGBlankedDownArrow[] = INCBIN_U8("graphics/fonts/unused_frlg_blanked_down_arrow.4bpp");
-static const u8 sUnusedFRLGDownArrow[] = INCBIN_U8("graphics/fonts/unused_frlg_down_arrow.4bpp");
-static const u8 sDownArrowYCoords[] = { 0, 1, 2, 1 };
+const u8 gDownArrowTiles[] = INCBIN_U8("graphics/fonts/down_arrow.4bpp");
+const u8 gDownArrowXCoords[] = { 0x0, 0x10, 0x20, 0x10 };
 static const u8 sWindowVerticalScrollSpeeds[] = { 
     [OPTIONS_TEXT_SPEED_SLOW] = 1,
     [OPTIONS_TEXT_SPEED_MID] = 2,
@@ -784,7 +781,7 @@ void TextPrinterInitDownArrowCounters(struct TextPrinter *textPrinter)
     }
     else
     {
-        subStruct->downArrowYPosIdx = 0;
+        subStruct->downArrowXPosIdx = 0;
         subStruct->downArrowDelay = 0;
     }
 }
@@ -807,35 +804,35 @@ void TextPrinterDrawDownArrow(struct TextPrinter *textPrinter)
                 textPrinter->printerTemplate.bgColor << 4 | textPrinter->printerTemplate.bgColor,
                 textPrinter->printerTemplate.currentX,
                 textPrinter->printerTemplate.currentY,
-                8,
-                16);
+                10,
+                12);
 
             switch (gTextFlags.useAlternateDownArrow)
             {
-            case FALSE:
-            default:
-                arrowTiles = sDownArrowTiles;
-                break;
-            case TRUE:
-                arrowTiles = sDarkDownArrowTiles;
-                break;
+                case FALSE:
+                default:
+                    arrowTiles = &gDownArrowTiles[0];
+                    break;
+                case TRUE:
+                    arrowTiles = &gDownArrowTiles[0x100];
+                    break;
             }
 
             BlitBitmapRectToWindow(
                 textPrinter->printerTemplate.windowId,
                 arrowTiles,
+                gDownArrowXCoords[subStruct->downArrowXPosIdx],
                 0,
-                sDownArrowYCoords[subStruct->downArrowYPosIdx],
-                8,
-                16,
+                0x80,
+                0x10,
                 textPrinter->printerTemplate.currentX,
                 textPrinter->printerTemplate.currentY,
-                8,
-                16);
-            CopyWindowToVram(textPrinter->printerTemplate.windowId, COPYWIN_GFX);
+                10,
+                12);
+            CopyWindowToVram(textPrinter->printerTemplate.windowId, 2);
 
             subStruct->downArrowDelay = 8;
-            subStruct->downArrowYPosIdx++;
+            subStruct->downArrowXPosIdx++;
         }
     }
 }
@@ -847,9 +844,9 @@ void TextPrinterClearDownArrow(struct TextPrinter *textPrinter)
         textPrinter->printerTemplate.bgColor << 4 | textPrinter->printerTemplate.bgColor,
         textPrinter->printerTemplate.currentX,
         textPrinter->printerTemplate.currentY,
-        8,
-        16);
-    CopyWindowToVram(textPrinter->printerTemplate.windowId, COPYWIN_GFX);
+        10,
+        12);
+    CopyWindowToVram(textPrinter->printerTemplate.windowId, 2);
 }
 
 bool8 TextPrinterWaitAutoMode(struct TextPrinter *textPrinter)
@@ -904,7 +901,7 @@ bool16 TextPrinterWait(struct TextPrinter *textPrinter)
     return result;
 }
 
-void DrawDownArrow(u8 windowId, u16 x, u16 y, u8 bgColor, bool8 drawArrow, u8 *counter, u8 *yCoordIndex)
+void DrawDownArrow(u8 windowId, u16 x, u16 y, u8 bgColor, bool8 drawArrow, u8 *counter, u8 *xCoordIndex)
 {
     const u8 *arrowTiles;
 
@@ -914,24 +911,34 @@ void DrawDownArrow(u8 windowId, u16 x, u16 y, u8 bgColor, bool8 drawArrow, u8 *c
     }
     else
     {
-        FillWindowPixelRect(windowId, (bgColor << 4) | bgColor, x, y, 0x8, 0x10);
+        FillWindowPixelRect(windowId, (bgColor << 4) | bgColor, x, y, 10, 12);
         if (drawArrow == 0)
         {
             switch (gTextFlags.useAlternateDownArrow)
             {
-            case FALSE:
-            default:
-                arrowTiles = sDownArrowTiles;
-                break;
-            case TRUE:
-                arrowTiles = sDarkDownArrowTiles;
-                break;
+                case FALSE:
+                default:
+                    arrowTiles = &gDownArrowTiles[0];
+                    break;
+                case TRUE:
+                    arrowTiles = &gDownArrowTiles[0x100];
+                    break;
             }
 
-            BlitBitmapRectToWindow(windowId, arrowTiles, 0, sDownArrowYCoords[*yCoordIndex & 3], 8, 16, x, y - 2, 8, 16);
-            CopyWindowToVram(windowId, COPYWIN_GFX);
+            BlitBitmapRectToWindow(
+                windowId,
+                arrowTiles,
+                gDownArrowXCoords[*xCoordIndex & 3],
+                0,
+                0x80,
+                0x10,
+                x,
+                y,
+                10,
+                12);
+            CopyWindowToVram(windowId, 0x2);
             *counter = 8;
-            ++*yCoordIndex;
+            ++*xCoordIndex;
         }
     }
 }

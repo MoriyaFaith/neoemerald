@@ -27,6 +27,8 @@ static const u8 sTextWindowFrame18_Gfx[] = INCBIN_U8("graphics/text_window/18.4b
 static const u8 sTextWindowFrame19_Gfx[] = INCBIN_U8("graphics/text_window/19.4bpp");
 static const u8 sTextWindowFrame20_Gfx[] = INCBIN_U8("graphics/text_window/20.4bpp");
 
+static const u8 sTextWindowFrameThin_Gfx[] = INCBIN_U8("graphics/text_window/thin.4bpp");
+
 const u16 gTextWindowFrame1_Pal[] = INCBIN_U16("graphics/text_window/1.gbapal");
 static const u16 sTextWindowFrame2_Pal[] = INCBIN_U16("graphics/text_window/2.gbapal");
 static const u16 sTextWindowFrame3_Pal[] = INCBIN_U16("graphics/text_window/3.gbapal");
@@ -92,8 +94,20 @@ const struct TilesPal *GetWindowFrameTilesPal(u8 id)
 
 void LoadMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
 {
-    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gMessageBox_Gfx, 0x1C0, destOffset);
-    LoadPalette(GetOverworldTextboxPalettePtr(), palOffset, 0x20);
+    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gMessageBox_Gfx, 0x280, destOffset);
+    LoadPalette(GetTextWindowPalette(0), palOffset, 0x20);
+}
+
+void LoadSignMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
+{
+    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gSignMessageBox_Gfx, 0x260, destOffset);
+    LoadPalette(GetTextWindowPalette(1), palOffset, 0x20);
+}
+
+void LoadThinWindowBorderGfx(u8 windowId, u16 destOffset, u8 palOffset)
+{
+    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sTextWindowFrameThin_Gfx, 0x120, destOffset);
+    LoadPalette(GetTextWindowPalette(3), palOffset, 0x20);
 }
 
 void LoadUserWindowBorderGfx_(u8 windowId, u16 destOffset, u8 palOffset)
@@ -182,11 +196,6 @@ const u16 *GetTextWindowPalette(u8 id)
     }
 
     return (const u16 *)(sTextWindowPalettes) + id;
-}
-
-const u16 *GetOverworldTextboxPalettePtr(void)
-{
-    return gMessageBox_Pal;
 }
 
 // Effectively LoadUserWindowBorderGfx but specifying the bg directly instead of a window from that bg

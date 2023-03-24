@@ -623,6 +623,11 @@ EventScript_MoveMrBrineyToRoute109::
 	clearflag FLAG_HIDE_ROUTE_109_MR_BRINEY_BOAT
 	end
 
+ClearPokepicAndTextboxForEarlyScriptExit::
+	special PrintNullStringAndClearPokemonPicWindow
+	release
+	end
+	
 EverGrandeCity_HallOfFame_EventScript_ResetEliteFour::
 	clearflag FLAG_DEFEATED_ELITE_4_SIDNEY
 	clearflag FLAG_DEFEATED_ELITE_4_PHOEBE
@@ -657,10 +662,12 @@ EventScript_SetBrineyLocation_Route109::
 	.include "data/scripts/pc.inc"
 
 @ scripts/notices.inc? signs.inc? See comment about text/notices.inc
+PokemonMartSign:
 Common_EventScript_ShowPokemartSign::
 	msgbox gText_PokemartSign, MSGBOX_SIGN
 	end
 
+PokemonCenterSign:
 Common_EventScript_ShowPokemonCenterSign::
 	msgbox gText_PokemonCenterSign, MSGBOX_SIGN
 	end

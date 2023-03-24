@@ -648,7 +648,7 @@ static void LoadWallClockGraphics(void)
     else
         LoadPalette(gWallClockFemale_Pal, 0, 32);
 
-    LoadPalette(GetOverworldTextboxPalettePtr(), 0xe0, 32);
+    LoadPalette(GetTextWindowPalette(0), 0xe0, 32);
     LoadPalette(sTextPrompt_Pal, 0xc0, 8);
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));

@@ -2149,7 +2149,7 @@ static void LoadPokedexBgPalette(bool8 isSearchResults)
         LoadPalette(gPokedexBgNational_Pal + 1, 1, 0xBE);
     else
         LoadPalette(gPokedexBgHoenn_Pal + 1, 1, 0xBE);
-    LoadPalette(GetOverworldTextboxPalettePtr(), 0xF0, 32);
+    LoadPalette(GetTextWindowPalette(0), 0xF0, 32);
 }
 
 static void FreeWindowAndBgBuffers(void)

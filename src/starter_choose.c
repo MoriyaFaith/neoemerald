@@ -420,7 +420,7 @@ void CB2_ChooseStarter(void)
     FreeAllSpritePalettes();
     ResetAllPicSprites();
 
-    LoadPalette(GetOverworldTextboxPalettePtr(), 0xE0, 0x20);
+    LoadPalette(GetTextWindowPalette(0), 0xE0, 0x20);
     LoadPalette(gBirchBagGrassPal, 0, 0x40);
     LoadCompressedSpriteSheet(&sSpriteSheet_PokeballSelect[0]);
     LoadCompressedSpriteSheet(&sSpriteSheet_StarterCircle[0]);

@@ -2160,6 +2160,19 @@ bool8 ScrCmd_removecoins(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_signmsg(struct ScriptContext *ctx)
+{
+    TextboxUseSignBorder();
+    return FALSE;
+}
+
+bool8 ScrCmd_normalmsg(struct ScriptContext *ctx)
+{
+    TextboxUseStandardBorder();
+    return FALSE;
+}
+
+
 bool8 ScrCmd_moverotatingtileobjects(struct ScriptContext *ctx)
 {
     u16 puzzleNumber = VarGet(ScriptReadHalfword(ctx));

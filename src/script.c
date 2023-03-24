@@ -16,10 +16,14 @@ enum {
 
 extern const u8* gRamScriptRetAddr;
 
+EWRAM_DATA u8 gExitFromScriptEarlyWaitTimer = 0;
+
 static u8 sScriptContext1Status;
 static struct ScriptContext sScriptContext1;
 static struct ScriptContext sScriptContext2;
 static bool8 sScriptContext2Enabled;
+static u8 sCanExitScriptEarly;
+static u8 sDoesTextboxUseSignBorder;
 
 extern ScrCmdFunc gScriptCmdTable[];
 extern ScrCmdFunc gScriptCmdTableEnd[];
@@ -188,6 +192,43 @@ bool8 ScriptContext2_IsEnabled(void)
     return sScriptContext2Enabled;
 }
 
+void EnableExitingFromScriptEarly(void)
+{
+    gExitFromScriptEarlyWaitTimer = 6;
+    sCanExitScriptEarly = TRUE;
+}
+
+void DisableExitingFromScriptEarly(void)
+{
+    sCanExitScriptEarly = FALSE;
+}
+
+bool8 CanExitScriptEarly(void)
+{
+    if (sCanExitScriptEarly == TRUE)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+void TextboxUseSignBorder(void)
+{
+    sDoesTextboxUseSignBorder = TRUE;
+}
+
+void TextboxUseStandardBorder(void)
+{
+    sDoesTextboxUseSignBorder = FALSE;
+}
+
+bool8 DoesTextboxUseSignBorder(void)
+{
+    if (sDoesTextboxUseSignBorder == TRUE)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 ScriptContext1_IsScriptSetUp(void)
 {
     if (sScriptContext1Status == 0)
@@ -224,6 +265,7 @@ bool8 ScriptContext2_RunScript(void)
 
 void ScriptContext1_SetupScript(const u8 *ptr)
 {
+    DisableExitingFromScriptEarly();
     InitScriptContext(&sScriptContext1, gScriptCmdTable, gScriptCmdTableEnd);
     SetupBytecodeScript(&sScriptContext1, ptr);
     ScriptContext2_Enable();

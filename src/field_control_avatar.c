@@ -17,6 +17,7 @@
 #include "fldeff_misc.h"
 #include "item_menu.h"
 #include "link.h"
+#include "main.h"
 #include "match_call.h"
 #include "metatile_behavior.h"
 #include "overworld.h"
@@ -26,6 +27,7 @@
 #include "secret_base.h"
 #include "sound.h"
 #include "start_menu.h"
+#include "task.h"
 #include "trainer_see.h"
 #include "trainer_hill.h"
 #include "wild_encounter.h"
@@ -40,6 +42,8 @@ static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
 
 u8 gSelectedObjectEvent;
+
+extern const u8 ClearPokepicAndTextboxForEarlyScriptExit[];
 
 static void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
@@ -69,6 +73,12 @@ static bool8 TryStartMiscWalkingScripts(u16);
 static bool8 TryStartStepCountScript(u16);
 static void UpdateFriendshipStepCounter(void);
 static bool8 UpdatePoisonStepCounter(void);
+static bool8 WalkingNorthOrSouthIntoSignpost(const struct MapPosition *position, u8 metatileBehavior, u8 direction);
+static bool8 GetSpecialSignpostScriptId(u8 metatileBehavior, u8 direction);
+static void SetupSpecialSignpostScript(const u8 *script, u8 direction);
+static const u8 *GetBackgroundEventScriptForSignpost(const struct MapPosition *position);
+static void Task_ShowStartMenuAfterEarlyScriptExit(u8 taskId);
+static void ReplayEarlyScriptExitKeys(struct FieldInput *input, u16 *newKeys, u16 *heldKeys);
 
 void FieldClearPlayerInput(struct FieldInput *input)
 {
@@ -173,6 +183,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     gSelectedObjectEvent = 0;
 
     gSpecialVar_TextColor = 0xFF;
+    TextboxUseStandardBorder();
 
     playerDirection = GetPlayerFacingDirection();
     GetPlayerPosition(&position);
@@ -203,6 +214,13 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     GetInFrontOfPlayerPosition(&position);
     metatileBehavior = MapGridGetMetatileBehaviorAt(position.x, position.y);
+
+    if (input->heldDirection && input->dpadDirection == playerDirection)
+    {
+        if (WalkingNorthOrSouthIntoSignpost(&position, metatileBehavior, playerDirection) == TRUE)
+            return TRUE;
+    }
+
     if (input->pressedAButton && TryStartInteractionScript(&position, metatileBehavior, playerDirection) == TRUE)
         return TRUE;
 
@@ -235,6 +253,44 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     #endif
 
     return FALSE;
+}
+
+void CheckEarlyScriptExit(struct FieldInput *input)
+{
+    if (ScriptContext1_IsScriptSetUp() != TRUE)
+        return;
+
+    if (gExitFromScriptEarlyWaitTimer != 0)
+    {
+        gExitFromScriptEarlyWaitTimer--;
+        return;
+    }
+
+    if (CanExitScriptEarly() != TRUE)
+        return;
+
+    if (input->dpadDirection != DIR_NONE && GetPlayerFacingDirection() != input->dpadDirection)
+    {
+        ScriptContext1_SetupScript(ClearPokepicAndTextboxForEarlyScriptExit);
+        ScriptContext2_Enable();
+    }
+    else if (input->pressedStartButton)
+    {
+        ScriptContext1_SetupScript(ClearPokepicAndTextboxForEarlyScriptExit);
+        ScriptContext2_Enable();
+        if (!FuncIsActiveTask(Task_ShowStartMenuAfterEarlyScriptExit))
+            CreateTask(Task_ShowStartMenuAfterEarlyScriptExit, 8);
+    }
+}
+
+static void Task_ShowStartMenuAfterEarlyScriptExit(u8 taskId)
+{
+    if (!ScriptContext2_IsEnabled())
+    {
+        PlaySE(SE_WIN_OPEN);
+        ShowStartMenu();
+        DestroyTask(taskId);
+    }
 }
 
 static void GetPlayerPosition(struct MapPosition *position)
@@ -361,6 +417,7 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
 
 static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position, u8 metatileBehavior, u8 direction)
 {
+    u8 whichScript;
     struct BgEvent *bgEvent = GetBackgroundEventAtPosition(&gMapHeader, position->x - MAP_OFFSET, position->y - MAP_OFFSET, position->elevation);
 
     if (bgEvent == NULL)
@@ -368,7 +425,9 @@ static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position
     if (bgEvent->bgUnion.script == NULL)
         return EventScript_TestSignpostMsg;
 
+    whichScript = GetSpecialSignpostScriptId(metatileBehavior, direction);
     switch (bgEvent->kind)
+
     {
     case BG_EVENT_PLAYER_FACING_ANY:
     default:
@@ -396,6 +455,7 @@ static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position
         gSpecialVar_0x8005 = (u32)bgEvent->bgUnion.script;
         if (FlagGet(gSpecialVar_0x8004) == TRUE)
             return NULL;
+        gSpecialVar_Facing = direction;
         return EventScript_HiddenItemScript;
     case BG_EVENT_SECRET_BASE:
         if (direction == DIR_NORTH)
@@ -407,6 +467,10 @@ static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position
         return NULL;
     }
 
+    if (whichScript != 0xFF)
+        TextboxUseSignBorder();
+
+    gSpecialVar_Facing = direction;
     return bgEvent->bgUnion.script;
 }
 
@@ -736,6 +800,82 @@ static bool8 CheckStandardWildEncounter(u16 metatileBehavior)
     sPreviousPlayerMetatileBehavior = metatileBehavior;
     return FALSE;   
 }
+
+static bool8 WalkingNorthOrSouthIntoSignpost(const struct MapPosition *position, u8 metatileBehavior, u8 direction)
+{
+    const u8 *script;
+
+    if (gMain.heldKeys & (DPAD_RIGHT | DPAD_LEFT))
+        return FALSE;
+
+    if (direction == DIR_WEST || direction == DIR_EAST)
+        return FALSE;
+
+    switch (GetSpecialSignpostScriptId(metatileBehavior, direction))
+    {
+        case 0:
+            script = EventScript_TestSignpostMsg;
+            break;
+        case 1:
+            script = EventScript_TestSignpostMsg;
+            break;
+        /*case 2:
+            script = gUnknown_81A76F0;
+            break;
+        case 3:
+            script = gUnknown_81A76F9;
+            break;*/
+        case 0xF0:
+            script = GetBackgroundEventScriptForSignpost(position);
+            if (script == NULL)
+                return FALSE;
+            break;
+        default:
+            return FALSE;
+    }
+
+    SetupSpecialSignpostScript(script, direction);
+    return TRUE;
+}
+
+static bool8 GetSpecialSignpostScriptId(u8 metatileBehavior, u8 direction)
+{
+    if (MetatileBehavior_IsPlayerFacingPokemonCenterSign(metatileBehavior, direction))
+        return 0;
+    else if (MetatileBehavior_IsPlayerFacingPokeMartSign(metatileBehavior, direction))
+        return 1;
+    /*else if (MetatileBehavior_IsIndigoPlateauMark(metatileBehavior))
+        return 2;
+    else if (MetatileBehavior_IsIndigoPlateauMark2(metatileBehavior))
+        return 3;*/
+    else if (MetatileBehavior_IsSignpost(metatileBehavior))
+        return 0xF0;
+    return 0xFF;
+}
+
+static void SetupSpecialSignpostScript(const u8 *script, u8 direction)
+{
+    gSpecialVar_Facing = direction;
+    ScriptContext1_SetupScript(script);
+    EnableExitingFromScriptEarly();
+    TextboxUseSignBorder();
+}
+
+static const u8 *GetBackgroundEventScriptForSignpost(const struct MapPosition *position)
+{
+    const u8 *script;
+    struct BgEvent *event = GetBackgroundEventAtPosition(&gMapHeader, position->x - 7, position->y - 7, position->elevation);
+
+    if (event == NULL)
+        return NULL;
+
+    script = event->bgUnion.script;
+    if (script == NULL)
+        script = EventScript_TestSignpostMsg;
+
+    return script;
+}
+
 
 static bool8 TryArrowWarp(struct MapPosition *position, u16 metatileBehavior, u8 direction)
 {

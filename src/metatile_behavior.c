@@ -1308,6 +1308,30 @@ bool8 MetatileBehavior_IsPokeCenterBookShelf(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsPlayerFacingPokemonCenterSign(u8 metatileBehavior, u8 playerDirection)
+{
+    if (playerDirection != DIR_NORTH || metatileBehavior != MB_POKEMON_CENTER_SIGN)
+        return FALSE;
+
+    return TRUE;
+}
+
+bool8 MetatileBehavior_IsPlayerFacingPokeMartSign(u8 metatileBehavior, u8 playerDirection)
+{
+    if (playerDirection != DIR_NORTH || metatileBehavior != MB_POKEMART_SIGN)
+        return FALSE;
+
+    return TRUE;
+}
+
+bool8 MetatileBehavior_IsSignpost(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_SIGNPOST)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 MetatileBehavior_IsVase(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_VASE)

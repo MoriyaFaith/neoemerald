@@ -202,8 +202,8 @@ gScriptCmdTable::
     .4byte ScrCmd_textcolor                 @ 0xc7
 	.4byte ScrCmd_nop1                      @ 0xc8
 	.4byte ScrCmd_nop1                      @ 0xc9
-	.4byte ScrCmd_nop1                      @ 0xca
-	.4byte ScrCmd_nop1                      @ 0xcb
+	.4byte ScrCmd_signmsg                   @ 0xca
+	.4byte ScrCmd_normalmsg                 @ 0xcb
 	.4byte ScrCmd_nop1                      @ 0xcc
 	.4byte ScrCmd_setmoneventlegal          @ 0xcd
 	.4byte ScrCmd_checkmoneventlegal        @ 0xce

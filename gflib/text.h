@@ -58,7 +58,7 @@ struct TextPrinterSubStruct
     bool8 hasPrintBeenSpedUp:1;
     u8 unk:3;
     u8 downArrowDelay:5;
-    u8 downArrowYPosIdx:2;
+    u8 downArrowXPosIdx:2;
     bool8 hasFontIdBeenSet:1;
     u8 autoScrollDelay;
 };

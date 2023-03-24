@@ -536,3 +536,4 @@ gSpecials::
 	def_special CloseDeptStoreElevatorWindow
 	def_special TrySetBattleTowerLinkType
 	def_special Gen4MonsOrMoves
+	def_special PrintNullStringAndClearPokemonPicWindow
