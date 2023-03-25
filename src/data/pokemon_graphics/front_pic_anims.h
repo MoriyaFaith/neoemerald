@@ -3985,6 +3985,18 @@ static const union AnimCmd sAnim_ROSELIA_1[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd sAnim_ROSERADE_1[] =
+{
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_FRAME(1, 10),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_FRAME(1, 180),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_FRAME(1, 10),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_END,
+};
+
 static const union AnimCmd sAnim_SLAKOTH_1[] =
 {
     ANIMCMD_FRAME(0, 13),
@@ -6574,6 +6586,11 @@ static const union AnimCmd *const sAnims_ROSELIA[] ={
     sAnim_ROSELIA_1,
 };
 
+static const union AnimCmd *const sAnims_ROSERADE[] ={
+    sAnim_GeneralFrame0,
+    sAnim_ROSERADE_1,
+};
+
 static const union AnimCmd *const sAnims_SLAKOTH[] ={
     sAnim_GeneralFrame0,
     sAnim_SLAKOTH_1,
@@ -7339,6 +7356,7 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[] =
     ANIM_CMD(DUSKULL),
     ANIM_CMD(DUSCLOPS),
     ANIM_CMD(ROSELIA),
+    ANIM_CMD(ROSERADE),
     ANIM_CMD(SLAKOTH),
     ANIM_CMD(VIGOROTH),
     ANIM_CMD(SLAKING),

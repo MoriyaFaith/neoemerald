@@ -1900,6 +1900,12 @@ const u8 gRoseliaPokedexText[] = _(
     "The fragrance of its flowers has the\n"
     "effect of making its foes careless.");
 
+const u8 gRoseradePokedexText[] = _(
+    "ROSERADE attracts prey with a sweet aroma.\n"
+    "Then, with the movements of a dancer, it\n"
+    "strikes with thorny whips laced with thorns.\n"
+    "Its toxins are life-threatening.");
+    
 const u8 gGulpinPokedexText[] = _(
     "This POKéMON's stomach fluid can even\n"
     "digest scrap iron. In one gulp, it can\n"

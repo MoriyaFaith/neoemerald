@@ -814,10 +814,14 @@ static bool8 WalkingNorthOrSouthIntoSignpost(const struct MapPosition *position,
     switch (GetSpecialSignpostScriptId(metatileBehavior, direction))
     {
         case 0:
-            script = EventScript_TestSignpostMsg;
+            script = GetBackgroundEventScriptForSignpost(position);
+            if (script == NULL)
+                return FALSE;
             break;
         case 1:
-            script = EventScript_TestSignpostMsg;
+            script = GetBackgroundEventScriptForSignpost(position);
+            if (script == NULL)
+                return FALSE;
             break;
         /*case 2:
             script = gUnknown_81A76F0;
