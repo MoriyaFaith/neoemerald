@@ -977,6 +977,12 @@ const u8 gMoveDescription_Slash[] = _(
     "It has a high\n"
     "critical-hit ratio.");
 
+const u8 gMoveDescription_CrossPoison[] = _(
+    "The foe is slashed\n"
+    "with a poison blade.\n"
+    "It has a high\n"
+    "critical-hit ratio.");
+
 const u8 gMoveDescription_PsychoCut[] = _(
     "The foe is slashed\n"
     "with psychic power.\n"
@@ -1841,6 +1847,12 @@ const u8 gMoveDescription_NeedleArm[] = _(
     "It may make the\n"
     "foe flinch.");
 
+const u8 gMoveDescription_PoisonJab[] = _(
+    "An attack using\n"
+    "poison barbs.\n"
+    "It may also\n"
+    "poison the foe.");
+
 const u8 gMoveDescription_SlackOff[] = _(
     "The user slacks off\n"
     "and restores its HP\n"
@@ -1888,6 +1900,18 @@ const u8 gMoveDescription_Astonish[] = _(
     "startling shout.\n"
     "It also may make\n"
     "the foe flinch.");
+
+const u8 gMoveDescription_AirSlash[] = _(
+    "An attack that\n"
+    "slices even the sky\n"
+    "that may also make\n"
+    "the foe flinch.");
+
+const u8 gMoveDescription_PowerGem[] = _(
+    "An attack that\n"
+    "uses a ray of light\n"
+    "that sparkles like\n"
+    "gemstones.");
 
 const u8 gMoveDescription_WeatherBall[] = _(
     "An attack that\n"
@@ -2526,4 +2550,8 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_PSYCHO_CUT  	- 1] = gMoveDescription_PsychoCut,
     [MOVE_FLASH_CANNON 	- 1] = gMoveDescription_FlashCannon,
     [MOVE_IRON_HEAD  	- 1] = gMoveDescription_IronHead,
+    [MOVE_CROSS_POISON  - 1] = gMoveDescription_CrossPoison,
+    [MOVE_POISON_JAB  	- 1] = gMoveDescription_PoisonJab,
+    [MOVE_AIR_SLASH  	- 1] = gMoveDescription_AirSlash,
+    [MOVE_POWER_GEM  	- 1] = gMoveDescription_PowerGem,
 };
