@@ -28,6 +28,7 @@ Route103_EventScript_Rival::
 	end
 
 Route103_EventScript_RivalMay::
+	textcolor 0x4
 	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
     setvar VAR_MUGSHOT_ID, MUGSHOT_MAY
 	closemessage
@@ -46,6 +47,7 @@ Route103_EventScript_RivalMay::
 	end
 
 Route103_EventScript_RivalBrendan::
+	textcolor 0x8
 	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
     setvar VAR_MUGSHOT_ID, MUGSHOT_BRENDAN
 	closemessage
@@ -94,11 +96,13 @@ Route103_EventScript_StartBrendanBattleMudkip::
 	end
 
 Route103_EventScript_AfterMayBattle::
+	textcolor 0x4
 	msgbox Route103_Text_MayTimeToHeadBack, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	end
 
 Route103_EventScript_AfterBrendanBattle::
+	textcolor 0x8
 	msgbox Route103_Text_BrendanTimeToHeadBack, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	end

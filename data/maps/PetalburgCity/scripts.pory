@@ -43,6 +43,7 @@ PetalburgCity_EventScript_WallyTutorial::
 	applymovement LOCALID_WALLY, PetalburgCity_Movement_WallyTutorialWally
 	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_WallyTutorialPlayer
 	waitmovement 0
+	textcolor 0x8
 	msgbox Route102_Text_WatchMeCatchPokemon, MSGBOX_DEFAULT
 	special StartWallyTutorialBattle
 	waitstate
@@ -536,6 +537,7 @@ PetalburgCity_EventScript_Scott3::
 	end
 
 PetalburgCity_EventScript_Scott::
+	textcolor 0x8
 	applymovement LOCALID_SCOTT, PetalburgCity_Movement_ScottStartWalkLeft
 	waitmovement 0
 	playse SE_PIN

@@ -208,6 +208,7 @@ OldaleTown_EventScript_BlockedPath::
 	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_PlayerStepBack
 	applymovement LOCALID_FOOTPRINTS_MAN, OldaleTown_Movement_BackUp
 	waitmovement 0
+	textcolor 0x8
 	msgbox OldaleTown_Text_WaitDontComeInHere, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_FOOTPRINTS_MAN, OldaleTown_Movement_ReturnToOriginalPosition
@@ -265,11 +266,13 @@ OldaleTown_EventScript_ShowRivalMessage::
 	end
 
 OldaleTown_EventScript_ShowMayMessage::
+	textcolor 0x4
 	msgbox OldaleTown_Text_MayLetsGoBack, MSGBOX_DEFAULT
 	goto OldaleTown_EventScript_RivalFinish
 	end
 
 OldaleTown_EventScript_ShowBrendanMessage::
+	textcolor 0x8
 	msgbox OldaleTown_Text_BrendanLetsGoBack, MSGBOX_DEFAULT
 	goto OldaleTown_EventScript_RivalFinish
 	end

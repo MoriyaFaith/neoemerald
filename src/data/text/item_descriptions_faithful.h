@@ -763,6 +763,21 @@ static const u8 sChoiceScarfDesc[] = _(
     "but permits\n"
     "only one move.");
 
+static const u8 sLifeOrbDesc[] = _(
+    "Boosts the power\n"
+    "of moves, but at\n"
+    "the cost of some HP.");
+    
+static const u8 sToxicOrbDesc[] = _(
+    "A bizarre orb that\n"
+    "badly poisons the\n"
+    "holder in battle.");
+
+static const u8 sFlameOrbDesc[] = _(
+    "A bizarre orb that\n"
+    "inflicts a burn on\n"
+    "holder in battle.");
+
 static const u8 sKingsRockDesc[] = _(
     "A hold item that\n"
     "may cause flinching\n"

@@ -23,6 +23,7 @@ Route101_EventScript_HideMapNamePopup::
 Route101_EventScript_StartBirchRescue::
 	lockall
 	playbgm MUS_HELP, TRUE
+	textcolor 0x8
 	msgbox Route101_Text_HelpMe, MSGBOX_DEFAULT
 	closemessage
 	setobjectxy LOCALID_BIRCH, 0, 15
@@ -47,6 +48,7 @@ Route101_EventScript_StartBirchRescue::
 
 Route101_EventScript_PreventExitSouth::
 	lockall
+	textcolor 0x8
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitSouth
@@ -56,6 +58,7 @@ Route101_EventScript_PreventExitSouth::
 
 Route101_EventScript_PreventExitWest::
 	lockall
+	textcolor 0x8
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitWest
@@ -65,6 +68,7 @@ Route101_EventScript_PreventExitWest::
 
 Route101_EventScript_PreventExitNorth::
 	lockall
+	textcolor 0x8
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitNorth
@@ -233,6 +237,7 @@ Route101_EventScript_BirchsBag::
 	waitstate
 	applymovement LOCALID_BIRCH, Route101_Movement_BirchApproachPlayer
 	waitmovement 0
+	textcolor 0x8
 	msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
 	special HealPlayerParty
 	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE

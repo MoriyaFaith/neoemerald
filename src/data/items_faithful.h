@@ -2774,45 +2774,49 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-    [ITEM_0E2] =
+    [ITEM_CHOICE_SPECS] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
-        .price = 0,
-        .description = sDummyDesc,
+        .name = _("CHOICE SPECS"),
+        .itemId = ITEM_CHOICE_SPECS,
+        .price = 100,
+        .holdEffect = HOLD_EFFECT_CHOICE_SPECS,
+        .description = sChoiceBandDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-    [ITEM_0E3] =
+    [ITEM_CHOICE_SCARF] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
-        .price = 0,
-        .description = sDummyDesc,
+        .name = _("CHOICE SCARF"),
+        .itemId = ITEM_CHOICE_SCARF,
+        .price = 100,
+        .holdEffect = HOLD_EFFECT_CHOICE_SCARF,
+        .description = sChoiceBandDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-    [ITEM_0E4] =
+    [ITEM_TOXIC_ORB] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
-        .price = 0,
-        .description = sDummyDesc,
+        .name = _("TOXIC ORB"),
+        .itemId = ITEM_TOXIC_ORB,
+        .price = 100,
+        .holdEffect = HOLD_EFFECT_POISON_HOLDER,
+        .description = sToxicOrbDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-    [ITEM_0E5] =
+    [ITEM_FLAME_ORB] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
-        .price = 0,
-        .description = sDummyDesc,
+        .name = _("FLAME ORB"),
+        .itemId = ITEM_FLAME_ORB,
+        .price = 100,
+        .holdEffect = HOLD_EFFECT_BURN_HOLDER,
+        .description = sFlameOrbDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,

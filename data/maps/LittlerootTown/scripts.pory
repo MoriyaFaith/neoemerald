@@ -215,6 +215,7 @@ LittlerootTown_EventScript_BeginDexUpgradeScene::
 	applymovement LOCALID_BIRCH, Common_Movement_ExclamationMark
 	waitmovement 0
 	delay 80
+	textcolor 0x8
 	msgbox LittlerootTown_Text_BirchSomethingToShowYouAtLab, MSGBOX_DEFAULT
 	closemessage
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
@@ -348,6 +349,7 @@ LittlerootTown_Movement_PushPlayerBackFromRoute:
 
 LittlerootTown_EventScript_NeedPokemonTriggerRight::
 	lockall
+	textcolor 0x4
 	applymovement LOCALID_TWIN, LittlerootTown_Movement_TwinApproachPlayerRight
 	waitmovement 0
 	call LittlerootTown_EventScript_DangerousWithoutPokemon
@@ -382,6 +384,7 @@ LittlerootTown_Movement_TwinReturnRight:
 
 LittlerootTown_EventScript_GoSaveBirchTrigger::
 	lockall
+	textcolor 0x4
 	applymovement LOCALID_TWIN, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
