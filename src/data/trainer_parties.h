@@ -3579,41 +3579,46 @@ static const struct TrainerMonItemCustomMovesAbilities sParty_Norman1[] = {
     }
 };
 
-static const struct TrainerMonItemCustomMoves sParty_Winona1[] = {
+static const struct TrainerMonItemCustomMovesAbilities sParty_Winona1[] = {
     {
     .iv = 210,
-    .lvl = 29,
-    .species = SPECIES_SWABLU,
-    .heldItem = ITEM_NONE,
-    .moves = {MOVE_PERISH_SONG, MOVE_MIRROR_MOVE, MOVE_SAFEGUARD, MOVE_AERIAL_ACE}
+    .lvl = 35,
+    .species = SPECIES_SWELLOW,
+    .heldItem = ITEM_FLAME_ORB,
+    .moves = {MOVE_AERIAL_ACE, MOVE_STEEL_WING, MOVE_AGILITY, MOVE_ENDEAVOR},
+	.abilityNums = 0,
     },
     {
     .iv = 210,
-    .lvl = 29,
-    .species = SPECIES_TROPIUS,
-    .heldItem = ITEM_NONE,
-    .moves = {MOVE_SUNNY_DAY, MOVE_AERIAL_ACE, MOVE_SOLAR_BEAM, MOVE_SYNTHESIS}
+    .lvl = 37,
+    .species = SPECIES_CROBAT,
+    .heldItem = ITEM_KINGS_ROCK,
+    .moves = {MOVE_CROSS_POISON, MOVE_RAZOR_WIND, MOVE_DOUBLE_TEAM, MOVE_CONFUSE_RAY},
+	.abilityNums = 0,
     },
     {
     .iv = 210,
-    .lvl = 30,
-    .species = SPECIES_PELIPPER,
-    .heldItem = ITEM_NONE,
-    .moves = {MOVE_WATER_GUN, MOVE_SUPERSONIC, MOVE_PROTECT, MOVE_AERIAL_ACE}
+    .lvl = 37,
+    .species = SPECIES_SCYTHER,
+    .heldItem = ITEM_SITRUS_BERRY,
+    .moves = {MOVE_AERIAL_ACE, MOVE_X_SCISSOR, MOVE_CROSS_CHOP, MOVE_SWORDS_DANCE},
+	.abilityNums = 1,
     },
     {
     .iv = 220,
-    .lvl = 31,
-    .species = SPECIES_SKARMORY,
+    .lvl = 36,
+    .species = SPECIES_XATU,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_SAND_ATTACK, MOVE_FURY_ATTACK, MOVE_STEEL_WING, MOVE_AERIAL_ACE}
+    .moves = {MOVE_PSYCHIC, MOVE_AIR_SLASH, MOVE_SHADOW_BALL, MOVE_CALM_MIND},
+	.abilityNums = 1,
     },
     {
     .iv = 255,
-    .lvl = 33,
+    .lvl = 39,
     .species = SPECIES_ALTARIA,
-    .heldItem = ITEM_ORAN_BERRY,
-    .moves = {MOVE_EARTHQUAKE, MOVE_DRAGON_BREATH, MOVE_DRAGON_DANCE, MOVE_AERIAL_ACE}
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_EARTHQUAKE, MOVE_DRAGON_CLAW, MOVE_DRAGON_DANCE, MOVE_AERIAL_ACE},
+	.abilityNums = 0,
     }
 };
 
