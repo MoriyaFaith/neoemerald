@@ -121,8 +121,15 @@
   ],
   "warp_events": [
     {
-      "x": 17,
-      "y": 1,
+      "x": 18,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE119_WEATHER_INSTITUTE_1F",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 18,
+      "y": 2,
       "elevation": 0,
       "dest_map": "MAP_ROUTE119_WEATHER_INSTITUTE_1F",
       "dest_warp_id": "2"
