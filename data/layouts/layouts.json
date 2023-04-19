@@ -903,7 +903,7 @@
     },
     {
       "id": "LAYOUT_MAUVILLE_CITY_GAME_CORNER",
-      "name": "MauvilleCity_GameCorner_Layout",
+      "name": "\u0002\u0000\u001e\u0000\u001f\u0000·\u0000\u0000\u0000\u0000\u0000MauvilleCity_GameC",
       "width": 22,
       "height": 12,
       "primary_tileset": "gTileset_Building",
@@ -2705,7 +2705,7 @@
       "id": "LAYOUT_ROUTE119_WEATHER_INSTITUTE_1F",
       "name": "Route119_WeatherInstitute_1F_Layout",
       "width": 20,
-      "height": 13,
+      "height": 14,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Lab",
       "border_filepath": "data/layouts/Route119_WeatherInstitute_1F/border.bin",
