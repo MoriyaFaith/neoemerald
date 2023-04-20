@@ -903,7 +903,7 @@
     },
     {
       "id": "LAYOUT_MAUVILLE_CITY_GAME_CORNER",
-      "name": "\u0002\u0000\u001e\u0000\u001f\u0000·\u0000\u0000\u0000\u0000\u0000MauvilleCity_GameC",
+      "name": "MauvilleCity_GameCorner_Layout",
       "width": 22,
       "height": 12,
       "primary_tileset": "gTileset_Building",

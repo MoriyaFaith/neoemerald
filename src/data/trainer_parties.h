@@ -7049,6 +7049,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute119Mudkip[] = {
     .lvl = 32,
     .species = SPECIES_GYARADOS,
     },
+    {
     .iv = 100,
     .lvl = 30,
     .species = SPECIES_SHELGON,
