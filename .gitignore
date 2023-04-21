@@ -33,6 +33,8 @@ build/
 .idea/
 porymap.project.cfg
 porymap.user.cfg
+porymap.*.cfg
+prefabs.json
 .vscode/
 *.a
 .fuse_hidden*

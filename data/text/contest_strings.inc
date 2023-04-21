@@ -37,7 +37,8 @@ gText_StartleAllAppealed::
 	.string "Startles all\nPOKéMON that have\ndone their appeals.$"
 
 gText_BadlyStartleFrontMon::
-	.string "Badly startles the\nPOKéMON in front.$"
+	.string "Badly startles the\n"
+	.string "POKéMON in front.$"
 
 gText_BadlyStartleAppealed::
 	.string "Badly startles\nthose that have\nmade appeals.$"

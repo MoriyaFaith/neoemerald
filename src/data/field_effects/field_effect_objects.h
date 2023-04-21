@@ -1156,7 +1156,7 @@ static const union AnimCmd *const sAnimTable_AshPuff[] =
     sAnim_AshPuff,
 };
 
-const struct SpriteTemplate gFieldEffectObjectTemplate_AshPuff = 
+const struct SpriteTemplate gFieldEffectObjectTemplate_AshPuff =
 {
     .tileTag = TAG_NONE,
     .paletteTag = FLDEFF_PAL_TAG_ASH,
@@ -1281,7 +1281,7 @@ static const union AnimCmd *const sAnimTable_RayquazaSpotlightEffect[] = {
     sAnim_RayquazaSpotlightEffect,
 };
 
-const struct SpriteFrameImage  sPicTable_RayquazaSpotlightEffect[] = {
+static const struct SpriteFrameImage sPicTable_RayquazaSpotlightEffect[] = {
     overworld_frame(gObjectEventPic_Rayquaza, 4, 4, 0),
 };
 
