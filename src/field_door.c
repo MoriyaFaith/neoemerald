@@ -367,7 +367,7 @@ static void DrawCurrentDoorAnimFrame(const struct DoorGraphics *gfx, u32 x, u32 
     else
     {
         // Top metatile
-        BuildDoorTiles(&tiles[0], DOOR_TILE_START_SIZE0 + 0, &paletteNums[0]);
+        BuildDoorTiles(&tiles[0], DOOR_TILE_START_SIZE1 + 0, &paletteNums[0]);
         DrawDoorMetatileAt(x, y, &tiles[0]);
     }
 }

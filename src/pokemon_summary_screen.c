@@ -40,6 +40,7 @@
 #include "text.h"
 #include "tv.h"
 #include "window.h"
+#include "orre_met_location_strings.h"
 #include "constants/items.h"
 #include "constants/layouts.h"
 #include "constants/moves.h"
@@ -261,6 +262,7 @@ static void BufferNatureString(void);
 static void GetMetLevelString(u8 *);
 static bool8 DoesMonOTMatchOwner(void);
 static bool8 DidMonComeFromOfficialGBAGames(void);
+static bool8 DidMonComeFromColoXD(void);
 static bool8 DidMonComeFromCrystalDust(void);
 static bool8 DidMonComeFromAnyGBAGame(void);
 static bool8 DidMonComeFromRSE(void);
@@ -311,6 +313,8 @@ static void DestroyExpBarSprites(void);
 static void SetExpBarSprites(void);
 static void PrintTitleBar(u8 pageIndex, bool8 detailsShown);
 static u8 StatColor(s8 natureMod);
+extern u8* DetermineOrreMetLocation(struct Pokemon *);
+extern u8 *WriteOrreMapName(u8 *dst0, u8 *string, u16 fill);
 
 // const rom data
 #include "data/text/move_descriptions.h"
@@ -2719,7 +2723,11 @@ static void BufferMonTrainerMemo(void)
     {
     	u8 *metLevelString = Alloc(32);
     	u8 *metLocationString = Alloc(32);
+        u8 *orreMetLocationString = Alloc(32);
+        u8 *OTString = Alloc(32);
+        u8 language;
     	GetMetLevelString(metLevelString);
+        OTString = sum->OTName;
 
         if (sum->metLocation < MAPSEC_NONE)
         {
@@ -2737,6 +2745,37 @@ static void BufferMonTrainerMemo(void)
         else if (metlocation == METLOC_FATEFUL_ENCOUNTER)
         {
             text = gText_XNatureFatefulEncounter;
+        }
+        else if (DidMonComeFromColoXD())
+        {
+            if(((sum->species >= SPECIES_EEVEE && sum->species <= SPECIES_FLAREON) || sum->species == SPECIES_ESPEON || sum->species == SPECIES_UMBREON) && sum->metLevel == 10) 
+            //XD Starters. Level 10 is needed to make sure Umbreon and Espeon don't conflict.
+			{
+				if(language == LANGUAGE_JAPANESE)
+					text = gXD_Eevee_Met_Location_JP;
+				else
+					text = gXD_Eevee_Met_Location;
+			}
+            else if(sum->species == SPECIES_ESPEON || sum->species == SPECIES_UMBREON) // Colo Starters
+			{
+				if(language == LANGUAGE_JAPANESE)
+					text = gColosseum_Starter_Met_Location_JP;
+				else
+					text = gColosseum_Starter_Met_Location;
+			}
+			else if (sum->species == SPECIES_PLUSLE) // Duking's Plusle
+			{
+				if(language == LANGUAGE_JAPANESE)
+					text = gDukings_Plusle_JP;
+				else
+					text = gDukings_Plusle;
+			}
+            else if (sum->metLocation == 90 || sum->metLocation == 91 || sum->metLocation == 92 || sum->metLocation == 116)
+            {
+                text = gText_XNatureProbablyMetAt;
+            }
+            else 
+            text = gText_XNatureSnaggedAt;
         }
         else if (metlocation != METLOC_IN_GAME_TRADE && DidMonComeFromAnyGBAGame())
         {
@@ -3175,12 +3214,12 @@ static void SetMonTypeIcons(void)
         return;
     }
 
-    SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[1], 167, 49, SPRITE_ARR_ID_TYPE);
+    SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[0], 167, 49, SPRITE_ARR_ID_TYPE);
     SetSpriteInvisibility(SPRITE_ARR_ID_TYPE, FALSE);
 
-    if (gSpeciesInfo[summary->species].types[1] != gSpeciesInfo[summary->species].types[2])
+    if (gSpeciesInfo[summary->species].types[0] != gSpeciesInfo[summary->species].types[1])
     {
-        SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[2], 203, 49, SPRITE_ARR_ID_TYPE + 1);
+        SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[1], 203, 49, SPRITE_ARR_ID_TYPE + 1);
         SetSpriteInvisibility(SPRITE_ARR_ID_TYPE + 1, FALSE);
     }
     else
