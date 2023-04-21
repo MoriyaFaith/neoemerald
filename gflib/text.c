@@ -1020,7 +1020,7 @@ static u16 RenderText(struct TextPrinter *textPrinter)
                 subStruct->fontId = *textPrinter->printerTemplate.currentChar;
                 textPrinter->printerTemplate.currentChar++;
                 return RENDER_REPEAT;
-            case EXT_CTRL_CODE_RESET_SIZE:
+            case EXT_CTRL_CODE_RESET_FONT:
                 subStruct->fontId = textPrinter->printerTemplate.fontId;
                 return RENDER_REPEAT;
             case EXT_CTRL_CODE_PAUSE:
@@ -1460,7 +1460,7 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
             case EXT_CTRL_CODE_ENG:
                 isJapanese = 0;
                 break;
-            case EXT_CTRL_CODE_RESET_SIZE:
+            case EXT_CTRL_CODE_RESET_FONT:
                 if (letterSpacing == -1)
                     localLetterSpacing = GetFontAttribute(fontId, FONTATTR_LETTER_SPACING);
                 else
@@ -1962,7 +1962,7 @@ static u32 GetGlyphWidth_Emerald(u16 glyphId, bool32 isJapanese)
         return gFontEmeraldLatinGlyphWidths[glyphId];
 }
 
-static void DecompressGlyph_RS(u16 glyphId, bool32 isJapanese)
+static void DecompressGlyph_Normal(u16 glyphId, bool32 isJapanese)
 {
     const u16* glyphs;
 

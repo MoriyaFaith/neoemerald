@@ -112,7 +112,7 @@ void (*const gWeatherPalStateFuncs[])(void) =
 
 // This table specifies which of the color maps should be
 // applied to each of the background and sprite palettes.
-static const u8 sBasePaletteColorMapTypes[32] =
+EWRAM_DATA u8 sBasePaletteColorMapTypes[32] =
 {
     // background palettes
     COLOR_MAP_DARK_CONTRAST,
@@ -280,10 +280,6 @@ static void BuildColorMaps(void)
     u16 baseBrightness;
     u32 remainingBrightness;
     s16 diff;
-    u8 i;
-
-    for (i = 0; i <= 12; i++)
-        sBasePaletteGammaTypes[i] = GAMMA_NORMAL;
 
     sPaletteColorMapTypes = sBasePaletteColorMapTypes;
     for (i = 0; i < 2; i++)
@@ -1118,5 +1114,5 @@ void ResetPreservedPalettesInWeather(void)
 void UpdatePaletteGammaType(u8 index, u8 gammaType)
 {
     if (index != 0xFF)
-        sBasePaletteGammaTypes[index + 16] = gammaType;
+        sBasePaletteColorMapTypes[index + 16] = gammaType; //this might be the fix?
 }

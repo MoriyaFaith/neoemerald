@@ -1090,7 +1090,7 @@ void ShowPokemonSummaryScreen(u8 mode, void *mons, u8 monIndex, u8 maxMonIndex, 
     SummaryScreen_SetAnimDelayTaskId(TASK_NONE);
 
     if (gMonSpritesGfxPtr == NULL)
-        CreateMonSpritesGfxManager();
+        CreateMonSpritesGfxManager(MON_SPR_GFX_MANAGER_A, MON_SPR_GFX_MODE_NORMAL);
 
     SetMainCallback2(CB2_InitSummaryScreen);
 }
@@ -1452,7 +1452,7 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
         break;
     default:
         sum->ribbonCount = GetMonData(mon, MON_DATA_RIBBON_COUNT);
-        sum->fatefulEncounter = GetMonData(mon, MON_DATA_EVENT_LEGAL);
+        sum->fatefulEncounter = GetMonData(mon, MON_DATA_MODERN_FATEFUL_ENCOUNTER);
         if (sum->isEgg)
         {
             sMonSummaryScreen->minPageIndex = PSS_PAGE_INFO;
@@ -2890,7 +2890,7 @@ static void PrintSkillsPage(void)
     PrintTextOnWindow(WINDOW_ARR_ID_SKILLS_RIGHT, gStringVar1, x, 87, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
 
     if (summary->level < MAX_LEVEL)
-        ConvertIntToDecimalStringN(gStringVar1, gExperienceTables[gBaseStats[summary->species].growthRate][summary->level + 1] - summary->exp, STR_CONV_MODE_RIGHT_ALIGN, 6);
+        ConvertIntToDecimalStringN(gStringVar1, gExperienceTables[gSpeciesInfo[summary->species].growthRate][summary->level + 1] - summary->exp, STR_CONV_MODE_RIGHT_ALIGN, 6);
     else
         ConvertIntToDecimalStringN(gStringVar1, 0, STR_CONV_MODE_RIGHT_ALIGN, 6);
     x = GetStringRightAlignXOffset(1, gStringVar1, 70);
@@ -2987,11 +2987,11 @@ static void PrintMoveDetails(u16 move)
     FillWindowPixelBuffer(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, PIXEL_FILL(0));
 
     SetSpriteInvisibility(SPRITE_ARR_ID_MON_ICON, FALSE);
-    SetTypeSpritePosAndPal(gBaseStats[summary->species].type1, 48, 33, SPRITE_ARR_ID_TYPE);
+    SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[1], 48, 33, SPRITE_ARR_ID_TYPE);
 
-    if (gBaseStats[summary->species].type1 != gBaseStats[summary->species].type2)
+    if (gSpeciesInfo[summary->species].types[1] != gSpeciesInfo[summary->species].types[2])
     {
-        SetTypeSpritePosAndPal(gBaseStats[summary->species].type2, 84, 33, SPRITE_ARR_ID_TYPE + 1);
+        SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[2], 84, 33, SPRITE_ARR_ID_TYPE + 1);
         SetSpriteInvisibility(SPRITE_ARR_ID_TYPE + 1, FALSE);
     }
     else
@@ -3175,12 +3175,12 @@ static void SetMonTypeIcons(void)
         return;
     }
 
-    SetTypeSpritePosAndPal(gBaseStats[summary->species].type1, 167, 49, SPRITE_ARR_ID_TYPE);
+    SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[1], 167, 49, SPRITE_ARR_ID_TYPE);
     SetSpriteInvisibility(SPRITE_ARR_ID_TYPE, FALSE);
 
-    if (gBaseStats[summary->species].type1 != gBaseStats[summary->species].type2)
+    if (gSpeciesInfo[summary->species].types[1] != gSpeciesInfo[summary->species].types[2])
     {
-        SetTypeSpritePosAndPal(gBaseStats[summary->species].type2, 203, 49, SPRITE_ARR_ID_TYPE + 1);
+        SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[2], 203, 49, SPRITE_ARR_ID_TYPE + 1);
         SetSpriteInvisibility(SPRITE_ARR_ID_TYPE + 1, FALSE);
     }
     else
@@ -3270,14 +3270,14 @@ static u8 LoadMonGfxAndSprite(struct Pokemon *mon, s16 *state)
         {
             if (gMonSpritesGfxPtr != NULL)
             {
-                if (sMonSummaryScreen->monList.mons == gPlayerParty || sMonSummaryScreen->mode == SUMMARY_MODE_BOX || sMonSummaryScreen->unk40EF == TRUE)
+                if (sMonSummaryScreen->monList.mons == gPlayerParty || sMonSummaryScreen->mode == SUMMARY_MODE_BOX || sMonSummaryScreen->handleDeoxys == TRUE)
                     HandleLoadSpecialPokePic_2(&gMonFrontPicTable[summary->species2], gMonSpritesGfxPtr->sprites.ptr[1], summary->species2, summary->pid);
                 else
                     HandleLoadSpecialPokePic_DontHandleDeoxys(&gMonFrontPicTable[summary->species2], gMonSpritesGfxPtr->sprites.ptr[1], summary->species2, summary->pid);
             }
             else
             {
-				if (sMonSummaryScreen->monList.mons == gPlayerParty || sMonSummaryScreen->mode == SUMMARY_MODE_BOX || sMonSummaryScreen->unk40EF == TRUE)
+				if (sMonSummaryScreen->monList.mons == gPlayerParty || sMonSummaryScreen->mode == SUMMARY_MODE_BOX || sMonSummaryScreen->handleDeoxys == TRUE)
 					HandleLoadSpecialPokePic_2(&gMonFrontPicTable[summary->species2],
 												MonSpritesGfxManager_GetSpritePtr(B_POSITION_OPPONENT_LEFT),
 												summary->species2,
@@ -3453,7 +3453,7 @@ static void CreateMoveSelectorSprites(u8 idArrayStart)
                 StartSpriteAnim(&gSprites[spriteIds[i]], 1); // middle
             else
                 StartSpriteAnim(&gSprites[spriteIds[i]], 2); // right, actually the same as left, but flipped
-            gSprites[spriteIds[i]].callback = SpriteCb_MoveSelector;
+            gSprites[spriteIds[i]].callback = SpriteCB_MoveSelector;
             gSprites[spriteIds[i]].data[0] = idArrayStart;
             gSprites[spriteIds[i]].data[1] = 0;
         }
@@ -3768,8 +3768,8 @@ static void ConfigureExpBarSprites(void)
 
     if (level < 100)
     {
-        totalExpToNextLevel = gExperienceTables[gBaseStats[species].growthRate][level + 1] - gExperienceTables[gBaseStats[species].growthRate][level];
-        curExpToNextLevel = exp - gExperienceTables[gBaseStats[species].growthRate][level];
+        totalExpToNextLevel = gExperienceTables[gSpeciesInfo[species].growthRate][level + 1] - gExperienceTables[gSpeciesInfo[species].growthRate][level];
+        curExpToNextLevel = exp - gExperienceTables[gSpeciesInfo[species].growthRate][level];
         v0 = ((totalExpToNextLevel << 2) / 8);
         v1 = (curExpToNextLevel << 2);
 

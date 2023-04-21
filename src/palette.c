@@ -253,7 +253,7 @@ static void PaletteStruct_Copy(struct PaletteStruct *palStruct, u32 *unkFlags)
     {
         while (i < palStruct->template->size)
         {
-            gPlttBufferPreDN[a1->destOffset] = RGB_BLACK;
+            gPlttBufferPreDN[palStruct->destOffset] = RGB_BLACK;
             gPlttBufferUnfaded[palStruct->destOffset] = palStruct->template->src[srcOffset];
             gPlttBufferFaded[palStruct->destOffset] = palStruct->template->src[srcOffset];
             i++;

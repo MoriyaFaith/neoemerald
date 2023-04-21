@@ -103,25 +103,30 @@ static void LoadObjectReflectionPalette(struct ObjectEvent *objectEvent, struct 
 
 void LoadSpecialReflectionPalette(struct Sprite *sprite)
 {
-    const struct ObjectEventGraphicsInfo *graphicsInfo;
-
-    graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
-    if (graphicsInfo->reflectionPaletteTag != OBJ_EVENT_PAL_TAG_NONE)
-    {
-        if (graphicsInfo->paletteSlot == 0)
-        {
-            LoadPlayerObjectReflectionPalette(graphicsInfo->paletteTag, paletteIndex);
-        }
-        else if (graphicsInfo->paletteSlot == 10)
-        {
-            LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, paletteIndex);
-        }
-        else
-        {
-            PatchObjectPalette(GetObjectPaletteTag(paletteIndex), paletteIndex);
-        }
-        UpdateSpritePaletteWithWeather(paletteIndex);
-    }
+    u32 R, G, B, i;
+	u16 color;
+	u16* pal;
+	struct SpritePalette reflectionPalette;
+	
+	CpuCopy16(&gPlttBufferUnfaded[0x100 + sprite->oam.paletteNum * 16], gReflectionPaletteBuffer, 32);
+	pal = gReflectionPaletteBuffer;
+	for (i = 0; i < 16; ++i)
+	{
+		color = pal[i];
+		R = GET_R(color) + 8;
+		G = GET_G(color) + 8;
+		B = GET_B(color) + 16;
+		if (R > 31) R = 31;
+		if (G > 31) G = 31;
+		if (B > 31) B = 31;
+		pal[i] = RGB(R, G, B);
+	}
+	reflectionPalette.data = gReflectionPaletteBuffer;
+	reflectionPalette.tag = GetSpritePaletteTagByPaletteNum(sprite->oam.paletteNum) + 0x1000;
+	LoadSpritePaletteDayNight(&reflectionPalette);
+	sprite->oam.paletteNum = IndexOfSpritePaletteTag(reflectionPalette.tag);
+	UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_ALT);
+	UpdateSpritePaletteWithWeather(sprite->oam.paletteNum);
 }
 
 static void UpdateObjectReflectionSprite(struct Sprite *reflectionSprite)

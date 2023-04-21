@@ -101,7 +101,7 @@ void LoadMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
 void LoadSignMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
 {
     LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gSignMessageBox_Gfx, 0x260, destOffset);
-    LoadPalette(GetTextWindowPalette(1), palOffset, PLTT_SIZE_4BPP));
+    LoadPalette(GetTextWindowPalette(1), palOffset, PLTT_SIZE_4BPP);
 }
 
 void LoadThinWindowBorderGfx(u8 windowId, u16 destOffset, u8 palOffset)

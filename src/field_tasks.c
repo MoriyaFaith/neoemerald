@@ -170,7 +170,7 @@ static void Task_RunTimeBasedEvents(u8 taskId)
 
     ProcessImmediateTimeEvents();
 
-    if (!ScriptContext2_IsEnabled())
+    if (!ArePlayerFieldControlsLocked())
     {
         RunTimeBasedEvents(data);
         UpdateAmbientCry(&tAmbientCryState, &tAmbientCryDelay);

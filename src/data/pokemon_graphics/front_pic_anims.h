@@ -3321,7 +3321,7 @@ static const union AnimCmd sAnim_SPINDA_1[] =
     ANIMCMD_END,
 };
 
-static const union AnimCmd sAnim_WINGULL_1[] =
+static const union AnimCmd sAnim_Wingull_1[] =
 {
     ANIMCMD_FRAME(0, 17),
     ANIMCMD_FRAME(1, 23),
@@ -3999,7 +3999,7 @@ static const union AnimCmd sAnim_ROSERADE_1[] =
     ANIMCMD_END,
 };
 
-static const union AnimCmd sAnim_SLAKOTH_1[] =
+static const union AnimCmd sAnim_Slakoth_1[] =
 {
     ANIMCMD_FRAME(0, 13),
     ANIMCMD_FRAME(1, 22),
@@ -4353,7 +4353,7 @@ static const union AnimCmd sAnim_GALLADE_1[] =
     ANIMCMD_END,
 };
 
-static const union AnimCmd sAnim_BAGON_1[] =
+static const union AnimCmd sAnim_Bagon_1[] =
 {
     ANIMCMD_FRAME(0, 15),
     ANIMCMD_FRAME(1, 15),

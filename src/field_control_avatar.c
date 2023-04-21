@@ -239,24 +239,12 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
         return TRUE;
 
-    #ifdef TX_DEBUGGING
-        if (!TX_DEBUG_MENU_OPTION)
-        {
-            if (input->input_field_1_2)
-            {
-                PlaySE(SE_WIN_OPEN);
-                Debug_ShowMainMenu();
-                return TRUE;
-            }
-        }
-    #endif
-
     return FALSE;
 }
 
 void CheckEarlyScriptExit(struct FieldInput *input)
 {
-    if (ScriptContext1_IsScriptSetUp() != TRUE)
+    if (ScriptContext_IsEnabled() != TRUE)
         return;
 
     if (gExitFromScriptEarlyWaitTimer != 0)
@@ -270,13 +258,13 @@ void CheckEarlyScriptExit(struct FieldInput *input)
 
     if (input->dpadDirection != DIR_NONE && GetPlayerFacingDirection() != input->dpadDirection)
     {
-        ScriptContext1_SetupScript(ClearPokepicAndTextboxForEarlyScriptExit);
-        ScriptContext2_Enable();
+        ScriptContext_SetupScript(ClearPokepicAndTextboxForEarlyScriptExit);
+        LockPlayerFieldControls();
     }
     else if (input->pressedStartButton)
     {
-        ScriptContext1_SetupScript(ClearPokepicAndTextboxForEarlyScriptExit);
-        ScriptContext2_Enable();
+        ScriptContext_SetupScript(ClearPokepicAndTextboxForEarlyScriptExit);
+        LockPlayerFieldControls();
         if (!FuncIsActiveTask(Task_ShowStartMenuAfterEarlyScriptExit))
             CreateTask(Task_ShowStartMenuAfterEarlyScriptExit, 8);
     }
@@ -284,7 +272,7 @@ void CheckEarlyScriptExit(struct FieldInput *input)
 
 static void Task_ShowStartMenuAfterEarlyScriptExit(u8 taskId)
 {
-    if (!ScriptContext2_IsEnabled())
+    if (!ArePlayerFieldControlsLocked())
     {
         PlaySE(SE_WIN_OPEN);
         ShowStartMenu();
@@ -859,7 +847,7 @@ static bool8 GetSpecialSignpostScriptId(u8 metatileBehavior, u8 direction)
 static void SetupSpecialSignpostScript(const u8 *script, u8 direction)
 {
     gSpecialVar_Facing = direction;
-    ScriptContext1_SetupScript(script);
+    ScriptContext_SetupScript(script);
     EnableExitingFromScriptEarly();
     TextboxUseSignBorder();
 }
@@ -867,7 +855,7 @@ static void SetupSpecialSignpostScript(const u8 *script, u8 direction)
 static const u8 *GetBackgroundEventScriptForSignpost(const struct MapPosition *position)
 {
     const u8 *script;
-    struct BgEvent *event = GetBackgroundEventAtPosition(&gMapHeader, position->x - 7, position->y - 7, position->elevation);
+    const struct BgEvent *event = GetBackgroundEventAtPosition(&gMapHeader, position->x - MAP_OFFSET, position->y - MAP_OFFSET, position->elevation);
 
     if (event == NULL)
         return NULL;
