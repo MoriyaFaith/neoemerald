@@ -1151,7 +1151,7 @@ static void PrintItemQuantity(s16 quantity)
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
     ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEADING_ZEROS, BERRY_CAPACITY_DIGITS);
     StringExpandPlaceholders(gStringVar4, gText_xVar1);
-    BagMenu_Print(windowId, FONT_SMALL, gStringVar4, 4, 10, 1, 0, 0, COLORID_DESCRIPTION);
+    BagMenu_Print(windowId, FONT_SMALL, gStringVar4, 4, 10, 1, 0, 0, COLORID_NORMAL);
 }
 
 // Prints the quantity of items to be sold and the amount that would be earned
@@ -2117,11 +2117,7 @@ static void Task_ItemContext_Deposit(u8 taskId)
     }
     else
     {
-        CopyItemName(gSpecialVar_ItemId, gStringVar1);
-        StringExpandPlaceholders(gStringVar4, gText_DepositHowManyVar1);
-        FillWindowPixelBuffer(WIN_DESCRIPTION, PIXEL_FILL(0));
-        BagMenu_Print(WIN_DESCRIPTION, FONT_NORMAL, gStringVar4, 3, 1, 0, 0, 0, COLORID_NORMAL);
-        AddItemQuantityWindow(ITEMWIN_QUANTITY);
+        AddItemQuantityWindow(gText_DepositHowManyVar1);
         gTasks[taskId].func = Task_ChooseHowManyToDeposit;
     }
 }
@@ -2130,14 +2126,18 @@ static void Task_ChooseHowManyToDeposit(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
-    if (AdjustQuantityAccordingToDPadInput(&tItemCount, tQuantity) == TRUE)
+    if (AdjustQuantityAccordingToDPadInput(&tItemCount, tQuantity))
     {
         PrintItemQuantity(tItemCount);
     }
     else if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
+        ClearWindowTilemap(gBagMenu->windowIds[ITEMWIN_THIN_MESSAGE_1]);
         BagMenu_RemoveWindow(ITEMWIN_QUANTITY);
+        BagMenu_RemoveWindow(ITEMWIN_THIN_MESSAGE_1);
+        ScheduleBgCopyTilemapToVram(0);
+        BagDestroyPocketScrollArrowPair();
         TryDepositItem(taskId);
     }
     else if (JOY_NEW(B_BUTTON))
@@ -2157,28 +2157,33 @@ static void TryDepositItem(u8 taskId)
     s16 *data = gTasks[taskId].data;
 
     FillWindowPixelBuffer(WIN_DESCRIPTION, PIXEL_FILL(0));
-    if (ItemId_GetImportance(gSpecialVar_ItemId))
+    if (ItemId_GetImportance(gSpecialVar_ItemId) > 1)
     {
         // Can't deposit important items
-        BagMenu_Print(WIN_DESCRIPTION, FONT_NORMAL, gText_CantStoreImportantItems, 3, 1, 0, 0, 0, COLORID_NORMAL);
-        gTasks[taskId].func = WaitDepositErrorMessage;
+        DisplayItemMessage(taskId, gText_CantStoreImportantItems, WaitDepositErrorMessage);
     }
-    else if (AddPCItem(gSpecialVar_ItemId, tItemCount) == TRUE)
+    else if (AddPCItem(gSpecialVar_ItemId, tItemCount))
     {
         // Successfully deposited
         CopyItemName(gSpecialVar_ItemId, gStringVar1);
         ConvertIntToDecimalStringN(gStringVar2, tItemCount, STR_CONV_MODE_LEFT_ALIGN, MAX_ITEM_DIGITS);
         StringExpandPlaceholders(gStringVar4, gText_DepositedVar2Var1s);
-        BagMenu_Print(WIN_DESCRIPTION, FONT_NORMAL, gStringVar4, 3, 1, 0, 0, 0, COLORID_NORMAL);
+        BagMenu_Print(BagMenu_AddWindow(ITEMWIN_THIN_MESSAGE_1, 3), FONT_NORMAL, gStringVar4, 0, 2, 1, 0, 0, COLORID_NORMAL);
         gTasks[taskId].func = Task_RemoveItemFromBag;
     }
     else
     {
         // No room to deposit
-        BagMenu_Print(WIN_DESCRIPTION, FONT_NORMAL, gText_NoRoomForItems, 3, 1, 0, 0, 0, COLORID_NORMAL);
-        gTasks[taskId].func = WaitDepositErrorMessage;
+        DisplayItemMessage(taskId, gText_NoRoomForItems, WaitDepositErrorMessage);
     }
 }
+
+#undef tQuantity
+#undef tItemCount
+#undef tMsgWindowId
+#undef tPocketSwitchDir
+#undef tPocketSwitchTimer
+#undef tPocketSwitchState
 
 static void WaitDepositErrorMessage(u8 taskId)
 {
