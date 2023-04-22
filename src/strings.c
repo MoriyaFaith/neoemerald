@@ -182,7 +182,7 @@ const u8 gMenuText_Use[] = _("USE");
 const u8 gMenuText_Toss[] = _("TOSS");
 const u8 gMenuText_Register[] = _("REGISTER");
 const u8 gMenuText_Give[] = _("GIVE");
-const u8 gMenuText_CheckTag[] = _("CHECK TAG");
+const u8 gMenuText_CheckTag[] = _("VIEW TAG");
 const u8 gMenuText_Confirm[] = _("CONFIRM");
 const u8 gMenuText_Walk[] = _("WALK");
 const u8 gText_Cancel[] = _("CANCEL");
@@ -294,8 +294,8 @@ const u8 *const gPocketNamesStringsTable[] =
     [KEYITEMS_POCKET] = gText_KeyItemsPocket
 };
 
-const u8 gText_NumberItem_TMBerry[] = _("{NO}{STR_VAR_1}{CLEAR 0x07}{STR_VAR_2}");
-const u8 gText_NumberItem_HM[] = _("{CLEAR_TO 0x11}{STR_VAR_1}{CLEAR 0x05}{STR_VAR_2}");
+const u8 gText_NumberItem_TMBerry[] = _("{NO}{FONT_SMALL}{STR_VAR_1} {RESET_FONT}{STR_VAR_2}");
+const u8 gText_NumberItem_HM[] = _("{CLEAR_TO 0x11}{NO}{FONT_SMALL}{STR_VAR_1} {RESET_FONT}{STR_VAR_2}");
 const u8 gText_SizeSlash[] = _("SIZE /");
 const u8 gText_FirmSlash[] = _("FIRM /");
 const u8 gText_Var1DotVar2[] = _("{STR_VAR_1}.{STR_VAR_2}”");

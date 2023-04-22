@@ -10,6 +10,7 @@
 #include "sprite.h"
 #include "window.h"
 #include "constants/items.h"
+#include "list_menu.h"
 
 enum {
     TAG_BAG_GFX = 100,
@@ -29,14 +30,6 @@ struct CompressedTilesPal
 // this file's functions
 static void SpriteCB_BagVisualSwitchingPockets(struct Sprite *sprite);
 static void SpriteCB_ShakeBagSprite(struct Sprite *sprite);
-static void SpriteCB_SwitchPocketRotatingBallInit(struct Sprite *sprite);
-static void SpriteCB_SwitchPocketRotatingBallContinue(struct Sprite *sprite);
-
-// static const rom data
-static const u16 sRotatingBall_Pal[] = INCBIN_U16("graphics/bag/rotating_ball.gbapal");
-static const u8 sRotatingBall_Gfx[] = INCBIN_U8("graphics/bag/rotating_ball.4bpp");
-static const u8 sCherryUnused[] = INCBIN_U8("graphics/unused/cherry.4bpp");
-static const u16 sCherryUnused_Pal[] = INCBIN_U16("graphics/unused/cherry.gbapal");
 
 static const struct OamData sBagOamData =
 {
@@ -152,78 +145,6 @@ static const struct SpriteTemplate sBagSpriteTemplate =
     .affineAnims = sBagAffineAnimCmds,
     .callback = SpriteCallbackDummy,
 };
-
-static const struct OamData sRotatingBallOamData =
-{
-    .y = 0,
-    .affineMode = ST_OAM_AFFINE_OFF,
-    .objMode = ST_OAM_OBJ_NORMAL,
-    .mosaic = FALSE,
-    .bpp = ST_OAM_4BPP,
-    .shape = SPRITE_SHAPE(16x16),
-    .x = 0,
-    .matrixNum = 4,
-    .size = SPRITE_SIZE(16x16),
-    .tileNum = 0,
-    .priority = 2,
-    .paletteNum = 0,
-    .affineParam = 0
-};
-
-static const union AnimCmd sSpriteAffineAnim_RotatingBallStationary[] =
-{
-    ANIMCMD_FRAME(0, 0),
-    ANIMCMD_END
-};
-
-static const union AnimCmd *const sRotatingBallSpriteAnimTable[] =
-{
-    sSpriteAffineAnim_RotatingBallStationary
-};
-
-static const union AffineAnimCmd sSpriteAffineAnim_RotatingBallRotation1[] =
-{
-    AFFINEANIMCMD_FRAME(0, 0, 8, 16),
-    AFFINEANIMCMD_END
-};
-
-static const union AffineAnimCmd sSpriteAffineAnim_RotatingBallRotation2[] =
-{
-    AFFINEANIMCMD_FRAME(0, 0, 248, 16),
-    AFFINEANIMCMD_END
-};
-
-static const union AffineAnimCmd *const sRotatingBallAnimCmds[] =
-{
-    sSpriteAffineAnim_RotatingBallRotation1,
-};
-
-static const union AffineAnimCmd *const sRotatingBallAnimCmds_FullRotation[] =
-{
-    sSpriteAffineAnim_RotatingBallRotation2,
-};
-
-static const struct SpriteSheet sRotatingBallTable =
-{
-    sRotatingBall_Gfx, sizeof(sRotatingBall_Gfx), TAG_ROTATING_BALL_GFX
-};
-
-static const struct SpritePalette sRotatingBallPaletteTable =
-{
-    sRotatingBall_Pal, TAG_ROTATING_BALL_GFX
-};
-
-static const struct SpriteTemplate sRotatingBallSpriteTemplate =
-{
-    .tileTag = TAG_ROTATING_BALL_GFX,
-    .paletteTag = TAG_ROTATING_BALL_GFX,
-    .oam = &sRotatingBallOamData,
-    .anims = sRotatingBallSpriteAnimTable,
-    .images = NULL,
-    .affineAnims = sRotatingBallAnimCmds,
-    .callback = SpriteCB_SwitchPocketRotatingBallInit,
-};
-
 static const struct OamData sBerryPicOamData =
 {
     .y = 0,
@@ -420,6 +341,9 @@ static const struct SpriteTemplate sBerryCheckCircleSpriteTemplate =
     .callback = SpriteCallbackDummy,
 };
 
+static EWRAM_DATA u8 sItemMenuIconSpriteIds[ITEMMENUSPRITE_COUNT] = {0};
+
+
 // code
 void RemoveBagSprite(u8 id)
 {
@@ -437,7 +361,7 @@ void RemoveBagSprite(u8 id)
 void AddBagVisualSprite(u8 bagPocketId)
 {
     u8 *spriteId = &gBagMenu->spriteIds[ITEMMENUSPRITE_BAG];
-    *spriteId = CreateSprite(&sBagSpriteTemplate, 68, 66, 0);
+    *spriteId = CreateSprite(&sBagSpriteTemplate, 40, 68, 0);
     SetBagVisualPocketId(bagPocketId, FALSE);
 }
 
@@ -493,45 +417,6 @@ static void SpriteCB_ShakeBagSprite(struct Sprite *sprite)
         sprite->callback = SpriteCallbackDummy;
     }
 }
-
-void AddSwitchPocketRotatingBallSprite(s16 rotationDirection)
-{
-    u8 *spriteId = &gBagMenu->spriteIds[ITEMMENUSPRITE_BALL];
-    LoadSpriteSheet(&sRotatingBallTable);
-    LoadSpritePalette(&sRotatingBallPaletteTable);
-    *spriteId = CreateSprite(&sRotatingBallSpriteTemplate, 16, 16, 0);
-    gSprites[*spriteId].data[0] = rotationDirection;
-}
-
-static void UpdateSwitchPocketRotatingBallCoords(struct Sprite *sprite)
-{
-    sprite->centerToCornerVecX = sprite->data[1] - ((sprite->data[3] + 1) & 1);
-    sprite->centerToCornerVecY = sprite->data[1] - ((sprite->data[3] + 1) & 1);
-}
-
-static void SpriteCB_SwitchPocketRotatingBallInit(struct Sprite *sprite)
-{
-    sprite->oam.affineMode = ST_OAM_AFFINE_NORMAL;
-    if (sprite->data[0] == -1)
-        sprite->affineAnims = sRotatingBallAnimCmds;
-    else
-        sprite->affineAnims = sRotatingBallAnimCmds_FullRotation;
-
-    InitSpriteAffineAnim(sprite);
-    sprite->data[1] = sprite->centerToCornerVecX;
-    sprite->data[1] = sprite->centerToCornerVecY;
-    UpdateSwitchPocketRotatingBallCoords(sprite);
-    sprite->callback = SpriteCB_SwitchPocketRotatingBallContinue;
-}
-
-static void SpriteCB_SwitchPocketRotatingBallContinue(struct Sprite *sprite)
-{
-    sprite->data[3]++;
-    UpdateSwitchPocketRotatingBallCoords(sprite);
-    if (sprite->data[3] == 16)
-        RemoveBagSprite(ITEMMENUSPRITE_BALL);
-}
-
 void AddBagItemIconSprite(u16 itemId, u8 id)
 {
     u8 *spriteId = &gBagMenu->spriteIds[id + ITEMMENUSPRITE_ITEM];
@@ -547,16 +432,13 @@ void AddBagItemIconSprite(u16 itemId, u8 id)
         {
             *spriteId = iconSpriteId;
             gSprites[iconSpriteId].x2 = 24;
-            gSprites[iconSpriteId].y2 = 88;
+            gSprites[iconSpriteId].y2 = 140;
         }
     }
 }
 
 void RemoveBagItemIconSprite(u8 id)
 {
-// BUG: For one frame, the item you scroll to in the Bag menu
-// will have an incorrect palette and may be seen as a flicker.
-#ifdef BUGFIX
     u8 *spriteId = &gBagMenu->spriteIds[ITEMMENUSPRITE_ITEM];
 
     if (spriteId[id ^ 1] != SPRITE_NONE)
@@ -567,29 +449,26 @@ void RemoveBagItemIconSprite(u8 id)
         DestroySpriteAndFreeResources(&gSprites[spriteId[id]]);
         spriteId[id] = SPRITE_NONE;
     }
-#else
-    RemoveBagSprite(id + ITEMMENUSPRITE_ITEM);
-#endif
 }
 
 void CreateItemMenuSwapLine(void)
 {
-    CreateSwapLineSprites(&gBagMenu->spriteIds[ITEMMENUSPRITE_SWAP_LINE], ITEMMENU_SWAP_LINE_LENGTH);
+    CreateSwapLineSprites(&sItemMenuIconSpriteIds[ITEMMENUSPRITE_SWAP_LINE], ITEMMENU_SWAP_LINE_LENGTH);
 }
 
 void SetItemMenuSwapLineInvisibility(bool8 invisible)
 {
-    SetSwapLineSpritesInvisibility(&gBagMenu->spriteIds[ITEMMENUSPRITE_SWAP_LINE], ITEMMENU_SWAP_LINE_LENGTH, invisible);
+    SetSwapLineSpritesInvisibility(&sItemMenuIconSpriteIds[ITEMMENUSPRITE_SWAP_LINE], ITEMMENU_SWAP_LINE_LENGTH, invisible);
 }
 
-void UpdateItemMenuSwapLinePos(u8 y)
+void UpdateItemMenuSwapLinePos(u16 y)
 {
-    UpdateSwapLineSpritesPos(&gBagMenu->spriteIds[ITEMMENUSPRITE_SWAP_LINE], ITEMMENU_SWAP_LINE_LENGTH | SWAP_LINE_HAS_MARGIN, 120, (y + 1) * 16);
+    UpdateSwapLineSpritesPos(&sItemMenuIconSpriteIds[ITEMMENUSPRITE_SWAP_LINE], ITEMMENU_SWAP_LINE_LENGTH, 96, ListMenuGetYCoordForPrintingArrowCursor(y) + 6);
 }
 
 static void ArrangeBerryGfx(void *src, void *dest)
 {
-    u8 i, j;
+    u32 i, j;
 
     memset(dest, 0, 0x800);
 

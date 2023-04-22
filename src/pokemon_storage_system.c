@@ -627,7 +627,7 @@ static void ChooseBoxMenu_PrintInfo(void);
 static void SpriteCB_ChooseBoxArrow(struct Sprite *);
 
 // Options menus
-static void InitMenu(void);
+static void InitMenuPSS(void);
 static void SetMenuText(u8);
 static s8 GetMenuItemTextId(u8);
 static void AddMenu(void);
@@ -4333,7 +4333,7 @@ static void ClearBottomWindow(void)
 
 static void AddWallpaperSetsMenu(void)
 {
-    InitMenu();
+    InitMenuPSS();
     SetMenuText(MENU_SCENERY_1);
     SetMenuText(MENU_SCENERY_2);
     SetMenuText(MENU_SCENERY_3);
@@ -4345,7 +4345,7 @@ static void AddWallpaperSetsMenu(void)
 
 static void AddWallpapersMenu(u8 wallpaperSet)
 {
-    InitMenu();
+    InitMenuPSS();
     switch (wallpaperSet)
     {
     case MENU_SCENERY_1 - MENU_WALLPAPER_SETS_START:
@@ -7609,7 +7609,7 @@ static u8 HandleInput(void)
 
 static void AddBoxOptionsMenu(void)
 {
-    InitMenu();
+    InitMenuPSS();
     SetMenuText(MENU_JUMP);
     SetMenuText(MENU_WALLPAPER);
     SetMenuText(MENU_NAME);
@@ -7618,7 +7618,7 @@ static void AddBoxOptionsMenu(void)
 
 static u8 SetSelectionMenuTexts(void)
 {
-    InitMenu();
+    InitMenuPSS();
     if (sStorage->boxOption != OPTION_MOVE_ITEMS)
         return SetMenuTexts_Mon();
     else
@@ -7929,7 +7929,7 @@ static void TryShowItemAtCursor(void)
 //------------------------------------------------------------------------------
 
 
-static void InitMenu(void)
+static void InitMenuPSS(void)
 {
     sStorage->menuItemsCount = 0;
     sStorage->menuWidth = 0;

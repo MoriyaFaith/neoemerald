@@ -14,6 +14,8 @@
 #include "mail.h"
 #include "overworld.h"
 #include "decompress.h"
+#include "field_specials.h"
+#include "item_menu_icons.h"
 #include "constants/songs.h"
 #include "constants/items.h"
 
@@ -79,7 +81,7 @@ static const struct CompressedSpritePalette sSpritePalette_SwapLine =
     gSwapLinePal, TAG_SWAP_LINE
 };
 
-static const struct SpriteTemplate sSpriteTemplate_SwapLine =
+const struct SpriteTemplate gSpriteTemplate_SwapLine =
 {
     .tileTag = TAG_SWAP_LINE,
     .paletteTag = TAG_SWAP_LINE,
@@ -281,54 +283,49 @@ bool8 IsHoldingItemAllowed(u16 itemId)
     if (itemId == ITEM_ENIGMA_BERRY
      && ((gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRADE_CENTER)
        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(TRADE_CENTER))
-       || InUnionRoom() == TRUE))
+       || InUnionRoom()))
         return FALSE;
-    else
-        return TRUE;
+    return TRUE;
 }
 
 bool8 IsWritingMailAllowed(u16 itemId)
 {
-    if ((IsOverworldLinkActive() == TRUE || InUnionRoom() == TRUE) && ItemIsMail(itemId) == TRUE)
+    if ((IsOverworldLinkActive() || InUnionRoom()) && ItemIsMail(itemId))
         return FALSE;
-    else
-        return TRUE;
+    return TRUE;
 }
 
 bool8 MenuHelpers_IsLinkActive(void)
 {
-    if (IsOverworldLinkActive() == TRUE || gReceivedRemoteLinkPlayers == 1)
+    if (IsOverworldLinkActive() || gReceivedRemoteLinkPlayers == 1)
         return TRUE;
-    else
-        return FALSE;
+    return FALSE;
 }
 
 static bool8 IsActiveOverworldLinkBusy(void)
 {
-    if (!MenuHelpers_IsLinkActive())
-        return FALSE;
-    else
+    if (MenuHelpers_IsLinkActive())
         return Overworld_IsRecvQueueAtMax();
+    return FALSE;
 }
 
 bool8 MenuHelpers_ShouldWaitForLinkRecv(void)
 {
-    if (IsActiveOverworldLinkBusy() == TRUE || IsLinkRecvQueueAtOverworldMax() == TRUE )
+    if (IsActiveOverworldLinkBusy() || IsLinkRecvQueueAtOverworldMax())
         return TRUE;
-    else
-        return FALSE;
+    return FALSE;
 }
 
 void SetItemListPerPageCount(struct ItemSlot *slots, u8 slotsCount, u8 *pageItems, u8 *totalItems, u8 maxPerPage)
 {
-    u16 i;
+    u32 i;
     struct ItemSlot *slots_ = slots;
 
     // Count the number of non-empty item slots
     *totalItems = 0;
     for (i = 0; i < slotsCount; i++)
     {
-        if (slots_[i].itemId != ITEM_NONE)
+        if (slots_[i].itemId)
             (*totalItems)++;
     }
     (*totalItems)++; // + 1 for 'Cancel'
@@ -342,23 +339,23 @@ void SetItemListPerPageCount(struct ItemSlot *slots, u8 slotsCount, u8 *pageItem
 
 void SetCursorWithinListBounds(u16 *scrollOffset, u16 *cursorPos, u8 maxShownItems, u8 totalItems)
 {
-    if (*scrollOffset != 0 && *scrollOffset + maxShownItems > totalItems)
+    if (*scrollOffset && *scrollOffset + maxShownItems > totalItems)
         *scrollOffset = totalItems - maxShownItems;
 
     if (*scrollOffset + *cursorPos >= totalItems)
     {
-        if (totalItems == 0)
-            *cursorPos = 0;
-        else
+        if (totalItems)
             *cursorPos = totalItems - 1;
+        else
+            *cursorPos = 0;
     }
 }
 
 void SetCursorScrollWithinListBounds(u16 *scrollOffset, u16 *cursorPos, u8 shownItems, u8 totalItems, u8 maxShownItems)
 {
-    u8 i;
+    u32 i;
 
-    if (maxShownItems % 2 != 0)
+    if (maxShownItems % 2)
     {
         // Is cursor at least halfway down visible list
         if (*cursorPos >= maxShownItems / 2)
@@ -398,12 +395,14 @@ void LoadListMenuSwapLineGfx(void)
 
 void CreateSwapLineSprites(u8 *spriteIds, u8 count)
 {
-    u8 i;
+    u32 i;
 
     for (i = 0; i < count; i++)
     {
-        spriteIds[i] = CreateSprite(&sSpriteTemplate_SwapLine, i * 16, 0, 0);
-        if (i != 0)
+        spriteIds[i] = CreateSprite(&gSpriteTemplate_SwapLine, i * 16, 0, 0);
+        if (i == count - 1)
+            StartSpriteAnim(&gSprites[spriteIds[i]], 2);
+        else if (i != 0)
             StartSpriteAnim(&gSprites[spriteIds[i]], 1);
 
         gSprites[spriteIds[i]].invisible = TRUE;
@@ -425,7 +424,7 @@ void DestroySwapLineSprites(u8 *spriteIds, u8 count)
 
 void SetSwapLineSpritesInvisibility(u8 *spriteIds, u8 count, bool8 invisible)
 {
-    u8 i;
+    u32 i;
 
     for (i = 0; i < count; i++)
         gSprites[spriteIds[i]].invisible = invisible;
@@ -433,7 +432,7 @@ void SetSwapLineSpritesInvisibility(u8 *spriteIds, u8 count, bool8 invisible)
 
 void UpdateSwapLineSpritesPos(u8 *spriteIds, u8 count, s16 x, u16 y)
 {
-    u8 i;
+    u32 i;
     bool8 hasMargin = count & SWAP_LINE_HAS_MARGIN;
     count &= ~SWAP_LINE_HAS_MARGIN;
 

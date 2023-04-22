@@ -22,27 +22,31 @@ enum {
 
 // Window IDs for the item menu
 enum {
-    ITEMWIN_1x1,
-    ITEMWIN_1x2,
-    ITEMWIN_2x2,
-    ITEMWIN_2x3,
-    ITEMWIN_MESSAGE,
-    ITEMWIN_YESNO_LOW,
-    ITEMWIN_YESNO_HIGH,
     ITEMWIN_QUANTITY,
     ITEMWIN_QUANTITY_WIDE,
     ITEMWIN_MONEY,
+    ITEMWIN_YESNO_LOW,
+    ITEMWIN_YESNO_HIGH,
+    ITEMWIN_MESSAGE,
+    ITEMWIN_THIN_MESSAGE_1,
+    ITEMWIN_THIN_MESSAGE_2,
+    ITEMWIN_THIN_MESSAGE_3,
+    ITEMWIN_THIN_MESSAGE_4,
+    ITEMWIN_1x1,
+    ITEMWIN_1x2,
+    ITEMWIN_1x3,
+    ITEMWIN_1x4,
+    ITEMWIN_1x5,
     ITEMWIN_COUNT
 };
 
-#define ITEMMENU_SWAP_LINE_LENGTH 8  // Swap line is 8 sprites long
+#define ITEMMENU_SWAP_LINE_LENGTH 9  // Swap line is 9 sprites long
 enum {
     ITEMMENUSPRITE_BAG,
-    ITEMMENUSPRITE_BALL,
-    ITEMMENUSPRITE_ITEM,
-    ITEMMENUSPRITE_ITEM_ALT, // Need two when selecting new item
     ITEMMENUSPRITE_SWAP_LINE,
-    ITEMMENUSPRITE_COUNT = ITEMMENUSPRITE_SWAP_LINE + ITEMMENU_SWAP_LINE_LENGTH,
+    ITEMMENUSPRITE_ITEM = ITEMMENUSPRITE_SWAP_LINE + ITEMMENU_SWAP_LINE_LENGTH,
+    ITEMMENUSPRITE_ITEM_ALT, // Need two when selecting new item
+    ITEMMENUSPRITE_COUNT,
 };
 
 struct BagPosition
@@ -51,6 +55,7 @@ struct BagPosition
     u8 location;
     u8 pocket;
     u16 pocketSwitchArrowPos;
+    bool8 bagOpen;
     u16 cursorPosition[POCKETS_COUNT];
     u16 scrollPosition[POCKETS_COUNT];
 };
@@ -69,6 +74,7 @@ struct BagMenu
     u8 inhibitItemDescriptionPrint:1;
     u8 hideCloseBagText:1;
     u8 unused1[2];
+    u16 contextMenuSelectedItem;
     u8 pocketScrollArrowsTask;
     u8 pocketSwitchArrowsTask;
     const u8 *contextMenuItemsPtr;
@@ -104,7 +110,7 @@ void CB2_ChooseBerry(void);
 void Task_FadeAndCloseBagMenu(u8 taskId);
 void BagMenu_YesNo(u8 taskId, u8 windowType, const struct YesNoFuncTable* funcTable);
 void UpdatePocketItemList(u8 pocketId);
-void DisplayItemMessage(u8 taskId, u8 fontId, const u8 *str, void ( *callback)(u8 taskId));
+void DisplayItemMessage(u8 taskId, const u8 *str, void ( *callback)(u8 taskId));
 void DisplayItemMessageOnField(u8 taskId, const u8 *src, TaskFunc callback);
 void CloseItemMessage(u8 taskId);
 

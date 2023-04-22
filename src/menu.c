@@ -101,7 +101,7 @@ static const struct WindowTemplate sYesNo_WindowTemplates =
     .bg = 0,
     .tilemapLeft = 21,
     .tilemapTop = 9,
-    .width = 5,
+    .width = 6,
     .height = 4,
     .paletteNum = 15,
     .baseBlock = 0x125
@@ -1095,7 +1095,7 @@ void HofPCTopBar_RemoveWindow(void)
     }
 }
 
-static u8 InitMenu(u8 windowId, u8 fontId, u8 left, u8 top, u8 cursorHeight, u8 numChoices, u8 initialCursorPos, bool8 muteAPress)
+u8 InitMenu(u8 windowId, u8 fontId, u8 left, u8 top, u8 cursorHeight, u8 numChoices, u8 initialCursorPos)
 {
     s32 pos;
 
@@ -1106,7 +1106,7 @@ static u8 InitMenu(u8 windowId, u8 fontId, u8 left, u8 top, u8 cursorHeight, u8 
     sMenu.windowId = windowId;
     sMenu.fontId = fontId;
     sMenu.optionHeight = cursorHeight;
-    sMenu.APressMuted = muteAPress;
+    sMenu.APressMuted = FALSE;
 
     pos = initialCursorPos;
 
@@ -1115,14 +1115,13 @@ static u8 InitMenu(u8 windowId, u8 fontId, u8 left, u8 top, u8 cursorHeight, u8 
     else
         sMenu.cursorPos = pos;
 
-    Menu_MoveCursor(0);
-    return sMenu.cursorPos;
+    return Menu_MoveCursor(0);
 }
 
-// There is no muted version of this, so the version that plays sound when A is pressed is the "Normal" one.
+// uneeded.
 u8 InitMenuNormal(u8 windowId, u8 fontId, u8 left, u8 top, u8 cursorHeight, u8 numChoices, u8 initialCursorPos)
 {
-    return InitMenu(windowId, fontId, left, top, cursorHeight, numChoices, initialCursorPos, FALSE);
+    return InitMenu(windowId, fontId, left, top, cursorHeight, numChoices, initialCursorPos);
 }
 
 // Unused
@@ -1139,7 +1138,7 @@ void RedrawMenuCursor(u8 oldPos, u8 newPos)
     width = GetMenuCursorDimensionByFont(sMenu.fontId, 0);
     height = GetMenuCursorDimensionByFont(sMenu.fontId, 1);
     FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), sMenu.left, sMenu.optionHeight * oldPos + sMenu.top, width, height);
-    AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow3, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0);
+    AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0);
 }
 
 u8 Menu_MoveCursor(s8 cursorDelta)
