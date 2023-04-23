@@ -17,7 +17,7 @@ It builds the following ROMs:
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
 
-For a full list of changes, [see here.](https://docs.google.com/spreadsheets/d/1LdYk7z0LjC0_sq5UZnbCyTw7Kma3EwDjELMec5gXRdg/edit?usp=sharing) (WIP)
+For a full list of changes, [see here.](https://docs.google.com/document/d/1qqt4N7G2ah9_1XpupQvUF3kBTd5gA95F_sD-dUAHjtg/edit?usp=sharing)
 
 ## Credits
 
