@@ -405,8 +405,8 @@ static const struct WindowTemplate sContextMenuWindowTemplates[ITEMWIN_COUNT] =
         .bg = 0,
         .tilemapLeft = 1,
         .tilemapTop = 1,
-        .width = 8,
-        .height = 3,
+        .width = 10,
+        .height = 2,
         .paletteNum = 0xC,
         .baseBlock = 0x272,
     },
@@ -669,7 +669,7 @@ static bool8 SetupBagMenu(void)
         gMain.state++;
         break;
     case 3:
-        ResetPaletteFade();
+        ResetPaletteFadeControl();
         gPaletteFade.bufferTransferDisabled = TRUE;
         gMain.state++;
         break;
@@ -1025,16 +1025,15 @@ static void FreeBagMenu(void)
 
 void Task_FadeAndCloseBagMenu(u8 taskId)
 {
-    BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+    BeginNormalPaletteFade(PALETTES_ALL, -2, 0, 16, RGB_BLACK);
     gTasks[taskId].func = Task_CloseBagMenu;
 }
 
 static void Task_CloseBagMenu(u8 taskId)
 {
-    s16 *data = gTasks[taskId].data;
     if (!gPaletteFade.active && !FuncIsActiveTask(Task_AnimateWin0v))
     {
-        DestroyListMenuTask(tListTaskId, &gBagPosition.scrollPosition[gBagPosition.pocket], &gBagPosition.cursorPosition[gBagPosition.pocket]);
+        DestroyListMenuTask(gTasks[taskId].tListTaskId, &gBagPosition.scrollPosition[gBagPosition.pocket], &gBagPosition.cursorPosition[gBagPosition.pocket]);
 
         // If ready for a new screen (e.g. party menu for giving an item) go to that screen
         // Otherwise exit the bag and use callback set up when the bag was first opened
@@ -1050,6 +1049,7 @@ static void Task_CloseBagMenu(u8 taskId)
         DestroyTask(taskId);
     }
 }
+
 
 void UpdatePocketItemList(u8 pocketId)
 {
