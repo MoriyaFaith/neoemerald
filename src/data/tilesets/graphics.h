@@ -1677,3 +1677,42 @@ const u16 gTilesetPalettes_AlteringCave[][16] =
 };
 
 const u32 gTilesetTiles_AlteringCave[] = INCBIN_U32("data/tilesets/secondary/alteringcave/tiles.4bpp.lz");
+
+
+const u16 gTilesetPalOverride_General01[16] = INCBIN_U16("data/tilesets/primary/general/palettes/01_over.gbapal");
+const u16 gTilesetPalOverride_General04[16] = INCBIN_U16("data/tilesets/primary/general/palettes/04_over.gbapal");
+const u16 gTilesetPalOverride_General05[16] = INCBIN_U16("data/tilesets/primary/general/palettes/05_over.gbapal");
+
+
+const u16 gTilesetPalOverride_Petalburg06[16] = INCBIN_U16("data/tilesets/secondary/petalburg/palettes/06_over.gbapal");
+const u16 gTilesetPalOverride_Petalburg08[16] = INCBIN_U16("data/tilesets/secondary/petalburg/palettes/08_over.gbapal");
+const u16 gTilesetPalOverride_Petalburg09[16] = INCBIN_U16("data/tilesets/secondary/petalburg/palettes/09_over.gbapal");
+
+
+const u16 gTilesetPalOverride_Rustboro06[16] = INCBIN_U16("data/tilesets/secondary/rustboro/palettes/06_over.gbapal");
+const u16 gTilesetPalOverride_Rustboro10[16] = INCBIN_U16("data/tilesets/secondary/rustboro/palettes/10_over.gbapal");
+
+const u16 gTilesetPalOverride_Mauville07[16] = INCBIN_U16("data/tilesets/secondary/mauville/palettes/07_over.gbapal");
+const u16 gTilesetPalOverride_Mauville10[16] = INCBIN_U16("data/tilesets/secondary/mauville/palettes/10_over.gbapal");
+
+
+const u16 gTilesetPalOverride_Slateport06[16] = INCBIN_U16("data/tilesets/secondary/slateport/palettes/06_over.gbapal");
+
+
+const u16 gTilesetPalOverride_Lavaridge06[16] = INCBIN_U16("data/tilesets/secondary/lavaridge/palettes/06_over.gbapal");
+	
+
+const u16 gTilesetPalOverride_Fortree08[16] = INCBIN_U16("data/tilesets/secondary/fortree/palettes/08_over.gbapal");
+
+
+const u16 gTilesetPalOverride_Lilycove06[16] = INCBIN_U16("data/tilesets/secondary/lilycove/palettes/06_over.gbapal");
+const u16 gTilesetPalOverride_Lilycove09[16] = INCBIN_U16("data/tilesets/secondary/lilycove/palettes/09_over.gbapal");
+
+
+const u16 gTilesetPalOverride_EverGrande07[16] = INCBIN_U16("data/tilesets/secondary/ever_grande/palettes/07_over.gbapal");
+
+
+const u16 gTilesetPalOverride_BattleFrontierOutsideWest12[16] = INCBIN_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/12_over.gbapal");
+const u16 gTilesetPalOverride_BattleFrontierOutsideWest11[16] = INCBIN_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/11_over.gbapal");
+const u16 gTilesetPalOverride_BattleFrontierOutsideWest09[16] = INCBIN_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/09_over.gbapal");
+const u16 gTilesetPalOverride_BattleFrontierOutside06[16] = INCBIN_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/06_over.gbapal");
