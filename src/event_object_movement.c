@@ -401,49 +401,42 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 };
 
 #define OBJ_EVENT_PAL_TAG_BRENDAN                 0x1100
-#define OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION      0x1101
-#define OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION       0x1102
-#define OBJ_EVENT_PAL_TAG_NPC_1                   0x1103
-#define OBJ_EVENT_PAL_TAG_NPC_2                   0x1104
-#define OBJ_EVENT_PAL_TAG_NPC_3                   0x1105
-#define OBJ_EVENT_PAL_TAG_NPC_4                   0x1106
-#define OBJ_EVENT_PAL_TAG_NPC_1_REFLECTION        0x1107
-#define OBJ_EVENT_PAL_TAG_NPC_2_REFLECTION        0x1108
-#define OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION        0x1109
-#define OBJ_EVENT_PAL_TAG_NPC_4_REFLECTION        0x110A
-#define OBJ_EVENT_PAL_TAG_QUINTY_PLUMP            0x110B
-#define OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION 0x110C
-#define OBJ_EVENT_PAL_TAG_TRUCK                   0x110D
-#define OBJ_EVENT_PAL_TAG_VIGOROTH                0x110E
-#define OBJ_EVENT_PAL_TAG_ZIGZAGOON               0x110F
-#define OBJ_EVENT_PAL_TAG_MAY                     0x1110
-#define OBJ_EVENT_PAL_TAG_MAY_REFLECTION          0x1111
-#define OBJ_EVENT_PAL_TAG_MOVING_BOX              0x1112
-#define OBJ_EVENT_PAL_TAG_CABLE_CAR               0x1113
-#define OBJ_EVENT_PAL_TAG_SSTIDAL                 0x1114
-#define OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER       0x1115
-#define OBJ_EVENT_PAL_TAG_KYOGRE                  0x1116
-#define OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION       0x1117
-#define OBJ_EVENT_PAL_TAG_GROUDON                 0x1118
-#define OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION      0x1119
-#define OBJ_EVENT_PAL_TAG_UNUSED                  0x111A
-#define OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW        0x111B
-#define OBJ_EVENT_PAL_TAG_POOCHYENA               0x111C
-#define OBJ_EVENT_PAL_TAG_RED_LEAF                0x111D
-#define OBJ_EVENT_PAL_TAG_DEOXYS                  0x111E
-#define OBJ_EVENT_PAL_TAG_BIRTH_ISLAND_STONE      0x111F
-#define OBJ_EVENT_PAL_TAG_HO_OH                   0x1120
-#define OBJ_EVENT_PAL_TAG_LUGIA                   0x1121
-#define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1122
-#define OBJ_EVENT_PAL_TAG_RS_MAY                  0x1123
-#define OBJ_EVENT_PAL_TAG_WALLY                   0x1124
-#define OBJ_EVENT_PAL_TAG_EM_BRENDAN              0x1125
-#define OBJ_EVENT_PAL_TAG_EM_MAY                  0x1126
-#define OBJ_EVENT_PAL_TAG_H_BRENDAN               0x1127
-#define OBJ_EVENT_PAL_TAG_H_MAY                   0x1128
-#define OBJ_EVENT_PAL_TAG_GOLD                    0x1129
-#define OBJ_EVENT_PAL_TAG_KRIS                    0x112A
-#define OBJ_EVENT_PAL_TAG_RICH_BOY                0x1124
+#define OBJ_EVENT_PAL_TAG_NPC_1                   0x1101
+#define OBJ_EVENT_PAL_TAG_NPC_2                   0x1102
+#define OBJ_EVENT_PAL_TAG_NPC_3                   0x1103
+#define OBJ_EVENT_PAL_TAG_NPC_4                   0x1104
+#define OBJ_EVENT_PAL_TAG_QUINTY_PLUMP            0x1105
+#define OBJ_EVENT_PAL_TAG_TRUCK                   0x1106
+#define OBJ_EVENT_PAL_TAG_VIGOROTH                0x1107
+#define OBJ_EVENT_PAL_TAG_ZIGZAGOON               0x1108
+#define OBJ_EVENT_PAL_TAG_MAY                     0x1109
+#define OBJ_EVENT_PAL_TAG_MOVING_BOX              0x110A
+#define OBJ_EVENT_PAL_TAG_CABLE_CAR               0x110B
+#define OBJ_EVENT_PAL_TAG_SSTIDAL                 0x110C
+#define OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER       0x110D
+#define OBJ_EVENT_PAL_TAG_KYOGRE                  0x110E
+#define OBJ_EVENT_PAL_TAG_GROUDON                 0x110F
+#define OBJ_EVENT_PAL_TAG_UNUSED                  0x1110
+#define OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW        0x1111
+#define OBJ_EVENT_PAL_TAG_POOCHYENA               0x1112
+#define OBJ_EVENT_PAL_TAG_RED_LEAF                0x1113
+#define OBJ_EVENT_PAL_TAG_DEOXYS                  0x1114
+#define OBJ_EVENT_PAL_TAG_BIRTH_ISLAND_STONE      0x1115
+#define OBJ_EVENT_PAL_TAG_HO_OH                   0x1116
+#define OBJ_EVENT_PAL_TAG_LUGIA                   0x1117
+#define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1118
+#define OBJ_EVENT_PAL_TAG_RS_MAY                  0x1119
+#define OBJ_EVENT_PAL_TAG_WALLY                   0x111A
+#define OBJ_EVENT_PAL_TAG_EM_BRENDAN              0x111B
+#define OBJ_EVENT_PAL_TAG_EM_MAY                  0x111C
+#define OBJ_EVENT_PAL_TAG_H_BRENDAN               0x111D
+#define OBJ_EVENT_PAL_TAG_H_MAY                   0x111E
+#define OBJ_EVENT_PAL_TAG_GOLD                    0x111F
+#define OBJ_EVENT_PAL_TAG_KRIS                    0x1120
+#define OBJ_EVENT_PAL_TAG_RICH_BOY                0x1121
+#define OBJ_EVENT_PAL_TAG_LADY                    0x1122
+#define OBJ_EVENT_PAL_TAG_RANGER                  0x1123
+#define OBJ_EVENT_PAL_TAG_ITEM_BALL               0x1124
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -459,28 +452,22 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Npc2,                  OBJ_EVENT_PAL_TAG_NPC_2},
     {gObjectEventPal_Npc3,                  OBJ_EVENT_PAL_TAG_NPC_3},
     {gObjectEventPal_Npc4,                  OBJ_EVENT_PAL_TAG_NPC_4},
-    {gObjectEventPal_Npc1Reflection,        OBJ_EVENT_PAL_TAG_NPC_1_REFLECTION},
-    {gObjectEventPal_Npc2Reflection,        OBJ_EVENT_PAL_TAG_NPC_2_REFLECTION},
-    {gObjectEventPal_Npc3Reflection,        OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION},
-    {gObjectEventPal_Npc4Reflection,        OBJ_EVENT_PAL_TAG_NPC_4_REFLECTION},
+    {gObjectEventPal_ItemBall,              OBJ_EVENT_PAL_TAG_ITEM_BALL},
+    {gObjectEventPal_RichBoy,               OBJ_EVENT_PAL_TAG_RICH_BOY},
+    {gObjectEventPal_Lady,                  OBJ_EVENT_PAL_TAG_LADY},
+    {gObjectEventPal_Ranger,                OBJ_EVENT_PAL_TAG_RANGER},
     {gObjectEventPal_Brendan,               OBJ_EVENT_PAL_TAG_BRENDAN},
-    {gObjectEventPal_BrendanReflection,     OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION},
-    {gObjectEventPal_BridgeReflection,      OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION},
     {gObjectEventPal_PlayerUnderwater,      OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER},
     {gObjectEventPal_QuintyPlump,           OBJ_EVENT_PAL_TAG_QUINTY_PLUMP},
-    {gObjectEventPal_QuintyPlumpReflection, OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION},
     {gObjectEventPal_Truck,                 OBJ_EVENT_PAL_TAG_TRUCK},
     {gObjectEventPal_Vigoroth,              OBJ_EVENT_PAL_TAG_VIGOROTH},
     {gObjectEventPal_EnemyZigzagoon,        OBJ_EVENT_PAL_TAG_ZIGZAGOON},
     {gObjectEventPal_May,                   OBJ_EVENT_PAL_TAG_MAY},
-    {gObjectEventPal_MayReflection,         OBJ_EVENT_PAL_TAG_MAY_REFLECTION},
     {gObjectEventPal_MovingBox,             OBJ_EVENT_PAL_TAG_MOVING_BOX},
     {gObjectEventPal_CableCar,              OBJ_EVENT_PAL_TAG_CABLE_CAR},
     {gObjectEventPal_SSTidal,               OBJ_EVENT_PAL_TAG_SSTIDAL},
     {gObjectEventPal_Kyogre,                OBJ_EVENT_PAL_TAG_KYOGRE},
-    {gObjectEventPal_KyogreReflection,      OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION},
     {gObjectEventPal_Groudon,               OBJ_EVENT_PAL_TAG_GROUDON},
-    {gObjectEventPal_GroudonReflection,     OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION},
     {gObjectEventPal_SubmarineShadow,       OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW},
     {gObjectEventPal_Poochyena,             OBJ_EVENT_PAL_TAG_POOCHYENA},
     {gObjectEventPal_RedLeaf,               OBJ_EVENT_PAL_TAG_RED_LEAF},
@@ -497,7 +484,6 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_HeliodorMay,           OBJ_EVENT_PAL_TAG_H_MAY},
     {gObjectEventPal_Gold,                  OBJ_EVENT_PAL_TAG_GOLD},
     {gObjectEventPal_Kris,                  OBJ_EVENT_PAL_TAG_KRIS},
-    {gObjectEventPal_RichBoy,               OBJ_EVENT_PAL_TAG_RICH_BOY},
     {NULL,                                  OBJ_EVENT_PAL_TAG_NONE},
     {},
 };

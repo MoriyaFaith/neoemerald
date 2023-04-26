@@ -240,12 +240,15 @@
 #define OBJ_EVENT_GFX_LINK_RS_MAY                236
 #define OBJ_EVENT_GFX_LUGIA                      237
 #define OBJ_EVENT_GFX_HOOH                       238
-#define OBJ_EVENT_GFX_LINK_EM_BRENDAN            239
-#define OBJ_EVENT_GFX_LINK_EM_MAY                240
-#define OBJ_EVENT_GFX_LINK_H_BRENDAN             241
-#define OBJ_EVENT_GFX_LINK_H_MAY                 242
-#define OBJ_EVENT_GFX_GOLD                       243
-#define OBJ_EVENT_GFX_KRIS                       244
+#define OBJ_EVENT_GFX_LADY                       239
+#define OBJ_EVENT_GFX_RANGER_M                   240
+#define OBJ_EVENT_GFX_RANGER_F                   241
+#define OBJ_EVENT_GFX_LINK_EM_BRENDAN            242
+#define OBJ_EVENT_GFX_LINK_EM_MAY                243
+#define OBJ_EVENT_GFX_LINK_H_BRENDAN             244
+#define OBJ_EVENT_GFX_LINK_H_MAY                 245
+#define OBJ_EVENT_GFX_GOLD                       246
+#define OBJ_EVENT_GFX_KRIS                       247
 
 // NOTE: By default, the max value for NUM_OBJ_EVENT_GFX is 239.
 //
@@ -256,7 +259,7 @@
 // object graphics that can be removed. If more graphics are needed, anything that
 // stores graphics ids will need to be increased in size. See wiki entry below:
 // https://github.com/pret/pokeemerald/wiki/Feature-Branches#overworld-expansion
-#define NUM_OBJ_EVENT_GFX                        245
+#define NUM_OBJ_EVENT_GFX                        OBJ_EVENT_GFX_KRIS + 1
 
 
 // These are dynamic object gfx ids.
