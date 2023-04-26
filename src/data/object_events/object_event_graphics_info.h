@@ -315,7 +315,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RichBoy = {
     .disableReflectionPaletteLoad = FALSE,
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_16x32,
-    .subspriteTables = sOamTables_16x32,Rival
+    .subspriteTables = sOamTables_16x32,
     .images = sPicTable_RichBoy,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
