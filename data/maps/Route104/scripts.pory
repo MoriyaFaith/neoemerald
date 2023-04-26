@@ -96,6 +96,7 @@ Route104_EventScript_RivalEncounter::
 	end
 
 Route104_EventScript_MayEncounter::
+	textcolor NPC_TEXT_COLOR_FEMALE
 	goto_if_set FLAG_DEFEATED_RIVAL_ROUTE_104, Route104_EventScript_MayDefeated
 	goto_if_set FLAG_REGISTER_RIVAL_POKENAV, Route104_EventScript_MayAskToBattle
 	setflag FLAG_REGISTER_RIVAL_POKENAV
@@ -104,6 +105,7 @@ Route104_EventScript_MayEncounter::
 	closemessage
 	delay 30
 	playfanfare MUS_REGISTER_MATCH_CALL
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox Route104_Text_RegisteredMay, MSGBOX_DEFAULT
 	waitfanfare
 	closemessage
@@ -111,6 +113,7 @@ Route104_EventScript_MayEncounter::
 	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
 	applymovement OBJ_EVENT_ID_PLAYER, Route104_Movement_PlayerFaceRival
 	applymovement LOCALID_RIVAL, Route104_Movement_RivalWalkSlowLeft
+	textcolor NPC_TEXT_COLOR_FEMALE
 	msgbox Route104_Text_MayHowsYourPokedex, MSGBOX_DEFAULT
 	closemessage
 	waitmovement 0
@@ -184,6 +187,7 @@ Route104_EventScript_BattleMayMudkip::
 	end
 
 Route104_EventScript_BrendanEncounter::
+	textcolor NPC_TEXT_COLOR_MALE
 	goto_if_set FLAG_DEFEATED_RIVAL_ROUTE_104, Route104_EventScript_BrendanDefeated
 	goto_if_set FLAG_REGISTER_RIVAL_POKENAV, Route104_EventScript_BrendanAskToBattle
 	setflag FLAG_REGISTER_RIVAL_POKENAV
@@ -192,6 +196,7 @@ Route104_EventScript_BrendanEncounter::
 	closemessage
 	delay 30
 	playfanfare MUS_REGISTER_MATCH_CALL
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox Route104_Text_RegisteredBrendan, MSGBOX_DEFAULT
 	waitfanfare
 	closemessage
@@ -199,6 +204,7 @@ Route104_EventScript_BrendanEncounter::
 	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
 	applymovement OBJ_EVENT_ID_PLAYER, Route104_Movement_PlayerFaceRival
 	applymovement LOCALID_RIVAL, Route104_Movement_RivalWalkSlowLeft
+	textcolor NPC_TEXT_COLOR_MALE
 	msgbox Route104_Text_BrendanHowsYourPokedex, MSGBOX_DEFAULT
 	closemessage
 	waitmovement 0

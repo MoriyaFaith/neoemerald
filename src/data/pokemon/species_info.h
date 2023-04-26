@@ -10225,6 +10225,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = TRUE,
     },
+    
     [SPECIES_ROSERADE] =
     {
         .baseHP        = 60,

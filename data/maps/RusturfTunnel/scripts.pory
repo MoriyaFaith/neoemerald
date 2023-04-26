@@ -59,6 +59,7 @@ RusturfTunnel_EventScript_ClearTunnelScene::
 	call_if_eq VAR_TEMP_1, 1, RusturfTunnel_EventScript_FaceWandasBoyfriend1
 	call_if_eq VAR_TEMP_1, 2, RusturfTunnel_EventScript_FaceWandasBoyfriend2
 	call_if_eq VAR_TEMP_1, 3, RusturfTunnel_EventScript_FaceWandasBoyfriend3
+	textcolor NPC_TEXT_COLOR_MALE
 	call RusturfTunnel_EventScript_WandasBoyfriendNotice
 	msgbox RusturfTunnel_Text_YouShatteredBoulderTakeHM, MSGBOX_DEFAULT
 	call_if_eq VAR_TEMP_1, 2, RusturfTunnel_EventScript_WandasBoyfriendApproachPlayer
@@ -71,6 +72,8 @@ RusturfTunnel_EventScript_ClearTunnelScene::
 	call_if_eq VAR_TEMP_1, 2, RusturfTunnel_EventScript_BoyfriendApproachWanda2
 	call_if_eq VAR_TEMP_1, 3, RusturfTunnel_EventScript_BoyfriendApproachWanda3
 	msgbox RusturfTunnel_Text_WandaReunion, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RusturfTunnel_Text_WandaReunion2, MSGBOX_DEFAULT
 	closemessage
 	call_if_eq VAR_TEMP_1, 1, RusturfTunnel_EventScript_WandaAndBoyfriendExit1
 	call_if_eq VAR_TEMP_1, 2, RusturfTunnel_EventScript_WandaAndBoyfriendExit
@@ -275,6 +278,7 @@ RusturfTunnel_EventScript_TunnelBlockagePos3::
 
 RusturfTunnel_EventScript_AquaGruntBackUp::
 	lockall
+	textcolor NPC_TEXT_COLOR_MALE
 	msgbox RusturfTunnel_Text_ComeAndGetSome, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_GRUNT, RusturfTunnel_Movement_GruntAndPeekoBackUp
@@ -504,7 +508,9 @@ RusturfTunnel_Text_ExplainStrength:
 
 RusturfTunnel_Text_WandaReunion:
 	.string "WANDA!\n"
-	.string "Now I can see you anytime!\p"
+	.string "Now I can see you anytime!$"
+
+RusturfTunnel_Text_WandaReunion2:
 	.string "WANDA: That's…wonderful.\p"
 	.string "Please, take some rest at my home.$"
 
