@@ -191,23 +191,25 @@ static const u16 sHoennTrainerCardBronze_Pal[]   = INCBIN_U16("graphics/trainer_
 static const u16 sHoennTrainerCardCopper_Pal[]   = INCBIN_U16("graphics/trainer_card/copper.gbapal");
 static const u16 sHoennTrainerCardSilver_Pal[]   = INCBIN_U16("graphics/trainer_card/silver.gbapal");
 static const u16 sHoennTrainerCardGold_Pal[]     = INCBIN_U16("graphics/trainer_card/gold.gbapal");
+
 static const u16 sKantoTrainerCardGreen_Pal[]    = INCBIN_U16("graphics/trainer_card/frlg/green.gbapal");
 static const u16 sKantoTrainerCardBronze_Pal[]   = INCBIN_U16("graphics/trainer_card/frlg/bronze.gbapal");
 static const u16 sKantoTrainerCardSilver_Pal[]   = INCBIN_U16("graphics/trainer_card/frlg/silver.gbapal");
 static const u16 sKantoTrainerCardGold_Pal[]     = INCBIN_U16("graphics/trainer_card/frlg/gold.gbapal");
-static const u16 sJohtoTrainerCard1Star_Pal[]    = INCBIN_U16("graphics/trainer_card/one_star_cd.gbapal");
-static const u16 sJohtoTrainerCard2Star_Pal[]    = INCBIN_U16("graphics/trainer_card/two_stars_cd.gbapal");
-static const u16 sJohtoTrainerCard3Star_Pal[]    = INCBIN_U16("graphics/trainer_card/three_stars_cd.gbapal");
-static const u16 sJohtoTrainerCard4Star_Pal[]    = INCBIN_U16("graphics/trainer_card/four_stars_cd.gbapal");
+
+static const u16 sJohtoTrainerCard1Star_Pal[]    = INCBIN_U16("graphics/trainer_card/cd/cobalt.gbapal");
+static const u16 sJohtoTrainerCard2Star_Pal[]    = INCBIN_U16("graphics/trainer_card/cd/bronze.gbapal");
+static const u16 sJohtoTrainerCard3Star_Pal[]    = INCBIN_U16("graphics/trainer_card/cd/silver.gbapal");
+static const u16 sJohtoTrainerCard4Star_Pal[]    = INCBIN_U16("graphics/trainer_card/cd/gold.gbapal");
 
 static const u16 sHoennTrainerCardFemaleBg_Pal[] = INCBIN_U16("graphics/trainer_card/female_bg.gbapal");
 static const u16 sKantoTrainerCardFemaleBg_Pal[] = INCBIN_U16("graphics/trainer_card/frlg/female_bg.gbapal");
-static const u16 sJohtoTrainerCardFemaleBg_Pal[] = INCBIN_U16("graphics/trainer_card/female_bg_cd.gbapal");
+static const u16 sJohtoTrainerCardFemaleBg_Pal[] = INCBIN_U16("graphics/trainer_card/cd/female_bg.gbapal");
 //badges
 static const u32 sHoennTrainerCardBadges_Gfx[] = INCBIN_U32("graphics/trainer_card/badges.4bpp.lz");
 static const u16 sHoennTrainerCardBadges_Pal[] = INCBIN_U16("graphics/trainer_card/badges.gbapal");
-static const u32 sJohtoTrainerCardBadges_Gfx[] = INCBIN_U32("graphics/trainer_card/badges_johto.4bpp.lz");
-static const u16 sJohtoTrainerCardBadges_Pal[] = INCBIN_U16("graphics/trainer_card/badges_johto.gbapal");
+static const u32 sJohtoTrainerCardBadges_Gfx[] = INCBIN_U32("graphics/trainer_card/cd/badges.4bpp.lz");
+static const u16 sJohtoTrainerCardBadges_Pal[] = INCBIN_U16("graphics/trainer_card/cd/badges.gbapal");
 static const u32 sKantoTrainerCardBadges_Gfx[] = INCBIN_U32("graphics/trainer_card/frlg/badges.4bpp.lz");
 static const u16 sKantoTrainerCardBadges_Pal[] = INCBIN_U16("graphics/trainer_card/frlg/badges.gbapal");
 
@@ -220,10 +222,10 @@ static const u16 sTrainerCardSticker3_Pal[] = INCBIN_U16("graphics/trainer_card/
 static const u16 sTrainerCardSticker4_Pal[] = INCBIN_U16("graphics/trainer_card/frlg/stickers4.gbapal");
 //Heliodor
 static const u16 sTrainerCard5Star_Pal[] = INCBIN_U16("graphics/trainer_card/five_stars.gbapal");
-static const u32 sHeliodorTrainerCardBack_Tilemap[] = INCBIN_U32("graphics/trainer_card/back_h.bin.lz");
-static const u32 sHeliodorTrainerCardFrontLink_Tilemap[] = INCBIN_U32("graphics/trainer_card/front_link_h.bin.lz");
-static const u32 sHeliodorTrainerCardFront_Tilemap[] = INCBIN_U32("graphics/trainer_card/front_h.bin.lz");
-static const u32 sHeliodorDotCodeTrainerCardBack_Tilemap[] = INCBIN_U32("graphics/trainer_card/back_ecard_h.bin.lz");
+static const u32 sHeliodorTrainerCardBack_Tilemap[] = INCBIN_U32("graphics/trainer_card/heliodor/back.bin.lz");
+static const u32 sHeliodorTrainerCardFrontLink_Tilemap[] = INCBIN_U32("graphics/trainer_card/heliodor/front_link.bin.lz");
+static const u32 sHeliodorTrainerCardFront_Tilemap[] = INCBIN_U32("graphics/trainer_card/heliodor/front.bin.lz");
+static const u32 sHeliodorDotCodeTrainerCardBack_Tilemap[] = INCBIN_U32("graphics/trainer_card/heliodor/back_ecard.bin.lz");
 
 static const struct BgTemplate sTrainerCardBgTemplates[4] =
 {
