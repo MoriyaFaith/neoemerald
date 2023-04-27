@@ -148,6 +148,7 @@ Route116_EventScript_BrineyTrigger::
 	applymovement LOCALID_BRINEY, Common_Movement_WalkInPlaceFasterRight
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
+	textcolor NPC_TEXT_COLOR_MALE
 	msgbox Route116_Text_ScoundrelMadeOffWithPeeko, MSGBOX_DEFAULT
 	setvar VAR_ROUTE116_STATE, 2
 	releaseall
