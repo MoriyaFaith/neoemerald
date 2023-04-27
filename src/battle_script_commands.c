@@ -7157,7 +7157,11 @@ static void Cmd_setmultihitcounter(void)
         gMultiHitCounter = gBattlescriptCurrInstr[1];
     }
     else
-    {
+    {        
+        if (gBattleMons[gBattlerTarget].ability == ABILITY_SKILL_LINK)
+        {
+            gMultiHitCounter = 5;
+        }
         gMultiHitCounter = Random() & 3;
         if (gMultiHitCounter > 1)
             gMultiHitCounter = (Random() & 3) + 2;
