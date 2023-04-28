@@ -678,6 +678,7 @@ static bool8 SetupBagMenu(void)
         gMain.state++;
         break;
     case 5:
+        ResetItemMenuIconState();
         gMain.state++;
         break;
     case 6:

@@ -540,13 +540,26 @@ bool8 AddPCItem(u16 itemId, u16 count)
     return TRUE;
 }
 
-void RemovePCItem(u8 index, u16 count)
+void RemovePCItem(u16 itemId, u16 count)
 {
-    gSaveBlock1Ptr->pcItems[index].quantity -= count;
-    if (gSaveBlock1Ptr->pcItems[index].quantity == 0)
+    u32 i;
+    u16 quantity;
+
+    if (itemId == ITEM_NONE)
+        return;
+
+    for (i = 0; i < PC_ITEMS_COUNT; i++)
     {
-        gSaveBlock1Ptr->pcItems[index].itemId = ITEM_NONE;
-        CompactPCItems();
+        if (gSaveBlock1Ptr->pcItems[i].itemId == itemId)
+            break;
+    }
+
+    if (i != PC_ITEMS_COUNT)
+    {
+        quantity = GetPCItemQuantity(&gSaveBlock1Ptr->pcItems[i].quantity) - count;
+        SetPCItemQuantity(&gSaveBlock1Ptr->pcItems[i].quantity, quantity);
+        if (quantity == 0)
+            gSaveBlock1Ptr->pcItems[i].itemId = ITEM_NONE;
     }
 }
 
