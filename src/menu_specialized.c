@@ -209,23 +209,14 @@ bool8 MailboxMenu_Alloc(u8 count)
     return TRUE;
 }
 
-u8 MailboxMenu_AddWindow(u8 windowIdx)
+u8 MailboxMenu_AddWindow(u8 windowIndex)
 {
-    if (sMailboxWindowIds[windowIdx] == WINDOW_NONE)
+    if (sMailboxWindowIds[windowIndex] == 0xFF)
     {
-        if (windowIdx == MAILBOXWIN_OPTIONS)
-        {
-            struct WindowTemplate template = sWindowTemplates_MailboxMenu[windowIdx];
-            template.width = GetMaxWidthInMenuTable(&gMailboxMailOptions[0], 4);
-            sMailboxWindowIds[windowIdx] = AddWindow(&template);
-        }
-        else // MAILBOXWIN_TITLE or MAILBOXWIN_LIST
-        {
-            sMailboxWindowIds[windowIdx] = AddWindow(&sWindowTemplates_MailboxMenu[windowIdx]);
-        }
-        SetStandardWindowBorderStyle(sMailboxWindowIds[windowIdx], FALSE);
+        sMailboxWindowIds[windowIndex] = AddWindow(&sWindowTemplates_MailboxMenu[windowIndex]);
+        SetStandardWindowBorderStyle(sMailboxWindowIds[windowIndex], 0);
     }
-    return sMailboxWindowIds[windowIdx];
+    return sMailboxWindowIds[windowIndex];
 }
 
 void MailboxMenu_RemoveWindow(u8 windowIdx)

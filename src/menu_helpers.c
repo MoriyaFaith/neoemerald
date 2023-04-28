@@ -19,8 +19,6 @@
 #include "constants/songs.h"
 #include "constants/items.h"
 
-#define TAG_SWAP_LINE 109
-
 static void Task_ContinueTaskAfterMessagePrints(u8 taskId);
 static void Task_CallYesOrNoCallback(u8 taskId);
 
@@ -34,7 +32,7 @@ static const struct OamData sOamData_SwapLine =
     .y = 0,
     .affineMode = ST_OAM_AFFINE_OFF,
     .objMode = ST_OAM_OBJ_NORMAL,
-    .mosaic = FALSE,
+    .mosaic = 0,
     .bpp = ST_OAM_4BPP,
     .shape = SPRITE_SHAPE(16x16),
     .x = 0,
@@ -100,9 +98,9 @@ void ResetVramOamAndBgCntRegs(void)
     SetGpuReg(REG_OFFSET_BG2CNT, 0);
     SetGpuReg(REG_OFFSET_BG1CNT, 0);
     SetGpuReg(REG_OFFSET_BG0CNT, 0);
-    CpuFill16(0, (void *) VRAM, VRAM_SIZE);
-    CpuFill32(0, (void *) OAM, OAM_SIZE);
-    CpuFill16(0, (void *) PLTT, PLTT_SIZE);
+    CpuFill16(0, (void*) VRAM, VRAM_SIZE);
+    CpuFill32(0, (void*) OAM, OAM_SIZE);
+    CpuFill16(0, (void*) PLTT, PLTT_SIZE);
 }
 
 void ResetAllBgsCoordinates(void)
@@ -132,7 +130,7 @@ void DisplayMessageAndContinueTask(u8 taskId, u8 windowId, u16 tileNum, u8 palet
         StringExpandPlaceholders(gStringVar4, string);
 
     gTextFlags.canABSpeedUpPrint = 1;
-    AddTextPrinterParameterized2(windowId, fontId, gStringVar4, textSpeed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    AddTextPrinterParameterized2(windowId, fontId, gStringVar4, textSpeed, NULL, 2, 1, 3);
     sMessageNextTask = taskFunc;
     gTasks[taskId].func = Task_ContinueTaskAfterMessagePrints;
 }
@@ -411,7 +409,7 @@ void CreateSwapLineSprites(u8 *spriteIds, u8 count)
 
 void DestroySwapLineSprites(u8 *spriteIds, u8 count)
 {
-    u8 i;
+    u32 i;
 
     for (i = 0; i < count; i++)
     {

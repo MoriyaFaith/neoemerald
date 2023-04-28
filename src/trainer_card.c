@@ -184,7 +184,7 @@ static void LoadMonIconGfx(void);
 static u8 GetSetCardStats(void);
 
 static const u32 sTrainerCardStickers_Gfx[]      = INCBIN_U32("graphics/trainer_card/frlg/stickers.4bpp.lz");
-static const u32 sTrainerCardHStickers_Gfx[] = INCBIN_U32("graphics/trainer_card/stickers_h.4bpp.lz");
+static const u32 sTrainerCardHStickers_Gfx[]     = INCBIN_U32("graphics/trainer_card/heliodor/stickers.4bpp.lz");
 static const u16 sUnused_Pal[]                   = INCBIN_U16("graphics/trainer_card/unused.gbapal");
 //Card Pals
 static const u16 sHoennTrainerCardBronze_Pal[]   = INCBIN_U16("graphics/trainer_card/bronze.gbapal");

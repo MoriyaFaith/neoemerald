@@ -3,13 +3,20 @@
 
 #include "menu.h"
 
+enum
+{
+    PLAYERPC_MENU_ITEMSTORAGE,
+    PLAYERPC_MENU_MAILBOX,
+    PLAYERPC_MENU_DECORATION,
+    PLAYERPC_MENU_TURNOFF
+};
+
 struct PlayerPCItemPageStruct
 {
     u16 cursorPos;
     u16 itemsAbove;
     u8 pageItems;
     u8 count;
-    u8 filler[3];
     u8 scrollIndicatorTaskId;
 };
 

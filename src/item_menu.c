@@ -1289,7 +1289,7 @@ static void SwitchBagPocket(u8 taskId, s16 deltaBagPocketId, bool16 skipEraseLis
     ScheduleBgCopyTilemapToVram(1);
     newPocket = gBagPosition.pocket;
     ChangeBagPocketId(&newPocket, deltaBagPocketId);
-    SetBagVisualPocketId(newPocket, TRUE);
+    SetBagVisualPocketId(newPocket);
     SetTaskFuncWithFollowupFunc(taskId, Task_SwitchBagPocket, gTasks[taskId].func);
 }
 
@@ -1394,7 +1394,7 @@ static void StartItemSwap(u8 taskId)
     StringExpandPlaceholders(gStringVar4, gText_MoveVar1Where);
     FillWindowPixelBuffer(WIN_DESCRIPTION, PIXEL_FILL(0));
     BagMenu_Print(WIN_DESCRIPTION, FONT_NORMAL, gStringVar4, 0, 3, 2, -2, 0, COLORID_DESCRIPTION);
-    UpdateItemMenuSwapLinePos(tListTaskId);
+    UpdateItemMenuSwapLinePos(96, tListTaskId);
     DestroyPocketSwitchArrowPair();
     BagMenu_PrintCursor(tListTaskId, COLORID_GRAY_CURSOR);
     gTasks[taskId].func = Task_HandleSwappingItemsInput;
@@ -1417,7 +1417,7 @@ static void Task_HandleSwappingItemsInput(u8 taskId)
             s32 input = ListMenu_ProcessInput(tListTaskId);
             ListMenuGetScrollAndRow(tListTaskId, &gBagPosition.scrollPosition[gBagPosition.pocket], &gBagPosition.cursorPosition[gBagPosition.pocket]);
             SetItemMenuSwapLineInvisibility(FALSE);
-            UpdateItemMenuSwapLinePos(tListTaskId);
+            UpdateItemMenuSwapLinePos(96, tListTaskId);
             switch (input)
             {
             case LIST_CANCEL:

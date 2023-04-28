@@ -152,3 +152,4 @@
 	.include "src/trainer_hill.o"
 	.include "src/rayquaza_scene.o"
     .include "src/item_menu_icons.o"
+    .include "src/item_pc.o"
