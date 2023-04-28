@@ -405,7 +405,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_NPC_2                   0x1102
 #define OBJ_EVENT_PAL_TAG_NPC_3                   0x1103
 #define OBJ_EVENT_PAL_TAG_NPC_4                   0x1104
-#define OBJ_EVENT_PAL_TAG_QUINTY_PLUMP            0x1105
+#define OBJ_EVENT_PAL_TAG_NPC_5                   0x1105
 #define OBJ_EVENT_PAL_TAG_TRUCK                   0x1106
 #define OBJ_EVENT_PAL_TAG_VIGOROTH                0x1107
 #define OBJ_EVENT_PAL_TAG_ZIGZAGOON               0x1108
@@ -454,6 +454,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Npc2,                  OBJ_EVENT_PAL_TAG_NPC_2},
     {gObjectEventPal_Npc3,                  OBJ_EVENT_PAL_TAG_NPC_3},
     {gObjectEventPal_Npc4,                  OBJ_EVENT_PAL_TAG_NPC_4},
+    {gObjectEventPal_Npc5,                  OBJ_EVENT_PAL_TAG_NPC_5},
     {gObjectEventPal_ItemBall,              OBJ_EVENT_PAL_TAG_ITEM_BALL},
     {gObjectEventPal_RichBoy,               OBJ_EVENT_PAL_TAG_RICH_BOY},
     {gObjectEventPal_Lady,                  OBJ_EVENT_PAL_TAG_LADY},
@@ -462,7 +463,6 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Scout,                 OBJ_EVENT_PAL_TAG_SCOUT},
     {gObjectEventPal_Brendan,               OBJ_EVENT_PAL_TAG_BRENDAN},
     {gObjectEventPal_PlayerUnderwater,      OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER},
-    {gObjectEventPal_QuintyPlump,           OBJ_EVENT_PAL_TAG_QUINTY_PLUMP},
     {gObjectEventPal_Truck,                 OBJ_EVENT_PAL_TAG_TRUCK},
     {gObjectEventPal_Vigoroth,              OBJ_EVENT_PAL_TAG_VIGOROTH},
     {gObjectEventPal_EnemyZigzagoon,        OBJ_EVENT_PAL_TAG_ZIGZAGOON},

@@ -95,7 +95,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanFieldMove =
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_QuintyPlump = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_QUINTY_PLUMP,
+    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_5,
     .textColor = NPC_TEXT_COLOR_MALE,
     .size = 512,
     .width = 32,
@@ -698,6 +698,25 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RangerF = {
     .subspriteTables = sOamTables_16x32,
     .anims = sAnimTable_Standard,
     .images = sPicTable_RangerF,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AromaLady = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_5,
+    .textColor = NPC_TEXT_COLOR_FEMALE,
+    .size = 256,
+    .width = 16,
+    .height = 32,
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
+    .shadowSize = SHADOW_SIZE_M,
+    .inanimate = FALSE,
+    .disableReflectionPaletteLoad = FALSE,
+    .tracks = TRACKS_FOOT,
+    .oam = &gObjectEventBaseOam_16x32,
+    .subspriteTables = sOamTables_16x32,
+    .anims = sAnimTable_Standard,
+    .images = sPicTable_AromaLady,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
