@@ -19,7 +19,7 @@
 #define TRAINER_PIC_HIKER                  0
 #define TRAINER_PIC_AQUA_GRUNT_M           1
 #define TRAINER_PIC_POKEMON_BREEDER_F      2
-#define TRAINER_PIC_COOLTRAINER_M          3
+#define TRAINER_PIC_ACE_TRAINER_M          3
 #define TRAINER_PIC_BIRD_KEEPER            4
 #define TRAINER_PIC_COLLECTOR              5
 #define TRAINER_PIC_AQUA_GRUNT_F           6
@@ -36,7 +36,7 @@
 #define TRAINER_PIC_INTERVIEWER           17
 #define TRAINER_PIC_TUBER_F               18
 #define TRAINER_PIC_TUBER_M               19
-#define TRAINER_PIC_COOLTRAINER_F         20
+#define TRAINER_PIC_ACE_TRAINER_F         20
 #define TRAINER_PIC_LADY                  21
 #define TRAINER_PIC_BEAUTY                22
 #define TRAINER_PIC_RICH_BOY              23
@@ -135,7 +135,7 @@
 #define FACILITY_CLASS_HIKER                 0x0
 #define FACILITY_CLASS_AQUA_GRUNT_M          0x1
 #define FACILITY_CLASS_PKMN_BREEDER_F        0x2
-#define FACILITY_CLASS_COOLTRAINER_M         0x3
+#define FACILITY_CLASS_ACE_TRAINER_M         0x3
 #define FACILITY_CLASS_BIRD_KEEPER           0x4
 #define FACILITY_CLASS_COLLECTOR             0x5
 #define FACILITY_CLASS_AQUA_GRUNT_F          0x6
@@ -150,7 +150,7 @@
 #define FACILITY_CLASS_INTERVIEWER           0xf
 #define FACILITY_CLASS_TUBER_F               0x10
 #define FACILITY_CLASS_TUBER_M               0x11
-#define FACILITY_CLASS_COOLTRAINER_F         0x12
+#define FACILITY_CLASS_ACE_TRAINER_F         0x12
 #define FACILITY_CLASS_LADY                  0x13
 #define FACILITY_CLASS_BEAUTY                0x14
 #define FACILITY_CLASS_RICH_BOY              0x15
@@ -225,8 +225,8 @@
 #define RS_FACILITY_CLASS_INTERVIEWER           0x5
 #define RS_FACILITY_CLASS_TUBER_F               0x6
 #define RS_FACILITY_CLASS_TUBER_M               0x7
-#define RS_FACILITY_CLASS_COOLTRAINER_M         0x8
-#define RS_FACILITY_CLASS_COOLTRAINER_F         0x9
+#define RS_FACILITY_CLASS_ACE_TRAINER_M         0x8
+#define RS_FACILITY_CLASS_ACE_TRAINER_F         0x9
 #define RS_FACILITY_CLASS_HEX_MANIAC            0xA
 #define RS_FACILITY_CLASS_LADY                  0xB
 #define RS_FACILITY_CLASS_BEAUTY                0xC
@@ -302,7 +302,7 @@
 #define TRAINER_CLASS_HIKER          0x2
 #define TRAINER_CLASS_TEAM_AQUA      0x3
 #define TRAINER_CLASS_PKMN_BREEDER   0x4
-#define TRAINER_CLASS_COOLTRAINER    0x5
+#define TRAINER_CLASS_ACE_TRAINER    0x5
 #define TRAINER_CLASS_BIRD_KEEPER    0x6
 #define TRAINER_CLASS_COLLECTOR      0x7
 #define TRAINER_CLASS_SWIMMER_M      0x8
@@ -345,7 +345,7 @@
 #define TRAINER_CLASS_SWIMMER_F      0x2d
 #define TRAINER_CLASS_TWINS          0x2e
 #define TRAINER_CLASS_SAILOR         0x2f
-#define TRAINER_CLASS_COOLTRAINER_2  0x30 // Used for only one trainer.
+#define TRAINER_CLASS_ACE_TRAINER_2  0x30 // Used for only one trainer.
 #define TRAINER_CLASS_MAGMA_ADMIN    0x31
 #define TRAINER_CLASS_RIVAL          0x32
 #define TRAINER_CLASS_BUG_CATCHER    0x33

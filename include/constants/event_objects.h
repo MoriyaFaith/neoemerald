@@ -241,14 +241,18 @@
 #define OBJ_EVENT_GFX_LUGIA                      237
 #define OBJ_EVENT_GFX_HOOH                       238
 #define OBJ_EVENT_GFX_LADY                       239
-#define OBJ_EVENT_GFX_RANGER_M                   240
-#define OBJ_EVENT_GFX_RANGER_F                   241
-#define OBJ_EVENT_GFX_LINK_EM_BRENDAN            242
-#define OBJ_EVENT_GFX_LINK_EM_MAY                243
-#define OBJ_EVENT_GFX_LINK_H_BRENDAN             244
-#define OBJ_EVENT_GFX_LINK_H_MAY                 245
-#define OBJ_EVENT_GFX_GOLD                       246
-#define OBJ_EVENT_GFX_KRIS                       247
+#define OBJ_EVENT_GFX_SCHOOL_KID_F               240
+#define OBJ_EVENT_GFX_PSYCHIC_F                  241
+#define OBJ_EVENT_GFX_RANGER_M                   242
+#define OBJ_EVENT_GFX_RANGER_F                   243
+#define OBJ_EVENT_GFX_COOLTRAINER_M              244
+#define OBJ_EVENT_GFX_COOLTRAINER_F              245
+#define OBJ_EVENT_GFX_LINK_EM_BRENDAN            246
+#define OBJ_EVENT_GFX_LINK_EM_MAY                247
+#define OBJ_EVENT_GFX_LINK_H_BRENDAN             248
+#define OBJ_EVENT_GFX_LINK_H_MAY                 249
+#define OBJ_EVENT_GFX_GOLD                       250
+#define OBJ_EVENT_GFX_KRIS                       251
 
 // NOTE: By default, the max value for NUM_OBJ_EVENT_GFX is 239.
 //
