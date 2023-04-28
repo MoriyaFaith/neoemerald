@@ -7,6 +7,7 @@
 #include "menu.h"
 #include "palette.h"
 #include "scanline_effect.h"
+#include "sound.h"
 #include "sprite.h"
 #include "strings.h"
 #include "task.h"
@@ -15,6 +16,7 @@
 #include "window.h"
 #include "gba/m4a_internal.h"
 #include "constants/rgb.h"
+#include "constants/songs.h"
 
 #define tMenuSelection data[0]
 #define tTextSpeed data[1]
@@ -266,14 +268,19 @@ static void Task_OptionMenuProcessInput(u8 taskId)
     if (JOY_NEW(A_BUTTON))
     {
         if (gTasks[taskId].tMenuSelection == MENUITEM_CANCEL)
+        {
+            PlaySE(SE_SAVE);
             gTasks[taskId].func = Task_OptionMenuSave;
+        }
     }
     else if (JOY_NEW(B_BUTTON))
     {
+        PlaySE(SE_PC_OFF);
         gTasks[taskId].func = Task_OptionMenuSave;
     }
     else if (JOY_NEW(DPAD_UP))
     {
+        PlaySE(SE_SELECT);
         if (gTasks[taskId].tMenuSelection > 0)
             gTasks[taskId].tMenuSelection--;
         else
@@ -282,6 +289,7 @@ static void Task_OptionMenuProcessInput(u8 taskId)
     }
     else if (JOY_NEW(DPAD_DOWN))
     {
+        PlaySE(SE_SELECT);
         if (gTasks[taskId].tMenuSelection < MENUITEM_CANCEL)
             gTasks[taskId].tMenuSelection++;
         else
@@ -291,7 +299,6 @@ static void Task_OptionMenuProcessInput(u8 taskId)
     else
     {
         u8 previousOption;
-
         switch (gTasks[taskId].tMenuSelection)
         {
         case MENUITEM_TEXTSPEED:
@@ -399,6 +406,7 @@ static u8 TextSpeed_ProcessInput(u8 selection)
 {
     if (JOY_NEW(DPAD_RIGHT))
     {
+    PlaySE(SE_SELECT);
         if (selection <= 1)
             selection++;
         else
@@ -408,6 +416,7 @@ static u8 TextSpeed_ProcessInput(u8 selection)
     }
     if (JOY_NEW(DPAD_LEFT))
     {
+    PlaySE(SE_SELECT);
         if (selection != 0)
             selection--;
         else
@@ -417,6 +426,13 @@ static u8 TextSpeed_ProcessInput(u8 selection)
     }
     return selection;
 }
+
+static const u8 *const sTextSpeedOptions[] =
+{
+    gText_TextSpeedSlow, 
+    gText_TextSpeedMid, 
+    gText_TextSpeedFast
+};
 
 static void TextSpeed_DrawChoices(u8 selection)
 {
@@ -428,29 +444,26 @@ static void TextSpeed_DrawChoices(u8 selection)
     styles[2] = 0;
     styles[selection] = 1;
 
-    DrawOptionMenuChoice(gText_TextSpeedSlow, 104, YPOS_TEXTSPEED, styles[0]);
-
-    widthSlow = GetStringWidth(FONT_NORMAL, gText_TextSpeedSlow, 0);
-    widthMid = GetStringWidth(FONT_NORMAL, gText_TextSpeedMid, 0);
-    widthFast = GetStringWidth(FONT_NORMAL, gText_TextSpeedFast, 0);
-
-    widthMid -= 94;
-    xMid = (widthSlow - widthMid - widthFast) / 2 + 104;
-    DrawOptionMenuChoice(gText_TextSpeedMid, xMid, YPOS_TEXTSPEED, styles[1]);
-
-    DrawOptionMenuChoice(gText_TextSpeedFast, GetStringRightAlignXOffset(FONT_NORMAL, gText_TextSpeedFast, 198), YPOS_TEXTSPEED, styles[2]);
+    DrawOptionMenuChoice(sTextSpeedOptions[selection], 104, YPOS_TEXTSPEED, styles[selection]);
 }
 
 static u8 BattleScene_ProcessInput(u8 selection)
 {
     if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
     {
+        PlaySE(SE_SELECT);
         selection ^= 1;
         sArrowPressed = TRUE;
     }
 
     return selection;
 }
+
+static const u8 *const sBattleSceneOptions[] =
+{
+    gText_BattleSceneOn, 
+    gText_BattleSceneOff
+};
 
 static void BattleScene_DrawChoices(u8 selection)
 {
@@ -460,20 +473,26 @@ static void BattleScene_DrawChoices(u8 selection)
     styles[1] = 0;
     styles[selection] = 1;
 
-    DrawOptionMenuChoice(gText_BattleSceneOn, 104, YPOS_BATTLESCENE, styles[0]);
-    DrawOptionMenuChoice(gText_BattleSceneOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleSceneOff, 198), YPOS_BATTLESCENE, styles[1]);
+    DrawOptionMenuChoice(sBattleSceneOptions[selection], 104, YPOS_BATTLESCENE, styles[selection]);
 }
 
 static u8 BattleStyle_ProcessInput(u8 selection)
 {
     if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
     {
+        PlaySE(SE_SELECT);
         selection ^= 1;
         sArrowPressed = TRUE;
     }
 
     return selection;
 }
+
+static const u8 *const sBattleStyleOptions[] =
+{
+    gText_BattleStyleShift,
+    gText_BattleStyleSet
+};
 
 static void BattleStyle_DrawChoices(u8 selection)
 {
@@ -483,14 +502,14 @@ static void BattleStyle_DrawChoices(u8 selection)
     styles[1] = 0;
     styles[selection] = 1;
 
-    DrawOptionMenuChoice(gText_BattleStyleShift, 104, YPOS_BATTLESTYLE, styles[0]);
-    DrawOptionMenuChoice(gText_BattleStyleSet, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleStyleSet, 198), YPOS_BATTLESTYLE, styles[1]);
+    DrawOptionMenuChoice(sBattleStyleOptions[selection], 104, YPOS_BATTLESTYLE, styles[selection]);
 }
 
 static u8 Sound_ProcessInput(u8 selection)
 {
     if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
     {
+        PlaySE(SE_SELECT);  
         selection ^= 1;
         SetPokemonCryStereo(selection);
         sArrowPressed = TRUE;
@@ -498,6 +517,12 @@ static u8 Sound_ProcessInput(u8 selection)
 
     return selection;
 }
+
+static const u8 *const sSoundOptions[] =
+{
+    gText_SoundMono, 
+    gText_SoundStereo
+};
 
 static void Sound_DrawChoices(u8 selection)
 {
@@ -507,14 +532,14 @@ static void Sound_DrawChoices(u8 selection)
     styles[1] = 0;
     styles[selection] = 1;
 
-    DrawOptionMenuChoice(gText_SoundMono, 104, YPOS_SOUND, styles[0]);
-    DrawOptionMenuChoice(gText_SoundStereo, GetStringRightAlignXOffset(FONT_NORMAL, gText_SoundStereo, 198), YPOS_SOUND, styles[1]);
+    DrawOptionMenuChoice(sSoundOptions[selection], 104, YPOS_SOUND, styles[selection]);
 }
 
 static u8 FrameType_ProcessInput(u8 selection)
 {
     if (JOY_NEW(DPAD_RIGHT))
     {
+        PlaySE(SE_SELECT);
         if (selection < WINDOW_FRAMES_COUNT - 1)
             selection++;
         else
@@ -526,6 +551,7 @@ static u8 FrameType_ProcessInput(u8 selection)
     }
     if (JOY_NEW(DPAD_LEFT))
     {
+        PlaySE(SE_SELECT);
         if (selection != 0)
             selection--;
         else
@@ -573,6 +599,7 @@ static u8 ButtonMode_ProcessInput(u8 selection)
 {
     if (JOY_NEW(DPAD_RIGHT))
     {
+        PlaySE(SE_SELECT);
         if (selection <= 1)
             selection++;
         else
@@ -582,6 +609,7 @@ static u8 ButtonMode_ProcessInput(u8 selection)
     }
     if (JOY_NEW(DPAD_LEFT))
     {
+        PlaySE(SE_SELECT);
         if (selection != 0)
             selection--;
         else
@@ -591,6 +619,13 @@ static u8 ButtonMode_ProcessInput(u8 selection)
     }
     return selection;
 }
+
+static const u8 *const sButtonTypeOptions[] =
+{
+    gText_ButtonTypeNormal,
+	gText_ButtonTypeLR,
+	gText_ButtonTypeLEqualsA
+};
 
 static void ButtonMode_DrawChoices(u8 selection)
 {
@@ -602,17 +637,7 @@ static void ButtonMode_DrawChoices(u8 selection)
     styles[2] = 0;
     styles[selection] = 1;
 
-    DrawOptionMenuChoice(gText_ButtonTypeNormal, 104, YPOS_BUTTONMODE, styles[0]);
-
-    widthNormal = GetStringWidth(FONT_NORMAL, gText_ButtonTypeNormal, 0);
-    widthLR = GetStringWidth(FONT_NORMAL, gText_ButtonTypeLR, 0);
-    widthLA = GetStringWidth(FONT_NORMAL, gText_ButtonTypeLEqualsA, 0);
-
-    widthLR -= 94;
-    xLR = (widthNormal - widthLR - widthLA) / 2 + 104;
-    DrawOptionMenuChoice(gText_ButtonTypeLR, xLR, YPOS_BUTTONMODE, styles[1]);
-
-    DrawOptionMenuChoice(gText_ButtonTypeLEqualsA, GetStringRightAlignXOffset(FONT_NORMAL, gText_ButtonTypeLEqualsA, 198), YPOS_BUTTONMODE, styles[2]);
+    DrawOptionMenuChoice(sButtonTypeOptions[selection], 104, YPOS_BUTTONMODE, styles[selection]);
 }
 
 static void DrawHeaderText(void)
