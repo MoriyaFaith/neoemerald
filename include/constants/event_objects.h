@@ -248,12 +248,20 @@
 #define OBJ_EVENT_GFX_COOLTRAINER_M              244
 #define OBJ_EVENT_GFX_COOLTRAINER_F              245
 #define OBJ_EVENT_GFX_AROMA_LADY                 246
-#define OBJ_EVENT_GFX_LINK_EM_BRENDAN            247
-#define OBJ_EVENT_GFX_LINK_EM_MAY                248
-#define OBJ_EVENT_GFX_LINK_H_BRENDAN             249
-#define OBJ_EVENT_GFX_LINK_H_MAY                 250
-#define OBJ_EVENT_GFX_GOLD                       251
-#define OBJ_EVENT_GFX_KRIS                       252
+#define OBJ_EVENT_GFX_GUITARIST                  247
+#define OBJ_EVENT_GFX_PARASOL_LADY               248
+#define OBJ_EVENT_GFX_KINDLER                    249
+#define OBJ_EVENT_GFX_BATTLE_GIRL                250
+#define OBJ_EVENT_GFX_BREEDER_M                  251
+#define OBJ_EVENT_GFX_BREEDER_F                  252
+#define OBJ_EVENT_GFX_SENIOR                     253
+#define OBJ_EVENT_GFX_JUNIOR                     254
+#define OBJ_EVENT_GFX_LINK_EM_BRENDAN            255
+#define OBJ_EVENT_GFX_LINK_EM_MAY                256
+#define OBJ_EVENT_GFX_LINK_H_BRENDAN             257
+#define OBJ_EVENT_GFX_LINK_H_MAY                 258
+#define OBJ_EVENT_GFX_GOLD                       259
+#define OBJ_EVENT_GFX_KRIS                       260
 
 // NOTE: By default, the max value for NUM_OBJ_EVENT_GFX is 239.
 //

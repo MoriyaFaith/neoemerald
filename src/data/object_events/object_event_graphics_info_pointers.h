@@ -15,6 +15,11 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Boy3;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Girl3;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RichBoy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lady;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ParasolLady;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kindler;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BattleGirl;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Senior;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Junior;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Woman1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_FatMan;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokefanF;
@@ -72,6 +77,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanAcro
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ProfBirch;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Man4;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Man5;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Guitarist;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ReporterM;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ReporterF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bard;
@@ -322,6 +328,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_PROF_BIRCH] =               &gObjectEventGraphicsInfo_ProfBirch,
     [OBJ_EVENT_GFX_MAN_4] =                    &gObjectEventGraphicsInfo_Man4,
     [OBJ_EVENT_GFX_MAN_5] =                    &gObjectEventGraphicsInfo_Man5,
+    [OBJ_EVENT_GFX_GUITARIST] =                &gObjectEventGraphicsInfo_Guitarist,
     [OBJ_EVENT_GFX_REPORTER_M] =               &gObjectEventGraphicsInfo_ReporterM,
     [OBJ_EVENT_GFX_REPORTER_F] =               &gObjectEventGraphicsInfo_ReporterF,
     [OBJ_EVENT_GFX_BARD] =                     &gObjectEventGraphicsInfo_Bard,
@@ -496,11 +503,18 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LUGIA] =                    &gObjectEventGraphicsInfo_Lugia,
     [OBJ_EVENT_GFX_HOOH] =                     &gObjectEventGraphicsInfo_HoOh,
     [OBJ_EVENT_GFX_LADY] =                     &gObjectEventGraphicsInfo_Lady,
+    [OBJ_EVENT_GFX_PARASOL_LADY] =             &gObjectEventGraphicsInfo_ParasolLady,
+    [OBJ_EVENT_GFX_KINDLER] =                  &gObjectEventGraphicsInfo_Kindler,
+    [OBJ_EVENT_GFX_BATTLE_GIRL] =              &gObjectEventGraphicsInfo_BattleGirl,
     [OBJ_EVENT_GFX_RANGER_M] =                 &gObjectEventGraphicsInfo_RangerM,
     [OBJ_EVENT_GFX_RANGER_F] =                 &gObjectEventGraphicsInfo_RangerF,
     [OBJ_EVENT_GFX_PSYCHIC_F] =                &gObjectEventGraphicsInfo_PsychicF,
     [OBJ_EVENT_GFX_COOLTRAINER_M] =            &gObjectEventGraphicsInfo_CoolTrainerM,
     [OBJ_EVENT_GFX_COOLTRAINER_F] =            &gObjectEventGraphicsInfo_CoolTrainerF,
+    [OBJ_EVENT_GFX_BREEDER_M] =                &gObjectEventGraphicsInfo_BreederM,
+    [OBJ_EVENT_GFX_BREEDER_F] =                &gObjectEventGraphicsInfo_BreederF,
+    [OBJ_EVENT_GFX_SENIOR] =                   &gObjectEventGraphicsInfo_Senior,
+    [OBJ_EVENT_GFX_JUNIOR] =                   &gObjectEventGraphicsInfo_Junior,
     [OBJ_EVENT_GFX_LINK_EM_BRENDAN] =          &gObjectEventGraphicsInfo_EmeraldBrendan,
     [OBJ_EVENT_GFX_LINK_EM_MAY] =              &gObjectEventGraphicsInfo_EmeraldMay,
     [OBJ_EVENT_GFX_LINK_H_BRENDAN] =           &gObjectEventGraphicsInfo_HeliodorBrendan,
