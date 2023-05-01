@@ -156,7 +156,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_5",
+      "graphics_id": "OBJ_EVENT_GFX_BIRD_KEEPER",
       "x": 5,
       "y": 22,
       "elevation": 3,
@@ -182,7 +182,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_CAMPER",
+      "graphics_id": "OBJ_EVENT_GFX_RANGER_M",
       "x": 27,
       "y": 51,
       "elevation": 3,
@@ -195,7 +195,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
+      "graphics_id": "OBJ_EVENT_GFX_RANGER_F",
       "x": 36,
       "y": 45,
       "elevation": 3,
@@ -325,7 +325,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "graphics_id": "OBJ_EVENT_GFX_COOLTRAINER_F",
       "x": 31,
       "y": 37,
       "elevation": 3,
@@ -338,7 +338,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "graphics_id": "OBJ_EVENT_GFX_RUIN_MANIAC",
       "x": 9,
       "y": 60,
       "elevation": 3,
@@ -364,7 +364,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "graphics_id": "OBJ_EVENT_GFX_PARASOL_LADY",
       "x": 18,
       "y": 34,
       "elevation": 3,
@@ -559,7 +559,7 @@
       "flag": "FLAG_HIDE_ROUTE_120_KECLEON_4"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
+      "graphics_id": "OBJ_EVENT_GFX_BATTLE_GIRL",
       "x": 19,
       "y": 32,
       "elevation": 3,
@@ -572,7 +572,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_COOLTRAINER_M",
       "x": 14,
       "y": 34,
       "elevation": 3,
