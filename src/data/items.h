@@ -3075,15 +3075,15 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-    [ITEM_0FD] =
+    [ITEM_CAMPING_SET] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
+        .name = _("CAMPING SET"),
+        .itemId = ITEM_CAMPING_SET,
         .price = 0,
         .description = sDummyDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CampingSet,
     },
 
     [ITEM_RED_SCARF] =
@@ -3292,7 +3292,7 @@ const struct Item gItems[] =
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_SootSack,
     },
 
     [ITEM_BASEMENT_KEY] =

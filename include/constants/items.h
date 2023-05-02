@@ -280,7 +280,7 @@
 #define ITEM_0FA 250
 #define ITEM_0FB 251
 #define ITEM_0FC 252
-#define ITEM_0FD 253
+#define ITEM_CAMPING_SET 253
 
 // Contest held items
 #define ITEM_RED_SCARF 254

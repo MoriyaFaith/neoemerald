@@ -8,6 +8,7 @@
 #include "bike.h"
 #include "coins.h"
 #include "data.h"
+#include "day_night.h"
 #include "event_data.h"
 #include "event_object_lock.h"
 #include "event_object_movement.h"
@@ -44,6 +45,7 @@
 
 static void SetUpItemUseCallback(u8);
 static void FieldCB_UseItemOnField(void);
+static void ItemUseOnFieldCB_CampingSet(u8);
 static void Task_CallItemUseOnFieldCallback(u8);
 static void Task_UseItemfinder(u8);
 static void Task_CloseItemfinderMessage(u8);
@@ -1132,6 +1134,47 @@ void ItemUseInBattle_EnigmaBerry(u8 taskId)
 void ItemUseOutOfBattle_CannotUse(u8 taskId)
 {
     DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+}
+
+void ItemUseOutOfBattle_SootSack(u8 taskId)
+{
+	ConvertIntToDecimalStringN(gStringVar1, GetAshCount(), STR_CONV_MODE_LEFT_ALIGN, 4);
+	StringExpandPlaceholders(gStringVar4, gText_AshQty);
+	if (!gTasks[taskId].tUsingRegisteredKeyItem)
+	{
+		DisplayItemMessage(taskId, gStringVar4, CloseItemMessage);
+	}
+	else
+	{
+		DisplayItemMessageOnField(taskId, gStringVar4, Task_CloseCantUseKeyItemMessage);
+	}
+}		
+
+u16 GetAshCount(void)
+{
+	u16 *ashGatherCount;
+	ashGatherCount = GetVarPointer(VAR_ASH_GATHER_COUNT);
+	return *ashGatherCount;
+}
+
+void ItemUseOutOfBattle_CampingSet(u8 taskId)
+{
+    sItemUseOnFieldCB = ItemUseOnFieldCB_CampingSet;
+    SetUpItemUseOnFieldCallback(taskId);
+}
+
+static void ItemUseOnFieldCB_CampingSet(u8 taskId)
+{
+    FadeScreen(FADE_TO_BLACK, 0);
+    FadeOutBGM(4);
+    PlayFanfare(MUS_RG_POKE_FLUTE);
+    WaitFanfare(FALSE);
+    SkipDayNightTime(&gSaveBlock1Ptr->dayNightTimeOffset, 4);
+    FadeInFromBlack();
+    FadeInBGM(4);
+    ScriptUnfreezeObjectEvents();
+    UnlockPlayerFieldControls();
+    DestroyTask(taskId);
 }
 
 #undef tUsingRegisteredKeyItem
