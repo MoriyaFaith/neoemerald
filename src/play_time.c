@@ -35,6 +35,7 @@ void PlayTimeCounter_Stop(void)
 
 void PlayTimeCounter_Update(void)
 {
+    gSaveBlock1Ptr->dayNightTimeOffset++; // no matter what, add to actual time.
     if (sPlayTimeCounterState != RUNNING)
         return;
 

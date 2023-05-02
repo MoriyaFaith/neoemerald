@@ -7,6 +7,7 @@
 #include "overworld.h"
 #include "palette.h"
 #include "rtc.h"
+#include "main.h"
 #include "constants/day_night.h"
 #include "constants/region_map_sections.h"
 #include "constants/rgb.h"
@@ -60,9 +61,30 @@ static const u16 sTimeOfDayTints[][3] = {
     [23] =  {TINT_NIGHT},
 };
 
+u8 ConvertFramesToHours (u32 frames) {
+    u32 seconds = ((u64) frames * 4389) >> 18;
+    // assume 180 seconds per hour; 3 seconds is one minute (x24 speedup)
+    return (seconds / 180) % 24;
+}
+
+u8 ConvertFramesToMinutes (u32 frames) {
+    u32 seconds = ((u64) frames * 4389) >> 18;
+    return (seconds / 3) % 60;
+}
+
+u8 ConvertFramesToSeconds (u32 frames) {
+    u32 seconds = ((u64) frames * 4389) >> 18;
+    return seconds;
+}
+
+void SetDNTime(u64 *timePtr, u64 newValue)
+{
+    *timePtr = newValue;
+}
+
 u8 GetCurrentTimeOfDay(void)
 {
-    return GetTimeOfDay(gLocalTime.hours);
+    return GetTimeOfDay(ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset));
 }
 
 u8 GetTimeOfDay(s8 hours)
@@ -89,7 +111,7 @@ static void LoadPaletteOverrides(void)
         return;
 #endif
 
-    hour = gLocalTime.hours;
+    hour = ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset);
 
 #if DEBUG
     if (gDNPeriodOverride > 0)
@@ -164,8 +186,8 @@ static void TintPaletteForDayNight(u16 offset, u16 size)
     {
         RtcCalcLocalTimeFast();
 
-        hour = gLocalTime.hours;
-        hourPhase = gLocalTime.minutes / MINUTES_PER_TINT_PERIOD;
+        hour = ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset);
+        hourPhase = ConvertFramesToSeconds(gSaveBlock1Ptr->dayNightTimeOffset) / MINUTES_PER_TINT_PERIOD;
 
 #if DEBUG
         if (gDNPeriodOverride > 0)
@@ -226,8 +248,8 @@ void ProcessImmediateTimeEvents(void)
     {
         if (sDNSystemControl.retintPhase == 0)
         {
-            hour = gLocalTime.hours;
-            hourPhase = gLocalTime.minutes / MINUTES_PER_TINT_PERIOD;
+        hour = ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset);
+        hourPhase = ConvertFramesToSeconds(gSaveBlock1Ptr->dayNightTimeOffset) / MINUTES_PER_TINT_PERIOD;
 
 #if DEBUG
             if (gDNPeriodOverride > 0)

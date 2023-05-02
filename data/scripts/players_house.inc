@@ -113,9 +113,9 @@ PlayersHouse_2F_EventScript_CheckWallClock::
 	end
 
 PlayersHouse_2F_EventScript_SetWallClock::
+	closemessage
 	fadescreen FADE_TO_BLACK
-	special StartWallClock
-	waitstate
+	fadescreen FADE_FROM_BLACK
 	return
 
 PlayersHouse_2F_Movement_MomEntersMale:
@@ -175,6 +175,7 @@ PlayersHouse_1F_EventScript_PetalburgGymReportMale::
 	call PlayersHouse_1F_EventScript_WatchGymBroadcast
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
+	textcolor NPC_TEXT_COLOR_FEMALE
 	msgbox PlayersHouse_1F_Text_ItsOverWeMissedHim, MSGBOX_DEFAULT
 	msgbox PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor, MSGBOX_DEFAULT
 	closemessage
@@ -200,7 +201,7 @@ PlayersHouse_1F_EventScript_PetalburgGymReportFemale::
 	call PlayersHouse_1F_EventScript_WatchGymBroadcast
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	textcolor 0x4
+	textcolor NPC_TEXT_COLOR_FEMALE
 	msgbox PlayersHouse_1F_Text_ItsOverWeMissedHim, MSGBOX_DEFAULT
 	msgbox PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor, MSGBOX_DEFAULT
 	closemessage

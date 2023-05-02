@@ -13,6 +13,8 @@
 #include "load_save.h"
 #include "pokeblock.h"
 #include "dewford_trend.h"
+#include "day_night.h"
+#include "clock.h"
 #include "berry.h"
 #include "rtc.h"
 #include "easy_chat.h"
@@ -170,6 +172,7 @@ void NewGameInitData(void)
     ClearSecretBases();
     ClearBerryTrees();
     SetMoney(&gSaveBlock1Ptr->money, 3000);
+    SetDNTime(&gSaveBlock1Ptr->dayNightTimeOffset, (4389 * 180) * 7); // set the time to 7AM
     SetCoins(0);
     ResetLinkContestBoolean();
     ResetGameStats();
@@ -204,6 +207,8 @@ void NewGameInitData(void)
     WipeTrainerNameRecords();
     ResetTrainerHillResults();
     ResetContestLinkResults();
+    RtcCalcLocalTime();
+    InitTimeBasedEvents();
 }
 
 static void ResetMiniGamesRecords(void)

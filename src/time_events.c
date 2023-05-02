@@ -1,4 +1,5 @@
 #include "global.h"
+#include "day_night.h"
 #include "time_events.h"
 #include "event_data.h"
 #include "field_weather.h"
@@ -84,7 +85,7 @@ void UpdateShoalTideFlag(void)
     if (IsMapTypeOutdoors(GetLastUsedWarpMapType()))
     {
         RtcCalcLocalTime();
-        if (tide[gLocalTime.hours])
+        if (tide[ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset)]) // time is now in hours
             FlagSet(FLAG_SYS_SHOAL_TIDE);
         else
             FlagClear(FLAG_SYS_SHOAL_TIDE);
