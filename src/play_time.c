@@ -1,5 +1,7 @@
 #include "global.h"
 #include "play_time.h"
+#include "main.h"
+#include "event_data.h"
 
 enum
 {
@@ -35,7 +37,8 @@ void PlayTimeCounter_Stop(void)
 
 void PlayTimeCounter_Update(void)
 {
-    gSaveBlock1Ptr->dayNightTimeOffset++; // no matter what, add to actual time.
+    if(FlagGet(FLAG_SYS_CLOCK_SET)) // only progress in-game time once the clock has been set
+        gSaveBlock1Ptr->dayNightTimeOffset++;
     if (sPlayTimeCounterState != RUNNING)
         return;
 

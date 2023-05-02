@@ -24,6 +24,7 @@ void DoLoadSpritePaletteDayNight(const u16 *src, u16 paletteOffset);
 u8 ConvertFramesToHours(u32 frames);
 u8 ConvertFramesToMinutes(u32 frames);
 u8 ConvertFramesToSeconds(u32 frames);
-void SetDNTime(u64 *timePtr, u64 newValue);
+void SetDNTime(u64 *timePtr, u8 hours);
+void SkipDayNightTime(u64 *timePtr, u8 hours);
 
 #endif // GUARD_DAY_NIGHT_H

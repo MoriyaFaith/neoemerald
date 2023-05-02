@@ -115,7 +115,8 @@ PlayersHouse_2F_EventScript_CheckWallClock::
 PlayersHouse_2F_EventScript_SetWallClock::
 	closemessage
 	fadescreen FADE_TO_BLACK
-	fadescreen FADE_FROM_BLACK
+	special StartWallClock
+	waitstate
 	return
 
 PlayersHouse_2F_Movement_MomEntersMale:

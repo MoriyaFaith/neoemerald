@@ -77,9 +77,14 @@ u8 ConvertFramesToSeconds (u32 frames) {
     return seconds;
 }
 
-void SetDNTime(u64 *timePtr, u64 newValue)
+void SkipDayNightTime(u64 *timePtr, u8 hours)
 {
-    *timePtr = newValue;
+    *timePtr += hours * FRAMES_PER_HOUR;
+}
+
+void SetDNTime(u64 *timePtr, u8 hours)
+{
+    *timePtr = hours * FRAMES_PER_HOUR;
 }
 
 u8 GetCurrentTimeOfDay(void)

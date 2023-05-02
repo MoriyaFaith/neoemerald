@@ -1846,3 +1846,5 @@ const u8 gText_CurrentTimePMOff[] = _(" {STR_VAR_1} {STR_VAR_2} P.M.");
 const u8 gText_DpadMove[] = _("{DPAD_NONE}MOVE");
 const u8 gText_AOK[] = _("{A_BUTTON}OK");
 const u8 gText_ACancel[] = _("{A_BUTTON}CANCEL");
+
+const u8 gText_AshQty[] = _("ASH QTY:\n{STR_VAR_1}{PAUSE_UNTIL_PRESS}");

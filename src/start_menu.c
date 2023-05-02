@@ -463,13 +463,13 @@ static void RemoveExtraStartMenuWindows(void)
         ClearStdWindowAndFrameToTransparent(sBattlePyramidFloorWindowId, FALSE);
         RemoveWindow(sBattlePyramidFloorWindowId);
     }
-    /*if (FlagGet(FLAG_SYS_CLOCK_SET))
+    if (FlagGet(FLAG_SYS_CLOCK_SET))
     {
         ClearStdWindowAndFrameToTransparent(sCurrentTimeWindowId, FALSE);
         CopyWindowToVram(sCurrentTimeWindowId, 2);
         RemoveWindow(sCurrentTimeWindowId);
         FlagClear(FLAG_TEMP_5);
-    }*/
+    }
 }
 
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
@@ -527,8 +527,8 @@ static bool32 InitStartMenuStep(void)
             ShowSafariBallsWindow();
         if (InBattlePyramid())
             ShowPyramidFloorWindow();
-        //if (FlagGet(FLAG_SYS_CLOCK_SET))
-        ShowCurrentTimeWindow();
+        if (FlagGet(FLAG_SYS_CLOCK_SET))
+            ShowCurrentTimeWindow();
         sInitStartMenuData[0]++;
         break;
     case 4:
@@ -1492,7 +1492,7 @@ static void ShowCurrentTimeWindow(void)
         ConvertIntToDecimalStringN(gStringVar2, ConvertFramesToMinutes(gSaveBlock1Ptr->dayNightTimeOffset), STR_CONV_MODE_LEADING_ZEROS, 2);
         StringExpandPlaceholders(gStringVar4, gText_CurrentTimeAM);
     }
-    AddTextPrinterParameterized(sCurrentTimeWindowId, FONT_EMERALD, gStringVar4, 0, 1, 0xFF, NULL);
+    AddTextPrinterParameterized(sCurrentTimeWindowId, FONT_NORMAL, gStringVar4, 0, 1, 0xFF, NULL);
     CopyWindowToVram(sCurrentTimeWindowId, 2);
 }
 
@@ -1525,6 +1525,6 @@ void UpdateClockDisplay(void)
         else
             StringExpandPlaceholders(gStringVar4, gText_CurrentTimeAMOff);
     }
-    AddTextPrinterParameterized(sCurrentTimeWindowId, FONT_EMERALD, gStringVar4, 0, 1, 0xFF, NULL);
+    AddTextPrinterParameterized(sCurrentTimeWindowId, FONT_NORMAL, gStringVar4, 0, 1, 0xFF, NULL);
     CopyWindowToVram(sCurrentTimeWindowId, 2);
 }

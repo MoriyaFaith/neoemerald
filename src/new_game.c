@@ -172,7 +172,7 @@ void NewGameInitData(void)
     ClearSecretBases();
     ClearBerryTrees();
     SetMoney(&gSaveBlock1Ptr->money, 3000);
-    SetDNTime(&gSaveBlock1Ptr->dayNightTimeOffset, (4389 * 180) * 7); // set the time to 7AM
+    SetDNTime(&gSaveBlock1Ptr->dayNightTimeOffset, 10); // set the time to 10AM
     SetCoins(0);
     ResetLinkContestBoolean();
     ResetGameStats();
@@ -207,8 +207,6 @@ void NewGameInitData(void)
     WipeTrainerNameRecords();
     ResetTrainerHillResults();
     ResetContestLinkResults();
-    RtcCalcLocalTime();
-    InitTimeBasedEvents();
 }
 
 static void ResetMiniGamesRecords(void)
