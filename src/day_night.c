@@ -187,7 +187,7 @@ static void TintPaletteForDayNight(u16 offset, u16 size)
         RtcCalcLocalTimeFast();
 
         hour = ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset);
-        hourPhase = ConvertFramesToSeconds(gSaveBlock1Ptr->dayNightTimeOffset) / MINUTES_PER_TINT_PERIOD;
+        hourPhase = ConvertFramesToMinutes(gSaveBlock1Ptr->dayNightTimeOffset) / MINUTES_PER_TINT_PERIOD;
 
 #if DEBUG
         if (gDNPeriodOverride > 0)
@@ -249,7 +249,7 @@ void ProcessImmediateTimeEvents(void)
         if (sDNSystemControl.retintPhase == 0)
         {
         hour = ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset);
-        hourPhase = ConvertFramesToSeconds(gSaveBlock1Ptr->dayNightTimeOffset) / MINUTES_PER_TINT_PERIOD;
+        hourPhase = ConvertFramesToMinutes(gSaveBlock1Ptr->dayNightTimeOffset) / MINUTES_PER_TINT_PERIOD;
 
 #if DEBUG
             if (gDNPeriodOverride > 0)
