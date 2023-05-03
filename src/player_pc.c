@@ -86,6 +86,12 @@ static const u8 *const sItemStorageActionDescriptionPtrs[] = {
     gText_GoBackPrevMenu
 };
 
+static const struct ItemSlot sNewGamePCItems[] =
+{
+    { ITEM_POTION, 1 },
+    { ITEM_NONE, 0 }
+};
+
 static const struct MenuAction sMenuActions_TopMenu[] = {
     { gText_ItemStorage, Task_PlayerPcItemStorage },
     { gText_Mailbox, Task_PlayerPcMailbox },
@@ -149,9 +155,13 @@ static const struct WindowTemplate sWindowTemplate_ItemStorageSubmenu = {
     .baseBlock = 0x008
 };
 
+#define GET_QUANTITY(i) ((u16)((u16 *)sNewGamePCItems + 1)[i * 2])
 void NewGameInitPCItems(void)
 {
-    ClearItemSlots(gSaveBlock1Ptr->pcItems, ARRAY_COUNT(gSaveBlock1Ptr->pcItems));
+    u8 i = 0;
+    ClearItemSlots(gSaveBlock1Ptr->pcItems, PC_ITEMS_COUNT);
+    for(; sNewGamePCItems[i].itemId != ITEM_NONE && GET_QUANTITY(i) &&
+        AddPCItem(sNewGamePCItems[i].itemId, GET_QUANTITY(i)) == TRUE; i++);
 }
 #undef GET_QUANTITY
 
