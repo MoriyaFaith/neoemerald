@@ -99,6 +99,7 @@ LittlerootTown_MaysHouse_1F_EventScript_YoureNewNeighbor::
 	applymovement LOCALID_RIVAL_MOM, LittlerootTown_MaysHouse_1F_Movement_RivalMomApproach
 	waitmovement 0
 	special GetRivalSonDaughterString
+	textcolor NPC_TEXT_COLOR_FEMALE
 	msgbox RivalsHouse_1F_Text_OhYoureTheNewNeighbor, MSGBOX_DEFAULT
 	setflag FLAG_MET_RIVAL_MOM
 	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2
@@ -181,6 +182,7 @@ LittlerootTown_MaysHouse_1F_EventScript_MeetRival::
 	addobject LOCALID_RIVAL
 	delay 30
 	playse SE_PIN
+	textcolor NPC_TEXT_COLOR_FEMALE
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_Delay48

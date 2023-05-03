@@ -1165,10 +1165,16 @@ u16 GetAshCount(void)
 
 void ItemUseOutOfBattle_CampingSet(u8 taskId)
 {
-    sCampCounter = 450;
-    gTasks[taskId].data[CAMPING_LOAD_STATE] = 0;
-    sItemUseOnFieldCB = ItemUseOnFieldCB_CampingSet;
-    SetUpItemUseOnFieldCallback(taskId);
+    s16 *data = gTasks[taskId].data;
+    sCampCounter = 6;
+    if (Overworld_IsBikingAllowed() == TRUE && IsBikingDisallowedByPlayer() == 0)
+    {
+        gTasks[taskId].data[CAMPING_LOAD_STATE] = 0;
+        sItemUseOnFieldCB = ItemUseOnFieldCB_CampingSet;
+        SetUpItemUseOnFieldCallback(taskId);
+    }
+    else
+        DisplayDadsAdviceCannotUseItemMessage(taskId, tUsingRegisteredKeyItem);
 }
 
 static void ItemUseOnFieldCB_CampingSet(u8 taskId)
@@ -1182,7 +1188,7 @@ static void UseCampingKit(u8 taskId)
     switch (gTasks[taskId].data[CAMPING_LOAD_STATE])
     {
     case 0:
-        BeginNormalPaletteFade(PALETTES_ALL, -2, 0, 16, RGB_BLACK);
+        FadeScreen(FADE_TO_BLACK, 0);
         FadeOutBGM(4);
         gTasks[taskId].data[CAMPING_LOAD_STATE]++;
         break;
@@ -1197,7 +1203,7 @@ static void UseCampingKit(u8 taskId)
     case 2:
         if(IsFanfareTaskInactive())
         {
-            SkipDayNightTime(&gSaveBlock1Ptr->dayNightTimeOffset, 8);
+            SkipDayNightTime(&gSaveBlock1Ptr->dayNightTimeOffset, sCampCounter);
             gTasks[taskId].data[CAMPING_LOAD_STATE]++;
         }
         break;

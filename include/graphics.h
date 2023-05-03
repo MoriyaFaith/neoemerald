@@ -3911,6 +3911,9 @@ extern const u32 gItemIcon_MagmaEmblem[];
 extern const u32 gItemIconPalette_MagmaEmblem[];
 extern const u32 gItemIcon_OldSeaMap[];
 extern const u32 gItemIconPalette_OldSeaMap[];
+//Neo Emerald Key Items
+extern const u32 gItemIcon_CampGear[];
+extern const u32 gItemIconPalette_CampGear[];
 
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u32 gItemIconPalette_ReturnToFieldArrow[];

@@ -150,6 +150,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_MeetRival::
 	addobject LOCALID_RIVAL
 	delay 30
 	playse SE_PIN
+	textcolor NPC_TEXT_COLOR_MALE
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_Delay48

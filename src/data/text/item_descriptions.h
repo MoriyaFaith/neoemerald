@@ -1565,4 +1565,4 @@ static const u8 sOldSeaMapDesc[] = _(
 static const u8 sCampingSetDesc[] = _(
     "Everything you need to set up a\n"
     "tent and camp in the wild.\n"
-    "Sleep for 8 hours.");
+    "Sleep for 6 hours.");

@@ -559,7 +559,11 @@ PetalburgCity_EventScript_Scott::
 	closemessage
 	applymovement LOCALID_SCOTT, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
+	msgbox PetalburgCity_Text_ConsiderItAGift, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	giveitem ITEM_CAMPING_SET
 	delay 30
+	textcolor NPC_TEXT_COLOR_MALE
 	msgbox PetalburgCity_Text_ImLookingForTalentedTrainers, MSGBOX_DEFAULT
 	closemessage
 	call_if_eq VAR_0x8008, 0, PetalburgCity_EventScript_ScottExit0
@@ -760,9 +764,10 @@ PetalburgCity_Text_AreYouATrainer:
 PetalburgCity_Text_WellMaybeNot:
 	.string "… … … … … …\p"
 	.string "Well, maybe not.\n"
-	.string "Your clothes aren't all that dirty.\p"
-	.string "You're either a rookie TRAINER,\n"
-	.string "or maybe you're just an ordinary kid.$"
+	.string "Your clothes aren't all that dirty.$"
+PetalburgCity_Text_ConsiderItAGift:
+	.string "You don't even have CAMPING GEAR!\n"
+	.string "Here, take it. Consider it a gift!$"
 
 PetalburgCity_Text_ImLookingForTalentedTrainers:
 	.string "I'm roaming the land in search of\n"

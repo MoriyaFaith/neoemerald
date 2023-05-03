@@ -1848,3 +1848,4 @@ const u8 gText_AOK[] = _("{A_BUTTON}OK");
 const u8 gText_ACancel[] = _("{A_BUTTON}CANCEL");
 
 const u8 gText_AshQty[] = _("ASH QTY:\n{STR_VAR_1}{PAUSE_UNTIL_PRESS}");
+const u8 gText_SleepForHowLong[] = _("Sleep for how long?");
