@@ -1560,3 +1560,9 @@ static const u8 sOldSeaMapDesc[] = _(
     "An old, faded sea chart that shows\n"
     "the way to a certain island.\n"
     "It is yellow with age.");
+
+// Neo-Emerald key items
+static const u8 sCampingSetDesc[] = _(
+    "Everything you need to set up a\n"
+    "tent and camp in the wild.\n"
+    "Sleep for 8 hours.");

@@ -213,6 +213,7 @@ void StopFanfareByFanfareNum(u8 fanfareNum)
 void PlayFanfare(u16 songNum)
 {
     s32 i;
+    DebugPrintf("PLAY_FANFARE is running");
     for (i = 0; (u32)i < ARRAY_COUNT(sFanfares); i++)
     {
         if (sFanfares[i].songNum == songNum)
@@ -238,6 +239,7 @@ bool8 IsFanfareTaskInactive(void)
 
 static void Task_Fanfare(u8 taskId)
 {
+    DebugPrintf("TASK_FANFARE is running");
     if (sFanfareCounter)
     {
         sFanfareCounter--;

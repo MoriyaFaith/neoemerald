@@ -40,7 +40,9 @@
 #include "constants/event_bg.h"
 #include "constants/event_objects.h"
 #include "constants/item_effects.h"
+#include "constants/field_tasks.h"
 #include "constants/items.h"
+#include "constants/rgb.h"
 #include "constants/songs.h"
 
 static void SetUpItemUseCallback(u8);
@@ -72,6 +74,7 @@ static void Task_UseRepel(u8);
 static void Task_CloseCantUseKeyItemMessage(u8);
 static void SetDistanceOfClosestHiddenItem(u8, s16, s16);
 static void CB2_OpenPokeblockFromBag(void);
+static void UseCampingKit(u8);
 
 // EWRAM variables
 EWRAM_DATA static void(*sItemUseOnFieldCB)(u8 taskId) = NULL;
@@ -89,6 +92,7 @@ static const MainCallback sItemUseCallbacks[] =
 };
 
 static const u8 sClockwiseDirections[] = {DIR_NORTH, DIR_EAST, DIR_SOUTH, DIR_WEST};
+static u16 sCampCounter;
 
 static const struct YesNoFuncTable sUseTMHMYesNoFuncTable =
 {
@@ -1157,24 +1161,56 @@ u16 GetAshCount(void)
 	return *ashGatherCount;
 }
 
+#define CAMPING_LOAD_STATE 2
+
 void ItemUseOutOfBattle_CampingSet(u8 taskId)
 {
+    sCampCounter = 450;
+    gTasks[taskId].data[CAMPING_LOAD_STATE] = 0;
     sItemUseOnFieldCB = ItemUseOnFieldCB_CampingSet;
     SetUpItemUseOnFieldCallback(taskId);
 }
 
 static void ItemUseOnFieldCB_CampingSet(u8 taskId)
-{
-    FadeScreen(FADE_TO_BLACK, 0);
-    FadeOutBGM(4);
-    PlayFanfare(MUS_RG_POKE_FLUTE);
-    WaitFanfare(FALSE);
-    SkipDayNightTime(&gSaveBlock1Ptr->dayNightTimeOffset, 4);
-    FadeInFromBlack();
-    FadeInBGM(4);
-    ScriptUnfreezeObjectEvents();
-    UnlockPlayerFieldControls();
+{   
+    CreateTask(UseCampingKit, 100);
     DestroyTask(taskId);
+}
+
+static void UseCampingKit(u8 taskId)
+{
+    switch (gTasks[taskId].data[CAMPING_LOAD_STATE])
+    {
+    case 0:
+        BeginNormalPaletteFade(PALETTES_ALL, -2, 0, 16, RGB_BLACK);
+        FadeOutBGM(4);
+        gTasks[taskId].data[CAMPING_LOAD_STATE]++;
+        break;
+    case 1:
+        UpdatePaletteFade();
+        if(!gPaletteFade.active)
+        {
+            PlayFanfare(MUS_RG_POKE_FLUTE);
+            gTasks[taskId].data[CAMPING_LOAD_STATE]++;
+        }
+        break;
+    case 2:
+        if(IsFanfareTaskInactive())
+        {
+            SkipDayNightTime(&gSaveBlock1Ptr->dayNightTimeOffset, 8);
+            gTasks[taskId].data[CAMPING_LOAD_STATE]++;
+        }
+        break;
+    case 3:
+        FadeInFromBlack();
+        FadeInBGM(4);
+        gTasks[taskId].data[CAMPING_LOAD_STATE]++;
+        break;
+    default:
+        ScriptUnfreezeObjectEvents();
+        UnlockPlayerFieldControls();
+        DestroyTask(taskId);
+    }
 }
 
 #undef tUsingRegisteredKeyItem

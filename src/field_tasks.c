@@ -144,8 +144,6 @@ static void Task_RunPerStepCallback(u8 taskId)
 #define tAmbientCryDelay data[2]
 #define tForceTimeUpdate data[3]
 
-#define TIME_UPDATE_INTERVAL (1 << 12)
-
 static void RunTimeBasedEvents(s16 *data)
 {
     switch (tState)
