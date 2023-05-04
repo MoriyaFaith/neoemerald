@@ -2474,8 +2474,8 @@ static u8 GetSetcardVersion(void)
             return CARD_VERSION_FRLG;
         case MODIFIER_NEO:
         case MODIFIER_NEO_FAITHFUL:
-            sData->cardLayout = CARD_LAYOUT_NEO_EMERALD;
-            return CARD_VERSION_NEO_EMERALD;
+            sData->cardLayout = CARD_LAYOUT_HELIODOR;
+            return CARD_VERSION_HELIODOR;
         default:
             if (sData->trainerCard.version == VERSION_CRYSTAL_DUST)
             {

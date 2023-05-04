@@ -184,7 +184,7 @@ static void DrawChoices_Challenges_ScalingEVs(int selection, int y);
 EWRAM_DATA static struct OptionMenu *sOptions = NULL;
 
 // const data
-static const u16 sOptionMenuBg_Pal[] = {RGB(17, 18, 31)};
+static const u16 sOptionMenuBg_Pal[] = {RGB(5, 16, 6)};
 static const u16 sOptionMenuText_Pal[] = INCBIN_U16("graphics/interface/option_menu_text_custom.gbapal");
 
 // Options names
@@ -269,7 +269,7 @@ static const u8 sText_OptionLink[]          = _("LINK");
 
 // Header text
 static const u8 sText_TopBar_Options[]     = _("OPTIONS");
-static const u8 sText_TopBar_Right[]    = _("{L_BUTTON}{R_BUTTON} PAGE {B_BUTTON} SAVE");
+static const u8 sText_TopBar_Right[]    = _("{DPAD_UPDOWN} SELECT {DPAD_LEFTRIGHT} PICK {B_BUTTON} SAVE");
 
 #define TEXT_COLOR_OPTIONS_WHITE                1
 #define TEXT_COLOR_OPTIONS_GRAY_FG              2
@@ -435,7 +435,7 @@ static void DrawTopBarText(void)
     //        AddTextPrinterParameterized3(WIN_TOPBAR_LEFT, FONT_SMALL, 8, 1, color, 0, sText_TopBar_Breeding);
     //        break;
     //}
-    AddTextPrinterParameterized3(WIN_TOPBAR_RIGHT, FONT_SMALL, x, 1, color, 0, sText_TopBar_Right);
+    //AddTextPrinterParameterized3(WIN_TOPBAR_RIGHT, FONT_SMALL, x, 1, color, 0, sText_TopBar_Right);
     //PutWindowTilemap(WIN_TOPBAR_LEFT);
     //CopyWindowToVram(WIN_TOPBAR_LEFT, COPYWIN_FULL);
     //PutWindowTilemap(WIN_TOPBAR_RIGHT);
@@ -444,6 +444,7 @@ static void DrawTopBarText(void)
     FillWindowPixelBuffer(WIN_TOPBAR_LEFT, PIXEL_FILL(0));
     FillWindowPixelBuffer(WIN_TOPBAR_RIGHT, PIXEL_FILL(0));
     AddTextPrinterParameterized3(WIN_TOPBAR_LEFT, FONT_NORMAL, 16, 1, color, 0, sText_TopBar_Options);
+    AddTextPrinterParameterized3(WIN_TOPBAR_RIGHT, FONT_SMALL, x, 1, color, 0, sText_TopBar_Right);
     PutWindowTilemap(WIN_TOPBAR_LEFT);
     CopyWindowToVram(WIN_TOPBAR_LEFT, COPYWIN_FULL);
     PutWindowTilemap(WIN_TOPBAR_RIGHT);
