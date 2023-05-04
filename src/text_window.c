@@ -59,6 +59,26 @@ static const u16 sTextWindowPalettes[][16] =
     INCBIN_U16("graphics/text_window/text_pal4.gbapal")
 };
 
+const u16 *const sMessageBoxPals[] =
+{
+    gMessageBox1_Pal,
+    gMessageBox2_Pal,
+    gMessageBox3_Pal,
+    gMessageBox4_Pal,
+    gMessageBox5_Pal,
+    gMessageBox6_Pal,
+};
+
+const u32 *const sMessageBoxGfx[] =
+{
+    gMessageBox1_Gfx,
+    gMessageBox2_Gfx,
+    gMessageBox3_Gfx,
+    gMessageBox4_Gfx,
+    gMessageBox5_Gfx,
+    gMessageBox6_Gfx,
+};
+
 static const struct TilesPal sWindowFrames[WINDOW_FRAMES_COUNT] =
 {
     {gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal},
@@ -94,8 +114,8 @@ const struct TilesPal *GetWindowFrameTilesPal(u8 id)
 
 void LoadMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
 {
-    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), GetOverworldTextboxGraphicsPtr(), 0x280, destOffset);
-    LoadPalette(GetOverworldTextboxPalettePtr(), palOffset, PLTT_SIZE_4BPP);
+    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sMessageBoxGfx[gSaveBlock2Ptr->optionsMessageFrame], 0x280, destOffset);
+    LoadPalette(sMessageBoxPals[gSaveBlock2Ptr->optionsMessageFrame], palOffset, PLTT_SIZE_4BPP);
 }
 
 void LoadSignMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
@@ -196,58 +216,6 @@ const u16 *GetTextWindowPalette(u8 id)
     }
 
     return (const u16 *)(sTextWindowPalettes) + id;
-}
-
-const u16 *GetOverworldTextboxPalettePtr(void)
-{
-    switch (gSaveBlock2Ptr->optionsMessageFrame)
-    {
-        case 0:
-        default:
-            return gMessageBox1_Pal;
-            break;
-        case 1:
-            return gMessageBox2_Pal;
-            break;
-        case 2:
-            return gMessageBox3_Pal;
-            break;
-        case 3:
-            return gMessageBox4_Pal;
-            break;
-        case 4:
-            return gMessageBox5_Pal;
-            break;
-        case 5:
-            return gMessageBox6_Pal;
-            break;
-    }
-}
-
-const u32 *GetOverworldTextboxGraphicsPtr(void)
-{
-    switch (gSaveBlock2Ptr->optionsMessageFrame)
-    {
-        case 0:
-        default:
-            return gMessageBox1_Gfx;
-            break;
-        case 1:
-            return gMessageBox2_Gfx;
-            break;
-        case 2:
-            return gMessageBox3_Gfx;
-            break;
-        case 3:
-            return gMessageBox4_Gfx;
-            break;
-        case 4:
-            return gMessageBox5_Gfx;
-            break;
-        case 5:
-            return gMessageBox6_Gfx;
-            break;
-    }
 }
 
 // Effectively LoadUserWindowBorderGfx but specifying the bg directly instead of a window from that bg

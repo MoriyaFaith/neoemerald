@@ -174,8 +174,6 @@ static void DrawChoices_ClockMode(int selection, int y);
 static void DrawBgWindowFramesOptions(void);
 static int ProcessInput_Options_MessageColor(int selection);
 static void DrawBgWindowFramesDescription(void);
-static const u16 * GetWindowPal(int selection);
-static const u32 * GetWindowGraphics(int selection);
 static void DrawChoices_Challenges_ExpMultiplier(int selection, int y);
 static void DrawChoices_Challenges_ScalingIVs(int selection, int y);
 static void DrawChoices_Challenges_ScalingEVs(int selection, int y);
@@ -344,11 +342,11 @@ static const u8 sText_Desc_BattleScene[]  = _("Choose between seeing or not\n{PK
 static const u8 sText_Desc_BattleStyle[]  = _("Choose between battle rules on\nreplacing a fallen {PKMN}.");
 static const u8 sText_Desc_SoundMode[]    = _("Choose the game's sound mode.");
 static const u8 sText_Desc_ButtonMode[]   = _("Choose one of the three sets of\nbutton settings.");
-static const u8 sText_Desc_Frame[]        = _("Choose the menu-window design.");
-static const u8 sText_Desc_MessageColor[] = _("Choose the text-window design.");
+static const u8 sText_Desc_Frame[]        = _("Choose the window design for\nmenus.");
+static const u8 sText_Desc_MessageColor[] = _("Choose the window design for\ndialogue.");
 static const u8 sText_Desc_Font[]         = _("Choose the font style.");
 static const u8 sText_Desc_UnitSystem[]   = _("Choose the system of measurement\nfor physical descriptions.");
-static const u8 sText_Desc_Clock[]        = _("Choose the menu's clock mode.");
+static const u8 sText_Desc_Clock[]        = _("Choose between asynchronous and\nreal-world time.");
 static const u8 sText_Desc_PartyBox[]     = _("Choose to have {PKMN} automatically\nsent to your Boxes or not.");
 static const u8 sText_Desc_Nickname[]     = _("Choose whether you wish to\nnickname a {PKMN} when you obtain it.");
 static const u8 sText_Desc_ExtPort[]      = _("Choose the EXT. function for the\nNintendo Game Boy Player.");
@@ -582,8 +580,8 @@ void CB2_InitOptionMenu(void)
         gMain.state++;
         break;
     case 3:
-        LoadBgTiles(GetWindowAttribute(WIN_DESCRIPTION, WINDOW_BG), GetWindowGraphics(windowColor), 0x1C0, 436);
-        LoadPalette(GetWindowPal(windowColor), 0x90, 0x20);
+        LoadBgTiles(GetWindowAttribute(WIN_DESCRIPTION, WINDOW_BG), sMessageBoxGfx[windowColor], 0x1C0, 436);
+        LoadPalette(sMessageBoxPals[windowColor], 0x90, 0x20);
         LoadBgTiles(1, GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->tiles, 0x120, 0x1A2);
         gMain.state++;
         break;
@@ -946,58 +944,6 @@ static int ProcessInput_Options_Three(int selection)
     return XOptions_ProcessInput(3, selection);
 }
 
-static const u16 *GetWindowPal(int selection)
-{
-    switch (selection)
-    {
-        default:
-        case 0:
-            return gMessageBox1_Pal;
-            break;
-        case 1:
-            return gMessageBox2_Pal;
-            break;
-        case 2:
-            return gMessageBox3_Pal;
-            break;
-        case 3:
-            return gMessageBox4_Pal;
-            break;
-        case 4:
-            return gMessageBox5_Pal;
-            break;
-        case 5:
-            return gMessageBox6_Pal;
-            break;
-    }
-}
-
-static const u32 *GetWindowGraphics(int selection)
-{
-    switch (selection)
-    {
-        default:
-        case 0:
-            return gMessageBox1_Gfx;
-            break;
-        case 1:
-            return gMessageBox2_Gfx;
-            break;
-        case 2:
-            return gMessageBox3_Gfx;
-            break;
-        case 3:
-            return gMessageBox4_Gfx;
-            break;
-        case 4:
-            return gMessageBox5_Gfx;
-            break;
-        case 5:
-            return gMessageBox6_Gfx;
-            break;
-    }
-}
-
 #define NUM_OF_MESSAGE_BOXES 6
 
 static int ProcessInput_Options_MessageColor(int selection)
@@ -1013,8 +959,8 @@ static int ProcessInput_Options_MessageColor(int selection)
             selection = (NUM_OF_MESSAGE_BOXES - 1);
     }
 
-    LoadBgTiles(GetWindowAttribute(WIN_DESCRIPTION, WINDOW_BG), GetWindowGraphics(selection), 0x1C0, 436);
-    LoadPalette(GetWindowPal(selection), 0x90, 0x20);
+    LoadBgTiles(GetWindowAttribute(WIN_DESCRIPTION, WINDOW_BG), sMessageBoxGfx[selection], 0x1C0, 436);
+    LoadPalette(sMessageBoxPals[selection], 0x90, 0x20);
     DrawBgWindowFramesDescription();
     return selection;
 }
