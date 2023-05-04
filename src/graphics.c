@@ -1543,7 +1543,20 @@ const u16 gTradeMenu_Tilemap[] = INCBIN_U16("graphics/trade/menu.bin");
 const u16 gTradeMenuMonBox_Tilemap[] = INCBIN_U16("graphics/trade/menu_mon_box.bin");
 
 const u8 gSignMessageBox_Gfx[] = INCBIN_U8("graphics/text_window/message_box_sign.4bpp");
-const u8 gMessageBox_Gfx[] = INCBIN_U8("graphics/text_window/message_box.4bpp");
+
+const u8 gMessageBox1_Gfx[] = INCBIN_U8("graphics/text_window/message_box_1.4bpp");
+const u8 gMessageBox2_Gfx[] = INCBIN_U8("graphics/text_window/message_box_2.4bpp");
+const u8 gMessageBox3_Gfx[] = INCBIN_U8("graphics/text_window/message_box_3.4bpp");
+const u8 gMessageBox4_Gfx[] = INCBIN_U8("graphics/text_window/message_box_4.4bpp");
+const u8 gMessageBox5_Gfx[] = INCBIN_U8("graphics/text_window/message_box_5.4bpp");
+const u8 gMessageBox6_Gfx[] = INCBIN_U8("graphics/text_window/message_box_6.4bpp");
+
+const u16 gMessageBox1_Pal[] = INCBIN_U16("graphics/text_window/message_box_1.gbapal");
+const u16 gMessageBox2_Pal[] = INCBIN_U16("graphics/text_window/message_box_2.gbapal");
+const u16 gMessageBox3_Pal[] = INCBIN_U16("graphics/text_window/message_box_3.gbapal");
+const u16 gMessageBox4_Pal[] = INCBIN_U16("graphics/text_window/message_box_4.gbapal");
+const u16 gMessageBox5_Pal[] = INCBIN_U16("graphics/text_window/message_box_5.gbapal");
+const u16 gMessageBox6_Pal[] = INCBIN_U16("graphics/text_window/message_box_6.gbapal");
 
 const u32 gWallpaperIcon_Cross[] = INCBIN_U32("graphics/pokemon_storage/wallpapers/icons/cross.4bpp.lz");
 const u32 gWallpaperIcon_Bolt[] = INCBIN_U32("graphics/pokemon_storage/wallpapers/icons/bolt.4bpp.lz");

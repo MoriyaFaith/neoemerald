@@ -52,7 +52,7 @@ static const u16 sTextWindowFrame20_Pal[] = INCBIN_U16("graphics/text_window/20.
 
 static const u16 sTextWindowPalettes[][16] =
 {
-    INCBIN_U16("graphics/text_window/message_box.gbapal"),
+    INCBIN_U16("graphics/text_window/message_box_1.gbapal"),
     INCBIN_U16("graphics/text_window/text_pal1.gbapal"),
     INCBIN_U16("graphics/text_window/text_pal2.gbapal"),
     INCBIN_U16("graphics/text_window/text_pal3.gbapal"),
@@ -94,8 +94,8 @@ const struct TilesPal *GetWindowFrameTilesPal(u8 id)
 
 void LoadMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
 {
-    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gMessageBox_Gfx, 0x280, destOffset);
-    LoadPalette(GetTextWindowPalette(0), palOffset, 0x20);
+    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), GetOverworldTextboxGraphicsPtr(), 0x280, destOffset);
+    LoadPalette(GetOverworldTextboxPalettePtr(), palOffset, PLTT_SIZE_4BPP);
 }
 
 void LoadSignMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
@@ -196,6 +196,58 @@ const u16 *GetTextWindowPalette(u8 id)
     }
 
     return (const u16 *)(sTextWindowPalettes) + id;
+}
+
+const u16 *GetOverworldTextboxPalettePtr(void)
+{
+    switch (gSaveBlock2Ptr->optionsMessageFrame)
+    {
+        case 0:
+        default:
+            return gMessageBox1_Pal;
+            break;
+        case 1:
+            return gMessageBox2_Pal;
+            break;
+        case 2:
+            return gMessageBox3_Pal;
+            break;
+        case 3:
+            return gMessageBox4_Pal;
+            break;
+        case 4:
+            return gMessageBox5_Pal;
+            break;
+        case 5:
+            return gMessageBox6_Pal;
+            break;
+    }
+}
+
+const u32 *GetOverworldTextboxGraphicsPtr(void)
+{
+    switch (gSaveBlock2Ptr->optionsMessageFrame)
+    {
+        case 0:
+        default:
+            return gMessageBox1_Gfx;
+            break;
+        case 1:
+            return gMessageBox2_Gfx;
+            break;
+        case 2:
+            return gMessageBox3_Gfx;
+            break;
+        case 3:
+            return gMessageBox4_Gfx;
+            break;
+        case 4:
+            return gMessageBox5_Gfx;
+            break;
+        case 5:
+            return gMessageBox6_Gfx;
+            break;
+    }
 }
 
 // Effectively LoadUserWindowBorderGfx but specifying the bg directly instead of a window from that bg

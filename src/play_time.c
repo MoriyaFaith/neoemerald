@@ -37,7 +37,7 @@ void PlayTimeCounter_Stop(void)
 
 void PlayTimeCounter_Update(void)
 {
-    if(FlagGet(FLAG_SYS_CLOCK_SET)) // only progress in-game time once the clock has been set
+    if(FlagGet(FLAG_SYS_CLOCK_SET) && !(gSaveBlock2Ptr->optionsClockMode)) // only progress in-game time once the clock has been set
         gSaveBlock1Ptr->dayNightTimeOffset++;
     if (sPlayTimeCounterState != RUNNING)
         return;

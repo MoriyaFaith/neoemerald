@@ -2278,188 +2278,32 @@ static void NewGameBirchSpeech_ShowDialogueWindow(u8 windowId, u8 copyToVram)
 
 static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8 bg, u8 x, u8 y, u8 width, u8 height, u8 palNum)
 {
-    FillBgTilemapBufferRect(bg,
-                            OAK_SPEECH_WINDOW_BASE_TILE_NUM,
-                            x - 2,
-                            y - 1,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            OAK_SPEECH_WINDOW_BASE_TILE_NUM + 1,
-                            x - 1,
-                            y - 1,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            OAK_SPEECH_WINDOW_BASE_TILE_NUM + 2,
-                            x,
-                            y - 1,
-                            width,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            OAK_SPEECH_WINDOW_BASE_TILE_NUM + 3,
-                            x + width,
-                            y - 1,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            OAK_SPEECH_WINDOW_BASE_TILE_NUM + 4,
-                            x + width + 1,
-                            y - 1,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            OAK_SPEECH_WINDOW_BASE_TILE_NUM + 5,
-                            x - 2,
-                            y,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            OAK_SPEECH_WINDOW_BASE_TILE_NUM + 6,
-                            x - 1,
-                            y,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            OAK_SPEECH_WINDOW_BASE_TILE_NUM + 8,
-                            x + width,
-                            y,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            OAK_SPEECH_WINDOW_BASE_TILE_NUM + 9,
-                            x + width + 1,
-                            y,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            OAK_SPEECH_WINDOW_BASE_TILE_NUM + 10,
-                            x - 2,
-                            y + 1,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            OAK_SPEECH_WINDOW_BASE_TILE_NUM + 11,
-                            x - 1,
-                            y + 1,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            OAK_SPEECH_WINDOW_BASE_TILE_NUM + 12,
-                            x + width,
-                            y + 1,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            OAK_SPEECH_WINDOW_BASE_TILE_NUM + 13,
-                            x + width + 1,
-                            y + 1,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 10),
-                            x - 2,
-                            y + 2,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 11),
-                            x - 1,
-                            y + 2,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 12),
-                            x + width,
-                            y + 2,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 13),
-                            x + width + 1,
-                            y + 2,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 5),
-                            x - 2,
-                            y + 3,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 6),
-                            x - 1,
-                            y + 3,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 8),
-                            x + width,
-                            y + 3,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 9),
-                            x + width + 1,
-                            y + 3,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM),
-                            x - 2,
-                            y + 4,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 1),
-                            x - 1,
-                            y + 4,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 2),
-                            x,
-                            y + 4,
-                            width,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 3),
-                            x + width,
-                            y + 4,
-                            1,
-                            1,
-                            palNum);
-    FillBgTilemapBufferRect(bg,
-                            BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 4),
-                            x + width + 1,
-                            y + 4,
-                            1,
-                            1,
-                            palNum);
+    FillBgTilemapBufferRect(bg, OAK_SPEECH_WINDOW_BASE_TILE_NUM, x - 2, y - 1, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, OAK_SPEECH_WINDOW_BASE_TILE_NUM + 1, x - 1, y - 1, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, OAK_SPEECH_WINDOW_BASE_TILE_NUM + 2, x, y - 1, width, 1, palNum);
+    FillBgTilemapBufferRect(bg, OAK_SPEECH_WINDOW_BASE_TILE_NUM + 3, x + width, y - 1, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, OAK_SPEECH_WINDOW_BASE_TILE_NUM + 4, x + width + 1, y - 1, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, OAK_SPEECH_WINDOW_BASE_TILE_NUM + 5, x - 2, y, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, OAK_SPEECH_WINDOW_BASE_TILE_NUM + 6, x - 1, y, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, OAK_SPEECH_WINDOW_BASE_TILE_NUM + 8, x + width, y, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, OAK_SPEECH_WINDOW_BASE_TILE_NUM + 9, x + width + 1, y, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, OAK_SPEECH_WINDOW_BASE_TILE_NUM + 10, x - 2, y + 1, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, OAK_SPEECH_WINDOW_BASE_TILE_NUM + 11, x - 1, y + 1, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, OAK_SPEECH_WINDOW_BASE_TILE_NUM + 12, x + width, y + 1, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, OAK_SPEECH_WINDOW_BASE_TILE_NUM + 13, x + width + 1, y + 1, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 10), x - 2, y + 2, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 11), x - 1, y + 2, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 12), x + width, y + 2, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 13), x + width + 1, y + 2, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 5), x - 2, y + 3, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 6), x - 1, y + 3, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 8), x + width, y + 3, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 9), x + width + 1, y + 3, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM), x - 2, y + 4, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 1), x - 1, y + 4, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 2), x, y + 4, width, 1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 3), x + width, y + 4, 1, 1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(OAK_SPEECH_WINDOW_BASE_TILE_NUM + 4), x + width + 1, y + 4, 1, 1, palNum);
 }
 
 static void Task_NewGameBirchSpeech_ReturnFromNamingScreenShowTextbox(u8 taskId)

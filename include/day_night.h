@@ -26,5 +26,7 @@ u8 ConvertFramesToMinutes(u32 frames);
 u8 ConvertFramesToSeconds(u32 frames);
 void SetDNTime(u64 *timePtr, u8 hours);
 void SkipDayNightTime(u64 *timePtr, u8 hours);
+u8 GetDayNightHour(void);
+u8 GetDayNightMinute(void);
 
 #endif // GUARD_DAY_NIGHT_H

@@ -1167,7 +1167,7 @@ void ItemUseOutOfBattle_CampingSet(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
     sCampCounter = 6;
-    if (Overworld_IsBikingAllowed() == TRUE && IsBikingDisallowedByPlayer() == 0)
+    if (Overworld_IsBikingAllowed() == TRUE && IsBikingDisallowedByPlayer() == 0 && !(gSaveBlock2Ptr->optionsClockMode))
     {
         gTasks[taskId].data[CAMPING_LOAD_STATE] = 0;
         sItemUseOnFieldCB = ItemUseOnFieldCB_CampingSet;

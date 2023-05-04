@@ -87,9 +87,24 @@ void SetDNTime(u64 *timePtr, u8 hours)
     *timePtr = (hours * FRAMES_PER_HOUR);
 }
 
+u8 GetDayNightHour(void)
+{
+    if (gSaveBlock2Ptr->optionsClockMode)
+    return gLocalTime.hours;
+else
+    return ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset);
+}
+u8 GetDayNightMinute(void)
+{
+    if (gSaveBlock2Ptr->optionsClockMode)
+    return gLocalTime.minutes;
+else
+    return ConvertFramesToMinutes(gSaveBlock1Ptr->dayNightTimeOffset);
+}
+
 u8 GetCurrentTimeOfDay(void)
 {
-    return GetTimeOfDay(ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset));
+    return GetTimeOfDay(GetDayNightHour());
 }
 
 u8 GetTimeOfDay(s8 hours)
@@ -116,7 +131,7 @@ static void LoadPaletteOverrides(void)
         return;
 #endif
 
-    hour = ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset);
+    hour = GetDayNightHour();
 
 #if DEBUG
     if (gDNPeriodOverride > 0)
@@ -191,8 +206,8 @@ static void TintPaletteForDayNight(u16 offset, u16 size)
     {
         RtcCalcLocalTimeFast();
 
-        hour = ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset);
-        hourPhase = ConvertFramesToMinutes(gSaveBlock1Ptr->dayNightTimeOffset) / MINUTES_PER_TINT_PERIOD;
+        hour = GetDayNightHour();
+        hourPhase = GetDayNightMinute() / MINUTES_PER_TINT_PERIOD;
 
 #if DEBUG
         if (gDNPeriodOverride > 0)
@@ -253,8 +268,8 @@ void ProcessImmediateTimeEvents(void)
     {
         if (sDNSystemControl.retintPhase == 0)
         {
-        hour = ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset);
-        hourPhase = ConvertFramesToMinutes(gSaveBlock1Ptr->dayNightTimeOffset) / MINUTES_PER_TINT_PERIOD;
+        hour = GetDayNightHour();
+        hourPhase = GetDayNightMinute() / MINUTES_PER_TINT_PERIOD;
 
 #if DEBUG
             if (gDNPeriodOverride > 0)

@@ -2,7 +2,20 @@
 #define GUARD_GRAPHICS_H
 
 // overworld
-extern const u32 gMessageBox_Gfx[];
+extern const u32 gMessageBox1_Gfx[];
+extern const u32 gMessageBox2_Gfx[];
+extern const u32 gMessageBox3_Gfx[];
+extern const u32 gMessageBox4_Gfx[];
+extern const u32 gMessageBox5_Gfx[];
+extern const u32 gMessageBox6_Gfx[];
+
+extern const u16 gMessageBox1_Pal[];
+extern const u16 gMessageBox2_Pal[];
+extern const u16 gMessageBox3_Pal[];
+extern const u16 gMessageBox4_Pal[];
+extern const u16 gMessageBox5_Pal[];
+extern const u16 gMessageBox6_Pal[];
+
 extern const u32 gSignMessageBox_Gfx[];
 
 // pokeballs

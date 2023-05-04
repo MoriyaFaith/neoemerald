@@ -1477,19 +1477,19 @@ static void ShowCurrentTimeWindow(void)
     PutWindowTilemap(sCurrentTimeWindowId);
     DrawStdWindowFrame(sCurrentTimeWindowId, FALSE);
     FlagSet(FLAG_TEMP_5);
-    if (ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset) >= 12)
+    if (GetDayNightHour() >= 12)
     {
-        ConvertIntToDecimalStringN(gStringVar1, ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset) - 12, STR_CONV_MODE_RIGHT_ALIGN, 2);
-        ConvertIntToDecimalStringN(gStringVar2, ConvertFramesToMinutes(gSaveBlock1Ptr->dayNightTimeOffset), STR_CONV_MODE_LEADING_ZEROS, 2);
+        ConvertIntToDecimalStringN(gStringVar1, GetDayNightHour() - 12, STR_CONV_MODE_RIGHT_ALIGN, 2);
+        ConvertIntToDecimalStringN(gStringVar2, GetDayNightMinute(), STR_CONV_MODE_LEADING_ZEROS, 2);
         StringExpandPlaceholders(gStringVar4, gText_CurrentTimePM);
     }
     else
     {
-        if (ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset) == 0)
+        if (GetDayNightHour() == 0)
             ConvertIntToDecimalStringN(gStringVar1, 12, STR_CONV_MODE_LEADING_ZEROS, 2);
         else
-            ConvertIntToDecimalStringN(gStringVar1, ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset), STR_CONV_MODE_RIGHT_ALIGN, 2);
-        ConvertIntToDecimalStringN(gStringVar2, ConvertFramesToMinutes(gSaveBlock1Ptr->dayNightTimeOffset), STR_CONV_MODE_LEADING_ZEROS, 2);
+            ConvertIntToDecimalStringN(gStringVar1, GetDayNightHour(), STR_CONV_MODE_RIGHT_ALIGN, 2);
+        ConvertIntToDecimalStringN(gStringVar2, GetDayNightMinute(), STR_CONV_MODE_LEADING_ZEROS, 2);
         StringExpandPlaceholders(gStringVar4, gText_CurrentTimeAM);
     }
     AddTextPrinterParameterized(sCurrentTimeWindowId, FONT_NORMAL, gStringVar4, 0, 1, 0xFF, NULL);
@@ -1501,13 +1501,13 @@ void UpdateClockDisplay(void)
     if (!FlagGet(FLAG_TEMP_5))
         return;
     RtcCalcLocalTime();
-    if (ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset) >= 12)
+    if (GetDayNightHour() >= 12)
     {
-        if (ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset) == 12)
+        if (GetDayNightHour() == 12)
             ConvertIntToDecimalStringN(gStringVar1, 12, STR_CONV_MODE_LEADING_ZEROS, 2);
         else
-            ConvertIntToDecimalStringN(gStringVar1, ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset) - 12, STR_CONV_MODE_RIGHT_ALIGN, 2);
-        ConvertIntToDecimalStringN(gStringVar2, ConvertFramesToMinutes(gSaveBlock1Ptr->dayNightTimeOffset), STR_CONV_MODE_LEADING_ZEROS, 2);
+            ConvertIntToDecimalStringN(gStringVar1, GetDayNightHour() - 12, STR_CONV_MODE_RIGHT_ALIGN, 2);
+        ConvertIntToDecimalStringN(gStringVar2, GetDayNightMinute(), STR_CONV_MODE_LEADING_ZEROS, 2);
         if (ConvertFramesToSeconds(gSaveBlock1Ptr->dayNightTimeOffset) % 2)
             StringExpandPlaceholders(gStringVar4, gText_CurrentTimePM);
         else
@@ -1515,11 +1515,11 @@ void UpdateClockDisplay(void)
     }
     else
     {
-        if (ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset) == 0)
+        if (GetDayNightHour() == 0)
             ConvertIntToDecimalStringN(gStringVar1, 12, STR_CONV_MODE_LEADING_ZEROS, 2);
         else
-            ConvertIntToDecimalStringN(gStringVar1, ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset), STR_CONV_MODE_RIGHT_ALIGN, 2);
-        ConvertIntToDecimalStringN(gStringVar2, ConvertFramesToMinutes(gSaveBlock1Ptr->dayNightTimeOffset), STR_CONV_MODE_LEADING_ZEROS, 2);
+            ConvertIntToDecimalStringN(gStringVar1, GetDayNightHour(), STR_CONV_MODE_RIGHT_ALIGN, 2);
+        ConvertIntToDecimalStringN(gStringVar2, GetDayNightMinute(), STR_CONV_MODE_LEADING_ZEROS, 2);
         if (ConvertFramesToSeconds(gSaveBlock1Ptr->dayNightTimeOffset) % 2)
             StringExpandPlaceholders(gStringVar4, gText_CurrentTimeAM);
         else

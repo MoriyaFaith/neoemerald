@@ -85,7 +85,7 @@ void UpdateShoalTideFlag(void)
     if (IsMapTypeOutdoors(GetLastUsedWarpMapType()))
     {
         RtcCalcLocalTime();
-        if (tide[ConvertFramesToHours(gSaveBlock1Ptr->dayNightTimeOffset)]) // time is now in hours
+        if (tide[GetDayNightHour()]) // time is now in hours
             FlagSet(FLAG_SYS_SHOAL_TIDE);
         else
             FlagClear(FLAG_SYS_SHOAL_TIDE);
