@@ -67,6 +67,20 @@ const u16 *const sMessageBoxPals[] =
     gMessageBox4_Pal,
     gMessageBox5_Pal,
     gMessageBox6_Pal,
+    gMessageBox7_Pal,
+    gMessageBox8_Pal,
+    gMessageBox9_Pal,
+    gMessageBox10_Pal,
+    gMessageBox11_Pal,
+    gMessageBox12_Pal,
+    gMessageBox13_Pal,
+    gMessageBox14_Pal,
+    gMessageBox15_Pal,
+    gMessageBox16_Pal,
+    gMessageBox17_Pal,
+    gMessageBox18_Pal,
+    gMessageBox19_Pal,
+    gMessageBox20_Pal,
 };
 
 const u32 *const sMessageBoxGfx[] =
@@ -77,6 +91,20 @@ const u32 *const sMessageBoxGfx[] =
     gMessageBox4_Gfx,
     gMessageBox5_Gfx,
     gMessageBox6_Gfx,
+    gMessageBox7_Gfx,
+    gMessageBox8_Gfx,
+    gMessageBox9_Gfx,
+    gMessageBox10_Gfx,
+    gMessageBox11_Gfx,
+    gMessageBox12_Gfx,
+    gMessageBox13_Gfx,
+    gMessageBox14_Gfx,
+    gMessageBox15_Gfx,
+    gMessageBox16_Gfx,
+    gMessageBox17_Gfx,
+    gMessageBox18_Gfx,
+    gMessageBox19_Gfx,
+    gMessageBox20_Gfx,
 };
 
 static const struct TilesPal sWindowFrames[WINDOW_FRAMES_COUNT] =

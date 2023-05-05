@@ -944,7 +944,7 @@ static int ProcessInput_Options_Three(int selection)
     return XOptions_ProcessInput(3, selection);
 }
 
-#define NUM_OF_MESSAGE_BOXES 6
+#define NUM_OF_MESSAGE_BOXES 20
 
 static int ProcessInput_Options_MessageColor(int selection)
 {
@@ -1296,10 +1296,15 @@ static void DrawBgWindowFramesDescription(void)
     FillBgTilemapBufferRect(1, WINDOW_NPC_OFFSET + 8,                    28, 15, 1, 1, 9);
     FillBgTilemapBufferRect(1, WINDOW_NPC_OFFSET + 9,                    29, 15, 1, 1, 9);
 
-    FillBgTilemapBufferRect(1, WINDOW_NPC_OFFSET + 10,                    0, 16, 1, 2, 9);
-    FillBgTilemapBufferRect(1, WINDOW_NPC_OFFSET + 11,                    1, 16, 1, 2, 9);
-    FillBgTilemapBufferRect(1, WINDOW_NPC_OFFSET + 12,                   28, 16, 1, 2, 9);
-    FillBgTilemapBufferRect(1, WINDOW_NPC_OFFSET + 13,                   29, 16, 1, 2, 9);
+    FillBgTilemapBufferRect(1, WINDOW_NPC_OFFSET + 10,                    0, 16, 1, 1, 9);
+    FillBgTilemapBufferRect(1, WINDOW_NPC_OFFSET + 11,                    1, 16, 1, 1, 9);
+    FillBgTilemapBufferRect(1, WINDOW_NPC_OFFSET + 12,                   28, 16, 1, 1, 9);
+    FillBgTilemapBufferRect(1, WINDOW_NPC_OFFSET + 13,                   29, 16, 1, 1, 9);
+
+    FillBgTilemapBufferRect(1, BG_TILE_V_FLIP(WINDOW_NPC_OFFSET) + 10,    0, 17, 1, 1, 9);
+    FillBgTilemapBufferRect(1, BG_TILE_V_FLIP(WINDOW_NPC_OFFSET) + 11,    1, 17, 1, 1, 9);
+    FillBgTilemapBufferRect(1, BG_TILE_V_FLIP(WINDOW_NPC_OFFSET) + 12,   28, 17, 1, 1, 9);
+    FillBgTilemapBufferRect(1, BG_TILE_V_FLIP(WINDOW_NPC_OFFSET) + 13,   29, 17, 1, 1, 9);
 
     FillBgTilemapBufferRect(1, BG_TILE_V_FLIP(WINDOW_NPC_OFFSET) + 5,     0, 18, 1, 1, 9);
     FillBgTilemapBufferRect(1, BG_TILE_V_FLIP(WINDOW_NPC_OFFSET) + 6,     1, 18, 1, 1, 9);
