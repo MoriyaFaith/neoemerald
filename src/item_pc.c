@@ -528,7 +528,7 @@ static void ItemPc_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *
         }
         sStateDataPtr->itemMenuIconSlot ^= 1;
         FillWindowPixelBuffer(1, 0);
-        ItemPc_AddTextPrinterParameterized(1, FONT_FRLG, desc, 0, 3, 2, 0, 0, 3);
+        ItemPc_AddTextPrinterParameterized(1, FONT_NORMAL, desc, 0, 3, 2, -2, 0, 3);
     }
 }
 
@@ -767,7 +767,7 @@ static void ItemPc_MoveItemModeInit(u8 taskId, s16 pos)
     StringCopy(gStringVar1, ItemId_GetName(ItemPc_GetItemIdBySlotId(data[1])));
     StringExpandPlaceholders(gStringVar4, gText_MoveVar1Where);
     FillWindowPixelBuffer(1, 0x00);
-    ItemPc_AddTextPrinterParameterized(1, FONT_FRLG, gStringVar4, 0, 3, 2, 0, 0, 0);
+    ItemPc_AddTextPrinterParameterized(1, FONT_NORMAL, gStringVar4, 0, 3, 2, -2, 0, 0);
     UpdateItemMenuSwapLinePos(64, data[0]);
     SetItemMenuSwapLineInvisibility(FALSE);
     ItemPc_PrintOrRemoveCursor(data[0], 2);

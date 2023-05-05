@@ -85,8 +85,8 @@ static const u8 sIceHealDesc[] = _(
 
 static const u8 sAwakeningDesc[] = _(
     "A spray-type medicine for POKéMON.\n"
-    "It awakens a POKéMON from the clutches\n"
-    "of sleep.");
+    "It awakens a POKéMON from the\n"
+    "clutches of sleep.");
 
 static const u8 sParalyzeHealDesc[] = _(
     "A spray-type medicine for POKéMON.\n"
