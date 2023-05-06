@@ -182,7 +182,7 @@ static void DrawChoices_Challenges_ScalingEVs(int selection, int y);
 EWRAM_DATA static struct OptionMenu *sOptions = NULL;
 
 // const data
-static const u16 sOptionMenuBg_Pal[] = {RGB(5, 16, 6)};
+static const u16 sOptionMenuBg_Pal[] = {RGB(17, 18, 31)};
 static const u16 sOptionMenuText_Pal[] = INCBIN_U16("graphics/interface/option_menu_text_custom.gbapal");
 
 // Options names
