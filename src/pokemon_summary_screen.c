@@ -3026,11 +3026,11 @@ static void PrintMoveDetails(u16 move)
     FillWindowPixelBuffer(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, PIXEL_FILL(0));
 
     SetSpriteInvisibility(SPRITE_ARR_ID_MON_ICON, FALSE);
-    SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[1], 48, 33, SPRITE_ARR_ID_TYPE);
+    SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[0], 48, 33, SPRITE_ARR_ID_TYPE);
 
-    if (gSpeciesInfo[summary->species].types[1] != gSpeciesInfo[summary->species].types[2])
+    if (gSpeciesInfo[summary->species].types[0] != gSpeciesInfo[summary->species].types[1])
     {
-        SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[2], 84, 33, SPRITE_ARR_ID_TYPE + 1);
+        SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[1], 84, 33, SPRITE_ARR_ID_TYPE + 1);
         SetSpriteInvisibility(SPRITE_ARR_ID_TYPE + 1, FALSE);
     }
     else
