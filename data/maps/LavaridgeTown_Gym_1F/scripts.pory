@@ -191,10 +191,11 @@ LavaridgeTown_Gym_1F_Text_GymGuideAdvice:
 	.string "bound {PLAYER}?\p"
 	.string "LAVARIDGE's GYM LEADER FLANNERY\n"
 	.string "uses FIRE-type POKéMON.\p"
-	.string "Her passion for POKéMON burns stronger\n"
-	.string "and hotter than a volcano.\p"
-	.string "Don't get too close to her--you'll burn!\n"
-	.string "Hose her down with water and then\l"
+	.string "Her POKéMON are as high as Level 31.\p"
+	.string "Her passion for POKéMON burns so bright\n"
+	.string "it lights up the GYM with heat!\p"
+	.string "Watch out--It makes water weak!\n"
+	.string "Make the skies clear and then\l"
 	.string "go for it!$"
 
 LavaridgeTown_Gym_1F_Text_GymGuidePostVictory:

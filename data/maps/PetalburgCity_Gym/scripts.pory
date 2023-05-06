@@ -1373,6 +1373,8 @@ PetalburgCity_Gym_Text_GymGuideAdvice:
 	.string "Whoops! The doors in this room are\n"
 	.string "already open, so don't attack me!\p"
 	.string "The TRAINERS of PETALBURG GYM\n"
+	.string "Your father, NORMAN's, POKéMON\n"
+	.string "are as high as Level 34.\p"
 	.string "use all kinds of items.\p"
 	.string "The door at the left leads to\n"
 	.string "the SPEED ROOM.\p"

@@ -119,6 +119,7 @@ RustboroCity_Gym_Text_GymGuideAdvice:
 	.string "I'm here to provide expert advice!\p"
 	.string "ROXANNE, the GYM LEADER, is a user\n"
 	.string "of ROCK-type POKéMON.\p"
+	.string "Her POKéMON are as high as Level 15.\p"
 	.string "The ROCK type is very durable, but\n"
 	.string "it can't stand WATER-type and\l"
 	.string "GRASS-type moves.\p"

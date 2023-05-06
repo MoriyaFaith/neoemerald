@@ -262,6 +262,7 @@ MauvilleCity_Gym_Text_GymGuideAdvice:
 	.string "bound {PLAYER}?\p"
 	.string "WATTSON, the LEADER of MAUVILLE\n"
 	.string "GYM, uses ELECTRIC-type POKéMON.\p"
+	.string "His POKéMON are as high as Level 24.\p"
 	.string "If you challenge him with WATER-type\n"
 	.string "POKéMON, he'll zap them! Bzzt!\p"
 	.string "And, he's put in switch-controlled\n"

@@ -288,6 +288,7 @@ DewfordTown_Gym_Text_GymGuideAdvice:
 	.string "bound {PLAYER}?\p"
 	.string "DEWFORD's GYM LEADER BRAWLY commands\n"
 	.string "FIGHTING-type POKéMON.\p"
+	.string "His POKéMON are as high as Level 19.\p"
 	.string "Going against him with NORMAL-type\n"
 	.string "POKéMON is asking for trouble.\p"
 	.string "FIGHTING POKéMON will lay a serious\n"
