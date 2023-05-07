@@ -418,8 +418,8 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ParasolLady = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kindler = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_TWIN,
-    .textColor = NPC_TEXT_COLOR_FEMALE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_4,
+    .textColor = NPC_TEXT_COLOR_MALE,
     .size = 256,
     .width = 16,
     .height = 32,

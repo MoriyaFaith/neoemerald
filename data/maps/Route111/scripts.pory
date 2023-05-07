@@ -294,6 +294,7 @@ Route111_EventScript_BattleWinstrates::
 	applymovement LOCALID_VICTORIA, Route111_Movement_WinstrateExitHouse
 	waitmovement 0
 	call Route111_EventScript_CloseWinstrateDoor
+	textcolor NPC_TEXT_COLOR_FEMALE
 	msgbox Route111_Text_VictoriaIntro, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_VICTORIA, Route111_Text_VictoriaDefeat
 	applymovement LOCALID_VICTORIA, Common_Movement_WalkInPlaceFasterUp
