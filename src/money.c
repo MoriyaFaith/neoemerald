@@ -56,13 +56,6 @@ static const struct SpriteTemplate sSpriteTemplate_MoneyLabel =
     .callback = SpriteCallbackDummy
 };
 
-static const struct CompressedSpriteSheet sSpriteSheet_MoneyLabel =
-{
-    .data = gShopMenuMoney_Gfx,
-    .size = 256,
-    .tag = MONEY_LABEL_TAG,
-};
-
 static const struct CompressedSpritePalette sSpritePalette_MoneyLabel =
 {
     .data = gShopMenu_Pal,
@@ -180,13 +173,12 @@ void DrawMoneyBox(int amount, u8 x, u8 y)
 {
     struct WindowTemplate template;
 
-    SetWindowTemplateFields(&template, 0, x + 1, y + 1, 10, 2, 15, 8);
+    SetWindowTemplateFields(&template, 0, x + 1, y + 1, 8, 3, 15, 8);
     sMoneyBoxWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sMoneyBoxWindowId, PIXEL_FILL(0));
     PutWindowTilemap(sMoneyBoxWindowId);
     CopyWindowToVram(sMoneyBoxWindowId, COPYWIN_MAP);
     PrintMoneyAmountInMoneyBoxWithBorder(sMoneyBoxWindowId, 0x214, 14, amount);
-    AddMoneyLabelObject((8 * x) + 19, (8 * y) + 11);
 }
 
 void HideMoneyBox(void)
@@ -195,13 +187,6 @@ void HideMoneyBox(void)
     ClearStdWindowAndFrameToTransparent(sMoneyBoxWindowId, FALSE);
     CopyWindowToVram(sMoneyBoxWindowId, COPYWIN_GFX);
     RemoveWindow(sMoneyBoxWindowId);
-}
-
-void AddMoneyLabelObject(u16 x, u16 y)
-{
-    LoadCompressedSpriteSheet(&sSpriteSheet_MoneyLabel);
-    LoadCompressedSpritePalette(&sSpritePalette_MoneyLabel);
-    sMoneyLabelSpriteId = CreateSprite(&sSpriteTemplate_MoneyLabel, x, y, 0);
 }
 
 void RemoveMoneyLabelObject(void)
