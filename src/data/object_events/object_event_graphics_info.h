@@ -380,7 +380,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Senior = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Junior = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_RANGER,
+    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_2,
     .textColor = NPC_TEXT_COLOR_FEMALE,
     .size = 256,
     .width = 16,
