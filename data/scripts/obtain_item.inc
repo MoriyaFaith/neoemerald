@@ -5,6 +5,7 @@ Std_ObtainItem::
 	additem ITEMID, AMOUNT
 	copyvar VAR_0x8007, VAR_RESULT
 	call EventScript_ObtainItemMessage
+	textcolor NPC_TEXT_COLOR_PREVIOUS
 	return
 
 EventScript_ObtainItemMessage::
@@ -16,6 +17,7 @@ EventScript_ObtainItemMessage::
 	return
 
 EventScript_BufferPocketNameAndTryFanfare::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	switch VAR_RESULT
 	case POCKET_ITEMS,      EventScript_BufferItemsPocket
 	case POCKET_KEY_ITEMS,  EventScript_BufferKeyItemsPocket

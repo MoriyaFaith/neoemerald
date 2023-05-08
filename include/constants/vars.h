@@ -312,10 +312,13 @@
 // cutscenes nor call a wait command. Used for weather effects in vanilla.
 #define TRIGGER_RUN_IMMEDIATELY   0
 
-#define NPC_TEXT_COLOR_MALE      0x8 // Blue, for male NPCs
-#define NPC_TEXT_COLOR_FEMALE    0x4 // Red, for female NPCs
-#define NPC_TEXT_COLOR_MON       0x2 // Black, for Pokémon
-#define NPC_TEXT_COLOR_NEUTRAL   0x2 // Black, for inanimate objects and messages from the game
-#define NPC_TEXT_COLOR_DEFAULT 255 // If an NPC is selected, use the color specified by GetColorFromTextColorTable, otherwise use Neutral.
+#define NPC_TEXT_COLOR_MALE       8 // Blue, for male NPCs
+#define NPC_TEXT_COLOR_FEMALE     4 // Red, for female NPCs
+#define NPC_TEXT_COLOR_MON        2 // Black, for Pokémon
+#define NPC_TEXT_COLOR_NEUTRAL    2 // Black, for inanimate objects and messages from the game
+#define NPC_TEXT_COLOR_DEFAULT  255 // If an NPC is selected, use the color specified by GetObjectEventGraphicsInfo, otherwise use Neutral.
+
+#define NPC_TEXT_COLOR_RIVAL    254 // Blue if player is female, red if player is male
+#define NPC_TEXT_COLOR_PREVIOUS 255 // Value written to VAR_PREV_TEXT_COLOR
 
 #endif // GUARD_CONSTANTS_VARS_H

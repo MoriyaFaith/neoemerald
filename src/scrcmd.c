@@ -2320,9 +2320,27 @@ bool8 ScrCmd_warpwhitefade(struct ScriptContext *ctx)
     ResetInitialPlayerAvatarState();
     return TRUE;
 }
-bool8 ScrCmd_textcolor(struct ScriptContext * ctx)
+bool8 ScrCmd_textcolor(struct ScriptContext *ctx)
 {
-    gSpecialVar_PrevTextColor = gSpecialVar_TextColor;
-    gSpecialVar_TextColor = ScriptReadByte(ctx);
+    u8 textColor = ScriptReadByte(ctx);
+    if (textColor == NPC_TEXT_COLOR_PREVIOUS)
+    {
+        gSpecialVar_TextColor = gSpecialVar_PrevTextColor;
+    }
+    else
+    {
+        gSpecialVar_PrevTextColor = gSpecialVar_TextColor;
+        if (textColor == NPC_TEXT_COLOR_RIVAL)
+        {
+            if (gSaveBlock2Ptr->playerGender)
+                gSpecialVar_TextColor = NPC_TEXT_COLOR_MALE;
+            else
+                gSpecialVar_TextColor = NPC_TEXT_COLOR_FEMALE;
+        }
+        else
+        {
+            gSpecialVar_TextColor = textColor;
+        }
+    }
     return FALSE;
 }
