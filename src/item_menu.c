@@ -2453,7 +2453,6 @@ static void DisplayCurrentMoneyWindow(void)
 static void RemoveMoneyWindow(void)
 {
     BagMenu_RemoveWindow(ITEMWIN_MONEY);
-    RemoveMoneyLabelObject();
     PutWindowTilemap(WIN_POCKET_NAME);
 }
 
