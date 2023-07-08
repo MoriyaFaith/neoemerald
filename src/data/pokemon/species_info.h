@@ -4059,11 +4059,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_JOLTEON] =
     {
         .baseHP        = 65,
-        .baseAttack    = 65,
+        .baseAttack    = 95,
         .baseDefense   = 60,
         .baseSpeed     = 130,
         .baseSpAttack  = 110,
-        .baseSpDefense = 95,
+        .baseSpDefense = 65,
         .types = { TYPE_ELECTRIC, TYPE_ELECTRIC },
         .catchRate = 45,
         .expYield = 197,
@@ -4088,12 +4088,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_FLAREON] =
     {
-        .baseHP        = 65,
+        .baseHP        = 95,
         .baseAttack    = 130,
         .baseDefense   = 60,
         .baseSpeed     = 65,
-        .baseSpAttack  = 95,
-        .baseSpDefense = 110,
+        .baseSpAttack  = 110,
+        .baseSpDefense = 65,
         .types = { TYPE_FIRE, TYPE_FIRE },
         .catchRate = 45,
         .expYield = 198,
