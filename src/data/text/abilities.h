@@ -81,6 +81,7 @@ static const u8 sMoltenCoreDescription[] = _("Makes WATER evaporate.");
 static const u8 sTechnicianDescription[] = _("Boosts weak moves.");
 static const u8 sSkillLinkDescription[] = _("Boosts multi-hit moves.");
 static const u8 sSharpnessDescription[] = _("Strengthens cutting moves.");
+static const u8 sJungleKingDescription[] = _("Always at full power.");
 
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
 {
@@ -167,6 +168,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_TECHNICIAN] = _("TECHNICIAN"),
     [ABILITY_SKILL_LINK] = _("SKILL LINK"),
     [ABILITY_SHARPNESS] = _("SHARPNESS"),
+    [ABILITY_JUNGLE_KING] = _("JUNGLE KING"),
 };
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
@@ -254,4 +256,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_TECHNICIAN] = sTechnicianDescription,
     [ABILITY_SKILL_LINK] = sSkillLinkDescription,
     [ABILITY_SHARPNESS] = sSharpnessDescription,
+    [ABILITY_JUNGLE_KING] = sJungleKingDescription,
 };

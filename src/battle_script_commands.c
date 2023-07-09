@@ -4148,7 +4148,8 @@ static void Cmd_playstatchangeanimation(void)
                         && gBattleMons[gActiveBattler].ability != ABILITY_CLEAR_BODY
                         && gBattleMons[gActiveBattler].ability != ABILITY_WHITE_SMOKE
                         && !(gBattleMons[gActiveBattler].ability == ABILITY_KEEN_EYE && currStat == STAT_ACC)
-                        && !(gBattleMons[gActiveBattler].ability == ABILITY_HYPER_CUTTER && currStat == STAT_ATK))
+                        && !(gBattleMons[gActiveBattler].ability == ABILITY_HYPER_CUTTER && currStat == STAT_ATK)
+                        && !(gBattleMons[gActiveBattler].ability == ABILITY_JUNGLE_KING && currStat == STAT_ATK))
                 {
                     if (gBattleMons[gActiveBattler].statStages[currStat] > MIN_STAT_STAGE)
                     {
@@ -7033,7 +7034,8 @@ static u8 ChangeStatBuffs(s8 statValue, u8 statId, u8 flags, const u8 *BS_ptr)
             }
             return STAT_CHANGE_DIDNT_WORK;
         }
-        else if (gBattleMons[gActiveBattler].ability == ABILITY_HYPER_CUTTER
+        else if ((gBattleMons[gActiveBattler].ability == ABILITY_HYPER_CUTTER
+                 || gBattleMons[gActiveBattler].ability == ABILITY_JUNGLE_KING)
                  && !certain && statId == STAT_ATK)
         {
             if (flags == STAT_CHANGE_ALLOW_PTR)
@@ -7075,6 +7077,20 @@ static u8 ChangeStatBuffs(s8 statValue, u8 statId, u8 flags, const u8 *BS_ptr)
     }
     else // stat increase
     {
+        //if pokemon has jungle King, don't increase attack
+        if ((gBattleMons[gActiveBattler].ability == ABILITY_JUNGLE_KING)
+                 && !certain && statId == STAT_ATK)
+        {
+            if (flags == STAT_CHANGE_ALLOW_PTR)
+            {
+                BattleScriptPush(BS_ptr);
+                gBattleScripting.battler = gActiveBattler;
+                gBattlescriptCurrInstr = BattleScript_JungleKingActivates;
+                gLastUsedAbility = gBattleMons[gActiveBattler].ability;
+                RecordAbilityBattle(gActiveBattler, gLastUsedAbility);
+            }
+            return STAT_CHANGE_DIDNT_WORK;
+        }
         statValue = GET_STAT_BUFF_VALUE(statValue);
         gBattleTextBuff2[0] = B_BUFF_PLACEHOLDER_BEGIN;
         index = 1;

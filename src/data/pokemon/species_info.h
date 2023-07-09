@@ -10318,8 +10318,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_SLAKING] =
     {
-        .baseHP        = 150,
-        .baseAttack    = 160,
+        .baseHP        = 120,
+        .baseAttack    = 120,
         .baseDefense   = 100,
         .baseSpeed     = 100,
         .baseSpAttack  = 95,
@@ -10340,7 +10340,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = {ABILITY_TRUANT, ABILITY_NONE},
+        .abilities = {ABILITY_JUNGLE_KING, ABILITY_NONE},
         .safariZoneFleeRate = 0,
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,

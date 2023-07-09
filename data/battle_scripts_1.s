@@ -4041,6 +4041,7 @@ BattleScript_IntimidateActivatesLoop:
 	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_IntimidateActivatesLoopIncrement
 	jumpifability BS_TARGET, ABILITY_CLEAR_BODY, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_HYPER_CUTTER, BattleScript_IntimidatePrevented
+	jumpifability BS_TARGET, ABILITY_JUNGLE_KING, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_WHITE_SMOKE, BattleScript_IntimidatePrevented
 	statbuffchange STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_IntimidateActivatesLoopIncrement
 	jumpifbyte CMP_GREATER_THAN, cMULTISTRING_CHOOSER, 1, BattleScript_IntimidateActivatesLoopIncrement
@@ -4209,6 +4210,13 @@ BattleScript_SoundproofProtected::
 BattleScript_AbilityNoSpecificStatLoss::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_PKMNSXPREVENTSYLOSS
+	waitmessage B_WAIT_TIME_LONG
+	setbyte cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY
+	return
+
+BattleScript_JungleKingActivates::
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_PKMNFULLPOWER
 	waitmessage B_WAIT_TIME_LONG
 	setbyte cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY
 	return
