@@ -5222,7 +5222,8 @@ static const u16 sVigorothLevelUpLearnset[] = {
 };
 
 static const u16 sSlakingLevelUpLearnset[] = {
-    LEVEL_UP_MOVE(0, MOVE_SWAGGER),
+    LEVEL_UP_MOVE(0, MOVE_BODY_SLAM),
+    LEVEL_UP_MOVE(1, MOVE_BODY_SLAM),
     LEVEL_UP_MOVE(1, MOVE_SWAGGER),
     LEVEL_UP_MOVE(1, MOVE_SCRATCH),
     LEVEL_UP_MOVE(1, MOVE_YAWN),
