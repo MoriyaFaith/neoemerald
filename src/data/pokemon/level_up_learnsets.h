@@ -4083,6 +4083,8 @@ static const u16 sLotadLevelUpLearnset[] = {
 };
 
 static const u16 sLombreLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(0, MOVE_WATER_PULSE),
+    LEVEL_UP_MOVE(1, MOVE_WATER_PULSE),
     LEVEL_UP_MOVE(1, MOVE_ASTONISH),
     LEVEL_UP_MOVE(3, MOVE_GROWL),
     LEVEL_UP_MOVE(7, MOVE_ABSORB),
@@ -4117,6 +4119,8 @@ static const u16 sSeedotLevelUpLearnset[] = {
 };
 
 static const u16 sNuzleafLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(0, MOVE_RAZOR_LEAF),
+    LEVEL_UP_MOVE(1, MOVE_RAZOR_LEAF),
     LEVEL_UP_MOVE(1, MOVE_POUND),
     LEVEL_UP_MOVE(3, MOVE_HARDEN),
     LEVEL_UP_MOVE(7, MOVE_GROWTH),
