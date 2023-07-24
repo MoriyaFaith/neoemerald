@@ -2,6 +2,8 @@
 #include "play_time.h"
 #include "main.h"
 #include "event_data.h"
+#include "day_night.h"
+#include "pokemon_storage_system.h"
 
 enum
 {
@@ -38,7 +40,9 @@ void PlayTimeCounter_Stop(void)
 void PlayTimeCounter_Update(void)
 {
     if(FlagGet(FLAG_SYS_CLOCK_SET) && !(gSaveBlock2Ptr->optionsClockMode)) // only progress in-game time once the clock has been set
-        gSaveBlock1Ptr->dayNightTimeOffset++;
+        {
+            gSaveBlock1Ptr->dayNightTimeOffset++;
+        }
     if (sPlayTimeCounterState != RUNNING)
         return;
 
@@ -46,6 +50,11 @@ void PlayTimeCounter_Update(void)
 
     if (gSaveBlock2Ptr->playTimeVBlanks < 60)
         return;
+
+    //this should uh do the funny
+    if (ConvertFramesToMinutes(gSaveBlock1Ptr->dayNightTimeOffset) == 0
+        && ConvertFramesToSeconds(gSaveBlock1Ptr->dayNightTimeOffset) == 0)
+    BoxMonFriendshipInterval();
 
     gSaveBlock2Ptr->playTimeVBlanks = 0;
     gSaveBlock2Ptr->playTimeSeconds++;

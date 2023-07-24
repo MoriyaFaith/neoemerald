@@ -9429,6 +9429,20 @@ u32 GetBoxMonDataAt(u8 boxId, u8 boxPosition, s32 request)
         return 0;
 }
 
+void BoxMonFriendshipInterval(void){
+    u32 i, j;
+    for (i = 0; i < TOTAL_BOXES_COUNT; i++) {
+        for (j = 0; j < IN_BOX_COUNT; j++) {
+            if (GetBoxMonDataAt(i, j, MON_DATA_SPECIES) != SPECIES_NONE){
+                s16 friendship = GetBoxMonDataAt(i, j, MON_DATA_FRIENDSHIP);
+                if (friendship > 50)
+                    friendship--;
+                SetBoxMonDataAt(i, j, MON_DATA_FRIENDSHIP, &friendship); 
+            }
+        }
+    }
+}
+
 void SetBoxMonDataAt(u8 boxId, u8 boxPosition, s32 request, const void *value)
 {
     if (boxId < TOTAL_BOXES_COUNT && boxPosition < IN_BOX_COUNT)

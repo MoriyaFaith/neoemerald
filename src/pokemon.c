@@ -2165,13 +2165,13 @@ static const s8 sFriendshipEventModifiers[][3] =
 {
     [FRIENDSHIP_EVENT_GROW_LEVEL]      = { 5,  3,  2},
     [FRIENDSHIP_EVENT_VITAMIN]         = { 5,  3,  2},
-    [FRIENDSHIP_EVENT_BATTLE_ITEM]     = { 1,  1,  0},
-    [FRIENDSHIP_EVENT_LEAGUE_BATTLE]   = { 3,  2,  1},
-    [FRIENDSHIP_EVENT_LEARN_TMHM]      = { 1,  1,  0},
-    [FRIENDSHIP_EVENT_WALKING]         = { 1,  1,  1},
-    [FRIENDSHIP_EVENT_FAINT_SMALL]     = {-1, -1, -1},
-    [FRIENDSHIP_EVENT_FAINT_FIELD_PSN] = {-5, -5, -10},
-    [FRIENDSHIP_EVENT_FAINT_LARGE]     = {-5, -5, -10},
+    [FRIENDSHIP_EVENT_TRAINER_BATTLE]  = { 2,  1,  1},
+    [FRIENDSHIP_EVENT_LEAGUE_BATTLE]   = {10,  6,  4},
+    [FRIENDSHIP_EVENT_LEARN_TMHM]      = { 3,  2,  1},
+    [FRIENDSHIP_EVENT_WALKING]         = {-1, -1, -2}, //Preparing for dropping FS over time
+    [FRIENDSHIP_EVENT_FAINT_SMALL]     = {-10, -10, -20},
+    [FRIENDSHIP_EVENT_FAINT_FIELD_PSN] = {-20, -20, -40},
+    [FRIENDSHIP_EVENT_FAINT_LARGE]     = {-20, -20, -40},
 };
 
 #define HM_MOVES_END 0xFFFF
@@ -6014,9 +6014,9 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
         u8 friendshipLevel = 0;
         s16 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, 0);
 
-        if (friendship > 99)
+        if (friendship > 150)
             friendshipLevel++;
-        if (friendship > 199)
+        if (friendship > 220)
             friendshipLevel++;
 
         if ((event != FRIENDSHIP_EVENT_WALKING || !(Random() & 1))
@@ -6066,6 +6066,12 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
             multiplier = 2;
         else
             multiplier = 1;
+
+        //friendship check
+        if (GetMonData(mon, MON_DATA_FRIENDSHIP, 0) >= 220)
+            multiplier *= 2;
+        else if (GetMonData(mon, MON_DATA_FRIENDSHIP, 0) <= 50)
+            multiplier = 0;
 
         switch (i)
         {

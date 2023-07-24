@@ -1273,6 +1273,7 @@ static void Cmd_critcalc(void)
                 + (gBattleMoves[gCurrentMove].effect == EFFECT_SKY_ATTACK)
                 + (gBattleMoves[gCurrentMove].effect == EFFECT_BLAZE_KICK)
                 + (gBattleMoves[gCurrentMove].effect == EFFECT_POISON_TAIL)
+                + (GetMonData(gBattleMons[gBattlerAttacker], MON_DATA_FRIENDSHIP, 0) >= 220)
                 + (holdEffect == HOLD_EFFECT_SCOPE_LENS)
                 + 2 * (holdEffect == HOLD_EFFECT_LUCKY_PUNCH && gBattleMons[gBattlerAttacker].species == SPECIES_CHANSEY)
                 + 2 * (holdEffect == HOLD_EFFECT_STICK && gBattleMons[gBattlerAttacker].species == SPECIES_FARFETCHD);
@@ -3380,6 +3381,10 @@ static void Cmd_getexp(void)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
                     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
+                    if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_FRIENDSHIP) >= 150)
+                        gBattleMoveDamage = (gBattleMoveDamage * 110) / 100;
+                    if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_FRIENDSHIP) <= 50)
+                        gBattleMoveDamage = (gBattleMoveDamage * 50) / 100;
 
                     if (IsTradedMon(&gPlayerParty[gBattleStruct->expGetterMonId]))
                     {
@@ -3423,6 +3428,8 @@ static void Cmd_getexp(void)
                     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 5, gBattleMoveDamage);
 
                     PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
+                    if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+                        AdjustFriendship(&gPlayerParty[gBattleStruct->expGetterMonId], FRIENDSHIP_EVENT_TRAINER_BATTLE); //gains friendship, if in a trainer battle
                     MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
                 }
                 gBattleStruct->sentInPokes >>= 1;

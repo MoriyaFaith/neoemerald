@@ -1990,6 +1990,7 @@ enum
 u8 AtkCanceller_UnableToUseMove(void)
 {
     u8 effect = 0;
+    u8 randNum = 0;
     s32 *bideDmg = &gBattleScripting.bideDmg;
     do
     {
@@ -2019,6 +2020,10 @@ u8 AtkCanceller_UnableToUseMove(void)
                         toSub = 2;
                     else
                         toSub = 1;
+                    if (GetMonData(gBattleMons[gBattlerAttacker], MON_DATA_FRIENDSHIP, 0) >= 150)
+                    {
+                        toSub++;
+                    }
                     if ((gBattleMons[gBattlerAttacker].status1 & STATUS1_SLEEP) < toSub)
                         gBattleMons[gBattlerAttacker].status1 &= ~STATUS1_SLEEP;
                     else
@@ -2045,9 +2050,15 @@ u8 AtkCanceller_UnableToUseMove(void)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_FROZEN: // check being frozen
+            randNum = 5;
+            if (GetMonData(gBattleMons[gBattlerAttacker], MON_DATA_FRIENDSHIP, 0) >= 150)
+            {
+                randNum = 3;
+            }
             if (gBattleMons[gBattlerAttacker].status1 & STATUS1_FREEZE)
             {
-                if (Random() % 5)
+                //is this in the wrong order i straight up can't tell
+                if (Random() % randNum)
                 {
                     if (gBattleMoves[gCurrentMove].effect != EFFECT_THAW_HIT) // unfreezing via a move effect happens in case 13
                     {
@@ -2142,12 +2153,21 @@ u8 AtkCanceller_UnableToUseMove(void)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_CONFUSED: // confusion
+            randNum = 2;
+            if (GetMonData(gBattleMons[gBattlerAttacker], MON_DATA_FRIENDSHIP, 0) >= 220)
+            {
+                randNum = 4;
+            }
             if (gBattleMons[gBattlerAttacker].status2 & STATUS2_CONFUSION)
             {
                 gBattleMons[gBattlerAttacker].status2 -= STATUS2_CONFUSION_TURN(1);
+                if (GetMonData(gBattleMons[gBattlerAttacker], MON_DATA_FRIENDSHIP, 0) >= 150)
+                {
+                    gBattleMons[gBattlerAttacker].status2 -= STATUS2_CONFUSION_TURN(1);
+                }
                 if (gBattleMons[gBattlerAttacker].status2 & STATUS2_CONFUSION)
                 {
-                    if (Random() & 1)
+                    if ((Random() % randNum) || GetMonData(gBattleMons[gBattlerAttacker], MON_DATA_FRIENDSHIP, 0) < 50)
                     {
                         // The MULTISTRING_CHOOSER is used here as a bool to signal
                         // to BattleScript_MoveUsedIsConfused whether or not damage was taken
@@ -2174,7 +2194,12 @@ u8 AtkCanceller_UnableToUseMove(void)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_PARALYSED: // paralysis
-            if ((gBattleMons[gBattlerAttacker].status1 & STATUS1_PARALYSIS) && (Random() % 4) == 0)
+            randNum = 4;
+            if (GetMonData(gBattleMons[gBattlerAttacker], MON_DATA_FRIENDSHIP, 0) >= 220)
+            {
+                randNum = 8;
+            }
+            if (((gBattleMons[gBattlerAttacker].status1 & STATUS1_PARALYSIS) && (Random() % randNum) == 0) || GetMonData(gBattleMons[gBattlerAttacker], MON_DATA_FRIENDSHIP, 0) < 50)
             {
                 gProtectStructs[gBattlerAttacker].prlzImmobility = 1;
                 // This is removed in FRLG and Emerald for some reason
@@ -2186,19 +2211,25 @@ u8 AtkCanceller_UnableToUseMove(void)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_IN_LOVE: // infatuation
+            randNum = 2;
+            if (GetMonData(gBattleMons[gBattlerAttacker], MON_DATA_FRIENDSHIP, 0) >= 220)
+            {
+                randNum = 4;
+            }
             if (gBattleMons[gBattlerAttacker].status2 & STATUS2_INFATUATION)
             {
                 gBattleScripting.battler = CountTrailingZeroBits((gBattleMons[gBattlerAttacker].status2 & STATUS2_INFATUATION) >> 0x10);
-                if (Random() & 1)
-                {
-                    BattleScriptPushCursor();
-                }
-                else
+                if ((Random() % randNum) || GetMonData(gBattleMons[gBattlerAttacker], MON_DATA_FRIENDSHIP, 0) < 50)
+                //these had to be swapped around for the code to work properly
                 {
                     BattleScriptPush(BattleScript_MoveUsedIsInLoveCantAttack);
                     gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
                     gProtectStructs[gBattlerAttacker].loveImmobility = 1;
                     CancelMultiTurnMoves(gBattlerAttacker);
+                }
+                else
+                {
+                    BattleScriptPushCursor();
                 }
                 gBattlescriptCurrInstr = BattleScript_MoveUsedIsInLove;
                 effect = 1;
