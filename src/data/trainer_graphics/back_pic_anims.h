@@ -91,14 +91,14 @@ static const union AnimCmd sAnimCmd_Kris_1[] =
 
 static const union AnimCmd *const sBackAnims_Brendan[] =
 {
-    sAnim_GeneralFrame3,
-    sAnimCmd_Brendan_1,
+    sAnim_GeneralFrame0,
+    sAnimCmd_Red_1,
 };
 
 static const union AnimCmd *const sBackAnims_May[] =
 {
-    sAnim_GeneralFrame3,
-    sAnimCmd_May_Steven_1,
+    sAnim_GeneralFrame0,
+    sAnimCmd_Leaf_1,
 };
 
 static const union AnimCmd *const sBackAnims_Red[] =
