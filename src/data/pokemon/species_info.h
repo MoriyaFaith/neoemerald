@@ -8758,11 +8758,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_SKITTY] =
     {
-        .baseHP        = 50,
-        .baseAttack    = 45,
+        .baseHP        = 60,
+        .baseAttack    = 55,
         .baseDefense   = 45,
-        .baseSpeed     = 50,
-        .baseSpAttack  = 35,
+        .baseSpeed     = 60,
+        .baseSpAttack  = 45,
         .baseSpDefense = 35,
         .types = { TYPE_NORMAL, TYPE_NORMAL },
         .catchRate = 255,
