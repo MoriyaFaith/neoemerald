@@ -5524,6 +5524,11 @@ static const u16 sLaironLevelUpLearnset[] = {
 };
 
 static const u16 sAggronLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(0, MOVE_DRAGON_CLAW),
+    LEVEL_UP_MOVE(1, MOVE_DRAGON_CLAW),
+    LEVEL_UP_MOVE(1, MOVE_THUNDER_FANG),
+    LEVEL_UP_MOVE(1, MOVE_FIRE_FANG),
+    LEVEL_UP_MOVE(1, MOVE_ICE_FANG),
     LEVEL_UP_MOVE(1, MOVE_TACKLE),
     LEVEL_UP_MOVE(1, MOVE_HARDEN),
     LEVEL_UP_MOVE(1, MOVE_MUD_SLAP),
