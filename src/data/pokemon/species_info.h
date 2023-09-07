@@ -9328,12 +9328,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_FLYGON] =
     {
-        .baseHP        = 80,
+        .baseHP        = 100,
         .baseAttack    = 100,
-        .baseDefense   = 80,
-        .baseSpeed     = 100,
+        .baseDefense   = 60,
+        .baseSpeed     = 120,
         .baseSpAttack  = 100,
-        .baseSpDefense = 80,
+        .baseSpDefense = 60,
         .types = { TYPE_BUG, TYPE_DRAGON },
         .catchRate = 45,
         .expYield = 197,
