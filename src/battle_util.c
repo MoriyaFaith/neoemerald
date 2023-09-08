@@ -2199,7 +2199,7 @@ u8 AtkCanceller_UnableToUseMove(void)
             {
                 randNum = 8;
             }
-            if (((gBattleMons[gBattlerAttacker].status1 & STATUS1_PARALYSIS) && (Random() % randNum) == 0) || GetMonData(gBattleMons[gBattlerAttacker], MON_DATA_FRIENDSHIP, 0) < 50)
+            if ((gBattleMons[gBattlerAttacker].status1 & STATUS1_PARALYSIS) && ((Random() % randNum) == 0 || GetMonData(gBattleMons[gBattlerAttacker], MON_DATA_FRIENDSHIP, 0) < 50))
             {
                 gProtectStructs[gBattlerAttacker].prlzImmobility = 1;
                 // This is removed in FRLG and Emerald for some reason
