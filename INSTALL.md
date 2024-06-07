@@ -378,7 +378,7 @@ If this works, then proceed to [Installation](#installation). Otherwise, ask for
 - If agbcc has **not been built before** in the folder where you chose to store neoemerald, run the following commands to build and install it into neoemerald:
 
     ```bash
-    git clone https://github.com/MoriyaFaith/agbcc
+    git clone https://github.com/pret/agbcc
     cd agbcc
     ./build.sh
     ./install.sh ../neoemerald
