@@ -40,7 +40,7 @@
 #define OBJ_EVENT_GFX_BUG_CATCHER                 36
 #define OBJ_EVENT_GFX_PSYCHIC_M                   37
 #define OBJ_EVENT_GFX_SCHOOL_KID_M                38
-#define OBJ_EVENT_GFX_MANIAC                      39
+#define OBJ_EVENT_GFX_BUG_MANIAC                  39
 #define OBJ_EVENT_GFX_HEX_MANIAC                  40
 #define OBJ_EVENT_GFX_RAYQUAZA_STILL              41
 #define OBJ_EVENT_GFX_SWIMMER_M                   42
@@ -259,12 +259,13 @@
 #define OBJ_EVENT_GFX_BIRD_KEEPER                255
 #define OBJ_EVENT_GFX_POKEMANIAC                 256
 #define OBJ_EVENT_GFX_RUIN_MANIAC                257
-#define OBJ_EVENT_GFX_LINK_EM_BRENDAN            258
-#define OBJ_EVENT_GFX_LINK_EM_MAY                259
-#define OBJ_EVENT_GFX_LINK_H_BRENDAN             260
-#define OBJ_EVENT_GFX_LINK_H_MAY                 261
-#define OBJ_EVENT_GFX_GOLD                       262
-#define OBJ_EVENT_GFX_KRIS                       263
+#define OBJ_EVENT_GFX_COLLECTOR                  258
+#define OBJ_EVENT_GFX_LINK_EM_BRENDAN            259
+#define OBJ_EVENT_GFX_LINK_EM_MAY                260
+#define OBJ_EVENT_GFX_LINK_H_BRENDAN             261
+#define OBJ_EVENT_GFX_LINK_H_MAY                 262
+#define OBJ_EVENT_GFX_GOLD                       263
+#define OBJ_EVENT_GFX_KRIS                       264
 
 // NOTE: By default, the max value for NUM_OBJ_EVENT_GFX is 239.
 //

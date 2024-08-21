@@ -419,26 +419,41 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_UNUSED                  0x1110
 #define OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW        0x1111
 #define OBJ_EVENT_PAL_TAG_POOCHYENA               0x1112
-#define OBJ_EVENT_PAL_TAG_RED_LEAF                0x1113
-#define OBJ_EVENT_PAL_TAG_DEOXYS                  0x1114
-#define OBJ_EVENT_PAL_TAG_BIRTH_ISLAND_STONE      0x1115
-#define OBJ_EVENT_PAL_TAG_HO_OH                   0x1116
-#define OBJ_EVENT_PAL_TAG_LUGIA                   0x1117
-#define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1118
-#define OBJ_EVENT_PAL_TAG_RS_MAY                  0x1119
-#define OBJ_EVENT_PAL_TAG_WALLY                   0x111A
-#define OBJ_EVENT_PAL_TAG_EM_BRENDAN              0x111B
-#define OBJ_EVENT_PAL_TAG_EM_MAY                  0x111C
-#define OBJ_EVENT_PAL_TAG_H_BRENDAN               0x111D
-#define OBJ_EVENT_PAL_TAG_H_MAY                   0x111E
-#define OBJ_EVENT_PAL_TAG_GOLD                    0x111F
-#define OBJ_EVENT_PAL_TAG_KRIS                    0x1120
-#define OBJ_EVENT_PAL_TAG_RICH_BOY                0x1121
-#define OBJ_EVENT_PAL_TAG_LADY                    0x1122
-#define OBJ_EVENT_PAL_TAG_RANGER                  0x1123
-#define OBJ_EVENT_PAL_TAG_ITEM_BALL               0x1124
-#define OBJ_EVENT_PAL_TAG_TWIN                    0x1125
-#define OBJ_EVENT_PAL_TAG_SCOUT                   0x1126
+#define OBJ_EVENT_PAL_TAG_DEOXYS                  0x1113
+#define OBJ_EVENT_PAL_TAG_BIRTH_ISLAND_STONE      0x1114
+#define OBJ_EVENT_PAL_TAG_HO_OH                   0x1115
+#define OBJ_EVENT_PAL_TAG_LUGIA                   0x1116
+#define OBJ_EVENT_PAL_TAG_RICH_BOY                0x1117
+#define OBJ_EVENT_PAL_TAG_LADY                    0x1118
+#define OBJ_EVENT_PAL_TAG_RANGER                  0x1119
+#define OBJ_EVENT_PAL_TAG_TWIN                    0x111A
+#define OBJ_EVENT_PAL_TAG_SCOUT                   0x111B
+#define OBJ_EVENT_PAL_TAG_ACE_TRAINER             0x111C
+#define OBJ_EVENT_PAL_TAG_BATTLE_GIRL             0x111D
+#define OBJ_EVENT_PAL_TAG_BUG_MANIAC              0x111E
+#define OBJ_EVENT_PAL_TAG_COLLECTOR               0x111F
+#define OBJ_EVENT_PAL_TAG_BEAUTY                  0x1120
+#define OBJ_EVENT_PAL_TAG_AROMA_LADY              0x1121
+#define OBJ_EVENT_PAL_TAG_BUG_CATCHER             0x1122
+#define OBJ_EVENT_PAL_TAG_YOUNGSTER               0x1123
+#define OBJ_EVENT_PAL_TAG_HIKER                   0x1124
+#define OBJ_EVENT_PAL_TAG_KINDLER                 0x1125
+#define OBJ_EVENT_PAL_TAG_BLACK_BELT              0x1126
+#define OBJ_EVENT_PAL_TAG_WALLY                   0x1127
+#define OBJ_EVENT_PAL_TAG_BRAWLY                  0x1128
+#define OBJ_EVENT_PAL_TAG_WATTSON                 0x1129
+#define OBJ_EVENT_PAL_TAG_FLANNERY                0x112A
+#define OBJ_EVENT_PAL_TAG_NORMAN                  0x112B
+#define OBJ_EVENT_PAL_TAG_ITEM_BALL               0x112C
+#define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x112D
+#define OBJ_EVENT_PAL_TAG_RS_MAY                  0x112E
+#define OBJ_EVENT_PAL_TAG_EM_BRENDAN              0x112F
+#define OBJ_EVENT_PAL_TAG_EM_MAY                  0x1130
+#define OBJ_EVENT_PAL_TAG_H_BRENDAN               0x1131
+#define OBJ_EVENT_PAL_TAG_H_MAY                   0x1132
+#define OBJ_EVENT_PAL_TAG_RED_LEAF                0x1133
+#define OBJ_EVENT_PAL_TAG_GOLD                    0x1134
+#define OBJ_EVENT_PAL_TAG_KRIS                    0x1135
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -488,6 +503,21 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_HeliodorMay,           OBJ_EVENT_PAL_TAG_H_MAY},
     {gObjectEventPal_Gold,                  OBJ_EVENT_PAL_TAG_GOLD},
     {gObjectEventPal_Kris,                  OBJ_EVENT_PAL_TAG_KRIS},
+    {gObjectEventPal_AceTrainer,            OBJ_EVENT_PAL_TAG_ACE_TRAINER},
+    {gObjectEventPal_BattleGirl,            OBJ_EVENT_PAL_TAG_BATTLE_GIRL},
+    {gObjectEventPal_BugManiac,             OBJ_EVENT_PAL_TAG_BUG_MANIAC},
+    {gObjectEventPal_BugCatcher,            OBJ_EVENT_PAL_TAG_BUG_CATCHER},
+    {gObjectEventPal_Youngster,             OBJ_EVENT_PAL_TAG_YOUNGSTER},
+    {gObjectEventPal_Collector,             OBJ_EVENT_PAL_TAG_COLLECTOR},
+    {gObjectEventPal_Hiker,                 OBJ_EVENT_PAL_TAG_HIKER},
+    {gObjectEventPal_Kindler,               OBJ_EVENT_PAL_TAG_KINDLER},
+    {gObjectEventPal_Beauty,                OBJ_EVENT_PAL_TAG_BEAUTY},
+    {gObjectEventPal_AromaLady,             OBJ_EVENT_PAL_TAG_AROMA_LADY},
+    {gObjectEventPal_BlackBelt,             OBJ_EVENT_PAL_TAG_BLACK_BELT},
+    {gObjectEventPal_Brawly,                OBJ_EVENT_PAL_TAG_BRAWLY},
+    {gObjectEventPal_Wattson,               OBJ_EVENT_PAL_TAG_WATTSON},
+    {gObjectEventPal_Flannery,              OBJ_EVENT_PAL_TAG_FLANNERY},
+    {gObjectEventPal_Norman,                OBJ_EVENT_PAL_TAG_NORMAN},
     {NULL,                                  OBJ_EVENT_PAL_TAG_NONE},
     {},
 };

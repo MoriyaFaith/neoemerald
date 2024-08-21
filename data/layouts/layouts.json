@@ -4415,7 +4415,7 @@
       "id": "LAYOUT_DEWFORD_BEACH",
       "name": "DewfordBeach_Layout",
       "width": 60,
-      "height": 25,
+      "height": 28,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Dewford",
       "border_filepath": "data/layouts/DewfordBeach/border.bin",
