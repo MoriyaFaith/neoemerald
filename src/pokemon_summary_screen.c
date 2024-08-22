@@ -2969,7 +2969,7 @@ static void PrintMoveNameAndPP(u8 moveIndex)
     if (summary->moves[moveIndex] != MOVE_NONE)
     {
         pp = CalculatePPWithBonus(summary->moves[moveIndex], summary->ppBonuses, moveIndex);
-        PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_TOP_FOUR_MOVES, gMoveNames[summary->moves[moveIndex]], 3, moveIndex * 28 + 5, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
+        PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_TOP_FOUR_MOVES, gMoveNames[summary->moves[moveIndex]], 3, moveIndex * 28 + 5, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
         ConvertIntToDecimalStringN(gStringVar1, summary->pp[moveIndex], STR_CONV_MODE_RIGHT_ALIGN, 2);
         ConvertIntToDecimalStringN(gStringVar2, pp, STR_CONV_MODE_RIGHT_ALIGN, 2);
         StringAppend(gStringVar1, gText_Slash);
@@ -2977,7 +2977,7 @@ static void PrintMoveNameAndPP(u8 moveIndex)
         switch (GetCurrentPpToMaxPpState(summary->pp[moveIndex], pp))
         {
             case PP_MANY:
-                color = PSS_COLOR_WHITE_BLACK_SHADOW;
+                color = PSS_COLOR_BLACK_GRAY_SHADOW;
                 break;
             case PP_SOME:
                 color = PSS_COLOR_PP_SOME;
@@ -2990,15 +2990,15 @@ static void PrintMoveNameAndPP(u8 moveIndex)
                 break;
         }
 
-        PrintTextOnWindowSmall(WINDOW_ARR_ID_MOVES_WINDOW_TOP_FOUR_MOVES, sText_PP, 36, moveIndex * 28 + 16, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
+        PrintTextOnWindowSmall(WINDOW_ARR_ID_MOVES_WINDOW_TOP_FOUR_MOVES, sText_PP, 36, moveIndex * 28 + 16, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
         PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_TOP_FOUR_MOVES, gStringVar1, 46, moveIndex * 28 + 16, 0, color);
     }
     else
     {
-        PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_TOP_FOUR_MOVES, gText_OneDash, 3, moveIndex * 28 + 5, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
+        PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_TOP_FOUR_MOVES, gText_OneDash, 3, moveIndex * 28 + 5, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
 
-        PrintTextOnWindowSmall(WINDOW_ARR_ID_MOVES_WINDOW_TOP_FOUR_MOVES, sText_PP, 36, moveIndex * 28 + 16, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
-        PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_TOP_FOUR_MOVES, gText_TwoDashes, 46, moveIndex * 28 + 16, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
+        PrintTextOnWindowSmall(WINDOW_ARR_ID_MOVES_WINDOW_TOP_FOUR_MOVES, sText_PP, 36, moveIndex * 28 + 16, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
+        PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_TOP_FOUR_MOVES, gText_TwoDashes, 46, moveIndex * 28 + 16, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
     }
 }
 
@@ -3050,16 +3050,16 @@ static void PrintMoveDetails(u16 move)
             else
                 ConvertIntToDecimalStringN(gStringVar1, gBattleMoves[move].power, STR_CONV_MODE_RIGHT_ALIGN, 3);
 
-            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gStringVar1, 57, POWER_AND_ACCURACY_Y, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
+            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gStringVar1, 57, POWER_AND_ACCURACY_Y, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
 
             if (gBattleMoves[move].accuracy == 0)
                 StringCopy(gStringVar1, gText_ThreeDashes);
             else
                 ConvertIntToDecimalStringN(gStringVar1, gBattleMoves[move].accuracy, STR_CONV_MODE_RIGHT_ALIGN, 3);
 
-            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gStringVar1, 57, POWER_AND_ACCURACY_Y_2, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
+            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gStringVar1, 57, POWER_AND_ACCURACY_Y_2, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
 
-            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gMoveDescriptionPointers[move - 1], 7, 50, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
+            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gMoveDescriptionPointers[move - 1], 7, 50, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
         }
         else
         {
@@ -3081,7 +3081,7 @@ static void PrintMoveDetails(u16 move)
             FillBgTilemapBufferRect(1, TILE_FILLED_JAM_HEART, 6, 9, jamCount, 1, 5);
             FillBgTilemapBufferRect(1, TILE_FILLED_JAM_HEART_2, 6, 10, jamCount, 1, 5);
 
-            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gContestEffectDescriptionPointers[gContestMoves[move].effect], 7, 50, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
+            PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LEFT, gContestEffectDescriptionPointers[gContestMoves[move].effect], 7, 50, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
             CopyBgTilemapBufferToVram(1);
         }
 
@@ -3112,17 +3112,17 @@ static void PrintNewMoveDetailsOrCancelText(void)
     if (sMonSummaryScreen->newMove != MOVE_NONE)
     {
         pp = gBattleMoves[sMonSummaryScreen->newMove].pp;
-        PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LAST_MOVE, gMoveNames[sMonSummaryScreen->newMove], 3, 5, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
+        PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LAST_MOVE, gMoveNames[sMonSummaryScreen->newMove], 3, 5, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
         ConvertIntToDecimalStringN(gStringVar1, pp, STR_CONV_MODE_RIGHT_ALIGN, 2);
         ConvertIntToDecimalStringN(gStringVar2, pp, STR_CONV_MODE_RIGHT_ALIGN, 2);
         StringAppend(gStringVar1, gText_Slash);
         StringAppend(gStringVar1, gStringVar2);
-        PrintTextOnWindowSmall(WINDOW_ARR_ID_MOVES_WINDOW_LAST_MOVE, sText_PP, 36, 16, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
-        PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LAST_MOVE, gStringVar1, 46, 16, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
+        PrintTextOnWindowSmall(WINDOW_ARR_ID_MOVES_WINDOW_LAST_MOVE, sText_PP, 36, 16, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
+        PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LAST_MOVE, gStringVar1, 46, 16, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
     }
     else
     {
-        PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LAST_MOVE, gText_Cancel, 3, 5, 0, PSS_COLOR_WHITE_BLACK_SHADOW);
+        PrintTextOnWindow(WINDOW_ARR_ID_MOVES_WINDOW_LAST_MOVE, gText_Cancel, 3, 5, 0, PSS_COLOR_BLACK_GRAY_SHADOW);
     }
 }
 
