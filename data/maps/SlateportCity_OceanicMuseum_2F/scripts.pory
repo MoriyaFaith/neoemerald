@@ -154,7 +154,6 @@ SlateportCity_OceanicMuseum_2F_Movement_ArchieEnter:
 	walk_down
 	walk_down
 	walk_down
-	walk_down
 	walk_right
 	walk_right
 	walk_right
@@ -166,7 +165,6 @@ SlateportCity_OceanicMuseum_2F_Movement_GruntApproachToBattle:
 	step_end
 
 SlateportCity_OceanicMuseum_2F_Movement_FirstGruntEnter:
-	walk_down
 	walk_right
 	walk_in_place_faster_down
 	step_end
@@ -187,7 +185,7 @@ SlateportCity_OceanicMuseum_2F_Movement_GruntDefeated:
 	step_end
 
 SlateportCity_OceanicMuseum_2F_Movement_SecondGruntEnter:
-	walk_down
+	walk_in_place_faster_down
 	step_end
 
 SlateportCity_OceanicMuseum_2F_Movement_SecondGruntApproach:
