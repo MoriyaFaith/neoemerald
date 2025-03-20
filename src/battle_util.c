@@ -2020,10 +2020,10 @@ u8 AtkCanceller_UnableToUseMove(void)
                         toSub = 2;
                     else
                         toSub = 1;
-                    if (GetMonData(gBattleMons[gBattlerAttacker], MON_DATA_FRIENDSHIP, 0) >= 150)
+                    /*if (GetMonData(gBattleMons[gBattlerAttacker], MON_DATA_FRIENDSHIP, 0) >= 150)
                     {
                         toSub++;
-                    }
+                    }*/
                     if ((gBattleMons[gBattlerAttacker].status1 & STATUS1_SLEEP) < toSub)
                         gBattleMons[gBattlerAttacker].status1 &= ~STATUS1_SLEEP;
                     else
@@ -2169,18 +2169,18 @@ u8 AtkCanceller_UnableToUseMove(void)
                 {
                     if ((Random() % randNum) || GetMonData(gBattleMons[gBattlerAttacker], MON_DATA_FRIENDSHIP, 0) < 50)
                     {
-                        // The MULTISTRING_CHOOSER is used here as a bool to signal
-                        // to BattleScript_MoveUsedIsConfused whether or not damage was taken
-                        gBattleCommunication[MULTISTRING_CHOOSER] = FALSE;
-                        BattleScriptPushCursor();
-                    }
-                    else // confusion dmg
-                    {
                         gBattleCommunication[MULTISTRING_CHOOSER] = TRUE;
                         gBattlerTarget = gBattlerAttacker;
                         gBattleMoveDamage = CalculateBaseDamage(&gBattleMons[gBattlerAttacker], &gBattleMons[gBattlerAttacker], MOVE_POUND, 0, 40, 0, gBattlerAttacker, gBattlerAttacker);
                         gProtectStructs[gBattlerAttacker].confusionSelfDmg = 1;
                         gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
+                    }
+                    else // avoid confusion dmg
+                    {
+                        // The MULTISTRING_CHOOSER is used here as a bool to signal
+                        // to BattleScript_MoveUsedIsConfused whether or not damage was taken
+                        gBattleCommunication[MULTISTRING_CHOOSER] = FALSE;
+                        BattleScriptPushCursor();
                     }
                     gBattlescriptCurrInstr = BattleScript_MoveUsedIsConfused;
                 }

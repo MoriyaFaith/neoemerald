@@ -721,7 +721,7 @@ static void UpdateFriendshipStepCounter(void)
         struct Pokemon *mon = gPlayerParty;
         for (i = 0; i < PARTY_SIZE; i++)
         {
-            //AdjustFriendship(mon, FRIENDSHIP_EVENT_WALKING); just don't do this anymore, I hated it anyway
+            AdjustFriendship(mon, FRIENDSHIP_EVENT_WALKING);
             mon++;
         }
     }

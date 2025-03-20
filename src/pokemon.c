@@ -2160,7 +2160,7 @@ static const u8 sStatsToRaise[] =
 };
 
 // 3 modifiers each for how much to change friendship for different ranges
-// 0-99, 100-199, 200+
+// 0-149, 150-199, 220+
 static const s8 sFriendshipEventModifiers[][3] =
 {
     [FRIENDSHIP_EVENT_GROW_LEVEL]      = { 5,  3,  2},
@@ -2168,7 +2168,7 @@ static const s8 sFriendshipEventModifiers[][3] =
     [FRIENDSHIP_EVENT_TRAINER_BATTLE]  = { 2,  1,  1},
     [FRIENDSHIP_EVENT_LEAGUE_BATTLE]   = {10,  6,  4},
     [FRIENDSHIP_EVENT_LEARN_TMHM]      = { 3,  2,  1},
-    [FRIENDSHIP_EVENT_WALKING]         = {-1, -1, -2}, //Preparing for dropping FS over time
+    [FRIENDSHIP_EVENT_WALKING]         = { 1,  0,  0},
     [FRIENDSHIP_EVENT_FAINT_SMALL]     = {-10, -10, -20},
     [FRIENDSHIP_EVENT_FAINT_FIELD_PSN] = {-20, -20, -40},
     [FRIENDSHIP_EVENT_FAINT_LARGE]     = {-20, -20, -40},
