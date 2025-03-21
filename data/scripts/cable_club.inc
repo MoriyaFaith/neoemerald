@@ -282,10 +282,8 @@ CableClub_EventScript_Colosseum::
 	end
 
 CableClub_EventScript_SelectBattleMode::
-	.if FAITHFUL == 1 // prevent faithful players from bringing in new mons and moves
 	special Gen4MonsOrMoves
 	goto_if_eq VAR_RESULT, TRUE, CableClub_EventScript_AbortBattleGen4Mon
-	.endif
 	message CableClub_Text_PlayWhichBattleMode
 	waitmessage
 	multichoice 0, 0, MULTI_BATTLE_MODE, FALSE

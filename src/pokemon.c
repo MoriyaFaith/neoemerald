@@ -73,11 +73,7 @@ EWRAM_DATA struct Pokemon gEnemyParty[PARTY_SIZE] = {0};
 EWRAM_DATA struct SpriteTemplate gMultiuseSpriteTemplate = {0};
 EWRAM_DATA static struct MonSpritesGfxManager *sMonSpritesGfxManager = NULL;
 
-#if FAITHFUL
-#include "data/battle_moves_faithful.h"
-#else
 #include "data/battle_moves.h"
-#endif
 
 // Used in an unreferenced function in RS.
 // Unreferenced here and in FRLG.
@@ -1398,18 +1394,10 @@ const s8 gNatureStatTable[NUM_NATURES][NUM_NATURE_STATS] =
 #include "data/pokemon/trainer_class_lookups.h"
 #include "data/pokemon/cry_ids.h"
 #include "data/pokemon/experience_tables.h"
-
-#if FAITHFUL
-	#include "data/pokemon/tmhm_learnsets_faithful.h"
-    #include "data/pokemon/base_stats_faithful.h"
-    #include "data/pokemon/level_up_learnsets_faithful.h"
-    #include "data/pokemon/evolution_faithful.h"
-#else
-	#include "data/pokemon/tmhm_learnsets.h"
-    #include "data/pokemon/species_info.h"
-    #include "data/pokemon/level_up_learnsets.h"
-    #include "data/pokemon/evolution.h"
-#endif
+#include "data/pokemon/tmhm_learnsets.h"
+#include "data/pokemon/species_info.h"
+#include "data/pokemon/level_up_learnsets.h"
+#include "data/pokemon/evolution.h"
 
 #include "data/pokemon/level_up_learnset_pointers.h"
 

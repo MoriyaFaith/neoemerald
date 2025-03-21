@@ -10,14 +10,9 @@
  #define MODIFIER_CRYSTAL_DUST     3 // Reserved for on-the-fly loading CrystalDust into this system
  #define MODIFIER_JAIZU            4 // 3-4 is Emerald Cross
  #define MODIFIER_NEO              5 // 3-5 is Pokemon Emerald NEO (Cannot battle with non-NEO games)
- #define MODIFIER_NEO_FAITHFUL     6 // 3-6 is Pokemon Faithful Emerald NEO (Can battle with non-NEO games)
  #define MODIFIER_TOBA             222 // Reserved by AquaticTyphoon#7935 for their TOBA region.
 
-#if FAITHFUL == 1
-	#define VERSION_MODIFIER (MODIFIER_NEO_FAITHFUL) //Make sure Faithful has its own modifier set
-#else
 	#define VERSION_MODIFIER (MODIFIER_NEO)
-#endif
 
 // Invalid Versions show as "----------" in Gen 4 and Gen 5's summary screen.
 // In Gens 6 and 7, invalid versions instead show "a distant land" in the summary screen.

@@ -1029,9 +1029,6 @@ const u8 sText_TitlePageDetailL[] = _("{DPAD_LEFT}PAGE {A_BUTTON}DETAIL");
 const u8 sText_TitlePageDetailLR[] = _("{DPAD_LEFTRIGHT}PAGE {A_BUTTON}DETAIL");
 const u8 sText_TitlePickSwitch[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}SWITCH");
 
-// code
-#if FAITHFUL == 0
-
 static u8 ShowSplitIcon(u16 move)
 {
     if (sMonSummaryScreen->splitIconSpriteId == 0xFF)
@@ -1048,8 +1045,6 @@ static void DestroySplitIcon(void)
         DestroySprite(&gSprites[sMonSummaryScreen->splitIconSpriteId]);
     sMonSummaryScreen->splitIconSpriteId = 0xFF;
 }
-
-#endif
 
 
 void ShowPokemonSummaryScreen(u8 mode, void *mons, u8 monIndex, u8 maxMonIndex, void (*callback)(void))
@@ -2033,10 +2028,7 @@ static void ChangeSelectedMove(s16 *taskData, s8 direction, u8 *moveIndexPtr)
 {
     s8 i, newMoveIndex;
     u16 move;
-
-	#if FAITHFUL == 0
 	DestroySplitIcon();
-	#endif
     PlaySE(SE_SELECT);
     newMoveIndex = *moveIndexPtr;
     for (i = 0; i < MAX_MON_MOVES; i++)
@@ -2079,9 +2071,7 @@ static void CloseMoveSelectMode(u8 taskId)
     u32 i;
     s16 *data = gTasks[taskId].data;
     data[0] = 0;
-	#if FAITHFUL == 0
 	DestroySplitIcon();
-	#endif
     gTasks[taskId].func = Task_HandleInput;
     SetTaskFuncWithFollowupFunc(taskId, Task_SwitchFromMoveDetails, gTasks[taskId].func);
 }
@@ -3042,9 +3032,7 @@ static void PrintMoveDetails(u16 move)
     {
         if (sMonSummaryScreen->currPageIndex == PSS_PAGE_BATTLE_MOVES)
         {
-			#if FAITHFUL == 0
 			 ShowSplitIcon(move);
-			 #endif
             if (gBattleMoves[move].power < 2)
                 StringCopy(gStringVar1, gText_ThreeDashes);
             else
@@ -3065,9 +3053,7 @@ static void PrintMoveDetails(u16 move)
         {
 
 
-			#if FAITHFUL == 0
 			DestroySplitIcon();
-			#endif
             FillBgTilemapBufferRect(1, TILE_EMPTY_HEART, 6, 7, 8, 1, 5);
             FillBgTilemapBufferRect(1, TILE_EMPTY_HEART_2, 6, 8, 8, 1, 5);
             FillBgTilemapBufferRect(1, TILE_EMPTY_HEART_3, 6, 9, 8, 1, 5);

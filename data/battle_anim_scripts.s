@@ -7896,10 +7896,6 @@ SpiderWebThread:
 	delay 1
 	return
 
-#if FAITHFUL == 1
-Move_RAZOR_WIND:
-	choosetwoturnanim RazorWindSetUp, RazorWindUnleash
-#endif
 RazorWindEnd:
 	waitforvisualfinish
 	end
@@ -7914,10 +7910,7 @@ RazorWindSetUp:
 	playsewithpan SE_M_GUST2, SOUND_PAN_ATTACKER
 	goto RazorWindEnd
 
-#if FAITHFUL == 0
 Move_RAZOR_WIND:
-#endif
-RazorWindUnleash:
 	loadspritegfx ANIM_TAG_AIR_WAVE_2
 	loadspritegfx ANIM_TAG_IMPACT
 	monbg ANIM_TARGET

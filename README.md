@@ -13,7 +13,6 @@ It changes the following:
 It builds the following ROMs:
 
 * **neoemerald.gba** - Main Game
-* **neo_faithful.gba** - Alternate version featuring no changes to mechanics, Pokémon, or moves.
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
 

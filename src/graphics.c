@@ -349,28 +349,27 @@ const u32 gUnusedPal_BasicFrame[] = INCBIN_U32("graphics/unused/basic_frame.gbap
 const u32 gUnusedTilemap_BasicFrame[] = INCBIN_U32("graphics/unused/basic_frame.bin.lz");
 
 // Battle Interface
-//#if FAITHFUL
-const u16 gBattleInterface_BallStatusBarPal[] = INCBIN_U16("graphics/battle_interface/faithful/ball_status_bar.gbapal");
+const u16 gBattleInterface_BallStatusBarPal[] = INCBIN_U16("graphics/battle_interface/ball_status_bar.gbapal");
 
-const u16 gBattleInterface_BallDisplayPal[] = INCBIN_U16("graphics/battle_interface/faithful/ball_display.gbapal");
+const u16 gBattleInterface_BallDisplayPal[] = INCBIN_U16("graphics/battle_interface/ball_display.gbapal");
 
-const u8 gHealthboxElementsGfxTable[] = INCBIN_U8("graphics/battle_interface/faithful/hpbar.4bpp",
-                                                  "graphics/battle_interface/faithful/expbar.4bpp",
-                                                  "graphics/battle_interface/faithful/status_psn.4bpp",
-                                                  "graphics/battle_interface/faithful/status_par.4bpp",
-                                                  "graphics/battle_interface/faithful/status_slp.4bpp",
-                                                  "graphics/battle_interface/faithful/status_frz.4bpp",
-                                                  "graphics/battle_interface/faithful/status_brn.4bpp",
-                                                  "graphics/battle_interface/faithful/misc.4bpp",
-                                                  "graphics/battle_interface/faithful/hpbar_anim.4bpp",
-                                                  "graphics/battle_interface/faithful/misc_frameend.4bpp",
-                                                  "graphics/battle_interface/faithful/ball_display.4bpp",
-                                                  "graphics/battle_interface/faithful/ball_display_unused_extra.4bpp",
-                                                  "graphics/battle_interface/faithful/status2.4bpp",  // these three duplicate sets of graphics are for the opponent pokemon
-                                                  "graphics/battle_interface/faithful/status3.4bpp",  // and are also for use in double battles. they use dynamic palettes so
-                                                  "graphics/battle_interface/faithful/status4.4bpp",  // coloring them is an extreme headache and wont be done for now
-                                                  "graphics/battle_interface/faithful/healthbox_doubles_frameend.4bpp",
-                                                  "graphics/battle_interface/faithful/healthbox_doubles_frameend_bar.4bpp");
+const u8 gHealthboxElementsGfxTable[] = INCBIN_U8("graphics/battle_interface/hpbar.4bpp",
+                                                  "graphics/battle_interface/expbar.4bpp",
+                                                  "graphics/battle_interface/status_psn.4bpp",
+                                                  "graphics/battle_interface/status_par.4bpp",
+                                                  "graphics/battle_interface/status_slp.4bpp",
+                                                  "graphics/battle_interface/status_frz.4bpp",
+                                                  "graphics/battle_interface/status_brn.4bpp",
+                                                  "graphics/battle_interface/misc.4bpp",
+                                                  "graphics/battle_interface/hpbar_anim.4bpp",
+                                                  "graphics/battle_interface/misc_frameend.4bpp",
+                                                  "graphics/battle_interface/ball_display.4bpp",
+                                                  "graphics/battle_interface/ball_display_unused_extra.4bpp",
+                                                  "graphics/battle_interface/status2.4bpp",  // these three duplicate sets of graphics are for the opponent pokemon
+                                                  "graphics/battle_interface/status3.4bpp",  // and are also for use in double battles. they use dynamic palettes so
+                                                  "graphics/battle_interface/status4.4bpp",  // coloring them is an extreme headache and wont be done for now
+                                                  "graphics/battle_interface/healthbox_doubles_frameend.4bpp",
+                                                  "graphics/battle_interface/healthbox_doubles_frameend_bar.4bpp");
 // OLD VERSION FOR NEO
 /*#else
 const u16 gBattleInterface_BallStatusBarPal[] = INCBIN_U16("graphics/battle_interface/ball_status_bar.gbapal");
@@ -649,19 +648,11 @@ const u32 gBattleAnimSpritePal_Eye[] = INCBIN_U32("graphics/battle_anims/sprites
 const u32 gBattleAnimSpriteGfx_Tendrils[] = INCBIN_U32("graphics/battle_anims/sprites/tendrils.4bpp.lz");
 const u32 gBattleAnimSpritePal_Tendrils[] = INCBIN_U32("graphics/battle_anims/sprites/tendrils.gbapal.lz");
 
-#if FAITHFUL
-const u32 gHealthboxSinglesPlayerGfx[] = INCBIN_U32("graphics/battle_interface/faithful/healthbox_singles_player.4bpp.lz");
-const u32 gHealthboxSinglesOpponentGfx[] = INCBIN_U32("graphics/battle_interface/faithful/healthbox_singles_opponent.4bpp.lz");
-const u32 gHealthboxDoublesPlayerGfx[] = INCBIN_U32( "graphics/battle_interface/faithful/healthbox_doubles_player.4bpp.lz");
-const u32 gHealthboxDoublesOpponentGfx[] = INCBIN_U32("graphics/battle_interface/faithful/healthbox_doubles_opponent.4bpp.lz");
-const u32 gHealthboxSafariGfx[] = INCBIN_U32("graphics/battle_interface/faithful/healthbox_safari.4bpp.lz");
-#else
 const u32 gHealthboxSinglesPlayerGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_player.4bpp.lz");
 const u32 gHealthboxSinglesOpponentGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_opponent.4bpp.lz");
 const u32 gHealthboxDoublesPlayerGfx[] = INCBIN_U32( "graphics/battle_interface/healthbox_doubles_player.4bpp.lz");
 const u32 gHealthboxDoublesOpponentGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_doubles_opponent.4bpp.lz");
 const u32 gHealthboxSafariGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_safari.4bpp.lz");
-#endif
 
 const u32 gUnusedGfx_Shadow[] = INCBIN_U32("graphics/unused/shadow.4bpp.lz");
 const u32 gUnusedPal_Shadow[] = INCBIN_U32("graphics/unused/shadow.gbapal.lz");
@@ -1069,11 +1060,7 @@ const u32 gBattleAnimBackgroundImageMuddyWater_Pal[] = INCBIN_U32("graphics/batt
 
 const u32 gEnemyMonShadow_Gfx[] = INCBIN_U32("graphics/battle_interface/enemy_mon_shadow.4bpp.lz");
 
-#if FAITHFUL
-const u32 gBattleInterface_BallStatusBarGfx[] = INCBIN_U32("graphics/battle_interface/faithful/ball_status_bar.4bpp.lz");
-#else
 const u32 gBattleInterface_BallStatusBarGfx[] = INCBIN_U32("graphics/battle_interface/ball_status_bar.4bpp.lz");
-#endif
 
 const u8 gMonIcon_Egg[] = INCBIN_U8("graphics/pokemon/egg/icon.4bpp");
 

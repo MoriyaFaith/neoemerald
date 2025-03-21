@@ -3188,7 +3188,6 @@ static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion, u8 versionMo
                 objEvent->spriteId = CreateObjectGraphicsSprite(GetHeliodorAvatarGraphicsIdByGender(linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
                 break;
             case MODIFIER_NEO:
-            case MODIFIER_NEO_FAITHFUL:
                 objEvent->spriteId = CreateObjectGraphicsSprite(GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
                 break;
             default:

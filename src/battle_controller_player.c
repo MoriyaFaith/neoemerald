@@ -2277,8 +2277,7 @@ static void PlayerHandleDrawTrainerPic(void)
         {
             trainerPicId = gLinkPlayers[GetMultiplayerId()].gender + TRAINER_BACK_PIC_H_BRENDAN;
         }
-        else if ((gLinkPlayers[GetMultiplayerId()].versionModifier & 0xFF) == MODIFIER_NEO
-			|| (gLinkPlayers[GetMultiplayerId()].versionModifier & 0xFF) == MODIFIER_NEO_FAITHFUL)
+        else if ((gLinkPlayers[GetMultiplayerId()].versionModifier & 0xFF) == MODIFIER_NEO)
         {
             trainerPicId = gLinkPlayers[GetMultiplayerId()].gender;
         }
@@ -2368,8 +2367,7 @@ static void PlayerHandleTrainerSlide(void)
         {
             trainerPicId = gLinkPlayers[GetMultiplayerId()].gender + TRAINER_BACK_PIC_H_BRENDAN;
         }
-        else if ((gLinkPlayers[GetMultiplayerId()].versionModifier & 0xFF) == MODIFIER_NEO
-        		|| (gLinkPlayers[GetMultiplayerId()].versionModifier & 0xFF) == MODIFIER_NEO_FAITHFUL)
+        else if ((gLinkPlayers[GetMultiplayerId()].versionModifier & 0xFF) == MODIFIER_NEO)
         {
             trainerPicId = gLinkPlayers[GetMultiplayerId()].gender;
         }

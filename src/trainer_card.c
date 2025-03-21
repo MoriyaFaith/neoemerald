@@ -2473,7 +2473,6 @@ static u8 GetSetcardVersion(void)
             sData->cardLayout = CARD_LAYOUT_FRLG_DX;
             return CARD_VERSION_FRLG;
         case MODIFIER_NEO:
-        case MODIFIER_NEO_FAITHFUL:
             sData->cardLayout = CARD_LAYOUT_NEO_EMERALD;
             return CARD_VERSION_NEO_EMERALD;
         default:

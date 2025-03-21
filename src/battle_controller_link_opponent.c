@@ -1242,8 +1242,7 @@ static void LinkOpponentHandleDrawTrainerPic(void)
                 else
                     trainerPicId = TRAINER_PIC_H_BRENDAN;
             }
-            else if ((gLinkPlayers[GetBattlerMultiplayerId(gActiveBattler)].versionModifier & 0xFF) == MODIFIER_NEO
-				|| (gLinkPlayers[GetBattlerMultiplayerId(gActiveBattler)].versionModifier & 0xFF) == MODIFIER_NEO_FAITHFUL)
+            else if ((gLinkPlayers[GetBattlerMultiplayerId(gActiveBattler)].versionModifier & 0xFF) == MODIFIER_NEO)
                 trainerPicId = PlayerGenderToFrontTrainerPicId(gLinkPlayers[GetMultiplayerId() ^ BIT_SIDE].gender);
 
             //Vanilla Version Detection
@@ -1294,8 +1293,7 @@ static void LinkOpponentHandleDrawTrainerPic(void)
             else
                 trainerPicId = TRAINER_PIC_H_BRENDAN;
         }
-        else if ((gLinkPlayers[GetMultiplayerId() ^ BIT_SIDE].versionModifier & 0xFF) == MODIFIER_NEO
-			|| (gLinkPlayers[GetMultiplayerId() ^ BIT_SIDE].versionModifier & 0xFF) == MODIFIER_NEO_FAITHFUL)
+        else if ((gLinkPlayers[GetMultiplayerId() ^ BIT_SIDE].versionModifier & 0xFF) == MODIFIER_NEO)
             trainerPicId = PlayerGenderToFrontTrainerPicId(gLinkPlayers[GetMultiplayerId() ^ BIT_SIDE].gender);
 
         //Vanilla Version Detection
